@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -17,7 +16,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-public class PreferencesScreen implements Screen{
+public class PreferencesScreen implements Screen {
 
     private MyGdxGame parent;
     private Stage stage;
@@ -28,11 +27,10 @@ public class PreferencesScreen implements Screen{
     private Label soundOnOffLabel;
 
 
-    public PreferencesScreen(MyGdxGame box2dTutorial){
+    public PreferencesScreen(MyGdxGame box2dTutorial) {
         parent = box2dTutorial;
-        /// create stage and set it as input processor
+        // create stage and set it as input processor
         stage = new Stage(new ScreenViewport());
-
     }
 
     @Override
@@ -40,8 +38,8 @@ public class PreferencesScreen implements Screen{
         stage.clear();
         Gdx.input.setInputProcessor(stage);
 
-        // Create a table that fills the screen. Everything else will go inside
-        // this table.
+        // create a table that fills the screen
+        // everything else will go inside this table
         Table table = new Table();
         table.setFillParent(true);
         //table.setDebug(true);
@@ -104,7 +102,6 @@ public class PreferencesScreen implements Screen{
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 parent.changeScreen(MyGdxGame.MENU);
-
             }
         });
 
@@ -129,7 +126,6 @@ public class PreferencesScreen implements Screen{
         table.add(soundEffectsCheckbox);
         table.row().pad(10,0,0,10);
         table.add(backButton).colspan(2);
-
     }
 
     @Override
@@ -141,7 +137,6 @@ public class PreferencesScreen implements Screen{
         // tell our stage to do actions and draw itself
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
-
     }
 
     @Override
@@ -152,25 +147,21 @@ public class PreferencesScreen implements Screen{
 
     @Override
     public void pause() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void resume() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void hide() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void dispose() {
-        // TODO Auto-generated method stub
 
     }
 

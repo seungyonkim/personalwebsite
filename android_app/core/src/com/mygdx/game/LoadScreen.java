@@ -11,20 +11,16 @@ public class LoadScreen implements Screen {
     private MyGdxGame game;
     OrthographicCamera camera;
 
-    public LoadScreen(MyGdxGame game){
-
-
+    public LoadScreen(MyGdxGame game) {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
 
         this.game = game;
-
-
     }
 
     @Override
     public void show() {
-        // TODO Auto-generated method stub
+
     }
 
     @Override
@@ -47,34 +43,31 @@ public class LoadScreen implements Screen {
             game.changeScreen(MyGdxGame.MENU);
             dispose();
         }
-
-
-
-
     }
 
     @Override
     public void resize(int width, int height) {
-        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void pause() {
-        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void resume() {
-        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void hide() {
-        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void dispose() {
-        // TODO Auto-generated method stub
+
     }
+
 }
