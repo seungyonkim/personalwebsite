@@ -24,10 +24,10 @@ public class GameAssetManager {
     public final String playingSong = "music/Rolemusic_-_pl4y1ng.mp3";
 
     // Skin
-    public final String skin = "skin/comic-ui.json";
+    public final String skin = "skin/glassy-ui.json";
 
     public void queueAddSkin(){
-        SkinParameter params = new SkinParameter("skin/comic-ui.atlas");
+        SkinParameter params = new SkinParameter("skin/glassy-ui.atlas");
         manager.load(skin, Skin.class, params);
 
     }

@@ -44,11 +44,12 @@ public class PreferencesScreen implements Screen{
         // this table.
         Table table = new Table();
         table.setFillParent(true);
+
         //table.setDebug(true);
         stage.addActor(table);
 
         // temporary until we have asset manager in
-        Skin skin = new Skin(Gdx.files.internal("skin/comic-ui.json"));
+        Skin skin = new Skin(Gdx.files.internal("skin/glassy-ui.json"));
 
         // music volume
         final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, skin);
@@ -108,11 +109,19 @@ public class PreferencesScreen implements Screen{
             }
         });
 
+
         titleLabel = new Label( "Preferences", skin );
         volumeMusicLabel = new Label( "Music Volume", skin );
         volumeSoundLabel = new Label( "Sound Volume", skin );
         musicOnOffLabel = new Label( "Music", skin );
         soundOnOffLabel = new Label( "Sound Effect", skin );
+
+        titleLabel.setFontScale(4f);
+        volumeMusicLabel.setFontScale(4f);
+        volumeSoundLabel.setFontScale(4f);
+        musicOnOffLabel.setFontScale(4f);
+        soundOnOffLabel.setFontScale(4f);
+
 
         table.add(titleLabel).colspan(2);
         table.row().pad(10,0,0,10);
@@ -140,6 +149,9 @@ public class PreferencesScreen implements Screen{
 
         // tell our stage to do actions and draw itself
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+        stage.getBatch().begin();
+        stage.getBatch().draw(parent.BackgroundMenu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        stage.getBatch().end();
         stage.draw();
 
     }

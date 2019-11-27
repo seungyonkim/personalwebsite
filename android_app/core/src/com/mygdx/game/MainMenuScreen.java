@@ -3,131 +3,163 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import javax.swing.event.ChangeEvent;
+public class MainMenuScreen implements Screen{
 
-public class MainMenuScreen implements Screen {
-
-    final MyGdxGame game;
-
-    OrthographicCamera camera;
+    private MyGdxGame parent;
     private Stage stage;
-    private int width=800;
-    private int height=480;
+    private Skin skin;
 
-
-    public MainMenuScreen(final MyGdxGame game) {
-        this.game = game;
-
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, width, height);
-
+    public MainMenuScreen(MyGdxGame parent){
+        this.parent = parent;
+        /// create stage and set it as input processor
         stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
 
-        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-        stage.draw();
+        parent.assMan.queueAddSkin();
+        parent.assMan.manager.finishLoading();
+        skin = parent.assMan.manager.get("skin/glassy-ui.json");
 
     }
 
-
-    @Override
-    public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-
-        camera.update();
-        game.batch.setProjectionMatrix(camera.combined);
-
-
-
-
-        game.batch.begin();
-
-        game.batch.draw(game.BackgroundMenu,0,0);
-
-        game.batch.end();
-
-
-        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
-        stage.draw();
-    }
     @Override
     public void show() {
-
+        Gdx.input.setInputProcessor(stage);
+        // Create a table that fills the screen. Everything else will go inside this table.
         Table table = new Table();
         table.setFillParent(true);
         table.setDebug(true);
+
         stage.addActor(table);
 
 
-        Skin skin = new Skin(Gdx.files.internal("skin/comic-ui.json"));
-
-        TextButton newGame = new TextButton("New Game", skin);
+        //create buttons
+        final TextButton newGame = new TextButton("Start", skin);
         TextButton preferences = new TextButton("Preferences", skin);
         TextButton exit = new TextButton("Exit", skin);
 
-        newGame.getLabel().setFontScale(2, 4);
-        preferences.getLabel().setFontScale(2, 4);
+        Label LabelPlayer1 = new Label("Player 1 :", skin);
+        Label LabelPlayer2 = new Label("Player 2 :", skin);
+        Label LabelPlayer3 = new Label("Player 3 :", skin);
+        LabelPlayer1.setFontScale(4f);
+        LabelPlayer2.setFontScale(4f);
+        LabelPlayer3.setFontScale(4f);
 
-        exit.getLabel().setFontScale(2, 4);
+        Label namePlayer1 = new Label(" Michael ", skin);
+        Label namePlayer2 = new Label(" Samy ", skin);
+        Label namePlayer3 = new Label(" Loading ...", skin);
+        namePlayer1.setFontScale(2f);
+        namePlayer2.setFontScale(2f);
+        namePlayer3.setFontScale(2f);
+
+        Label YourName = new Label(" Your are : VICTOR ", skin);
+        YourName.setFontScale(6f);
+
+        //add buttons to table
+        table.add(newGame).fillX().uniformX().colspan(3);
+        table.row().pad(40, 0, 40, 0);
+        table.add(preferences).fillX().uniformX().colspan(3);
+        table.row();
+        table.add(exit).fillX().uniformX().colspan(3);
+        table.row().pad(40, 0, 40, 0);
+
+        table.add(LabelPlayer1).fillX().uniformX();
+        table.add(LabelPlayer2).fillX().uniformX();
+        table.add(LabelPlayer3).fillX().uniformX();
+
+        table.row();
+
+        table.add(namePlayer1).fillX().uniformX();
+        table.add(namePlayer2).fillX().uniformX();
+        table.add(namePlayer3).fillX().uniformX();
+
+        table.row().pad(40, 0, 40, 0);
+
+        table.add(YourName).fillX().uniformX().colspan(3);
 
 
-        table.add(newGame).fillX().uniformX().size(800,200);
-        table.row().pad(50, 0, 50, 0);
-        table.add(preferences).fillX().uniformX().size(800,200);;
-        table.row().pad(50,0,50,0);
-        table.add(exit).fillX().uniformX().size(800,200);;
 
 
+
+
+
+
+        // create button listeners
         exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.app.exit();
             }
         });
+
+
         newGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(MyGdxGame.APPLICATION);
+                parent.changeScreen(MyGdxGame.APPLICATION);
             }
         });
+
         preferences.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                game.changeScreen(MyGdxGame.PREFERENCES);
+                parent.changeScreen(MyGdxGame.PREFERENCES);
+
             }
         });
 
     }
+
+    @Override
+    public void render(float delta) {
+        // clear the screen ready for next set of images to be drawn
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        // tell our stage to do actions and draw itself
+        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+
+        stage.getBatch().begin();
+        stage.getBatch().draw(parent.BackgroundMenu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        stage.getBatch().end();
+        stage.draw();
+    }
+
     @Override
     public void resize(int width, int height) {
-    }
-    @Override
-    public void hide() {
+        // change the stage's viewport when teh screen size is changed
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
     public void pause() {
+        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void resume() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void hide() {
+        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void dispose() {
+        // dispose of assets when not needed anymore
         stage.dispose();
     }
 
