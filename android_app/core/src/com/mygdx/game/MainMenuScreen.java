@@ -3,9 +3,11 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -18,6 +20,7 @@ public class MainMenuScreen implements Screen{
     private MyGdxGame parent;
     private Stage stage;
     private Skin skin;
+    Texture playerImage;
 
     public MainMenuScreen(MyGdxGame parent){
         this.parent = parent;
@@ -27,6 +30,7 @@ public class MainMenuScreen implements Screen{
         parent.assMan.queueAddSkin();
         parent.assMan.manager.finishLoading();
         skin = parent.assMan.manager.get("skin/glassy-ui.json");
+        playerImage = new Texture(Gdx.files.internal("player.png"));
 
     }
 
@@ -60,8 +64,12 @@ public class MainMenuScreen implements Screen{
         namePlayer2.setFontScale(2f);
         namePlayer3.setFontScale(2f);
 
-        Label YourName = new Label(" Your are : VICTOR ", skin);
-        YourName.setFontScale(6f);
+        Label left = new Label(" <<< " , skin);
+        left.setFontScale(6f);
+        Label right = new Label(" >>> " , skin);
+        right.setFontScale(6f);
+
+
 
         //add buttons to table
         table.add(newGame).fillX().uniformX().colspan(3);
@@ -83,7 +91,10 @@ public class MainMenuScreen implements Screen{
 
         table.row().pad(40, 0, 40, 0);
 
-        table.add(YourName).fillX().uniformX().colspan(3);
+        table.add(left).fillX().uniformX();
+        Image image = new Image(playerImage);
+        table.add(image);
+        table.add(right).fillX().uniformX();
 
 
 
