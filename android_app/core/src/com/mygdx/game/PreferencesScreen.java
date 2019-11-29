@@ -28,8 +28,8 @@ public class PreferencesScreen implements Screen{
     private Label soundOnOffLabel;
 
 
-    public PreferencesScreen(MyGdxGame box2dTutorial){
-        parent = box2dTutorial;
+    public PreferencesScreen(MyGdxGame game){
+        parent = game;
         /// create stage and set it as input processor
         stage = new Stage(new ScreenViewport());
 

@@ -43,8 +43,8 @@ public class MainMenuScreen implements Screen{
 
         //create buttons
         final TextButton newGame = new TextButton("Start", skin);
-        TextButton preferences = new TextButton("Preferences", skin);
-        TextButton exit = new TextButton("Exit", skin);
+        final TextButton preferences = new TextButton("Preferences", skin);
+        final TextButton exit = new TextButton("Exit", skin);
 
         Label LabelPlayer1 = new Label("Player 1 :", skin);
         Label LabelPlayer2 = new Label("Player 2 :", skin);
@@ -96,7 +96,9 @@ public class MainMenuScreen implements Screen{
         exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+
                 Gdx.app.exit();
+
             }
         });
 
@@ -104,14 +106,18 @@ public class MainMenuScreen implements Screen{
         newGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+
                 parent.changeScreen(MyGdxGame.APPLICATION);
+
             }
         });
 
         preferences.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+
                 parent.changeScreen(MyGdxGame.PREFERENCES);
+
 
             }
         });

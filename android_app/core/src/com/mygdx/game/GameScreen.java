@@ -21,6 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class GameScreen implements Screen {
     final MyGdxGame game;
@@ -28,9 +29,12 @@ public class GameScreen implements Screen {
     Texture playerImage;
     OrthographicCamera camera;
     Rectangle player ;
+    Stage stage;
+
 
     public GameScreen(final MyGdxGame game) {
         this.game = game;
+        stage = new Stage(new ScreenViewport());
 
         // load the images for the droplet and the bucket, 64x64 pixels each
         playerImage = new Texture(Gdx.files.internal("player.png"));
@@ -54,12 +58,15 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
+
         // clear the screen with a dark blue color. The
         // arguments to glClearColor are the red, green
         // blue and alpha component in the range [0,1]
         // of the color to be used to clear the screen.
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+        Gdx.gl.glClearColor(0f, 0f, 0f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 
         // tell the camera to update its matrices.
         camera.update();
@@ -104,6 +111,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        stage.clear();
+        Gdx.input.setInputProcessor(stage);
 
     }
 
