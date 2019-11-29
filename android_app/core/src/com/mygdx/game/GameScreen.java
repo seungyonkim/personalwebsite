@@ -50,7 +50,7 @@ public class GameScreen implements Screen {
         player.x = 8000 / 2 - 500 / 2; // center the bucket horizontally
         player.y = 2000; // bottom left corner of the bucket is 20 pixels above
         // the bottom screen edge
-        player.width = 500;
+        player.width = 300;
         player.height = 500;
 
     }
@@ -87,7 +87,7 @@ public class GameScreen implements Screen {
             Vector3 touchPos = new Vector3();
             touchPos.set(Gdx.input.getX(), Gdx.input.getY(),0);
             camera.unproject(touchPos);
-            player.x = touchPos.x - 500 / 2;
+            player.x = touchPos.x - 300 / 2;
             player.y=touchPos.y - 500/2;
         }
 
