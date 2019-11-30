@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.SkinLoader.SkinParameter;
 import com.badlogic.gdx.audio.Music;
@@ -11,42 +12,42 @@ public class GameAssetManager {
 
     public final AssetManager manager = new AssetManager();
 
-    // textures
+    // Textures
     public final String playerImage = "images/player.png";
     public final String enemyImage = "images/enemy.png";
 
-    // sounds
+    // Sounds
     public final String boingSound = "sounds/boing.wav";
     public final String pingSound = "sounds/ping.wav";
 
-    // music
+    // Music
     public final String playingSong = "music/Rolemusic_-_pl4y1ng.mp3";
 
-    // skin
-    public final String skin = "skin/comic-ui.json";
+    // Skin
+    public final String skin = "skin/glassy-ui.json";
 
-    public void queueAddSkin() {
-        SkinParameter params = new SkinParameter("skin/comic-ui.atlas");
+    public void queueAddSkin(){
+        SkinParameter params = new SkinParameter("skin/glassy-ui.atlas");
         manager.load(skin, Skin.class, params);
+
     }
 
-    public void queueAddMusic() {
+    public void queueAddMusic(){
         manager.load(playingSong, Music.class);
     }
 
-    public void queueAddSounds() {
+    public void queueAddSounds(){
         manager.load(boingSound, Sound.class);
         manager.load(pingSound, Sound.class);
     }
 
-    public void queueAddImages() {
+    public void queueAddImages(){
         manager.load(playerImage, Texture.class);
         manager.load(enemyImage, Texture.class);
     }
 
     // a small set of images used by the loading screen
-    public void queueAddLoadingImages() {
+    public void queueAddLoadingImages(){
 
     }
-
 }
