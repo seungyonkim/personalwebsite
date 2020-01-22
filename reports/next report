@@ -1,6 +1,91 @@
-Lawrence: create game
-Greg: pickup farmer
-Yona: Move to
-Dany: choose hero
-Victor: drop gold
-Steven: end day
+# Weekly Report
+
+## Meta Information
+
+### Group
+
+- Hexanome-6
+
+- java
+
+### Team Members
+
+- Lawrence Ho
+
+- Seung Yon Kim
+
+- Byungwoo Kim
+
+- Dany Stefan
+
+- Victor Massenet
+
+- Seung Won Joeng
+
+## Status
+
+### 3 most outstanding tasks scheduled until the next report, per team member
+  
+- Lawrence Ho
+  - Responible for create game functions 
+  - Began modelling functions
+  - Look into software for modelling
+  
+- Dany Stefan
+  - Responible for choose hero
+  - Start modelling for next week
+  - Start thinking about design model
+  
+- Seung Won Joeng
+  - Responible for end day
+  - Began modelling functions
+  - Start thinking about design model
+  
+- Byungwoo Kim
+  - Responible for pickup farmer
+  - Begin modelling pickup farmer
+  - Think about how to turn model into design model
+  
+- Victor Massenet
+  - Responible for drop gold
+  - M4 organization on Github
+  - Look into software for modelling
+  
+- Seung Yon Kim
+  - Responible for move to
+  - Begin modelling interaction model
+  - Look into how move to would be as a design model
+  
+
+### Tasks missed, scheduled for this report
+- Last week's report
+
+
+### Top 3 unexpected challenges encountered since last report
+
+- Getting the reports going after the break
+- Re-organizing after the break for meetings
+- Updating group members on progress
+
+### Top 3 lessons learned since last report
+
+- Meet in person
+- Work in tandem to make the milestone flow
+- Managing time
+
+
+### 3 most critical bugs in current functionality (optional)
+
+- N/A
+
+### Contribution statement
+
+- Lawrence Ho contributed 1/6 of the work effectuated since last week.
+- Seung Won Joeng contributed 1/6 of the work effectuated since last week.
+- Byungwoo Kim contributed 1/6 of the work effectuated since last week.
+- Seung Yon Kim contributed 1/6 of the work effectuated since last week.
+- Victor Massenet contributed 1/6 of the work effectuated since last week.
+- Dany Stefan contributed 1/6 of the work effectuated since last week.
+
+### Team mood
+- Good mood
