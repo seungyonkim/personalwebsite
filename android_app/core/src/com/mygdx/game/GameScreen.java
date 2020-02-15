@@ -17,7 +17,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -30,6 +34,7 @@ public class GameScreen implements Screen {
     OrthographicCamera camera;
     Rectangle player ;
     Stage stage;
+    private Skin skin;
 
 
     public GameScreen(final MyGdxGame game) {
@@ -39,7 +44,9 @@ public class GameScreen implements Screen {
         // load the images for the droplet and the bucket, 64x64 pixels each
         playerImage = new Texture(Gdx.files.internal("player.png"));
 
-
+        game.assMan.queueAddSkin();
+        game.assMan.manager.finishLoading();
+        skin = game.assMan.manager.get("skin/glassy-ui.json");
 
         // create the camera and the SpriteBatch
         camera = new OrthographicCamera();
@@ -81,6 +88,7 @@ public class GameScreen implements Screen {
         game.batch.draw(game.BackgroundMain,0,0);
         game.batch.draw(playerImage, player.x, player.y, player.width, player.height);
         game.batch.end();
+        stage.draw();
 
         // process user input
         if (Gdx.input.isTouched()) {
@@ -113,6 +121,17 @@ public class GameScreen implements Screen {
     public void show() {
         stage.clear();
         Gdx.input.setInputProcessor(stage);
+        final TextButton chat = new TextButton("Chat", skin);
+
+        stage.addActor(chat);
+
+        chat.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                game.changeScreen(MyGdxGame.CHAT);
+
+            }
+        });
 
     }
 

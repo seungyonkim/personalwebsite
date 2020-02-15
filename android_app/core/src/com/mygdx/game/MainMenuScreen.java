@@ -19,7 +19,7 @@ public class MainMenuScreen implements Screen{
 
     private MyGdxGame parent;
     private Stage stage;
-    private Skin skin;
+    public Skin skin;
     Texture playerImage;
 
     public MainMenuScreen(MyGdxGame parent){
@@ -27,9 +27,8 @@ public class MainMenuScreen implements Screen{
         /// create stage and set it as input processor
         stage = new Stage(new ScreenViewport());
 
-        parent.assMan.queueAddSkin();
-        parent.assMan.manager.finishLoading();
-        skin = parent.assMan.manager.get("skin/glassy-ui.json");
+
+        skin = parent.skin;
         playerImage = new Texture(Gdx.files.internal("player.png"));
 
     }
@@ -40,7 +39,7 @@ public class MainMenuScreen implements Screen{
         // Create a table that fills the screen. Everything else will go inside this table.
         Table table = new Table();
         table.setFillParent(true);
-        table.setDebug(true);
+        table.setDebug(false);
 
         stage.addActor(table);
 
@@ -50,8 +49,8 @@ public class MainMenuScreen implements Screen{
         final TextButton preferences = new TextButton("Preferences", skin);
         final TextButton exit = new TextButton("Exit", skin);
 
-        Label LabelPlayer1 = new Label("Player 1 :", skin);
-        Label LabelPlayer2 = new Label("Player 2 :", skin);
+        Label LabelPlayer1 = new Label("Player 1 : ", skin);
+        Label LabelPlayer2 = new Label("Player 2 : ", skin);
         Label LabelPlayer3 = new Label("Player 3 :", skin);
         LabelPlayer1.setFontScale(4f);
         LabelPlayer2.setFontScale(4f);
