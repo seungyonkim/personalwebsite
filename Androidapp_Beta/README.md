@@ -1,7 +1,7 @@
 # ANDOR Android App - F2019_HEXANOME_06
 ## McGill2020W_COMP361
 
----- . 
+----
 
 ### Files Description
 > All java files we handle : /core/java/f2019-hexanome-06 ... . 
