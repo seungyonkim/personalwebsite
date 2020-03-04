@@ -4,13 +4,13 @@
 ----
 
 ### Files Description
-> All java files we handle : /core/java/f2019-hexanome-06 ... . 
-> All images files we use : /core/java/img_sources  ... . 
+> All java files we handle : /core/java/f2019-hexanome-06. 
+> All images files we use : /core/java/img_sources 
 
 ----
 
 ### How to run? :
-> Using Desktop Launcher : /desktop/java/f2019-hexanome-06/DesktopLauncher.java . 
+> Using Desktop Launcher : /desktop/java/f2019-hexanome-06/DesktopLauncher.java. 
 > Using Emulator : /desktop/... .
 
 ----
