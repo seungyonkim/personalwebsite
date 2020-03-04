@@ -2,8 +2,10 @@
 ## McGill2020W_COMP361
 
 
-### If you have an error with a gradle <br> ERROR: No value has been specified for property 'manifestOutputDirectory'.
-Preferences -> Experimental -> Unchecked "Only sync the active variant" on Gradle section. - Steven Joeng
+If you have an error with a gradle <br> ERROR: No value has been specified for property 'manifestOutputDirectory'.
+Preferences -> Experimental -> Unchecked "Only sync the active variant" on Gradle section. - Steven Joeng <br><br>
+
+Git on Android Studio : https://stackoverflow.com/questions/37093723/how-to-add-an-android-studio-project-to-github
 
 ----
 
