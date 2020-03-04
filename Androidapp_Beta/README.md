@@ -9,7 +9,7 @@
 
 ----
 
-### How to run? :
+### How to run?
 > Using Desktop Launcher : /desktop/java/f2019-hexanome-06/DesktopLauncher.java<br>
 > Using Emulator : /desktop/... .
 
