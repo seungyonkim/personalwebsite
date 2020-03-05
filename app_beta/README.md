@@ -10,13 +10,13 @@ Git on Android Studio : https://stackoverflow.com/questions/37093723/how-to-add-
 ----
 
 ### Files Description
-> All java files we handle : /core/java/f2019-hexanome-06<br>
-> All images files we use : /core/java/img_sources 
+> All java files we handle : /core/java/com.mygdx.game<br>
+> All images files we use : /android/assets
 
 ----
 
 ### How to run?
-> Using Desktop Launcher : /desktop/java/f2019-hexanome-06/DesktopLauncher.java<br>
+> Using Desktop Launcher : /desktop/java/com.mygdx.gameDesktopLauncher.java<br>
 > Using Emulator : /desktop/... .
 
 ----
