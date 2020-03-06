@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8de1eb6-d563-4fe6-a619-e5ca853873e6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/f2019-hexanome-06.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/f2019-hexanome-06.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f8de1eb6-d563-4fe6-a619-e5ca853873e6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -19,7 +16,7 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app_beta/core/src/com/mygdx/game/GameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,8 +41,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="36" />
-    <option name="y" value="43" />
+    <option name="x" value="199" />
+    <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
@@ -65,6 +62,19 @@
               <item name="f2019-hexanome-06" type="b2602c69:ProjectViewProjectNode" />
               <item name="f2019-hexanome-06" type="462c0819:PsiDirectoryNode" />
               <item name="app_beta" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="f2019-hexanome-06" type="b2602c69:ProjectViewProjectNode" />
+              <item name="f2019-hexanome-06" type="462c0819:PsiDirectoryNode" />
+              <item name="app_beta" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="f2019-hexanome-06" type="b2602c69:ProjectViewProjectNode" />
+              <item name="f2019-hexanome-06" type="462c0819:PsiDirectoryNode" />
+              <item name="app_beta" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="f2019-hexanome-06" type="b2602c69:ProjectViewProjectNode" />
@@ -161,9 +171,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -207,7 +217,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="36" y="43" width="1440" height="877" extended-state="0" />
+    <frame x="57" y="23" width="1440" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Build Variants" order="0" side_tool="true" />
@@ -236,6 +246,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="Test commit" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app_beta/android/assets/Archer_Male.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app_beta/core/src/com/mygdx/game/GameScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
