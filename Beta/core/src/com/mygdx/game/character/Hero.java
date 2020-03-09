@@ -69,18 +69,18 @@ public class Hero {
         return this.hours;
     }
 
-    public void updateGold(int gold)
+    public void addGold(int gold)
     {
         this.gold += gold;
     }
 
-    public void updateWillPower(int wp)
+    public void addWillPower(int wp)
     {
         this.willPower += wp;
         if(this.willPower > 20) this.willPower = 20;
     }
 
-    public void updateStrengthPoint(int sp)
+    public void addStrengthPoint(int sp)
     {
         this.strengthPoint += sp;
         if(this.strengthPoint > 14) this.strengthPoint = 14;
@@ -102,7 +102,7 @@ public class Hero {
                 from.removeHero(this);
                 to.addHero(this);
                 this.position = to.getPosition();
-                updateHours();
+                incrementHours();
                 return result;
             }
             return result;
@@ -110,7 +110,7 @@ public class Hero {
         return false;
     }
 
-    public void updateHours()
+    public void incrementHours()
     {
         if (hours < 7) this.hours++;
         else if(7 <= hours && hours < 10 && willPower >= 2)
@@ -125,7 +125,7 @@ public class Hero {
     {
         if(canPlay)
         {
-            updateHours();
+            incrementHours();
         }
     }
 
@@ -135,11 +135,11 @@ public class Hero {
     3 = warrior
     4 = wizard
      */
-    public int getTypeOfHero(Hero hero) {
-        if(hero instanceof Archer) return 1;
-        if(hero instanceof Dwarf) return 2;
-        if(hero instanceof Warrior) return 3;
-        if(hero instanceof Wizard) return 4;
+    public int getTypeOfHero() {
+        if(this instanceof Archer) return 1;
+        if(this instanceof Dwarf) return 2;
+        if(this instanceof Warrior) return 3;
+        if(this instanceof Wizard) return 4;
         else return -1;
     }
 

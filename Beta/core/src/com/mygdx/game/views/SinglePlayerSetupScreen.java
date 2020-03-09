@@ -2,6 +2,7 @@ package com.mygdx.game.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,6 +19,7 @@ public class SinglePlayerSetupScreen implements Screen {
     private Andor parent;
     private Stage stage;
 
+    private Label titleLabel;
     private Label numOfPlayersLabel;
     private Label difficultyLabel;
 //    private Skin skin;
@@ -49,6 +51,7 @@ public class SinglePlayerSetupScreen implements Screen {
 //        TextButton multiPlayer = new TextButton( "Multiplayer", parent.skin);
 
 
+        titleLabel = new Label("Single Player Setup", parent.skin);
         numOfPlayersLabel = new Label( "Players", parent.skin);
         difficultyLabel = new Label("Difficulty", parent.skin);
 
@@ -59,13 +62,15 @@ public class SinglePlayerSetupScreen implements Screen {
         TextButton backButton = new TextButton("Back", parent.skin);
         TextButton nextButton = new TextButton("Next", parent.skin);
 
-        table.row().pad(150, 0, 0, 0);
-        table.add(numOfPlayersLabel).left();
-        table.add(numOfPlayers);
+        table.row().pad(170, 0, 0, 0);
+        table.add(titleLabel).colspan(2);
+        table.row().pad(30, 0, 0, 0);
+        table.add(numOfPlayersLabel).left().padRight(15);
+        table.add(numOfPlayers).width(150);
         table.row().pad(10, 0, 0, 0);
-        table.add(difficultyLabel).left();
-        table.add(difficulty);
-        table.row().pad(10, 0, 0, 0);
+        table.add(difficultyLabel).left().padRight(15);
+        table.add(difficulty).width(150);
+        table.row().pad(20, 0, 0, 0);
         table.add(backButton);
         table.add(nextButton);
 
@@ -111,6 +116,7 @@ public class SinglePlayerSetupScreen implements Screen {
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 
         stage.getBatch().begin();
+        stage.getBatch().setColor(Color.WHITE);
         stage.getBatch().draw(parent.menuScreenBG, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stage.getBatch().end();
         stage.draw();

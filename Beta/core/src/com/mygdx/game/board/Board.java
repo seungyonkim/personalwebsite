@@ -116,6 +116,15 @@ public class Board {
                     str += "\tThis region has a hero: ";
                     for(Hero h : r.getHeroes())
                     {
+                        if (h.getTypeOfHero() == 1) {
+                            str += " Archer of Player";
+                        } else if (h.getTypeOfHero() == 2) {
+                            str += " Dwarf of Player";
+                        } else if (h.getTypeOfHero() == 3) {
+                            str += " Warrior of Player";
+                        } else if (h.getTypeOfHero() == 4) {
+                            str += " Wizard of Player";
+                        }
                         str += " " + h.getUsername() + " ";
                     }
                     str += "\n";

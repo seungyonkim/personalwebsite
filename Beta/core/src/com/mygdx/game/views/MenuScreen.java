@@ -2,6 +2,7 @@ package com.mygdx.game.views;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -98,6 +99,7 @@ public class MenuScreen implements Screen {
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 
         stage.getBatch().begin();
+        stage.getBatch().setColor(Color.WHITE);
         stage.getBatch().draw(parent.menuScreenBG, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stage.getBatch().end();
 

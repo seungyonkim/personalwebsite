@@ -17,6 +17,7 @@ import com.mygdx.game.views.LoadingScreen;
 import com.mygdx.game.views.SinglePlayerSetupScreen;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Andor extends Game {
 	private LoadingScreen loadingScreen;
@@ -33,6 +34,7 @@ public class Andor extends Game {
 	public Skin skin;
 	public Texture menuScreenBG;
 	public Texture andorMenu;
+	public Texture andorBoard;
 
 	public final static int MENU = 0;
 	public final static int PREFERENCE = 1;
@@ -44,11 +46,14 @@ public class Andor extends Game {
 
 	private Board gameBoard;
 
+	private Hero currentTurn;
+
 	private int numOfPlayers;
 	private int difficulty;
 
 	private int readyPlayers;
 	private ArrayList<Hero> playerHeroes;
+	private HashMap<String, Boolean> availableHeroes;
 
 
     public void printClaimedHeroes() {
@@ -84,19 +89,46 @@ public class Andor extends Game {
 		}
 	}
 
-	public void selectHero(Hero hero) {
+    public HashMap<String, Boolean> getAvailableHeroes() {
+        return availableHeroes;
+    }
+
+    public void disableHero(String hero) {
+        availableHeroes.put(hero, false);
+    }
+
+    public void enableHero(String hero) {
+        availableHeroes.put(hero, true);
+    }
+
+    public void selectHero(Hero hero) {
 		playerHeroes.add(hero);
 	    readyPlayers++;
     }
-    public void removeLastSelectedHero() {
+
+    public Hero removeLastSelectedHero() {
+        Hero lastHero = playerHeroes.get(playerHeroes.size()-1);
 		playerHeroes.remove(playerHeroes.size()-1);
 	    readyPlayers--;
+	    return lastHero;
     }
 
     public void createNewBoard() {
 		gameBoard = new Board(playerHeroes);
-		System.out.println("NEW BOARD CREATED");
-		System.out.println(gameBoard.toString());
+//		System.out.println("NEW BOARD CREATED");
+		currentTurn = playerHeroes.get(0);
+	}
+
+	public Hero whosTurn() {
+        return currentTurn;
+    }
+
+	public Board getGameBoard() {
+    	return gameBoard;
+	}
+
+	public ArrayList<Hero> getPlayerHeroes() {
+    	return playerHeroes;
 	}
 
 	public void changeScreen(int screen)
@@ -141,11 +173,19 @@ public class Andor extends Game {
 		batch = new SpriteBatch();
 		menuScreenBG = new Texture(Gdx.files.internal("background/andor_main_bg.jpg"));
 		andorMenu = new Texture(Gdx.files.internal("background/andormenu.jpg"));
+		andorBoard = new Texture(Gdx.files.internal("background/Andor_Board.jpg"));
+
 		skin = new Skin(Gdx.files.internal("skin/Shadeui/uiskin.json"));
 
 		playerHeroes = new ArrayList<Hero>();
+		availableHeroes = new HashMap<String,Boolean>();
+		availableHeroes.put("Warrior", true);
+        availableHeroes.put("Archer", true);
+        availableHeroes.put("Wizard", true);
+        availableHeroes.put("Dwarf", true);
 
-		preferences = new AppPreferences();
+
+        preferences = new AppPreferences();
 		loadingScreen = new LoadingScreen(this);
 		setScreen(loadingScreen);
 	}
