@@ -114,7 +114,7 @@ public class Andor extends Game {
     }
 
     public void createNewBoard() {
-		gameBoard = new Board(playerHeroes);
+		gameBoard = new Board(playerHeroes,difficulty);
 //		System.out.println("NEW BOARD CREATED");
 		currentTurn = playerHeroes.get(0);
 	}
