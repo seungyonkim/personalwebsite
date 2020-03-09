@@ -4,6 +4,11 @@ package com.mygdx.game.board;
 import com.mygdx.game.character.Archer;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.character.Warrior;
+import com.mygdx.game.etc.Castle;
+import com.mygdx.game.etc.Farmer;
+import com.mygdx.game.etc.Merchant;
+import com.mygdx.game.monster.Monster;
+import com.mygdx.game.monster.Skral;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,9 +16,9 @@ import java.util.Arrays;
 
 public class Board {
 
-    private Region[] regions = new Region[85];
+    private ArrayList<Region> regions = new ArrayList<Region>();
 
-    private int[][] allHeroPaths = {
+    private final int[][] allHeroPaths = {
             // 0
             {1,2,4,5,6,7,11}, {0,2,3,4}, {0,1,3,6,14}, {1,2,4,10,14,19,20}, {0,1,3,5,20,21}, {0,4,21},
             // 6
@@ -48,7 +53,7 @@ public class Board {
             {82}
     };
 
-    private int[] allMonsterPaths = {
+    private final int[] allMonsterPaths = {
             // region 0
             -1, 0, 0, 1, 0, 0, 0, 0, 7, 7, 3, 0,
             // 12
@@ -73,33 +78,78 @@ public class Board {
     };
 
 
-    public Board(ArrayList<Hero> heroes)
+    public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
         for(int i = 0; i < 85; i++)
         {
-            if(i >= 73 && i <= 80) {
-                regions[i] = null;
-            }
-            else  {
+            if(i == 0) { // This is for castle
+                Castle castle = new Castle(heroes.size(), 0);
+                castle.setAvailabeMonsterPath(this.allMonsterPaths[i]);
+                castle.setAvailableHeroPaths(this.allHeroPaths[i]);
+                regions.add(castle);
+            } else if(i >= 73 && i <= 79) { // Those regions don't exist
+                regions.add(null);
+            } else if(i == 18 || i == 57 || i == 71) { // These are for merchant
+                Merchant merchant = new Merchant(i);
+                merchant.setAvailableHeroPaths(this.allHeroPaths[i]);
+                merchant.setAvailabeMonsterPath(this.allMonsterPaths[i]);
+                regions.add(merchant);
+            } else  {
                 Region r = new Region(i);
                 r.setAvailableHeroPaths(this.allHeroPaths[i]);
                 r.setAvailabeMonsterPath(this.allMonsterPaths[i]);
-                regions[i] = r;
+                regions.add(r);
             }
         }
 
-        for(Hero h: heroes)
-        {
+        for(Hero h: heroes) { // Set heroes on starting location
             int pos = h.getPosition();
             Region r = getRegion(pos);
             r.addHero(h);
         }
 
+
+        if(difficulty == -1) {
+            Farmer f = new Farmer();
+            this.regions.get(24).addFarmer(f);
+        } else {
+            Farmer fOne = new Farmer();
+            Farmer fTwo = new Farmer();
+            this.regions.get(24).addFarmer(fOne);
+            this.regions.get(36).addFarmer(fTwo);
+        }
+
+
+
     }
 
     public Region getRegion(int position)
     {
-        return this.regions[position];
+        return this.regions.get(position);
+    }
+
+    public Region getMonsterAvailableRegion(Region r)
+    {
+        if(r.getPosition() == 0) return null; // there's no available path from castle. -->
+            //Hope that the above code is a dead code.
+        else {
+            Region result = this.regions.get(r.getAvailableMonsterPath());
+            if(result.getMonster() != null) {
+                while(result.getMonster() != null) {
+                    result = this.regions.get(result.getAvailableMonsterPath());
+                }
+            } if(result instanceof Castle) {
+                this.getRegion(80).addMonster(r.getMonster());
+            }
+            return result;
+        }
+    }
+
+    public ArrayList<Region> getHeroAvailablePaths(Region r)
+    {
+        ArrayList<Region> result = new ArrayList<Region>();
+        for(int i: r.getAvailableHeroPaths()) result.add(getRegion(i));
+        return result;
     }
 
     @Override
@@ -110,24 +160,22 @@ public class Board {
         {
             if(r != null) {
                 str += "Region: " + r.getPosition() + " \n\tHero Paths: "  + Arrays.toString(r.getAvailableHeroPaths()) +
-                        "\n\tMonster path: " + r.getAvailableMonsterPath() + "\n";
+                        "\n\tMonster path: " + r.getAvailableMonsterPath() + "\n\t(x,y) = (" + r.getX() + "," + r.getY() + ") \n";
+                if(r instanceof Castle) {
+                    Castle c = (Castle)r;
+                    str += "\tHere is a castle with " + c.getShied() + " shields\n";
+                }
                 if(r.getHeroes().size() > 0)
                 {
                     str += "\tThis region has a hero: ";
                     for(Hero h : r.getHeroes())
                     {
-                        if (h.getTypeOfHero() == 1) {
-                            str += " Archer of Player";
-                        } else if (h.getTypeOfHero() == 2) {
-                            str += " Dwarf of Player";
-                        } else if (h.getTypeOfHero() == 3) {
-                            str += " Warrior of Player";
-                        } else if (h.getTypeOfHero() == 4) {
-                            str += " Wizard of Player";
-                        }
                         str += " " + h.getUsername() + " ";
                     }
                     str += "\n";
+                }
+                if(r.getMonster() != null) {
+                    str += "\tThis region has a monster: " + r.getMonster().getClass() + "\n";
                 }
                 str+= "\n";
             } else {
@@ -149,15 +197,35 @@ public class Board {
         h.add(a);
         h.add(w);
 
-        Board b = new Board(h);
+        Board b = new Board(h,-1);
 
         System.out.println(b.toString());
+        System.out.println("------------------------------------------------------------------");
 
-        Region from = b.getRegion(a.getPosition());
-        Region to = b.getRegion(0);
-        a.moveTo(from, to);
+        Region r7 = b.getRegion(7);
+        Monster add = new Skral(7);
+        r7.addMonster(add);
 
         System.out.println(b.toString());
+        System.out.println("------------------------------------------------------------------");
+        Monster m = b.getRegion(8).getMonster();
+        Region from = b.getRegion(8);
+        Region to = b.getMonsterAvailableRegion(from);
+        m.moveTo(from, to);
+
+//        Region from = b.getRegion(a.getPosition());
+//        Region to = b.getRegion(0);
+//        a.moveTo(from, to);
+
+//        System.out.println(b.toString());
+
+
+//        System.out.println(region instanceof Castle);
+        System.out.println(b.toString());
+
+
+
+
     }
 
 }
