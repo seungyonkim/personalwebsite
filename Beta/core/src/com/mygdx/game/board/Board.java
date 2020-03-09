@@ -152,6 +152,17 @@ public class Board {
         return result;
     }
 
+    public ArrayList<Region> getMonsterRegions()
+    {
+        ArrayList<Region> result = new ArrayList<Region>();
+        for(Region region: this.regions){
+            if(region != null) {
+                if(region.getMonster() != null) result.add(region);
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString()
     {

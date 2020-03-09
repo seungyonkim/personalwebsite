@@ -1,5 +1,6 @@
 package com.mygdx.game.character;
 
+import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
 import com.mygdx.game.etc.Item;
 
@@ -141,6 +142,12 @@ public class Hero {
         if(this instanceof Warrior) return 3;
         if(this instanceof Wizard) return 4;
         else return -1;
+    }
+
+    public ArrayList<Region> getAvailableRegions(Board board)
+    {
+        Region r = board.getRegion(this.position);
+        return board.getHeroAvailablePaths(r);
     }
 
 }

@@ -56,16 +56,16 @@ public class Andor extends Game {
 	private HashMap<String, Boolean> availableHeroes;
 
 
-    public void printClaimedHeroes() {
-    	System.out.println("Total "+playerHeroes.size()+" heroes created.");
-        for (int i = 0; i < this.playerHeroes.size(); i++) {
-			int rank = playerHeroes.get(i).getRank();
-        	if (rank == 14) System.out.println("Warrior");
-        	else if (rank == 25) System.out.println("Archer");
-			else if (rank == 34) System.out.println("Wizard");
-			else if (rank == 7) System.out.println("Dwarf");
-		}
-    }
+//    public void printClaimedHeroes() {
+//    	System.out.println("Total "+playerHeroes.size()+" heroes created.");
+//        for (int i = 0; i < this.playerHeroes.size(); i++) {
+//			int rank = playerHeroes.get(i).getRank();
+//        	if (rank == 14) System.out.println("Warrior");
+//        	else if (rank == 25) System.out.println("Archer");
+//			else if (rank == 34) System.out.println("Wizard");
+//			else if (rank == 7) System.out.println("Dwarf");
+//		}
+//    }
 
 	public void setUpSinglePlayer(int numOfPlayers, int difficulty) {
 		this.numOfPlayers = numOfPlayers;
@@ -114,12 +114,12 @@ public class Andor extends Game {
     }
 
     public void createNewBoard() {
-		gameBoard = new Board(playerHeroes,difficulty);
+		gameBoard = new Board(playerHeroes, difficulty);
 //		System.out.println("NEW BOARD CREATED");
 		currentTurn = playerHeroes.get(0);
 	}
 
-	public Hero whosTurn() {
+	public Hero whoseTurn() {
         return currentTurn;
     }
 
