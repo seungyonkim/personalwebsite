@@ -19,8 +19,11 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Andor;
+import com.mygdx.game.character.Archer;
+import com.mygdx.game.character.Dwarf;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.character.Warrior;
+import com.mygdx.game.character.Wizard;
 
 public class ChooseHeroScreen implements Screen {
 
@@ -130,35 +133,86 @@ public class ChooseHeroScreen implements Screen {
         warriorImage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Warrior clicked");
-                parent.changeScreen(Andor.SINGLESETUP);
-//                System.out.println("Player "+(1+parent.getReadyPlayers())+" selected Warrior.");
-//                Warrior selectedHero = new Warrior();
-//                parent.selectHero(1+parent.getReadyPlayers(), );
+//                System.out.println("Warrior clicked");
+//                parent.changeScreen(Andor.SINGLESETUP);
+                System.out.println("Player "+(1+parent.getReadyPlayers())+" selected Warrior.");
+
+                Warrior selectedHero = new Warrior(String.valueOf(1+parent.getReadyPlayers()));
+                parent.selectHero(selectedHero);
+                System.out.println((parent.getNumOfPlayers()-parent.getReadyPlayers()) + " players to go.");
+
+                if (parent.getReadyPlayers() < parent.getNumOfPlayers()) {
+                    parent.changeScreen(Andor.CHOOSEHERO);
+                } else {
+                    parent.createNewBoard();
+                    parent.changeScreen(Andor.GAME);
+                }
+
+
             }
         });
 
         archerImage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Archer clicked");
-                parent.changeScreen(Andor.SINGLESETUP);
+//                System.out.println("Archer clicked");
+//                parent.changeScreen(Andor.SINGLESETUP);
+                System.out.println("Player "+(1+parent.getReadyPlayers())+" selected Archer.");
+
+                Archer selectedHero = new Archer(String.valueOf(1+parent.getReadyPlayers()));
+                parent.selectHero(selectedHero);
+                System.out.println((parent.getNumOfPlayers()-parent.getReadyPlayers()) + " players to go.");
+
+                if (parent.getReadyPlayers() < parent.getNumOfPlayers()) {
+                    parent.changeScreen(Andor.CHOOSEHERO);
+                } else {
+                    parent.createNewBoard();
+                    parent.changeScreen(Andor.GAME);
+                }
+
             }
         });
 
         wizardImage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Wizard clicked");
-                parent.changeScreen(Andor.SINGLESETUP);
+//                System.out.println("Wizard clicked");
+//                parent.changeScreen(Andor.SINGLESETUP);
+                System.out.println("Player "+(1+parent.getReadyPlayers())+" selected Wizard.");
+
+                Wizard selectedHero = new Wizard(String.valueOf(1+parent.getReadyPlayers()));
+                parent.selectHero(selectedHero);
+                System.out.println((parent.getNumOfPlayers()-parent.getReadyPlayers()) + " players to go.");
+
+                if (parent.getReadyPlayers() < parent.getNumOfPlayers()) {
+                    parent.changeScreen(Andor.CHOOSEHERO);
+                } else {
+                    parent.createNewBoard();
+                    parent.changeScreen(Andor.GAME);
+                }
+
             }
         });
 
         dwarfImage.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                System.out.println("Dwarf clicked");
-                parent.changeScreen(Andor.SINGLESETUP);
+//                System.out.println("Dwarf clicked");
+//                parent.changeScreen(Andor.SINGLESETUP);
+                System.out.println("Player "+(1+parent.getReadyPlayers())+" selected Dwarf.");
+
+                Dwarf selectedHero = new Dwarf(String.valueOf(1+parent.getReadyPlayers()));
+                parent.selectHero(selectedHero);
+                System.out.println((parent.getNumOfPlayers()-parent.getReadyPlayers()) + " players to go.");
+
+
+                if (parent.getReadyPlayers() < parent.getNumOfPlayers()) {
+                    parent.changeScreen(Andor.CHOOSEHERO);
+                } else {
+                    parent.createNewBoard();
+                    parent.changeScreen(Andor.GAME);
+                }
+
             }
         });
 
@@ -173,14 +227,24 @@ public class ChooseHeroScreen implements Screen {
         backButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                parent.changeScreen(Andor.SINGLESETUP);
+                if (parent.getReadyPlayers() > 0) {
+                    parent.removeLastSelectedHero();
+                    parent.changeScreen(Andor.CHOOSEHERO);
+                } else {
+                    parent.changeScreen(Andor.SINGLESETUP);
+                }
             }
         });
 
         nextButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-
+                if (parent.getReadyPlayers() < parent.getNumOfPlayers()) {
+                    parent.changeScreen(Andor.CHOOSEHERO);
+                } else {
+//                    parent.createNewBoard();
+                    parent.changeScreen(Andor.GAME);
+                }
             }
         });
 
