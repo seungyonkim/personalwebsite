@@ -1,0 +1,4 @@
+#Sun Mar 08 21:55:28 EDT 2020
+base.0=/Users/Greg/StudioProjects/f2019-hexanome-06/Beta/android/build/intermediates/dex/debug/mergeDexDebug/out
+path.0=classes.dex
+renamed.0=classes.dex
