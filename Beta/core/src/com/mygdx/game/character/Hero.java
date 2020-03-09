@@ -129,4 +129,18 @@ public class Hero {
         }
     }
 
+    /*
+    1 = archer
+    2 = dwarf
+    3 = warrior
+    4 = wizard
+     */
+    public int getTypeOfHero(Hero hero) {
+        if(hero instanceof Archer) return 1;
+        if(hero instanceof Dwarf) return 2;
+        if(hero instanceof Warrior) return 3;
+        if(hero instanceof Wizard) return 4;
+        else return -1;
+    }
+
 }
