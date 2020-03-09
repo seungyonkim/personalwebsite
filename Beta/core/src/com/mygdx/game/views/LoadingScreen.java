@@ -13,12 +13,12 @@ import com.mygdx.game.Andor;
 public class LoadingScreen implements Screen {
 
     private Andor parent;
-    private Stage stage;
+//    private Stage stage;
 
-    public LoadingScreen(Andor m)
+    public LoadingScreen(Andor andor)
     {
-        this.parent = m;
-        stage = new Stage(new ScreenViewport());
+        this.parent = andor;
+//        stage = new Stage(new ScreenViewport());
     }
 
     @Override
@@ -28,7 +28,7 @@ public class LoadingScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        // TODO Auto-generated method stub
+        parent.changeScreen(Andor.MENU);
     }
 
     @Override

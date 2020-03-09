@@ -50,9 +50,9 @@ public class PreferenceScreen implements Screen {
         table.setDebug(true);
         stage.addActor(table);
 
-        Skin skin  = new Skin(Gdx.files.internal("skin/Shadeui/uiskin.json"));
+//        Skin skin  = new Skin(Gdx.files.internal("skin/Shadeui/uiskin.json"));
 
-        final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, skin);
+        final Slider volumeMusicSlider = new Slider(0f, 1f, 0.1f, false, parent.skin);
         volumeMusicSlider.setValue( parent.getPreferences().getMusicVolume() );
         volumeMusicSlider.addListener(new EventListener() {
             @Override
@@ -62,7 +62,7 @@ public class PreferenceScreen implements Screen {
             }
         });
 
-        final Slider soundMusicSlider = new Slider(0f, 1f, 0.1f, false, skin);
+        final Slider soundMusicSlider = new Slider(0f, 1f, 0.1f, false, parent.skin);
         soundMusicSlider.setValue( parent.getPreferences().getSoundVolume() );
         soundMusicSlider.addListener(new EventListener() {
             @Override
@@ -72,7 +72,7 @@ public class PreferenceScreen implements Screen {
             }
         });
 
-        final CheckBox musicCheckbox = new CheckBox(null, skin);
+        final CheckBox musicCheckbox = new CheckBox(null, parent.skin);
         musicCheckbox.setChecked(parent.getPreferences().isMusicEnabled());
         musicCheckbox.addListener(new EventListener() {
             @Override
@@ -83,7 +83,7 @@ public class PreferenceScreen implements Screen {
             }
         });
 
-        final CheckBox soundEffectsCheckbox = new CheckBox(null, skin);
+        final CheckBox soundEffectsCheckbox = new CheckBox(null, parent.skin);
         soundEffectsCheckbox.setChecked(parent.getPreferences().isSoundEffectsEnabled());
         soundEffectsCheckbox.addListener(new EventListener() {
             @Override
@@ -94,7 +94,7 @@ public class PreferenceScreen implements Screen {
             }
         });
 
-        final TextButton backButton = new TextButton("Back", skin);
+        final TextButton backButton = new TextButton("Back", parent.skin);
         backButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -102,12 +102,14 @@ public class PreferenceScreen implements Screen {
             }
         });
 
-        titleLabel = new Label( "Preferences", skin);
-        volumeMusicLabel = new Label("        Music Volume        ", skin);
-        volumeSoundLabel = new Label("Sound Volume", skin);
-        musicOnOffLabel = new Label("Music", skin);
-        soundOnOffLabel = new Label("Sound", skin);
+        titleLabel = new Label( "Preferences", parent.skin);
+        volumeMusicLabel = new Label("        Music Volume        ", parent.skin);
+        volumeSoundLabel = new Label("Sound Volume", parent.skin);
+        musicOnOffLabel = new Label("Music", parent.skin);
+        soundOnOffLabel = new Label("Sound", parent.skin);
 
+
+//        table.row().pad(150, 0, 0, 0);
 
         table.add(titleLabel).colspan(2);
         table.row().pad(10, 0, 0, 0);
@@ -140,6 +142,11 @@ public class PreferenceScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
+
+//        stage.getBatch().begin();
+//        stage.getBatch().draw(parent.menuScreenBG, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+//        stage.getBatch().end();
+
         stage.draw();
     }
 

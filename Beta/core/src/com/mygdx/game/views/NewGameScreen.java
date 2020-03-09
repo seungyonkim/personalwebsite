@@ -3,9 +3,6 @@ package com.mygdx.game.views;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -15,17 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Andor;
 
-import javax.xml.soap.Text;
-
-
-public class MenuScreen implements Screen {
+public class NewGameScreen implements Screen {
 
     private Andor parent;
     private Stage stage;
 //    private Skin skin;
 
 
-    public MenuScreen(Andor andor)
+    public NewGameScreen(Andor andor)
     {
         this.parent = andor;
         stage = new Stage(new ScreenViewport());
@@ -35,6 +29,7 @@ public class MenuScreen implements Screen {
     @Override
     public void show()
     {
+        stage.clear();
 
         Gdx.input.setInputProcessor(stage);
 
@@ -46,44 +41,37 @@ public class MenuScreen implements Screen {
 //        skin  = new Skin(Gdx.files.internal("skin/Shadeui/uiskin.json"));
 
 
-        TextButton newGame = new TextButton("New Game", parent.skin);
-//        newGame.getLabel().setFontScale(Gdx.graphics.getWidth()/250, Gdx.graphics.getHeight()/250);
-        TextButton loadGame = new TextButton( "Load Game", parent.skin);
-        TextButton preferences = new TextButton("Preferences", parent.skin);
-        TextButton exit = new TextButton("Exit", parent.skin);
+        TextButton singlePlayer = new TextButton("       Singleplayer       ", parent.skin);
+        TextButton multiPlayer = new TextButton( "Multiplayer", parent.skin);
+        TextButton backButton = new TextButton("Back", parent.skin);
 
-//        newGame.getLabel().setFontScale(1.5f);
-
-        table.row().pad(Gdx.graphics.getHeight()/2, 0, 0, 0);
-        table.add(newGame).size(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/12).fillX().uniformX();
+        table.row().pad(150, 0, 0, 0);
+        table.add(singlePlayer).fillX().uniformX();
         table.row().pad(10, 0, 0, 0);
-        table.add(loadGame).size(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/12).fillX().uniformX();
-        table.row().pad(10, 0, 0, 0);
-        table.add(preferences).size(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/12).fillX().uniformX();
-        table.row().pad(10, 0, 0, 0);;
-        table.add(exit).size(Gdx.graphics.getWidth()/3, Gdx.graphics.getHeight()/12).fillX().uniformX();
+        table.add(multiPlayer).fillX().uniformX();
+        table.row().pad(50, 0, 0, 0);
+        table.add(backButton).fillX().uniformX();
 
 
 
-        newGame.addListener(new ChangeListener() {
+        singlePlayer.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                parent.changeScreen(Andor.NEWGAME);
+                parent.changeScreen(Andor.SINGLESETUP);
             }
         });
 
-        preferences.addListener(new ChangeListener() {
+        multiPlayer.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                parent.changeScreen(Andor.PREFERENCE);
+//                parent.changeScreen(Andor.MULTISETUP);
             }
         });
 
-        exit.addListener(new ChangeListener() {
+        backButton.addListener(new ChangeListener() {
             @Override
-            public void changed(ChangeEvent event, Actor actor)
-            {
-                Gdx.app.exit();
+            public void changed(ChangeEvent event, Actor actor) {
+                parent.changeScreen(Andor.MENU);
             }
         });
 
@@ -100,7 +88,6 @@ public class MenuScreen implements Screen {
         stage.getBatch().begin();
         stage.getBatch().draw(parent.menuScreenBG, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stage.getBatch().end();
-
         stage.draw();
 
 
