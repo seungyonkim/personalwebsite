@@ -1,14 +1,19 @@
 package com.mygdx.game.board;
 
+
+import com.mygdx.game.character.Archer;
+import com.mygdx.game.character.Hero;
+import com.mygdx.game.character.Warrior;
+
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
 
 
 public class Board {
 
-    private Region[] regions = new Region[84];
+    private Region[] regions = new Region[85];
 
-    private int[][] heroPaths = {
+    private int[][] allHeroPaths = {
             // 0
             {1,2,4,5,6,7,11}, {0,2,3,4}, {0,1,3,6,14}, {1,2,4,10,14,19,20}, {0,1,3,5,20,21}, {0,4,21},
             // 6
@@ -34,14 +39,16 @@ public class Board {
             // 69
             {68,70}, {69,81}, {43}, {18,19,23,28,29,34},
             // 73 - 79 : no regions exist
+            {},{},{},{},{},{},{},
             // 80 for narrator
+            {},
             // 81
-            {70,82}, {81,84}, {}, //Skip for 83
+            {70,82}, {81,84}, {},//Skip for 83
             // 84
             {82}
     };
 
-    private int[] monsterMoveTo = {
+    private int[] allMonsterPaths = {
             // region 0
             -1, 0, 0, 1, 0, 0, 0, 0, 7, 7, 3, 0,
             // 12
@@ -57,19 +64,35 @@ public class Board {
             // 61
             58, 58, 56, 45, 45, 65, 66, 67, 68, 69,
             // 71
-            43, 18, // 73 - 79 no regions, 80 for narrator
+            43, 18,
+            // 73 - 79 no regions, 80 for narrator
+            -100,-100,-100,-100,-100,-100,-100,-100,
             //81
-            70, 81, // Skip for 83
+            70, 81, -100,// Skip for 83
             82
     };
 
 
-    public Board()
+    public Board(ArrayList<Hero> heroes)
     {
-        for(int i = 0; i < 84; i++)
+        for(int i = 0; i < 85; i++)
         {
+            if(i >= 73 && i <= 80) {
+                regions[i] = null;
+            }
+            else  {
+                Region r = new Region(i);
+                r.setAvailableHeroPaths(this.allHeroPaths[i]);
+                r.setAvailabeMonsterPath(this.allMonsterPaths[i]);
+                regions[i] = r;
+            }
+        }
 
-            regions[i] = new Region(i);
+        for(Hero h: heroes)
+        {
+            int pos = h.getPosition();
+            Region r = getRegion(pos);
+            r.addHero(h);
         }
 
     }
@@ -78,4 +101,54 @@ public class Board {
     {
         return this.regions[position];
     }
+
+    @Override
+    public String toString()
+    {
+        String str = "";
+        for(Region r : this.regions)
+        {
+            if(r != null) {
+                str += "Region: " + r.getPosition() + " \n\tHero Paths: "  + Arrays.toString(r.getAvailableHeroPaths()) +
+                        "\n\tMonster path: " + r.getAvailableMonsterPath() + "\n";
+                if(r.getHeroes().size() > 0)
+                {
+                    str += "\tThis region has a hero: ";
+                    for(Hero h : r.getHeroes())
+                    {
+                        str += " " + h.getUsername() + " ";
+                    }
+                    str += "\n";
+                }
+                str+= "\n";
+            } else {
+                str += "Region: Does Not Exist\n";
+            }
+
+
+        }
+
+        return str;
+    }
+
+    // Test to create a Board object
+    public static void main(String[] args)
+    {
+        Archer a = new Archer("Greg");
+        Warrior w = new Warrior("Steven");
+        ArrayList<Hero> h = new ArrayList<Hero>();
+        h.add(a);
+        h.add(w);
+
+        Board b = new Board(h);
+
+        System.out.println(b.toString());
+
+        Region from = b.getRegion(a.getPosition());
+        Region to = b.getRegion(0);
+        a.moveTo(from, to);
+
+        System.out.println(b.toString());
+    }
+
 }

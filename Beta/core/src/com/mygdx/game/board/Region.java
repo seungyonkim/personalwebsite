@@ -12,54 +12,64 @@ import java.util.LinkedList;
 
 public class Region {
 
+    private ArrayList<Hero> heroes;
     private int position;
     private int gold = 0;
-    private ArrayList<Integer> heroPath = null;
-    private int monsterMoveTo = -1;
-    private Well well = null;
-    private Fog fog = null;
-    private ArrayList<Farmer> farmers = null;
-    private ArrayList<Monster> monsters = null;
-    private Merchant merchant = null;
-    private ArrayList<Hero> heroes = null;
+    private int[] heroAvailablePaths;
+    private int monsterAvailablePath = -1;
+    private Well well;
+    private Fog fog;
+    private ArrayList<Farmer> farmers;
+    private Monster monster;
+    private Merchant merchant;
 
     public Region(int position)
     {
         this.position = position;
+        this.heroes = new ArrayList<Hero>();
         if(position == 18 || position == 57 || position == 71)
         {
-
+            this.merchant = new Merchant();
         }
     }
+    public ArrayList<Hero> getHeroes() { return this.heroes; }
+    public int getPosition() { return this.position; }
+    public int getGold() { return this.gold; }
+    public int[] getAvailableHeroPaths() { return this.heroAvailablePaths; }
+    public int getAvailableMonsterPath() { return this.monsterAvailablePath; }
+    public Well getWell() { return this.well; }
+    public Fog getFog() { return this.fog; }
+    public ArrayList<Farmer> getFarmers() { return this.farmers; }
+    public Monster getMonster() { return this.monster; }
+    public Merchant getMerchant() { return this.merchant; }
 
-    public int getPostion()
+    public void setAvailableHeroPaths(int[] regions)
     {
-        return this.position;
+        this.heroAvailablePaths = regions;
     }
 
-    public void setHeroPath(ArrayList<Integer> regions)
+    public void setAvailabeMonsterPath(int nextPosition)
     {
-        this.heroPath = regions;
-    }
-
-    public void setMonsterMoveTo(int position)
-    {
-        this.monsterMoveTo = position;
-    }
-
-    public ArrayList<Integer> getAvailableHeroPath()
-    {
-        return this.heroPath;
-    }
-
-    public void addHero(Hero hero)
-    {
-        this.heroes.add(hero);
+        this.monsterAvailablePath = nextPosition;
     }
 
     public void removeHero(Hero hero)
     {
         this.heroes.remove(hero);
+    }
+    public void addHero(Hero hero)
+    {
+        this.heroes.add(hero);
+    }
+
+    public void removeMonster(Monster monster)
+    {
+        if(this.monster == monster)
+            this.monster = null;
+    }
+    public void addMonster(Monster monster)
+    {
+        this.monster = monster;
     }
 
 }
