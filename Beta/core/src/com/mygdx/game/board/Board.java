@@ -73,4 +73,9 @@ public class Board {
         }
 
     }
+
+    public Region getRegion(int position)
+    {
+        return this.regions[position];
+    }
 }

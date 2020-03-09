@@ -6,19 +6,34 @@ import com.mygdx.game.etc.Item;
 import java.util.ArrayList;
 
 
-public abstract class Hero {
-    protected Region region;
+public class Hero {
+
+    protected int position;
     protected int gold;
-    protected int wp;
-    protected int sp;
+    protected int willPower;
+    protected int strengthPoint;
+    protected int rank;
     protected ArrayList<Item> items;
 
-    //    int diceRoll();
-//    int getWP();
+    public int diceRoll()
+    {
+
+    }
+    int getWP()
+    {
+        return this.getWP();
+    }
 //    int getPosition();
 //    int getSP();
 //    int getGold();
 //    int getInventory();
 //    int updateGold(int gold);
 //    int updateWP(int wp);
+
+    public void moveTo(Region from, Region to) {
+        from.removeHero(this);
+        to.addHero(this);
+        this.position = to.getPostion();
+    }
+
 }
