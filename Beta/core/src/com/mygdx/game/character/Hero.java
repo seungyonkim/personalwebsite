@@ -118,6 +118,9 @@ public class Hero {
         {
             this.hours++;
             this.willPower -= 2;
+            if (hours == 10) {
+                this.canPlay = false;
+            }
         }
         else if(hours == 10) this.canPlay = false;
     }
