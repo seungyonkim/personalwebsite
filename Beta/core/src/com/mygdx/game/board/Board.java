@@ -7,6 +7,7 @@ import com.mygdx.game.character.Warrior;
 import com.mygdx.game.etc.Castle;
 import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Merchant;
+import com.mygdx.game.etc.Well;
 import com.mygdx.game.monster.Monster;
 import com.mygdx.game.monster.Skral;
 
@@ -17,6 +18,7 @@ import java.util.Arrays;
 public class Board {
 
     private ArrayList<Region> regions = new ArrayList<Region>();
+    private int difficulty;
 
     private final int[][] allHeroPaths = {
             // 0
@@ -80,6 +82,7 @@ public class Board {
 
     public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
+        this.difficulty = difficulty;
         for(int i = 0; i < 85; i++)
         {
             if(i == 0) { // This is for castle
@@ -121,6 +124,10 @@ public class Board {
 
 
 
+    }
+
+    public int getDifficulty() {
+        return this.difficulty;
     }
 
     public Region getRegion(int position)
@@ -173,6 +180,16 @@ public class Board {
         return result;
     }
 
+    public ArrayList<Region> getWellRegions() {
+        ArrayList<Region> result = new ArrayList<Region>();
+        for (Region region : this.regions) {
+            if (region != null) {
+                if (region.getWell() != null) result.add(region);
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString()
     {
@@ -208,6 +225,22 @@ public class Board {
 
         return str;
     }
+
+    // Triggered at the end of every day
+    public void newDay() {
+        // Monsters move
+        for (Region region : getMonsterRegions()) {
+            region.getMonster().moveTo(region, getRegion(region.getAvailableMonsterPath()));
+        }
+        // Replenish wells
+        for (Region region : getWellRegions()) {
+            // "All wells are refreshed at sunrise, unless the space with the well has a hero on it"
+            if (region.getHeroes().size() == 0) {
+                region.getWell().replenish();
+            }
+        }
+    }
+
 
     // Test to create a Board object
     public static void main(String[] args)

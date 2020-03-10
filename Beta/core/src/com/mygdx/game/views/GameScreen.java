@@ -75,6 +75,7 @@ public class GameScreen implements Screen {
     private TextButton pickUpGoldButton;
     private TextButton dropFarmer;
     private TextButton pickUpFarmer;
+    private TextButton drinkWell;
 
 //    private BitmapFont font;
 
@@ -470,6 +471,20 @@ public class GameScreen implements Screen {
             stage.addActor(pickUpFarmer);
 //        }
 
+        drinkWell = new TextButton("Drink Well", parent.skin);
+        // Well interaction button
+//        if (gameBoard.getRegion(currentHero.getPosition()).getWell() != null) {
+            drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-110, dropFarmer.getHeight()+pickUpFarmer.getHeight()+15);
+            drinkWell.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    // Perform drink well
+                }
+            });
+//        }
+
+
+        // Merchant interaction button
     }
 
     @Override
@@ -581,6 +596,7 @@ public class GameScreen implements Screen {
         pickUpGoldButton.setPosition(Gdx.graphics.getWidth()-pickUpGoldButton.getWidth()-10, dropGoldButton.getHeight()+15);
         dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
         pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
+        drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-110, dropFarmer.getHeight()+pickUpFarmer.getHeight()+15);
     }
 
     @Override

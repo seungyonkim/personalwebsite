@@ -67,6 +67,13 @@ public class Region {
             Skral skral = new Skral(position);
             this.monster = skral;
         }
+        if (position == 5 || position == 35 || position == 45 || position == 55) {
+            Well well = new Well(position);
+            this.well = well;
+        }
+        if (position == 24) {
+//            Farmer farmer = new Farmer()
+        }
         this.x = character_coordinates[position][0];
         this.y = character_coordinates[position][1];
     }
@@ -118,6 +125,14 @@ public class Region {
     {
         if(this.farmers == null) this.farmers = new ArrayList<Farmer>();
         this.farmers.add(farmer);
+    }
+
+    public void addGold(int numOfGold) {
+        this.gold += numOfGold;
+    }
+
+    public void removeGold(int numOfGold) {
+        this.gold -= numOfGold;
     }
 
 }

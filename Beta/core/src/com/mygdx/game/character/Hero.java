@@ -3,6 +3,7 @@ package com.mygdx.game.character;
 import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
 import com.mygdx.game.etc.Item;
+import com.mygdx.game.etc.Well;
 
 import java.util.ArrayList;
 
@@ -151,6 +152,19 @@ public class Hero {
     {
         Region r = board.getRegion(this.position);
         return board.getHeroAvailablePaths(r);
+    }
+
+    public void dropGold(int numOfGold) {
+        this.gold -= numOfGold;
+    }
+
+    public void pickUpGold(int numOfGold) {
+        this.gold += numOfGold;
+    }
+
+    public void drinkWell(Well well) {
+        this.willPower += 3;
+        well.empty();
     }
 
 }
