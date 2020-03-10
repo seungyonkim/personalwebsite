@@ -163,6 +163,16 @@ public class Board {
         return result;
     }
 
+    public ArrayList<Region> getGoldRegions() {
+        ArrayList<Region> result = new ArrayList<Region>();
+        for (Region region : this.regions) {
+            if (region != null) {
+                if (region.getGold() > 0) result.add(region);
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString()
     {

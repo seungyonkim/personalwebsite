@@ -123,6 +123,19 @@ public class Andor extends Game {
         return currentTurn;
     }
 
+    public void nextTurn() {
+		for (int i = 0; i < playerHeroes.size(); i++) {
+			if (currentTurn.getTypeOfHero() == playerHeroes.get(i).getTypeOfHero()) {
+				if (i+1 == playerHeroes.size()) {
+					currentTurn = playerHeroes.get(0);
+				} else {
+					currentTurn = playerHeroes.get(i+1);
+					return;
+				}
+			}
+		}
+	}
+
 	public Board getGameBoard() {
     	return gameBoard;
 	}
