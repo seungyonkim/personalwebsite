@@ -2,8 +2,8 @@ package com.mygdx.game.character;
 
 import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
+import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Item;
-import com.mygdx.game.etc.Well;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,7 @@ public class Hero {
     private ArrayList<Item> items;
     private int hours = 0;
     private boolean canPlay = true;
+    private Farmer farmer;
 
     public Hero(int position, int gold, int wp, int sp, int rank, String name)
     {
@@ -101,11 +102,15 @@ public class Hero {
                 }
             }
             if(result) {
+                if(this.farmer != null) {
+                    from.removeFarmer();
+                    to.addFarmer(this.farmer);
+                    this.farmer.setPosition(to.getPosition());
+                }
                 from.removeHero(this);
                 to.addHero(this);
                 this.position = to.getPosition();
                 incrementHours();
-                return result;
             }
             return result;
         }
@@ -154,17 +159,9 @@ public class Hero {
         return board.getHeroAvailablePaths(r);
     }
 
-    public void dropGold(int numOfGold) {
-        this.gold -= numOfGold;
-    }
-
-    public void pickUpGold(int numOfGold) {
-        this.gold += numOfGold;
-    }
-
-    public void drinkWell(Well well) {
-        this.willPower += 3;
-        well.empty();
+    public void pickupFarmer(Farmer farmer, Board board)
+    {
+        this.farmer = farmer;
     }
 
 }

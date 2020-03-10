@@ -2,8 +2,11 @@ package com.mygdx.game.etc;
 
 import com.mygdx.game.board.Region;
 
+import java.util.ArrayList;
+
 public class Castle extends Region {
     private int shield;
+    private int countFarmer = 0;
 
     public Castle(int numPlayers, int position) {
         super(position);
@@ -31,5 +34,7 @@ public class Castle extends Region {
             return true;
         }
     }
+
+    public int getCountFarmer() { return this.countFarmer; }
 }
 
