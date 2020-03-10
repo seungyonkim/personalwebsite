@@ -579,6 +579,8 @@ public class GameScreen implements Screen {
 
         dropGoldButton.setPosition(Gdx.graphics.getWidth() - dropGoldButton.getWidth() - 10, 10);
         pickUpGoldButton.setPosition(Gdx.graphics.getWidth()-pickUpGoldButton.getWidth()-10, dropGoldButton.getHeight()+15);
+        dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
+        pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
     }
 
     @Override

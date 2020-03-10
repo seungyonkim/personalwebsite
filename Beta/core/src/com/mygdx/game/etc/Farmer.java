@@ -2,10 +2,21 @@ package com.mygdx.game.etc;
 
 
 public class Farmer {
-    String name;
-    public Farmer()
+    private int position;
+
+    public Farmer(int position)
     {
-        name = "farmerOne";
+        this.position = position;
     }
+
+    public int getPosition()
+    {
+        return this.position;
+    }
+    public void setPosition(int position)
+    {
+        this.position = position;
+    }
+
 }
 

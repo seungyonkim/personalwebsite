@@ -48,7 +48,8 @@ public class Region {
     private int monsterAvailablePath;
     private Well well;
     private Fog fog;
-    private ArrayList<Farmer> farmers;
+//    private ArrayList<Farmer> farmers;
+    private Farmer farmer;
     private Monster monster;
     private int x;
     private int y;
@@ -79,7 +80,7 @@ public class Region {
     public int getAvailableMonsterPath() { return this.monsterAvailablePath; }
     public Well getWell() { return this.well; }
     public Fog getFog() { return this.fog; }
-    public ArrayList<Farmer> getFarmers() { return this.farmers; }
+    public Farmer getFarmers() { return this.farmer; }
     public Monster getMonster() { return this.monster; }
     public int getX() { return this.x; }
     public int getY() { return this.y; }
@@ -104,20 +105,28 @@ public class Region {
         this.heroes.add(hero);
     }
 
-    public void removeMonster(Monster monster)
+    public void removeMonster()
     {
-        if(this.monster == monster)
-            this.monster = null;
+        this.monster = null;
     }
     public void addMonster(Monster monster)
     {
         this.monster = monster;
     }
 
+    public void removeFarmer()
+    {
+        this.farmer = null;
+    }
     public void addFarmer(Farmer farmer)
     {
-        if(this.farmers == null) this.farmers = new ArrayList<Farmer>();
-        this.farmers.add(farmer);
+        this.farmer = farmer;
     }
+
+//    public void addFarmer(Farmer farmer)
+//    {
+//        if(this.farmer == null) this.farmers = new ArrayList<Farmer>();
+//        this.farmers.add(farmer);
+//    }
 
 }

@@ -108,13 +108,13 @@ public class Monster {
     public boolean moveTo(Region from, Region to)
     {
         this.position = to.getPosition();
-        from.removeMonster(this);
+        from.removeMonster();
         to.addMonster(this);
 
         if(to.getPosition() == 0 && to instanceof Castle) {
             Castle c = (Castle)to;
             boolean result = c.decrementShield();
-            to.removeMonster(this);
+            to.removeMonster();
             this.position = 80;
             return result;
         }

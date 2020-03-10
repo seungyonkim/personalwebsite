@@ -110,11 +110,11 @@ public class Board {
 
 
         if(difficulty == -1) {
-            Farmer f = new Farmer();
+            Farmer f = new Farmer(24);
             this.regions.get(24).addFarmer(f);
         } else {
-            Farmer fOne = new Farmer();
-            Farmer fTwo = new Farmer();
+            Farmer fOne = new Farmer(24);
+            Farmer fTwo = new Farmer(36);
             this.regions.get(24).addFarmer(fOne);
             this.regions.get(36).addFarmer(fTwo);
         }
@@ -144,6 +144,7 @@ public class Board {
             return result;
         }
     }
+
 
     public ArrayList<Region> getHeroAvailablePaths(Region r)
     {
