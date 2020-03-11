@@ -4,6 +4,7 @@ import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
 import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Item;
+import com.mygdx.game.etc.Well;
 
 import java.util.ArrayList;
 
@@ -70,6 +71,10 @@ public class Hero {
     public int getHours()
     {
         return this.hours;
+    }
+
+    public Farmer getFarmer() {
+        return this.farmer;
     }
 
     public void addGold(int gold)
@@ -159,7 +164,21 @@ public class Hero {
         return board.getHeroAvailablePaths(r);
     }
 
-    public void pickupFarmer(Farmer farmer, Board board)
+
+    public void dropGold() {
+        this.gold--;
+    }
+
+    public void pickUpGold() {
+        this.gold++;
+    }
+
+    public void drinkWell(Well well) {
+        this.willPower += 3;
+        well.empty();
+    }
+
+    public void pickupFarmer(Farmer farmer)
     {
         this.farmer = farmer;
     }

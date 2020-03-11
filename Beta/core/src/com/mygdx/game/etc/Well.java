@@ -17,4 +17,8 @@ public class Well { // 5, 35, 45, 55
         this.isEmpty = false;
     }
 
+    public boolean isEmpty() {
+        return this.isEmpty;
+    }
+
 }

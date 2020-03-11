@@ -163,9 +163,19 @@ public class Board {
     public ArrayList<Region> getMonsterRegions()
     {
         ArrayList<Region> result = new ArrayList<Region>();
-        for(Region region: this.regions){
+        for(Region region : this.regions){
             if(region != null) {
                 if(region.getMonster() != null) result.add(region);
+            }
+        }
+        return result;
+    }
+
+    public ArrayList<Region> getFarmerRegions() {
+        ArrayList<Region> result = new ArrayList<Region>();
+        for (Region region : this.regions) {
+            if (region != null) {
+                if (region.getFarmer() != null) result.add(region);
             }
         }
         return result;

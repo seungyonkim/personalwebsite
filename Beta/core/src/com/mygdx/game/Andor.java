@@ -81,12 +81,13 @@ public class Andor extends Game {
 		return this.readyPlayers;
 	}
 
-	public String getDifficulty() {
-		if (this.difficulty == -1) {
-			return "Easy";
-		} else {
-			return "Hard";
-		}
+	public int getDifficulty() {
+//		if (this.difficulty == -1) {
+//			return "Easy";
+//		} else {
+//			return "Hard";
+//		}
+		return this.difficulty;
 	}
 
     public HashMap<String, Boolean> getAvailableHeroes() {
