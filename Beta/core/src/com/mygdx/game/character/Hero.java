@@ -19,7 +19,8 @@ public class Hero {
     private ArrayList<Item> items;
     private int hours = 0;
     private boolean canPlay = true;
-    private Farmer farmer;
+//    private Farmer farmer;
+    private ArrayList<Farmer> farmers;
 
     public Hero(int position, int gold, int wp, int sp, int rank, String name)
     {
@@ -30,6 +31,7 @@ public class Hero {
         this.rank = rank;
         this.username = name;
         this.items = new ArrayList<Item>();
+        this.farmers = new ArrayList<Farmer>();
     }
 
     public int diceRoll()
@@ -73,8 +75,11 @@ public class Hero {
         return this.hours;
     }
 
-    public Farmer getFarmer() {
-        return this.farmer;
+//    public Farmer getFarmer() {
+//        return this.farmer;
+//    }
+    public ArrayList<Farmer> getFarmers() {
+        return this.farmers;
     }
 
     public void addGold(int gold)
@@ -107,10 +112,36 @@ public class Hero {
                 }
             }
             if(result) {
-                if(this.farmer != null) {
-                    from.removeFarmer();
-                    to.addFarmer(this.farmer);
-                    this.farmer.setPosition(to.getPosition());
+                if (this.farmers.size() == 1) {
+                    if (to.getMonster() != null) {
+                        farmers.get(0).die();
+                        this.farmers.remove(farmers.get(0));
+                        System.out.println("Farmer "+farmers.get(0).getFarmerNumber()+" died because he encountered a monster.");
+                    } else if (to.getPosition() == 0) {
+                        farmers.get(0).die();
+                        this.farmers.remove(farmers.get(0));
+                        to.getBoard().getCastle().farmerArrive();
+                    } else {
+                        farmers.get(0).setPosition(to.getPosition());
+                    }
+                } else if (this.farmers.size() == 2) {
+                    if (to.getMonster() != null) {
+                        farmers.get(1).die();
+                        this.farmers.remove(farmers.get(1));
+                        farmers.get(0).die();
+                        this.farmers.remove(farmers.get(0));
+                        System.out.println("Both farmers died because they encountered a monster.");
+                    } else if (to.getPosition() == 0) {
+                        farmers.get(1).die();
+                        this.farmers.remove(farmers.get(1));
+                        to.getBoard().getCastle().farmerArrive();
+                        farmers.get(0).die();
+                        this.farmers.remove(farmers.get(0));
+                        to.getBoard().getCastle().farmerArrive();
+                    } else {
+                        farmers.get(0).setPosition(to.getPosition());
+                        farmers.get(1).setPosition(to.getPosition());
+                    }
                 }
                 from.removeHero(this);
                 to.addHero(this);
@@ -178,9 +209,24 @@ public class Hero {
         well.empty();
     }
 
-    public void pickupFarmer(Farmer farmer)
+//    public void pickupFarmer(Farmer farmer)
+//    {
+//        this.farmer = farmer;
+//    }
+//
+//    public void dropOffFarmer() {
+//        this.farmer = null;
+//    }
+
+    public void pickupFarmer(Farmer farmer, Region region)
     {
-        this.farmer = farmer;
+        this.farmers.add(farmer);
+        region.removeFarmer(farmer);
+    }
+
+    public void dropOffFarmer(Farmer farmer, Region region) {
+        this.farmers.remove(farmer);
+        region.addFarmer(farmer);
     }
 
 }

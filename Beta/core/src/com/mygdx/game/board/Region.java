@@ -14,6 +14,8 @@ import java.util.LinkedList;
 
 public class Region {
 
+    private Board board;
+
     private final int[][] character_coordinates = {
             // 0
             {131,176},{158,227},{212,242},{206,285},{91,264},{15,212},{268,207},
@@ -48,18 +50,20 @@ public class Region {
     private int monsterAvailablePath;
     private Well well;
     private Fog fog;
-//    private ArrayList<Farmer> farmers;
-    private Farmer farmer;
+    private ArrayList<Farmer> farmers;
+//    private Farmer farmer;
     private Monster monster;
     private int x;
     private int y;
 
     // Legend 2 the starting positions of Gors: 8, 20, 21, 26, 48
     // Legend 2 the starting positions of Skral: 19
-    public Region(int position)
+    public Region(Board board, int position)
     {
+        this.board = board;
         this.position = position;
         this.heroes = new ArrayList<Hero>();
+        this.farmers = new ArrayList<Farmer>();
 //        this.farmers = new ArrayList<Farmer>();
         if(position == 8 || position == 20 || position == 21 || position == 26 || position == 48) {
             Gor gor = new Gor(position);
@@ -84,10 +88,12 @@ public class Region {
     public int getAvailableMonsterPath() { return this.monsterAvailablePath; }
     public Well getWell() { return this.well; }
     public Fog getFog() { return this.fog; }
-    public Farmer getFarmer() { return this.farmer; }
+//    public Farmer getFarmer() { return this.farmer; }
+    public ArrayList<Farmer> getFarmers() { return this.farmers; }
     public Monster getMonster() { return this.monster; }
     public int getX() { return this.x; }
     public int getY() { return this.y; }
+    public Board getBoard() { return this.board; }
 
 
     public void setAvailableHeroPaths(int[] regions)
@@ -118,13 +124,15 @@ public class Region {
         this.monster = monster;
     }
 
-    public void removeFarmer()
+    public void removeFarmer(Farmer farmer)
     {
-        this.farmer = null;
+//        this.farmer = null;
+        this.farmers.remove(farmer);
     }
     public void addFarmer(Farmer farmer)
     {
-        this.farmer = farmer;
+//        this.farmer = farmer;
+        this.farmers.add(farmer);
     }
 
 //    public void addFarmer(Farmer farmer)

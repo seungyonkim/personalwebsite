@@ -19,6 +19,7 @@ public class Board {
 
     private ArrayList<Region> regions = new ArrayList<Region>();
     private int difficulty;
+    private Castle castle;
 
     private final int[][] allHeroPaths = {
             // 0
@@ -86,19 +87,20 @@ public class Board {
         for(int i = 0; i < 85; i++)
         {
             if(i == 0) { // This is for castle
-                Castle castle = new Castle(heroes.size(), 0);
+                Castle castle = new Castle(this, heroes.size(), 0);
                 castle.setAvailabeMonsterPath(this.allMonsterPaths[i]);
                 castle.setAvailableHeroPaths(this.allHeroPaths[i]);
                 regions.add(castle);
+                this.castle = castle;
             } else if(i >= 73 && i <= 79) { // Those regions don't exist
                 regions.add(null);
             } else if(i == 18 || i == 57 || i == 71) { // These are for merchant
-                Merchant merchant = new Merchant(i);
+                Merchant merchant = new Merchant(this, i);
                 merchant.setAvailableHeroPaths(this.allHeroPaths[i]);
                 merchant.setAvailabeMonsterPath(this.allMonsterPaths[i]);
                 regions.add(merchant);
             } else  {
-                Region r = new Region(i);
+                Region r = new Region(this, i);
                 r.setAvailableHeroPaths(this.allHeroPaths[i]);
                 r.setAvailabeMonsterPath(this.allMonsterPaths[i]);
                 regions.add(r);
@@ -113,11 +115,11 @@ public class Board {
 
 
         if(difficulty == -1) {
-            Farmer f = new Farmer(24);
+            Farmer f = new Farmer(24, 1);
             this.regions.get(24).addFarmer(f);
         } else {
-            Farmer fOne = new Farmer(24);
-            Farmer fTwo = new Farmer(36);
+            Farmer fOne = new Farmer(24, 1);
+            Farmer fTwo = new Farmer(36, 2);
             this.regions.get(24).addFarmer(fOne);
             this.regions.get(36).addFarmer(fTwo);
         }
@@ -133,6 +135,10 @@ public class Board {
     public Region getRegion(int position)
     {
         return this.regions.get(position);
+    }
+
+    public Castle getCastle() {
+        return this.castle;
     }
 
     public Region getMonsterAvailableRegion(Region r)
@@ -171,11 +177,27 @@ public class Board {
         return result;
     }
 
-    public ArrayList<Region> getFarmerRegions() {
-        ArrayList<Region> result = new ArrayList<Region>();
+//    public ArrayList<Region> getFarmerRegions() {
+//        ArrayList<Region> result = new ArrayList<Region>();
+//        for (Region region : this.regions) {
+//            if (region != null) {
+////                if (region.getFarmer() != null) result.add(region);
+//                if (region.getFarmers().size() != 0) result.add(region);
+//            }
+//        }
+//        return result;
+//    }
+
+    public ArrayList<Farmer> getFarmers() {
+        ArrayList<Farmer> result = new ArrayList<Farmer>();
         for (Region region : this.regions) {
             if (region != null) {
-                if (region.getFarmer() != null) result.add(region);
+//                if (region.getFarmer() != null) result.add(region);
+                if (region.getFarmers().size() != 0) {
+                    for (Farmer farmer : region.getFarmers()) {
+                        result.add(farmer);
+                    }
+                }
             }
         }
         return result;
@@ -212,7 +234,7 @@ public class Board {
                         "\n\tMonster path: " + r.getAvailableMonsterPath() + "\n\t(x,y) = (" + r.getX() + "," + r.getY() + ") \n";
                 if(r instanceof Castle) {
                     Castle c = (Castle)r;
-                    str += "\tHere is a castle with " + c.getShied() + " shields\n";
+                    str += "\tHere is a castle with " + c.getShield() + " shields\n";
                 }
                 if(r.getHeroes().size() > 0)
                 {
