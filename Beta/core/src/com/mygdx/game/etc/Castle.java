@@ -1,16 +1,12 @@
 package com.mygdx.game.etc;
 
-import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
-
-import java.util.ArrayList;
 
 public class Castle extends Region {
     private int shield;
-    private int farmerCount = 0;
 
-    public Castle(Board board, int numPlayers, int position) {
-        super(board, position);
+    public Castle(int numPlayers, int position) {
+        super(position);
         switch (numPlayers) {
             case 2:
                 shield = 3;
@@ -24,14 +20,8 @@ public class Castle extends Region {
         }
     }
 
-    public int getShield() {
+    public int getShied() {
         return this.shield;
-    }
-
-    public void farmerArrive() {
-        this.shield++;
-        this.farmerCount++;
-        System.out.println("Farmer arrived in the castle. Castle now has "+this.shield+" shields.");
     }
 
     public boolean decrementShield() {
@@ -41,7 +31,5 @@ public class Castle extends Region {
             return true;
         }
     }
-
-    public int getFarmerCount() { return this.farmerCount; }
 }
 

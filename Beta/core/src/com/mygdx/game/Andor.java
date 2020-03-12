@@ -10,11 +10,15 @@ import com.mygdx.game.character.Hero;
 import com.mygdx.game.preference.AppPreferences;
 import com.mygdx.game.views.ChooseHeroScreen;
 import com.mygdx.game.views.GameScreen;
+import com.mygdx.game.views.MultiGameScreen;
 import com.mygdx.game.views.MenuScreen;
 import com.mygdx.game.views.NewGameScreen;
 import com.mygdx.game.views.PreferenceScreen;
 import com.mygdx.game.views.LoadingScreen;
 import com.mygdx.game.views.SinglePlayerSetupScreen;
+import com.mygdx.game.views.MultiPlayerSetupScreen;
+import com.mygdx.game.views.ChatScreen;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,8 +29,13 @@ public class Andor extends Game {
 	private PreferenceScreen preferenceScreen;
 	private NewGameScreen newGameScreen;
 	private SinglePlayerSetupScreen newSingleScreen;
+	private MultiPlayerSetupScreen newMultiScreen;
+
 	private ChooseHeroScreen chooseHeroScreen;
 	private GameScreen gameScreen;
+	private MultiGameScreen multiGameScreen;
+
+	private ChatScreen chatScreen;
 
 	private AppPreferences preferences;
 
@@ -42,6 +51,9 @@ public class Andor extends Game {
 	public final static int SINGLESETUP = 3;
 	public final static int CHOOSEHERO = 4;
 	public final static int GAME = 5;
+	public final static int MULTISETUP = 6;
+	public final static int MULTIGAME = 7;
+	public final static int CHAT = 8;
 
 
 	private Board gameBoard;
@@ -54,6 +66,9 @@ public class Andor extends Game {
 	private int readyPlayers;
 	private ArrayList<Hero> playerHeroes;
 	private HashMap<String, Boolean> availableHeroes;
+
+	public final float UPDATE_TIME =1/60f;
+	public float timer;
 
 
 //    public void printClaimedHeroes() {
@@ -72,6 +87,11 @@ public class Andor extends Game {
 		this.readyPlayers = 0;
 		this.difficulty = difficulty;
 	}
+	public void setUpMultiPlayer() {
+		this.numOfPlayers = 4;
+		this.readyPlayers = 0;
+		this.difficulty = 1;
+	}
 
 	public int getNumOfPlayers() {
 		return this.numOfPlayers;
@@ -81,20 +101,19 @@ public class Andor extends Game {
 		return this.readyPlayers;
 	}
 
-	public int getDifficulty() {
-//		if (this.difficulty == -1) {
-//			return "Easy";
-//		} else {
-//			return "Hard";
-//		}
-		return this.difficulty;
+	public String getDifficulty() {
+		if (this.difficulty == -1) {
+			return "Easy";
+		} else {
+			return "Hard";
+		}
 	}
 
     public HashMap<String, Boolean> getAvailableHeroes() {
         return availableHeroes;
     }
 
-    public void disableHero(String hero) {
+	public void disableHero(String hero) {
         availableHeroes.put(hero, false);
     }
 
@@ -168,6 +187,10 @@ public class Andor extends Game {
                 if (newSingleScreen == null) newSingleScreen = new SinglePlayerSetupScreen(this);
                 this.setScreen(newSingleScreen);
                 break;
+			case MULTISETUP:
+				if (newMultiScreen == null) newMultiScreen = new MultiPlayerSetupScreen(this);
+				this.setScreen(newMultiScreen);
+				break;
 
 			case CHOOSEHERO:
 				if (chooseHeroScreen == null) chooseHeroScreen = new ChooseHeroScreen(this);
@@ -178,6 +201,16 @@ public class Andor extends Game {
 				if (gameScreen == null) gameScreen = new GameScreen(this);
 				this.setScreen(gameScreen);
 				break;
+			case MULTIGAME:
+				if (multiGameScreen == null) multiGameScreen = new MultiGameScreen(this);
+				this.setScreen(multiGameScreen);
+				break;
+
+			case CHAT:
+				if (chatScreen == null) chatScreen = new ChatScreen(this);
+				this.setScreen(chatScreen);
+				break;
+
 
 		}
 	}

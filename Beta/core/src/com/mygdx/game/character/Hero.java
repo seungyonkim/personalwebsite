@@ -2,9 +2,7 @@ package com.mygdx.game.character;
 
 import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
-import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Item;
-import com.mygdx.game.etc.Well;
 
 import java.util.ArrayList;
 
@@ -19,8 +17,6 @@ public class Hero {
     private ArrayList<Item> items;
     private int hours = 0;
     private boolean canPlay = true;
-//    private Farmer farmer;
-    private ArrayList<Farmer> farmers;
 
     public Hero(int position, int gold, int wp, int sp, int rank, String name)
     {
@@ -31,7 +27,6 @@ public class Hero {
         this.rank = rank;
         this.username = name;
         this.items = new ArrayList<Item>();
-        this.farmers = new ArrayList<Farmer>();
     }
 
     public int diceRoll()
@@ -75,13 +70,6 @@ public class Hero {
         return this.hours;
     }
 
-//    public Farmer getFarmer() {
-//        return this.farmer;
-//    }
-    public ArrayList<Farmer> getFarmers() {
-        return this.farmers;
-    }
-
     public void addGold(int gold)
     {
         this.gold += gold;
@@ -112,41 +100,11 @@ public class Hero {
                 }
             }
             if(result) {
-                if (this.farmers.size() == 1) {
-                    if (to.getMonster() != null) {
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
-                        System.out.println("Farmer "+farmers.get(0).getFarmerNumber()+" died because he encountered a monster.");
-                    } else if (to.getPosition() == 0) {
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
-                        to.getBoard().getCastle().farmerArrive();
-                    } else {
-                        farmers.get(0).setPosition(to.getPosition());
-                    }
-                } else if (this.farmers.size() == 2) {
-                    if (to.getMonster() != null) {
-                        farmers.get(1).die();
-                        this.farmers.remove(farmers.get(1));
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
-                        System.out.println("Both farmers died because they encountered a monster.");
-                    } else if (to.getPosition() == 0) {
-                        farmers.get(1).die();
-                        this.farmers.remove(farmers.get(1));
-                        to.getBoard().getCastle().farmerArrive();
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
-                        to.getBoard().getCastle().farmerArrive();
-                    } else {
-                        farmers.get(0).setPosition(to.getPosition());
-                        farmers.get(1).setPosition(to.getPosition());
-                    }
-                }
                 from.removeHero(this);
                 to.addHero(this);
                 this.position = to.getPosition();
                 incrementHours();
+                return result;
             }
             return result;
         }
@@ -189,44 +147,18 @@ public class Hero {
         else return -1;
     }
 
+    public String getTypeOfHeroString() {
+        if(this instanceof Archer) return "Archer";
+        if(this instanceof Dwarf) return "Dwarf";
+        if(this instanceof Warrior) return "Warrior";
+        if(this instanceof Wizard) return "Wizard";
+        else return "";
+    }
+
     public ArrayList<Region> getAvailableRegions(Board board)
     {
         Region r = board.getRegion(this.position);
         return board.getHeroAvailablePaths(r);
-    }
-
-
-    public void dropGold() {
-        this.gold--;
-    }
-
-    public void pickUpGold() {
-        this.gold++;
-    }
-
-    public void drinkWell(Well well) {
-        this.willPower += 3;
-        well.empty();
-    }
-
-//    public void pickupFarmer(Farmer farmer)
-//    {
-//        this.farmer = farmer;
-//    }
-//
-//    public void dropOffFarmer() {
-//        this.farmer = null;
-//    }
-
-    public void pickupFarmer(Farmer farmer, Region region)
-    {
-        this.farmers.add(farmer);
-        region.removeFarmer(farmer);
-    }
-
-    public void dropOffFarmer(Farmer farmer, Region region) {
-        this.farmers.remove(farmer);
-        region.addFarmer(farmer);
     }
 
 }
