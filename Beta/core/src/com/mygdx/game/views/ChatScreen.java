@@ -2,6 +2,7 @@ package com.mygdx.game.views;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Andor;
+import com.mygdx.game.character.Hero;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -20,6 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 
 public class ChatScreen implements Screen{
     Andor parent;
+    Hero CurrentHero;
     TextArea areaMessage;
     TextField sendMessage;
     Table table;
@@ -35,7 +37,7 @@ public class ChatScreen implements Screen{
         parent = andor;
 
 
-
+        CurrentHero = parent.whoseTurn();
         areaMessage = new TextArea("", parent.skin);
         sendMessage = new TextField("", parent.skin);
 
@@ -52,7 +54,7 @@ public class ChatScreen implements Screen{
 
 
         scrollMessage = new TextArea("",parent.skin);
-        scrollMessage.setDisabled(false);
+        scrollMessage.setDisabled(true);
 
         scrollMessage.layout();
 
@@ -125,7 +127,7 @@ public class ChatScreen implements Screen{
 
     @Override
     public void render(float delta){
-        Gdx.gl.glClearColor(0, 0.3f, 0, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(delta);
         stage.draw();
@@ -169,6 +171,6 @@ public class ChatScreen implements Screen{
         }
     }
     public void sendNewMessage(String mess){
-        scrollMessage.appendText(mess+"\n");
+        scrollMessage.appendText(CurrentHero.getTypeOfHeroString()+" : "+  mess+"\n");
     }
 }

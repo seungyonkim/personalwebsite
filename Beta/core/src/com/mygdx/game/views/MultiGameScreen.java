@@ -28,12 +28,20 @@ import com.mygdx.game.character.Warrior;
 import com.mygdx.game.character.Wizard;
 import com.mygdx.game.monster.Gor;
 
+import org.json.JSONObject;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
+
 import java.util.ArrayList;
 
 public class MultiGameScreen implements Screen {
 
     private Andor parent;
     private Stage stage;
+    private Socket socket;
+
 
     private OrthographicCamera camera;
 
@@ -95,6 +103,7 @@ public class MultiGameScreen implements Screen {
         this.parent = andor;
         stage = new Stage(new ScreenViewport());
 
+
         gameBoard = parent.getGameBoard();
 
         playerHeroes = parent.getPlayerHeroes();
@@ -102,6 +111,7 @@ public class MultiGameScreen implements Screen {
         pathButtons = new ArrayList<TextButton>();
 
         skipping = true;
+        socket = parent.getSocket();
 
 //        font = new BitmapFont();
 
@@ -350,6 +360,7 @@ public class MultiGameScreen implements Screen {
                         skipping = false;
                     }
                     show();
+
                 }
             });
             pathButtons.add(pathButton);
@@ -473,7 +484,7 @@ public class MultiGameScreen implements Screen {
         stage.addActor(pickUpFarmer);
 //        }
         chat = new TextButton("Chat",parent.skin);
-        chat.setPosition(Gdx.graphics.getWidth() - chat.getWidth() - 110, pickUpFarmer.getHeight()+15);
+        chat.setPosition(Gdx.graphics.getWidth() - chat.getWidth() - 10, pickUpFarmer.getHeight()+50);
         chat.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -488,6 +499,7 @@ public class MultiGameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        updateMove(Gdx.graphics.getDeltaTime());
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 
         // Tell camera to update its matrices
@@ -617,5 +629,41 @@ public class MultiGameScreen implements Screen {
         archerTexture.dispose();
         wizardTexture.dispose();
         dwarfTexture.dispose();
+    }
+
+    public void updateMove(float dt){
+        parent.timer+=dt;
+        if(parent.timer>=parent.UPDATE_TIME){
+            JSONObject data = new JSONObject();
+            try{
+                data.put("x",player.getX());
+                data.put("y",player.getY());
+                socket.emit("playerMoved", data);
+            }catch(Exception e){
+                Gdx.app.log("SocketIO", "Error moving the Player");
+
+            }
+        }
+    }
+    public void configSocketEvents(){
+        socket.on("playerMoved", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                JSONObject data = (JSONObject)args[0];
+                try {
+                    String id = data.getString("id");
+                    player.setX((float)data.getDouble("x"));
+                    player.setY((float)data.getDouble("y"));
+
+                    Gdx.app.log("SocketIO", "the other player "+ id+ " Moved ");
+
+
+
+                }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error handling the other player choosing");
+                }
+            }
+        });
+
     }
 }

@@ -23,6 +23,8 @@ import com.mygdx.game.views.ChatScreen;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import io.socket.client.Socket;
+
 public class Andor extends Game {
 	private LoadingScreen loadingScreen;
 	private MenuScreen menuScreen;
@@ -55,7 +57,7 @@ public class Andor extends Game {
 	public final static int MULTIGAME = 7;
 	public final static int CHAT = 8;
 
-
+	private Socket socket;
 	private Board gameBoard;
 
 	private Hero currentTurn;
@@ -66,6 +68,8 @@ public class Andor extends Game {
 	private int readyPlayers;
 	private ArrayList<Hero> playerHeroes;
 	private HashMap<String, Boolean> availableHeroes;
+
+	private HashMap<String,String> friendlyPlayers; // hash map of the players and their id for the server
 
 	public final float UPDATE_TIME =1/60f;
 	public float timer;
@@ -92,7 +96,7 @@ public class Andor extends Game {
 		this.readyPlayers = 0;
 		this.difficulty = 1;
 	}
-
+	public Socket getSocket(){return socket;}
 	public int getNumOfPlayers() {
 		return this.numOfPlayers;
 	}
@@ -163,6 +167,11 @@ public class Andor extends Game {
 	public ArrayList<Hero> getPlayerHeroes() {
     	return playerHeroes;
 	}
+	public HashMap<String,String> getFriendlyPlayers() {
+		return friendlyPlayers;
+	}
+
+
 
 	public void changeScreen(int screen)
 	{
@@ -226,6 +235,7 @@ public class Andor extends Game {
 
 		playerHeroes = new ArrayList<Hero>();
 		availableHeroes = new HashMap<String,Boolean>();
+		friendlyPlayers = new HashMap<String, String>();
 		availableHeroes.put("Warrior", true);
         availableHeroes.put("Archer", true);
         availableHeroes.put("Wizard", true);

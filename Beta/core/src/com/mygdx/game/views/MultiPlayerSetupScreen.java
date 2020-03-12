@@ -1,6 +1,7 @@
 package com.mygdx.game.views;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GLTexture;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -53,6 +54,7 @@ public class MultiPlayerSetupScreen implements Screen {
 //    private TextureRegion myTextureRegion;
 //    private TextureRegionDrawable myTexRegionDrawable;
 //    private ImageButton button;
+    HashMap<String,String> friendlyPlayers;
 
 
     public MultiPlayerSetupScreen(Andor andor)
@@ -60,6 +62,9 @@ public class MultiPlayerSetupScreen implements Screen {
         this.parent = andor;
         stage = new Stage(new ScreenViewport());
         numOfPlayers = parent.getNumOfPlayers();
+        friendlyPlayers = parent.getFriendlyPlayers();
+        this.socket= parent.getSocket();
+
     }
 
 
@@ -74,6 +79,16 @@ public class MultiPlayerSetupScreen implements Screen {
 
         Gdx.input.setInputProcessor(stage);
 
+        Table table = createTable();
+
+        stage.addActor(table);
+
+
+
+
+    }
+
+    public Table createTable(){
         Table table = new Table();
         table.setFillParent(true);
 //        table.setDebug(true);
@@ -91,195 +106,220 @@ public class MultiPlayerSetupScreen implements Screen {
         HashMap<String, Boolean> availableHeroes = parent.getAvailableHeroes();
 
 
-            if (availableHeroes.get("Warrior") == true) {
-                warriorTexture = new Texture(Gdx.files.internal("characters/warrior_male_portrait.png"));
-                Image warriorImage = new Image(warriorTexture);
-                warriorImage.setSize(120, 160);
-                warriorImage.setPosition(Gdx.graphics.getWidth() / 5 - warriorImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
-                warriorImage.addListener(new ClickListener() {
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
+        if (availableHeroes.get("Warrior") == true) {
+            warriorTexture = new Texture(Gdx.files.internal("characters/warrior_male_portrait.png"));
+            Image warriorImage = new Image(warriorTexture);
+            warriorImage.setSize(120, 160);
+            warriorImage.setPosition(Gdx.graphics.getWidth() / 5 - warriorImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
+
+            warriorImage.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
 //                System.out.println("Warrior clicked");
 //                parent.changeScreen(Andor.SINGLESETUP);
 
+                    Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
+                    parent.selectHero(selectedHero);
+                    parent.disableHero("Warrior");
 
-                        new Dialog("Waiting other players ...", parent.skin) {
-                            {
-                                text("Start?");
-                                button("Yes", true);
-                                button("No", false);
+                    //updateServer(selectedHero);
+
+
+                    new Dialog("Waiting other players ...", parent.skin) {
+                        {
+                            text("Start?\n");
+                            text("Other players : \n");
+
+                            for(String key : friendlyPlayers.keySet()){
+                                text(friendlyPlayers.get(key));
                             }
+                            button("Yes", true);
+                            button("No", false);
+                        }
 
-                            @Override
-                            protected void result(Object object) {
-                                if (object.equals(true)) {
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
 
 //                                    System.out.println("Player "+(1+parent.getReadyPlayers())+" selected Warrior.");
 
-                                    Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
-                                    parent.selectHero(selectedHero);
-                                    parent.disableHero("Warrior");
-                                    updateServer(selectedHero);
+
 
 //                                    System.out.println((parent.getNumOfPlayers()-parent.getReadyPlayers()) + " players to go.");
 
-                                    parent.createNewBoard();
-                                    parent.changeScreen(Andor.MULTIGAME);
-                                }
+                                parent.createNewBoard();
+                                parent.changeScreen(Andor.MULTIGAME);
                             }
-                        }.show(stage);
+                        }
+                    }.show(stage);
 
-                    }
-
-
-                });
-                table.add(warriorImage).width(120).height(160).padRight(10);
-            }
-
-            if (availableHeroes.get("Archer") == true) {
-                archerTexture = new Texture(Gdx.files.internal("characters/archer_male_portrait.png"));
-                Image archerImage = new Image(archerTexture);
-                archerImage.setSize(120, 160);
-                archerImage.setPosition(Gdx.graphics.getWidth() * 2 / 5 - archerImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
-                archerImage.addListener(new ClickListener() {
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        //                System.out.println("Archer clicked");
-                        //                parent.changeScreen(Andor.SINGLESETUP);
+                }
 
 
+            });
+            table.add(warriorImage).width(120).height(160).padRight(10);
+        }
 
-                        new Dialog("Waiting other players ...", parent.skin) {
-                            {
-                                text("Start?");
-                                button("Yes", true);
-                                button("No", false);
+        if (availableHeroes.get("Archer") == true) {
+            archerTexture = new Texture(Gdx.files.internal("characters/archer_male_portrait.png"));
+            Image archerImage = new Image(archerTexture);
+            archerImage.setSize(120, 160);
+            archerImage.setPosition(Gdx.graphics.getWidth() * 2 / 5 - archerImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
+            archerImage.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    //                System.out.println("Archer clicked");
+                    //                parent.changeScreen(Andor.SINGLESETUP);
+                    Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
+                    parent.selectHero(selectedHero);
+                    parent.disableHero("Archer");
+
+                    //updateServer(selectedHero);
+
+
+                    new Dialog("Waiting other players ...", parent.skin) {
+                        {
+
+                            text("Start?\n");
+                            text("Other players :\n ");
+
+                            for(String key : friendlyPlayers.keySet()){
+                                text(friendlyPlayers.get(key));
                             }
+                            button("Yes", true);
+                            button("No", false);
+                        }
 
-                            @Override
-                            protected void result(Object object) {
-                                if (object.equals(true)) {
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
 
 //                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Archer.");
-                                    Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                                    parent.selectHero(selectedHero);
-                                    parent.disableHero("Archer");
-                                    updateServer(selectedHero);
+
 
 
 
 //                                    System.out.println((parent.getNumOfPlayers() - parent.getReadyPlayers()) + " players to go.");
 
-                                    parent.createNewBoard();
-                                    parent.changeScreen(Andor.MULTIGAME);
-                                }
+                                parent.createNewBoard();
+                                parent.changeScreen(Andor.MULTIGAME);
                             }
-                        }.show(stage);
-                    }
+                        }
+                    }.show(stage);
+                }
 
 
-                });
-                table.add(archerImage).width(120).height(160).padRight(10);
-            }
+            });
+            table.add(archerImage).width(120).height(160).padRight(10);
+        }
 
-            if (availableHeroes.get("Wizard") == true) {
-                wizardTexture = new Texture(Gdx.files.internal("characters/wizard_male_portrait.png"));
-                Image wizardImage = new Image(wizardTexture);
-                wizardImage.setSize(120, 160);
-                wizardImage.setPosition(Gdx.graphics.getWidth() * 3 / 5 - wizardImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
-                wizardImage.addListener(new ClickListener() {
+        if (availableHeroes.get("Wizard") == true) {
+            wizardTexture = new Texture(Gdx.files.internal("characters/wizard_male_portrait.png"));
+            Image wizardImage = new Image(wizardTexture);
+            wizardImage.setSize(120, 160);
+            wizardImage.setPosition(Gdx.graphics.getWidth() * 3 / 5 - wizardImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
+            wizardImage.addListener(new ClickListener() {
 
-                    @Override
+                @Override
 
-                    public void clicked(InputEvent event, float x, float y) {
-                        //                System.out.println("Wizard clicked");
-                        //                parent.changeScreen(Andor.SINGLESETUP);
+                public void clicked(InputEvent event, float x, float y) {
+                    //                System.out.println("Wizard clicked");
+                    //                parent.changeScreen(Andor.SINGLESETUP);
+                    Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
+                    parent.selectHero(selectedHero);
+                    parent.disableHero("Wizard");
 
-                        new Dialog("Waiting other players ...", parent.skin) {
-                            {
-                                text("Start?");
-                                button("Yes", true);
-                                button("No", false);
-                            }
+                    //updateServer(selectedHero);
 
-                            @Override
-                            protected void result(Object object) {
-                                if (object.equals(true)) {
+                    new Dialog("Waiting other players ...", parent.skin) {
+                        {
+                            text("Start?\n");
+                            text("Other players : \n");
+
+                            for(String key : friendlyPlayers.keySet()){
+                            text(friendlyPlayers.get(key));
+                        }
+                            button("Yes", true);
+                            button("No", false);
+                        }
+
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
 
 //                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Wizard.");
 
-                                    Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                                    parent.selectHero(selectedHero);
-                                    parent.disableHero("Wizard");
-                                    updateServer(selectedHero);
 
 
 //                                    System.out.println((parent.getNumOfPlayers() - parent.getReadyPlayers()) + " players to go.");
 
-                                    parent.createNewBoard();
-                                    parent.changeScreen(Andor.MULTIGAME);
-                                }
+                                parent.createNewBoard();
+                                parent.changeScreen(Andor.MULTIGAME);
                             }
-                        }.show(stage);
-                    }
+                        }
+                    }.show(stage);
+                }
 
 
-                });
-                table.add(wizardImage).width(120).height(160).padRight(10);
-            }
+            });
+            table.add(wizardImage).width(120).height(160).padRight(10);
+        }
 
-            if (availableHeroes.get("Dwarf") == true) {
-                dwarfTexture = new Texture(Gdx.files.internal("characters/dwarf_male_portrait.png"));
-                Image dwarfImage = new Image(dwarfTexture);
-                dwarfImage.setSize(120, 160);
-                dwarfImage.setPosition(Gdx.graphics.getWidth() * 4 / 5 - dwarfImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
-                dwarfImage.addListener(new ClickListener() {
-                    @Override
-                    public void clicked(InputEvent event, float x, float y) {
-                        //                System.out.println("Dwarf clicked");
-                        //                parent.changeScreen(Andor.SINGLESETUP);
+        if (availableHeroes.get("Dwarf") == true) {
+            dwarfTexture = new Texture(Gdx.files.internal("characters/dwarf_male_portrait.png"));
+            Image dwarfImage = new Image(dwarfTexture);
+            dwarfImage.setSize(120, 160);
+            dwarfImage.setPosition(Gdx.graphics.getWidth() * 4 / 5 - dwarfImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
+            dwarfImage.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    //                System.out.println("Dwarf clicked");
+                    //                parent.changeScreen(Andor.SINGLESETUP);
 
-
-                        new Dialog("Waiting other players ...", parent.skin) {
-                            {
-
-                                text("Start?");
-                                button("Yes", true);
-                                button("No", false);
-                            }
-
-                            @Override
-                            protected void result(Object object) {
-                                if (object.equals(true)) {
-
-                                    Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                                    parent.selectHero(selectedHero);
-                                    parent.disableHero("Dwarf");
+                    Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
+                    parent.selectHero(selectedHero);
+                    parent.disableHero("Dwarf");
 //                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Dwarf.");
-                                    updateServer(selectedHero);
+
+                    //updateServer(selectedHero);
+                    new Dialog("Waiting other players ...", parent.skin) {
+                        {
+
+                            text("Start?\n");
+                            text("Other players :\n ");
+
+                            for(String key : friendlyPlayers.keySet()){
+                                text(friendlyPlayers.get(key));
+                            }
+
+                            button("Yes", true);
+                            button("No", false);
+                        }
+
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
+
+
 
 
 
 //                                    System.out.println((parent.getNumOfPlayers() - parent.getReadyPlayers()) + " players to go.");
 
-                                    parent.createNewBoard();
-                                    parent.changeScreen(Andor.MULTIGAME);
-                                }
+                                parent.createNewBoard();
+                                parent.changeScreen(Andor.MULTIGAME);
                             }
-                        }.show(stage);
-                    }
+                        }
+                    }.show(stage);
+                }
 
 
-                });
-                table.add(dwarfImage).width(120).height(160).padRight(10);
+            });
+            table.add(dwarfImage).width(120).height(160).padRight(10);
 
         }
         table.row().pad(30, 0, 0, 0);
         table.add(backButton).colspan(4);
-
-        stage.addActor(table);
-
-
         backButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -294,18 +334,19 @@ public class MultiPlayerSetupScreen implements Screen {
                     } else if (removedHero.getTypeOfHero() == 4) {
                         parent.enableHero("Wizard");
                     }
-                    parent.changeScreen(Andor.CHOOSEHERO);
+                    parent.changeScreen(Andor.NEWGAME);
                 } else {
-                    parent.changeScreen(Andor.MULTISETUP);
+                    parent.changeScreen(Andor.NEWGAME);
                 }
             }
         });
-
+        return table;
     }
 
     @Override
     public void render(float delta)
     {
+        updateServer(Gdx.graphics.getDeltaTime() );
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -343,23 +384,35 @@ public class MultiPlayerSetupScreen implements Screen {
     public void dispose() {
         stage.dispose();
     }
-
-
-
     public void updateServer(Hero selectedHero){
 
             JSONObject data =new JSONObject();
-            ArrayList<Hero> playerHeroes = parent.getPlayerHeroes();
             try{
                 data.put("name", selectedHero.getTypeOfHeroString());
 
                 socket.emit("playerChose", data);
-                Gdx.app.log("SOCKET.IO", "SUCCESS sending data");
+                Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : "+data.get("name"));
             }catch(Exception e){
                 Gdx.app.log("SOCKET.IO", "Error sending data");
             }
 
     }
+    public void updateServer(float dt){
+
+        JSONObject data =new JSONObject();
+        if (parent.getPlayerHeroes() != null) {
+
+
+            try {
+                data.put("name", parent.getPlayerHeroes().get(0).getTypeOfHeroString());
+                socket.emit("playerChose", data);
+                Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : " + data.get("name"));
+            } catch (Exception e) {
+                Gdx.app.log("SOCKET.IO", "Error sending data");
+            }
+        }
+    }
+
 
     public void connectSocket(){
 
@@ -395,8 +448,6 @@ public class MultiPlayerSetupScreen implements Screen {
                 try {
                     String id = data.getString("id");
                     Gdx.app.log("SocketIO", "New player connect: "+id);
-
-
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error getting the new player id");
                 }
@@ -420,35 +471,6 @@ public class MultiPlayerSetupScreen implements Screen {
                     Gdx.app.log("SocketIO", "Error disconnecting the player");
                 }
             }
-        }).on("playerChose", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                JSONObject data = (JSONObject)args[0];
-                try {
-                    String id = data.getString("id");
-                    String name = data.getString("name");
-                    if(name.equals("Archer")) {
-                        Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Archer");
-                    }else if(name.equals("Warrior")) {
-                        Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Warrior");
-                    }else if(name.equals("Wizard")) {
-                        Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Wizard");
-                    }else if(name.equals("Dwarf")) {
-                        Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Dwarf");
-                    }
-
-                }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error handling the player choosing");
-                }
-            }
         }).on("getPlayers", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
@@ -456,31 +478,51 @@ public class MultiPlayerSetupScreen implements Screen {
                 try {
                     for(int i = 0; i < objects.length(); i++){
 
-                        String name = ((String) objects.getJSONObject(i).getString("name"));
-                        if(name.equals("Archer")) {
-                            Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
-                            parent.disableHero("Archer");
-                        }else if(name.equals("Warrior")) {
-                            Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
-                            parent.disableHero("Warrior");
-                        }else if(name.equals("Wizard")) {
-                            Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
-                            parent.disableHero("Wizard");
-                        }else if(name.equals("Dwarf")) {
-                            Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
-                            parent.disableHero("Dwarf");
-                        }else{
-                            Gdx.app.log("SocketIO", "No passed players found");
+                        String id = ((String) objects.getJSONObject(i).getString("id"));
 
-                        }
+                        Gdx.app.log("SocketIO", "Other player already connected is : "+ id);
 
                     }
                 } catch(Exception e){
                     Gdx.app.log("SocketIO", "Error getting the players");
+                }
+            }
+        }).on("playerChose", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                JSONObject data = (JSONObject)args[0];
+                try {
+                    String id = data.getString("id");
+                    String name = data.getString("name");
+                    Gdx.app.log("SocketIO", "the other player "+ id+ " chose : "  +name);
+
+                    friendlyPlayers.put(id,name);
+                    if(name.equals("Archer")) {
+                        Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
+                        parent.selectHero(selectedHero);
+                        parent.disableHero("Archer");
+
+                    }else if(name.equals("Warrior")) {
+                        Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
+                        parent.selectHero(selectedHero);
+                        parent.disableHero("Warrior");
+
+                    }else if(name.equals("Wizard")) {
+                        Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
+                        parent.selectHero(selectedHero);
+                        parent.disableHero("Wizard");
+
+                    }else if(name.equals("Dwarf")) {
+                        Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
+                        parent.selectHero(selectedHero);
+                        parent.disableHero("Dwarf");
+
+                    }
+
+
+
+                }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error handling the other player choosing");
                 }
             }
         });
