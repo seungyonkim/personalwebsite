@@ -6,4 +6,7 @@ public class Wizard extends Hero{
         super(34, 0, 7, 1, 34, username);
     }
 
+//    public int getNumOfDice() {
+//        return 1;
+//    }
 }

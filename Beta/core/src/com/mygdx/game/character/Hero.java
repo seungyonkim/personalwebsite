@@ -5,8 +5,10 @@ import com.mygdx.game.board.Region;
 import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Item;
 import com.mygdx.game.etc.Well;
+import com.mygdx.game.monster.Monster;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Hero {
 
@@ -34,12 +36,12 @@ public class Hero {
         this.farmers = new ArrayList<Farmer>();
     }
 
-    public int diceRoll()
-    {
-        // Based : 1 dice
-        return (int)(Math.random() * 6) + 1;
-
-    }
+//    public int diceRoll()
+//    {
+//        // Based : 1 dice
+//        return (int)(Math.random() * 6) + 1;
+//
+//    }
 
     public int getWillPower()
     {
@@ -63,6 +65,18 @@ public class Hero {
 
     public int getRank() { return this.rank; }
     public String getUsername() { return this.username; }
+
+    public boolean getCanPlay() {
+        return this.canPlay;
+    }
+
+    public void enablePlay() {
+        this.canPlay = true;
+    }
+
+    public void disablePlay() {
+        this.canPlay = false;
+    }
 
 
     public ArrayList<Item> getItems()
@@ -155,7 +169,9 @@ public class Hero {
 
     public void incrementHours()
     {
-        if (hours < 7) this.hours++;
+        if (hours < 7) {
+            this.hours++;
+        }
         else if(7 <= hours && hours < 10 && willPower >= 2)
         {
             this.hours++;
@@ -164,7 +180,16 @@ public class Hero {
                 this.canPlay = false;
             }
         }
-        else if(hours == 10) this.canPlay = false;
+//        else if(hours == 10) this.canPlay = false;
+        else this.canPlay = false;
+
+        if (this.hours >= 7 && this.willPower <= 2) {
+            this.canPlay = false;
+        }
+    }
+
+    public void resetHours() {
+        this.hours = 0;
     }
 
     public void pass()
@@ -205,7 +230,11 @@ public class Hero {
     }
 
     public void drinkWell(Well well) {
-        this.willPower += 3;
+        if (this instanceof Warrior) {
+            this.willPower += 5;
+        } else {
+            this.willPower += 3;
+        }
         well.empty();
     }
 
@@ -227,6 +256,56 @@ public class Hero {
     public void dropOffFarmer(Farmer farmer, Region region) {
         this.farmers.remove(farmer);
         region.addFarmer(farmer);
+    }
+
+    public int battle(int heroBattleValue, int monsterBattleValue, Monster monster) {
+        // implementation of hero's turn of the battle
+        int result;
+        if (heroBattleValue > monsterBattleValue) {
+            monster.deductWP(heroBattleValue-monsterBattleValue);
+            result = heroBattleValue - monsterBattleValue;
+        } else if (heroBattleValue < monsterBattleValue) {
+            this.willPower -= (monsterBattleValue - heroBattleValue);
+            if (this.willPower < 0) {
+                this.willPower = 0;
+            }
+            result = heroBattleValue - monsterBattleValue;
+        } else {
+            result = 0;
+        }
+        this.incrementHours();
+        return result;
+    }
+
+    public void battleLost() {
+        if (this.strengthPoint > 1) {
+            this.strengthPoint -= 1;
+        }
+        this.willPower += 3;
+    }
+
+    public int rollDice() {
+        // hero rolls dice and gets the value
+        int numOfDice = 0;
+        int highestValue = 0;
+        Random r = new Random();
+
+        if (this instanceof Warrior) {
+            numOfDice = ((Warrior) this).getNumOfDice();
+        } else if (this instanceof Dwarf) {
+            numOfDice = ((Dwarf) this).getNumOfDice();
+        } else if (this instanceof Wizard) {
+            numOfDice = 1;
+        }
+
+        for (int i = 0; i < numOfDice; i++) {
+            int roll = r.nextInt(6)+1;
+            if (roll > highestValue) {
+                highestValue = roll;
+            }
+        }
+
+        return highestValue;
     }
 
 }

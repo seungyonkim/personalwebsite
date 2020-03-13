@@ -116,7 +116,7 @@ public class SinglePlayerSetupScreen implements Screen {
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 
         stage.getBatch().begin();
-        stage.getBatch().setColor(Color.WHITE);
+        stage.getBatch().setColor(Color.WHITE); // to prevent the flickering with the dropdowns
         stage.getBatch().draw(parent.menuScreenBG, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         stage.getBatch().end();
         stage.draw();

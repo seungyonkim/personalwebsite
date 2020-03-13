@@ -46,14 +46,17 @@ public class Andor extends Game {
 
 	private Board gameBoard;
 
-	private Hero currentTurn;
+	private Hero currentTurn; // hero whose turn it is
 
 	private int numOfPlayers;
-	private int difficulty;
+	private int difficulty; // -1 for easy, 1 for hard
 
-	private int readyPlayers;
-	private ArrayList<Hero> playerHeroes;
-	private HashMap<String, Boolean> availableHeroes;
+	private int readyPlayers; // number of ready players at singleplayer game setup stage
+	private ArrayList<Hero> playerHeroes; // in order (in real life clockwise direction)
+	private Hero rooster; // player who finished the day first; gets to start the next day first
+//	private int playersFinishedDay; // number of players that have finished the day
+	private ArrayList<Hero> finishedHeroes;
+	private HashMap<String, Boolean> availableHeroes; // to keep track of "taken" heroes at singleplayer game setup stage
 
 
 //    public void printClaimedHeroes() {
@@ -68,6 +71,7 @@ public class Andor extends Game {
 //    }
 
 	public void setUpSinglePlayer(int numOfPlayers, int difficulty) {
+		// set up the game for singleplayer mode
 		this.numOfPlayers = numOfPlayers;
 		this.readyPlayers = 0;
 		this.difficulty = difficulty;
@@ -87,7 +91,7 @@ public class Andor extends Game {
 //		} else {
 //			return "Hard";
 //		}
-		return this.difficulty;
+		return this.difficulty; // -1 for easy, 1 for hard
 	}
 
     public HashMap<String, Boolean> getAvailableHeroes() {
@@ -95,19 +99,23 @@ public class Andor extends Game {
     }
 
     public void disableHero(String hero) {
+		// someone has picked this hero, so put it in the "taken" list so that no one else can pick it
         availableHeroes.put(hero, false);
     }
 
     public void enableHero(String hero) {
+		// enable the hero for pick (the back button has been pressed)
         availableHeroes.put(hero, true);
     }
 
     public void selectHero(Hero hero) {
+		// player has picked a hero
 		playerHeroes.add(hero);
 	    readyPlayers++;
     }
 
     public Hero removeLastSelectedHero() {
+		// back button has been pressed in the process of picking heroes
         Hero lastHero = playerHeroes.get(playerHeroes.size()-1);
 		playerHeroes.remove(playerHeroes.size()-1);
 	    readyPlayers--;
@@ -115,12 +123,16 @@ public class Andor extends Game {
     }
 
     public void createNewBoard() {
+		// create new board for a new game
 		gameBoard = new Board(playerHeroes, difficulty);
 //		System.out.println("NEW BOARD CREATED");
 		currentTurn = playerHeroes.get(0);
+//		playersFinishedDay = 0;
+		finishedHeroes = new ArrayList<Hero>();
 	}
 
 	public Hero whoseTurn() {
+		// returns whose turn it is right now
         return currentTurn;
     }
 
@@ -135,7 +147,64 @@ public class Andor extends Game {
 				}
 			}
 		}
+		while (!currentTurn.getCanPlay() && !finishedHeroes.contains(currentTurn)) {
+			finishedHeroes.add(currentTurn);
+			// get the next turn hero
+			for (int i = 0; i < playerHeroes.size(); i++) {
+				if (currentTurn.getTypeOfHero() == playerHeroes.get(i).getTypeOfHero()) {
+					if (i+1 == playerHeroes.size()) {
+						currentTurn = playerHeroes.get(0);
+					} else {
+						currentTurn = playerHeroes.get(i+1);
+						return;
+					}
+				}
+			}
+		}
+
 	}
+
+//	public int getPlayersFinishedDay() {
+//		return this.playersFinishedDay;
+//	}
+
+	public ArrayList<Hero> getFinishedHeroes() {
+		return this.finishedHeroes;
+	}
+
+	public void finishDay() { // a player finished day
+        if (rooster == null) {
+            // if no one else finished the day yet, current player starts the next day first
+            rooster = currentTurn;
+        }
+        // this hero can no longer make a move until the next day
+        currentTurn.disablePlay();
+        // increment number of players that finished the day
+//		playersFinishedDay++;
+		if (!finishedHeroes.contains(currentTurn)) {
+			finishedHeroes.add(currentTurn);
+		}
+        // continue to next turn
+        this.nextTurn();
+    }
+
+	public void endDay() { // all players finished day
+		// update board for a new day
+	    gameBoard.newDay();
+	    for (Hero player : playerHeroes) {
+	    	player.enablePlay();
+	    	player.resetHours();
+		}
+	    // find the player to go first for the new day
+	    for (Hero player : playerHeroes) {
+	        if (rooster == player) {
+	            currentTurn = player;
+            }
+        }
+	    // reset the rooster to nobody
+	    rooster = null;
+	    finishedHeroes.clear();
+    }
 
 	public Board getGameBoard() {
     	return gameBoard;

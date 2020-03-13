@@ -170,8 +170,8 @@ public class Board {
     {
         ArrayList<Region> result = new ArrayList<Region>();
         for(Region region : this.regions){
-            if(region != null) {
-                if(region.getMonster() != null) result.add(region);
+            if (region != null && region.getPosition() != 80) {
+                if (region.getMonster() != null) result.add(region);
             }
         }
         return result;
@@ -263,7 +263,8 @@ public class Board {
     public void newDay() {
         // Monsters move
         for (Region region : getMonsterRegions()) {
-            region.getMonster().moveTo(region, getRegion(region.getAvailableMonsterPath()));
+//            region.getMonster().moveTo(region, getRegion(region.getAvailableMonsterPath()));
+            region.getMonster().moveTo(region, getMonsterAvailableRegion(region));
         }
         // Replenish wells
         for (Region region : getWellRegions()) {

@@ -1,5 +1,7 @@
 package com.mygdx.game.monster;
 
+import java.util.Random;
+
 public class Gor extends Monster{ //public Monster(int position, int wp, int sp, int rGold, int rWP)
 
     public Gor(int position)
@@ -11,6 +13,10 @@ public class Gor extends Monster{ //public Monster(int position, int wp, int sp,
     {
         this.setStrengthPoint(2);
         this.setWillPower(4);
+    }
+
+    public String getMonsterType() {
+        return "Gor";
     }
 
 

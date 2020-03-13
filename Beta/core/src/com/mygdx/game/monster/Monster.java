@@ -5,6 +5,7 @@ import com.mygdx.game.character.Hero;
 import com.mygdx.game.etc.Castle;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Monster {
     private int position; // if position == 80 then this monster is no more available.
@@ -37,6 +38,7 @@ public class Monster {
     public int getRewardWP(){
         return this.rewardWP;
     }
+    public void setPosition(int position) { this.position = position; }
     public void setWillPower(int wp) {
         this.willPower = wp;
     }
@@ -113,12 +115,79 @@ public class Monster {
 
         if(to.getPosition() == 0 && to instanceof Castle) {
             Castle c = (Castle)to;
-            boolean result = c.decrementShield();
+//            boolean result = c.decrementShield();
+            c.decrementShield();
             to.removeMonster();
             this.position = 80;
-            return result;
+//            System.out.println("Monster in. Remaining shields: "+c.getShield());
+            if (c.getShield() <= 0) {
+                return false;
+            } else {
+                return true;
+            }
         }
+
         return true;
+    }
+
+    public void deductWP(int deduct) {
+        this.willPower -= deduct;
+        if (this.willPower < 0) {
+            this.willPower = 0;
+        }
+    }
+
+    public int getNumOfDice() {
+        if (this.getWillPower() <= 6) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+
+    public int rollDice() {
+        int highestValue;
+        int numOfDice = this.getNumOfDice();
+        Random r = new Random();
+
+        if (numOfDice == 2) {
+            int first = r.nextInt(6)+1;
+            int second = r.nextInt(6)+1;
+            if (first > second) {
+                highestValue = first;
+            } else if (first < second) {
+                highestValue = second;
+            } else {
+                highestValue = first + second;
+            }
+        } else {
+            int first = r.nextInt(6)+1;
+            int second = r.nextInt(6)+1;
+            int third = r.nextInt(6)+1;
+            if (first == second) {
+                if (first+second > third) {
+                    highestValue = first+second;
+                } else {
+                    highestValue = third;
+                }
+            } else if (second == third) {
+                if (second+third > first) {
+                    highestValue = second+third;
+                } else {
+                    highestValue = first;
+                }
+            } else if (first == third) {
+                if (first+third > second) {
+                    highestValue = first+third;
+                } else {
+                    highestValue = second;
+                }
+            } else {
+                highestValue = Math.max(Math.max(first, second), third);
+            }
+        }
+
+        return highestValue;
     }
 
 

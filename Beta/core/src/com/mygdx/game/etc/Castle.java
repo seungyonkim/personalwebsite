@@ -31,15 +31,19 @@ public class Castle extends Region {
     public void farmerArrive() {
         this.shield++;
         this.farmerCount++;
-        System.out.println("Farmer arrived in the castle. Castle now has "+this.shield+" shields.");
+        System.out.println("Farmer arrived at the castle. Castle now has "+this.shield+" shields.");
     }
 
-    public boolean decrementShield() {
-        if (shield == 1) return false; //Game ends
-        else {
-            shield--;
-            return true;
-        }
+//    public boolean decrementShield() {
+//        if (shield == 1) return false; //Game ends
+//        else {
+//            shield--;
+//            return true;
+//        }
+//    }
+
+    public void decrementShield() {
+        this.shield--;
     }
 
     public int getFarmerCount() { return this.farmerCount; }

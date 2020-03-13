@@ -11,7 +11,7 @@ public class Merchant extends Region {
         super(board, position);
     }
 
-    public boolean buySP(Hero hero) {
+    public boolean sellSP(Hero hero) {
         if(hero.getGold() >= 2) {
             hero.addGold(-2);
             hero.addStrengthPoint(1);

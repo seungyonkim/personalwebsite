@@ -12,4 +12,8 @@ public class Skral extends Monster {
         this.setWillPower(6);
     }
 
+    public String getMonsterType() {
+        return "Skral";
+    }
+
 }
