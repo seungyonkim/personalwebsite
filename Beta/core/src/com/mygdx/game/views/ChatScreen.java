@@ -1,5 +1,6 @@
 package com.mygdx.game.views;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Andor;
 import com.mygdx.game.character.Hero;
@@ -19,6 +20,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutionException;
+
+import io.socket.client.IO;
+import io.socket.client.Socket;
+import io.socket.emitter.Emitter;
+
 public class ChatScreen implements Screen{
     Andor parent;
     Hero CurrentHero;
@@ -29,12 +38,24 @@ public class ChatScreen implements Screen{
     TextButton sendButton;
     TextButton backButton;
     TextArea scrollMessage;
-    Label label;
+    Socket socket;
 
 
 
     public ChatScreen(Andor andor){
         parent = andor;
+        socket = parent.getSocket();
+        stage = new Stage(new ScreenViewport());
+
+
+
+
+    }
+
+    @Override
+    public void show(){
+        stage.clear();
+        Gdx.input.setInputProcessor(stage);
 
 
         CurrentHero = parent.whoseTurn();
@@ -47,9 +68,7 @@ public class ChatScreen implements Screen{
 
         table = new Table();
 
-        stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
-        label = new Label("",parent.skin);
+
 
 
 
@@ -58,15 +77,10 @@ public class ChatScreen implements Screen{
 
         scrollMessage.layout();
 
-
-    }
-
-    @Override
-    public void show(){
-
         stage.addActor(table);
         table.setFillParent(true);
-
+        connectSocket();
+        configSocketEvents();
 
 
         table.add(sendMessage).height(50).prefWidth(999);
@@ -129,8 +143,15 @@ public class ChatScreen implements Screen{
     public void render(float delta){
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        stage.act(delta);
+
+        stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
+
+        stage.getBatch().begin();
+        stage.getBatch().setColor(Color.WHITE);
+        stage.getBatch().draw(parent.andorMenu, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        stage.getBatch().end();
         stage.draw();
+
     }
 
     @Override
@@ -164,13 +185,46 @@ public class ChatScreen implements Screen{
     }
 
     public void sendMess(){
+        JSONObject data = new JSONObject();
         String mess = sendMessage.getText();
-        if(!mess.equals("") && !mess.equals(" ")){
+        scrollMessage.appendText("You : "+  mess+"\n");
+        try{
+            data.put("mess",mess);
             sendMessage.setText("");
-            sendNewMessage(mess);
+
+            socket.emit("sendMessage", data);
+        }catch (Exception e){
+
         }
     }
-    public void sendNewMessage(String mess){
-        scrollMessage.appendText(CurrentHero.getTypeOfHeroString()+" : "+  mess+"\n");
+
+    public void configSocketEvents(){
+        socket.on("sendMessage", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                JSONObject data = (JSONObject)args[0];
+                try {
+                    String mess = data.getString("mess");
+                    String id = data.getString("id");
+
+
+                    scrollMessage.appendText(id+" : "+  mess+"\n");
+
+
+                }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error handling message sending");
+                }
+            }
+        });
+
+    }
+    public void connectSocket(){
+
+        try{
+            socket =IO.socket("http://localhost:8080");
+            socket.connect();
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

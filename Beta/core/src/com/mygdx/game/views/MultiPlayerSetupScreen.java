@@ -122,7 +122,7 @@ public class MultiPlayerSetupScreen implements Screen {
                     parent.selectHero(selectedHero);
                     parent.disableHero("Warrior");
 
-                    //updateServer(selectedHero);
+                    updateServer(selectedHero);
 
 
                     new Dialog("Waiting other players ...", parent.skin) {
@@ -174,7 +174,7 @@ public class MultiPlayerSetupScreen implements Screen {
                     parent.selectHero(selectedHero);
                     parent.disableHero("Archer");
 
-                    //updateServer(selectedHero);
+                    updateServer(selectedHero);
 
 
                     new Dialog("Waiting other players ...", parent.skin) {
@@ -229,7 +229,7 @@ public class MultiPlayerSetupScreen implements Screen {
                     parent.selectHero(selectedHero);
                     parent.disableHero("Wizard");
 
-                    //updateServer(selectedHero);
+                    updateServer(selectedHero);
 
                     new Dialog("Waiting other players ...", parent.skin) {
                         {
@@ -281,7 +281,7 @@ public class MultiPlayerSetupScreen implements Screen {
                     parent.disableHero("Dwarf");
 //                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Dwarf.");
 
-                    //updateServer(selectedHero);
+                    updateServer(selectedHero);
                     new Dialog("Waiting other players ...", parent.skin) {
                         {
 
@@ -346,7 +346,7 @@ public class MultiPlayerSetupScreen implements Screen {
     @Override
     public void render(float delta)
     {
-        updateServer(Gdx.graphics.getDeltaTime() );
+       // updateServer(Gdx.graphics.getDeltaTime() );
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -404,7 +404,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
             try {
-                data.put("name", parent.getPlayerHeroes().get(0).getTypeOfHeroString());
+                data.put("name", parent.getPlayerHeroes().get(parent.getPlayerHeroes().size()-1).getTypeOfHeroString());
                 socket.emit("playerChose", data);
                 Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : " + data.get("name"));
             } catch (Exception e) {
@@ -479,7 +479,8 @@ public class MultiPlayerSetupScreen implements Screen {
                     for(int i = 0; i < objects.length(); i++){
 
                         String id = ((String) objects.getJSONObject(i).getString("id"));
-
+                        String name = ((String) objects.getJSONObject(i).getString("name"));
+                        friendlyPlayers.put(id,name);
                         Gdx.app.log("SocketIO", "Other player already connected is : "+ id);
 
                     }

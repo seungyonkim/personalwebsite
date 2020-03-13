@@ -2,6 +2,7 @@ var app = require ('express')();
 var server =require('http').Server(app);
 var io = require('socket.io')(server);
 var players= [];
+var messages =[];
 
 
 server.listen(8080,function(){
@@ -15,6 +16,7 @@ io.on('connection',function(socket){
     socket.broadcast.emit('newPlayer',{ id: socket.id});
     socket.on('playerChose',function(data){
         data.id=socket.id;
+        socket.emit('playerChose',data);
         socket.broadcast.emit('playerChose',data);
 
         console.log("Player chose : " + data.name);
@@ -23,7 +25,7 @@ io.on('connection',function(socket){
                 players[i].name = data.name;
             }
         }
-        //socket.emit('getPlayers', players);
+            //socket.emit('getPlayers', players);
 
     });
      socket.on('playerMoved',function(data){
@@ -37,7 +39,6 @@ io.on('connection',function(socket){
                     players[i].y = data.y;
                 }
             }
-            //socket.emit('getPlayers', players);
 
         });
 
@@ -50,6 +51,18 @@ io.on('connection',function(socket){
             }
         }
     });
+     socket.on('sendMessage',function(data){
+            data.id=socket.id;
+            socket.broadcast.emit('sendMessage',data);
+
+            console.log("Message Send : " + data.mess);
+            for(var i=0; i <messages.length ; i++){
+                if(messages[i].id == data.id){
+                    messages[i].mess = data.mess;
+                }
+            }
+
+        });
     players.push(new player(socket.id,"",0,0));
 });
 
@@ -59,4 +72,9 @@ function player (id, name, x, y){
     this.x = x;
     this.y = y;
 
+}
+
+function message(id , mess){
+    this.mess = mess;
+    this.id = id;
 }

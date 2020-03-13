@@ -237,6 +237,8 @@ public class MultiGameScreen implements Screen {
     public void show() {
         stage.clear();
         Gdx.input.setInputProcessor(stage);
+        connectSocket();
+        configSocketEvents();
 
         availableRegions = parent.whoseTurn().getAvailableRegions(gameBoard);
 //        System.out.println("Current Hero position: "+parent.whoseTurn().getPosition());
@@ -636,8 +638,8 @@ public class MultiGameScreen implements Screen {
         if(parent.timer>=parent.UPDATE_TIME){
             JSONObject data = new JSONObject();
             try{
-                data.put("x",player.getX());
-                data.put("y",player.getY());
+                data.put("x",player.x);
+                data.put("y",player.y);
                 socket.emit("playerMoved", data);
             }catch(Exception e){
                 Gdx.app.log("SocketIO", "Error moving the Player");
@@ -660,10 +662,19 @@ public class MultiGameScreen implements Screen {
 
 
                 }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error handling the other player choosing");
+                    Gdx.app.log("SocketIO", "Error handling the other player moves");
                 }
             }
         });
 
+    }
+    public void connectSocket(){
+
+        try{
+            socket =IO.socket("http://localhost:8080");
+            socket.connect();
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 }
