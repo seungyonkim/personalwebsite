@@ -397,21 +397,6 @@ public class MultiPlayerSetupScreen implements Screen {
             }
 
     }
-    public void updateServer(float dt){
-
-        JSONObject data =new JSONObject();
-        if (parent.getPlayerHeroes() != null) {
-
-
-            try {
-                data.put("name", parent.getPlayerHeroes().get(parent.getPlayerHeroes().size()-1).getTypeOfHeroString());
-                socket.emit("playerChose", data);
-                Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : " + data.get("name"));
-            } catch (Exception e) {
-                Gdx.app.log("SOCKET.IO", "Error sending data");
-            }
-        }
-    }
 
 
     public void connectSocket(){

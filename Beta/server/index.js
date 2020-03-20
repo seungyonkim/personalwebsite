@@ -53,14 +53,13 @@ io.on('connection',function(socket){
     });
      socket.on('sendMessage',function(data){
             data.id=socket.id;
-            socket.broadcast.emit('sendMessage',data);
+            socket.broadcast.emit('sendMessage', data);
+
 
             console.log("Message Send : " + data.mess);
-            for(var i=0; i <messages.length ; i++){
-                if(messages[i].id == data.id){
-                    messages[i].mess = data.mess;
-                }
-            }
+            messages.push(new message(data.id,data.mess));
+
+
 
         });
     players.push(new player(socket.id,"",0,0));

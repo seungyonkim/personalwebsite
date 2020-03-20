@@ -20,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
@@ -180,10 +181,6 @@ public class ChatScreen implements Screen{
     }
 
 
-    public void backMenu(){
-        parent.changeScreen(Andor.MULTIGAME);
-    }
-
     public void sendMess(){
         JSONObject data = new JSONObject();
         String mess = sendMessage.getText();
@@ -204,15 +201,12 @@ public class ChatScreen implements Screen{
             public void call(Object... args) {
                 JSONObject data = (JSONObject)args[0];
                 try {
-                    String mess = data.getString("mess");
-                    String id = data.getString("id");
-
-
-                    scrollMessage.appendText(id+" : "+  mess+"\n");
-
+                        String id = data.getString("id");
+                        String mess = data.getString("mess");
+                        scrollMessage.appendText(id+" : "+  mess+"\n");
 
                 }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error handling message sending");
+                    Gdx.app.log("SocketIO", "Error handling message getting");
                 }
             }
         });

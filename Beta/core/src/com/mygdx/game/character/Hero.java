@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Hero {
 
     private int position;
+    private boolean moved;
     private int gold;
     private int willPower;
     private int strengthPoint;
@@ -55,6 +56,9 @@ public class Hero {
     {
         return this.gold;
     }
+    public boolean hasMoved(){return moved;}
+    public void setMoved(){moved = true;}
+
 
     public int getRank() { return this.rank; }
     public String getUsername() { return this.username; }

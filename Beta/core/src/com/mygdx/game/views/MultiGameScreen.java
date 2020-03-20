@@ -334,6 +334,7 @@ public class MultiGameScreen implements Screen {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
                     currentHero.moveTo(gameBoard.getRegion(currentHero.getPosition()), region);
+                    currentHero.setMoved();
                     System.out.println("Hero "+currentHero.getTypeOfHero()+" moved to region "+currentHero.getPosition());
                     System.out.println("Hero "+currentHero.getTypeOfHero()+" used "+currentHero.getHours()+" hours in total in the day.");
                     if (currentHero instanceof Warrior) {
@@ -635,11 +636,14 @@ public class MultiGameScreen implements Screen {
 
     public void updateMove(float dt){
         parent.timer+=dt;
-        if(parent.timer>=parent.UPDATE_TIME){
+        Hero currentHero = parent.whoseTurn();
+        if(parent.timer>=parent.UPDATE_TIME && currentHero.hasMoved()){
             JSONObject data = new JSONObject();
             try{
-                data.put("x",player.x);
-                data.put("y",player.y);
+                int x = gameBoard.getRegion(currentHero.getPosition()).getX();
+                int y = gameBoard.getRegion(currentHero.getPosition()).getY();
+                data.put("x",x);
+                data.put("y",y);
                 socket.emit("playerMoved", data);
             }catch(Exception e){
                 Gdx.app.log("SocketIO", "Error moving the Player");
@@ -652,17 +656,23 @@ public class MultiGameScreen implements Screen {
             @Override
             public void call(Object... args) {
                 JSONObject data = (JSONObject)args[0];
+                Hero currentHero = parent.whoseTurn();
+
                 try {
                     String id = data.getString("id");
-                    player.setX((float)data.getDouble("x"));
-                    player.setY((float)data.getDouble("y"));
+
+                    float x = ((float)data.getDouble("x"));
+                    float y = ((float)data.getDouble("y"));
+                    Region from = gameBoard.getRegion(currentHero.getPosition());
+                    Region to = findRegion(x,y);
+                    currentHero.moveTo(from,to);
 
                     Gdx.app.log("SocketIO", "the other player "+ id+ " Moved ");
 
 
 
                 }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error handling the other player moves");
+                   Gdx.app.log("SocketIO", "Error handling the other player moves");
                 }
             }
         });
@@ -676,5 +686,15 @@ public class MultiGameScreen implements Screen {
         }catch(Exception e){
             System.out.println(e);
         }
+    }
+
+    public Region findRegion(float x , float y ){
+        for(int i =0 ;i < availableRegions.size();i++){
+            if(availableRegions.get(i).getX() == x && availableRegions.get(i).getY()== y){
+                return availableRegions.get(i);
+            }
+        }
+        System.out.println("Cannot find the new region");
+        return null;
     }
 }

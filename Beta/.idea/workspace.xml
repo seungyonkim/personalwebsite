@@ -6,7 +6,22 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8110eef8-25d0-462a-afa6-b8de295dbbee" name="Default Changelist" comment="" />
+    <list default="true" id="8110eef8-25d0-462a-afa6-b8de295dbbee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__core_core_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__desktop_desktop_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/desktop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/desktop/.gradle/" />
@@ -47,31 +62,42 @@
             <state relative-caret-position="208">
               <caret line="230" column="17" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="17" />
               <folding>
+                <element signature="e#3076#3077#0" expanded="true" />
                 <element signature="e#3107#3108#0" expanded="true" />
+                <element signature="e#3140#3141#0" expanded="true" />
                 <element signature="e#3171#3172#0" expanded="true" />
+                <element signature="e#3350#3351#0" expanded="true" />
                 <element signature="e#3388#3389#0" expanded="true" />
+                <element signature="e#3429#3430#0" expanded="true" />
                 <element signature="e#3477#3478#0" expanded="true" />
+                <element signature="e#3520#3521#0" expanded="true" />
                 <element signature="e#3567#3568#0" expanded="true" />
+                <element signature="e#4065#4066#0" expanded="true" />
                 <element signature="e#4099#4100#0" expanded="true" />
+                <element signature="e#4452#4453#0" expanded="true" />
                 <element signature="e#4478#4479#0" expanded="true" />
+                <element signature="e#4523#4524#0" expanded="true" />
                 <element signature="e#4552#4553#0" expanded="true" />
+                <element signature="e#4606#4607#0" expanded="true" />
                 <element signature="e#4635#4636#0" expanded="true" />
+                <element signature="e#6854#6855#0" expanded="true" />
                 <element signature="e#6884#6885#0" expanded="true" />
+                <element signature="e#6922#6923#0" expanded="true" />
                 <element signature="e#6944#6945#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="473">
+              <caret line="209" column="17" lean-forward="true" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4799#5453#0" expanded="true" />
-                <element signature="e#5452#5453#0" expanded="true" />
+                <element signature="e#5042#5671#0" expanded="true" />
+                <element signature="e#5670#5671#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,34 +106,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="62" column="13" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="13" />
+            <state relative-caret-position="-903">
+              <caret line="399" selection-start-line="399" selection-end-line="399" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3434#5085#0" expanded="true" />
-                <element signature="e#5084#5085#0" expanded="true" />
-                <element signature="e#5591#7285#0" expanded="true" />
-                <element signature="e#7284#7285#0" expanded="true" />
-                <element signature="e#7790#9475#0" expanded="true" />
-                <element signature="e#9474#9475#0" expanded="true" />
-                <element signature="e#9971#11660#0" expanded="true" />
-                <element signature="e#11659#11660#0" expanded="true" />
-                <element signature="e#12825#12826#0" expanded="true" />
-                <element signature="e#12888#12889#0" expanded="true" />
-                <element signature="e#13075#13076#0" expanded="true" />
-                <element signature="e#13106#13107#0" expanded="true" />
-                <element signature="e#14934#15104#0" expanded="true" />
-                <element signature="e#15103#15104#0" expanded="true" />
-                <element signature="e#15121#15556#0" expanded="true" />
-                <element signature="e#15555#15556#0" expanded="true" />
-                <element signature="e#15574#16029#0" expanded="true" />
-                <element signature="e#16028#16029#0" expanded="true" />
-                <element signature="e#16056#16908#0" expanded="true" />
-                <element signature="e#16907#16908#0" expanded="true" />
-                <element signature="e#16927#17523#0" expanded="true" />
-                <element signature="e#17522#17523#0" expanded="true" />
-                <element signature="e#17543#19233#0" expanded="true" />
-                <element signature="e#19232#19233#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,8 +118,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="616">
-              <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+            <state relative-caret-position="556">
+              <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="291">
+              <caret line="667" column="48" selection-start-line="667" selection-start-column="48" selection-end-line="667" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#9437#9659#0" expanded="true" />
+                <element signature="e#9658#9659#0" expanded="true" />
+                <element signature="e#12794#13120#0" expanded="true" />
+                <element signature="e#13119#13120#0" expanded="true" />
+                <element signature="e#13796#15968#0" expanded="true" />
+                <element signature="e#15967#15968#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,8 +154,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2010">
-              <caret line="159" column="34" selection-start-line="159" selection-start-column="25" selection-end-line="159" selection-end-column="34" />
+            <state relative-caret-position="208">
+              <caret line="44" column="26" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -143,8 +163,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="967">
-              <caret line="83" column="19" selection-start-line="83" selection-start-column="15" selection-end-line="83" selection-end-column="19" />
+            <state relative-caret-position="895">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
             </state>
           </provider>
         </entry>
@@ -159,30 +179,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="504" column="62" selection-start-line="504" selection-start-column="18" selection-end-line="504" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#19872#20043#0" expanded="true" />
-                <element signature="e#20042#20043#0" expanded="true" />
-                <element signature="e#27099#27701#0" expanded="true" />
-                <element signature="e#27700#27701#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="103" column="31" lean-forward="true" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
-              <folding>
-                <element signature="e#2815#2993#0" expanded="true" />
-                <element signature="e#2992#2993#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1260">
+              <caret line="103" column="31" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -198,21 +198,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>select</find>
-      <find>other pla</find>
-      <find>disable</find>
-      <find>texture</find>
-      <find>resize</find>
-      <find>selec</find>
-      <find>update</find>
-      <find>x</find>
-      <find>get</find>
-      <find>getRegion</find>
-      <find>socket</find>
       <find>getX</find>
       <find>moved</find>
       <find>.values</find>
-      <find>player</find>
       <find>archer</find>
       <find>players</find>
       <find>config</find>
@@ -228,6 +216,18 @@
       <find>render</find>
       <find>label</find>
       <find>stage</find>
+      <find>emit</find>
+      <find>getMess</find>
+      <find>newPlayers</find>
+      <find>newPlayer</find>
+      <find>ishasMoved</find>
+      <find>player</find>
+      <find>move</find>
+      <find>region</find>
+      <find>getPosition</find>
+      <find>player</find>
+      <find>get</find>
+      <find>getRegion</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -240,13 +240,14 @@
         <option value="$PROJECT_DIR$/android/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/ChooseHeroScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java" />
         <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/PreferenceScreen.java" />
         <option value="$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java" />
-        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" />
         <option value="$PROJECT_DIR$/server/index.js" />
         <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" />
       </list>
     </option>
   </component>
@@ -260,6 +261,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -307,9 +311,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,7 +332,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DesktopLauncher">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -400,6 +401,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Unnamed (1)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.desktop.DesktopLauncher" />
+      <module name="desktop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mygdx.game.desktop.DesktopLauncher" />
       <module name="desktop" />
@@ -411,6 +419,7 @@
       <item itemvalue="Android App.android" />
       <item itemvalue="Application.DesktopLauncher" />
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Unnamed (1)" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -428,7 +437,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Project" order="1" visible="true" weight="0.18383405" />
@@ -445,8 +453,8 @@
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49928468" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5007153" side_tool="true" weight="0.32891566" />
-      <window_info anchor="bottom" id="Build" order="6" weight="0.32891566" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.15301205" />
+      <window_info anchor="bottom" id="Build" order="6" weight="0.11686747" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.15301205" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.32891566" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -474,12 +482,12 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/android/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -554,17 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="103" column="31" lean-forward="true" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
-          <folding>
-            <element signature="e#2815#2993#0" expanded="true" />
-            <element signature="e#2992#2993#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Wizard.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -572,10 +569,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="967">
-          <caret line="83" column="19" selection-start-line="83" selection-start-column="15" selection-end-line="83" selection-end-column="19" />
+        <state relative-caret-position="1260">
+          <caret line="103" column="31" selection-start-line="103" selection-start-column="31" selection-end-line="103" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="230" column="17" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="17" />
+          <folding>
+            <element signature="e#3076#3077#0" expanded="true" />
+            <element signature="e#3107#3108#0" expanded="true" />
+            <element signature="e#3140#3141#0" expanded="true" />
+            <element signature="e#3171#3172#0" expanded="true" />
+            <element signature="e#3350#3351#0" expanded="true" />
+            <element signature="e#3388#3389#0" expanded="true" />
+            <element signature="e#3429#3430#0" expanded="true" />
+            <element signature="e#3477#3478#0" expanded="true" />
+            <element signature="e#3520#3521#0" expanded="true" />
+            <element signature="e#3567#3568#0" expanded="true" />
+            <element signature="e#4065#4066#0" expanded="true" />
+            <element signature="e#4099#4100#0" expanded="true" />
+            <element signature="e#4452#4453#0" expanded="true" />
+            <element signature="e#4478#4479#0" expanded="true" />
+            <element signature="e#4523#4524#0" expanded="true" />
+            <element signature="e#4552#4553#0" expanded="true" />
+            <element signature="e#4606#4607#0" expanded="true" />
+            <element signature="e#4635#4636#0" expanded="true" />
+            <element signature="e#6854#6855#0" expanded="true" />
+            <element signature="e#6884#6885#0" expanded="true" />
+            <element signature="e#6922#6923#0" expanded="true" />
+            <element signature="e#6944#6945#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="209" column="17" lean-forward="true" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5042#5671#0" expanded="true" />
+            <element signature="e#5670#5671#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-903">
+          <caret line="399" selection-start-line="399" selection-end-line="399" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -588,94 +645,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2010">
-          <caret line="159" column="34" selection-start-line="159" selection-start-column="25" selection-end-line="159" selection-end-column="34" />
+        <state relative-caret-position="208">
+          <caret line="44" column="26" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/index.js">
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+        <state relative-caret-position="895">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="504" column="62" selection-start-line="504" selection-start-column="18" selection-end-line="504" selection-end-column="62" />
+        <state relative-caret-position="291">
+          <caret line="667" column="48" selection-start-line="667" selection-start-column="48" selection-end-line="667" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#19872#20043#0" expanded="true" />
-            <element signature="e#20042#20043#0" expanded="true" />
-            <element signature="e#27099#27701#0" expanded="true" />
-            <element signature="e#27700#27701#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="230" column="17" selection-start-line="230" selection-start-column="8" selection-end-line="230" selection-end-column="17" />
-          <folding>
-            <element signature="e#3107#3108#0" expanded="true" />
-            <element signature="e#3171#3172#0" expanded="true" />
-            <element signature="e#3388#3389#0" expanded="true" />
-            <element signature="e#3477#3478#0" expanded="true" />
-            <element signature="e#3567#3568#0" expanded="true" />
-            <element signature="e#4099#4100#0" expanded="true" />
-            <element signature="e#4478#4479#0" expanded="true" />
-            <element signature="e#4552#4553#0" expanded="true" />
-            <element signature="e#4635#4636#0" expanded="true" />
-            <element signature="e#6884#6885#0" expanded="true" />
-            <element signature="e#6944#6945#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="62" column="13" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3434#5085#0" expanded="true" />
-            <element signature="e#5084#5085#0" expanded="true" />
-            <element signature="e#5591#7285#0" expanded="true" />
-            <element signature="e#7284#7285#0" expanded="true" />
-            <element signature="e#7790#9475#0" expanded="true" />
-            <element signature="e#9474#9475#0" expanded="true" />
-            <element signature="e#9971#11660#0" expanded="true" />
-            <element signature="e#11659#11660#0" expanded="true" />
-            <element signature="e#12825#12826#0" expanded="true" />
-            <element signature="e#12888#12889#0" expanded="true" />
-            <element signature="e#13075#13076#0" expanded="true" />
-            <element signature="e#13106#13107#0" expanded="true" />
-            <element signature="e#14934#15104#0" expanded="true" />
-            <element signature="e#15103#15104#0" expanded="true" />
-            <element signature="e#15121#15556#0" expanded="true" />
-            <element signature="e#15555#15556#0" expanded="true" />
-            <element signature="e#15574#16029#0" expanded="true" />
-            <element signature="e#16028#16029#0" expanded="true" />
-            <element signature="e#16056#16908#0" expanded="true" />
-            <element signature="e#16907#16908#0" expanded="true" />
-            <element signature="e#16927#17523#0" expanded="true" />
-            <element signature="e#17522#17523#0" expanded="true" />
-            <element signature="e#17543#19233#0" expanded="true" />
-            <element signature="e#19232#19233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4799#5453#0" expanded="true" />
-            <element signature="e#5452#5453#0" expanded="true" />
+            <element signature="e#9437#9659#0" expanded="true" />
+            <element signature="e#9658#9659#0" expanded="true" />
+            <element signature="e#12794#13120#0" expanded="true" />
+            <element signature="e#13119#13120#0" expanded="true" />
+            <element signature="e#13796#15968#0" expanded="true" />
+            <element signature="e#15967#15968#0" expanded="true" />
           </folding>
         </state>
       </provider>
