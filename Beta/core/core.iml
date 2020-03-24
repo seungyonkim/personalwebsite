@@ -34,6 +34,5 @@
     <orderEntry type="library" exported="" name="Gradle: gdx-freetype-1.9.10" level="project" />
     <orderEntry type="library" exported="" name="Gradle: ashley-1.7.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: gdx-1.9.10" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: core.core-1.0" level="project" />
   </component>
 </module>
