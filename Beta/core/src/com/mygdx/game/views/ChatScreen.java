@@ -94,17 +94,19 @@ public class ChatScreen implements Screen{
         backButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
+                sendMess(" leaved the chat room");
                 parent.changeScreen(Andor.MULTIGAME);
             }
         });
 
         stage.setKeyboardFocus(sendMessage);
+        sendMess(" is in the chat room ");
 
 
         sendButton.addListener(new ClickListener(){
             @Override
             public void clicked(InputEvent event, float x, float y){
-                sendMess();
+                sendMess(sendMessage.getText());
 
                 Gdx.input.setOnscreenKeyboardVisible(false);
             }
@@ -115,28 +117,14 @@ public class ChatScreen implements Screen{
             public void keyTyped(TextField textField, char c){
                 // areaMessage.appendText(c+ " " + (int) c + "\n");
                 if((int)c == 13 || (int)c == 10) {
-                    sendMess();
+                    sendMess(sendMessage.getText());
                     Gdx.input.setOnscreenKeyboardVisible(true);
 
                 }
             }
         });
 
-         /*sendMessage.addCaptureListener(new TextField.TextFieldClickListener(){
-         	@Override
-         	public boolean keyDown (InputEvent event, int character) {
-         		if (character == Input.Keys.ENTER){
-        			String mess = sendMessage.getText();
-        		if(!mess.equals("") && !mess.equals(" ")){
-        		    areaMessage.setText("Name\n   "+mess + "\n" +
-        				areaMessage.getText());
-        		}
 
-        		}
-
-        		return true;
-        	}
-        });*/
 
     }
 
@@ -181,9 +169,9 @@ public class ChatScreen implements Screen{
     }
 
 
-    public void sendMess(){
+    public void sendMess(String mess){
         JSONObject data = new JSONObject();
-        String mess = sendMessage.getText();
+
         scrollMessage.appendText("You : "+  mess+"\n");
         try{
             data.put("mess",mess);
@@ -199,11 +187,21 @@ public class ChatScreen implements Screen{
         socket.on("sendMessage", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONObject data = (JSONObject)args[0];
+                JSONArray objects = (JSONArray) args[0];
                 try {
-                        String id = data.getString("id");
-                        String mess = data.getString("mess");
+                    scrollMessage.setText("");
+
+                    for(int i = 0; i < objects.length(); i++){
+
+                        String id = ((String) objects.getJSONObject(i).getString("id"));
+                        String mess = ((String) objects.getJSONObject(i).getString("mess"));
+                        if (socket.id().equals(id)) {
+                          id = "You";
+                        }
                         scrollMessage.appendText(id+" : "+  mess+"\n");
+
+                    }
+
 
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error handling message getting");

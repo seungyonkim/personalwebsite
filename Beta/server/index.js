@@ -53,11 +53,10 @@ io.on('connection',function(socket){
     });
      socket.on('sendMessage',function(data){
             data.id=socket.id;
-            socket.broadcast.emit('sendMessage', data);
-
 
             console.log("Message Send : " + data.mess);
             messages.push(new message(data.id,data.mess));
+            io.emit('sendMessage', messages);
 
 
 
