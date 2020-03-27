@@ -9,15 +9,16 @@ server.listen(8080,function(){
     console.log("Server is now running...");
 });
 
-io.on('connection',function(socket){
+io.on('connect',function(socket){
 
     console.log("Player connected");
-    socket.emit('socketID',{ id: socket.id });
-    socket.broadcast.emit('newPlayer',{ id: socket.id});
+    players.push(new player(socket.id,"Choosing....",0,0));
+    io.emit('newPlayer',players);
+
+
     socket.on('playerChose',function(data){
         data.id=socket.id;
-        socket.emit('playerChose',data);
-        socket.broadcast.emit('playerChose',data);
+
 
         console.log("Player chose : " + data.name);
         for(var i=0; i <players.length ; i++){
@@ -25,12 +26,13 @@ io.on('connection',function(socket){
                 players[i].name = data.name;
             }
         }
-            //socket.emit('getPlayers', players);
+        io.emit('playerChose',players);
+
 
     });
      socket.on('playerMoved',function(data){
             data.id=socket.id;
-            socket.broadcast.emit('playerMoved',data);
+            io.emit('playerMoved',data);
 
             console.log("Player moved : " + data.id);
             for(var i=0; i <players.length ; i++){
@@ -53,15 +55,20 @@ io.on('connection',function(socket){
     });
      socket.on('sendMessage',function(data){
             data.id=socket.id;
-
-            console.log("Message Send : " + data.mess);
-            messages.push(new message(data.id,data.mess));
+            var name = "Not Found";
+            for(var i =0;i<players.length;i++){
+                if(players[i].id == data.id){
+                         name = players[i].name;
+                 }
+             }
+            console.log(name + " sent " + data.mess);
+            messages.push(new message(name,data.mess));
             io.emit('sendMessage', messages);
 
 
 
         });
-    players.push(new player(socket.id,"",0,0));
+
 });
 
 function player (id, name, x, y){

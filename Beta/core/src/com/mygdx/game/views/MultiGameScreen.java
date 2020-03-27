@@ -362,6 +362,8 @@ public class MultiGameScreen implements Screen {
                         dwarf.y = calcY(y) - dwarf.height/2;
                         skipping = false;
                     }
+                    updateMove();
+
                     show();
 
                 }
@@ -502,7 +504,6 @@ public class MultiGameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        updateMove(Gdx.graphics.getDeltaTime());
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1/30f));
 
         // Tell camera to update its matrices
@@ -634,10 +635,10 @@ public class MultiGameScreen implements Screen {
         dwarfTexture.dispose();
     }
 
-    public void updateMove(float dt){
-        parent.timer+=dt;
+    public void updateMove(){
+
         Hero currentHero = parent.whoseTurn();
-        if(parent.timer>=parent.UPDATE_TIME && currentHero.hasMoved()){
+        if( currentHero.hasMoved()){
             JSONObject data = new JSONObject();
             try{
                 int x = gameBoard.getRegion(currentHero.getPosition()).getX();

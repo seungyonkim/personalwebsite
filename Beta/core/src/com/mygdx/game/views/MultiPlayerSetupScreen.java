@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -51,7 +52,11 @@ public class MultiPlayerSetupScreen implements Screen {
     private Texture wizardTexture;
     private Texture dwarfTexture;
     private Label titleLabel;
-//    private TextureRegion myTextureRegion;
+    private TextArea ListConnectedPlayers;
+    private Label titleLabel2;
+
+
+    //    private TextureRegion myTextureRegion;
 //    private TextureRegionDrawable myTexRegionDrawable;
 //    private ImageButton button;
     HashMap<String,String> friendlyPlayers;
@@ -95,9 +100,11 @@ public class MultiPlayerSetupScreen implements Screen {
 //        stage.addActor(table);
 
 
+
 //        titleLabel = new Label( "Choose Heroes upto "+parent.getNumOfPlayers(), parent.skin);
-        titleLabel = new Label( "Choose Hero for Player "+(1+parent.getReadyPlayers()), parent.skin);
+        titleLabel = new Label( "Choose your hero ", parent.skin);
         TextButton backButton = new TextButton("Back", parent.skin);
+        TextButton startButton = new TextButton("Start",parent.skin);
 
 
         table.add(titleLabel).colspan(4);
@@ -125,33 +132,7 @@ public class MultiPlayerSetupScreen implements Screen {
                     updateServer(selectedHero);
 
 
-                    new Dialog("Waiting other players ...", parent.skin) {
-                        {
-                            text("Start?\n");
-                            text("Other players : \n");
 
-                            for(String key : friendlyPlayers.keySet()){
-                                text(friendlyPlayers.get(key));
-                            }
-                            button("Yes", true);
-                            button("No", false);
-                        }
-
-                        @Override
-                        protected void result(Object object) {
-                            if (object.equals(true)) {
-
-//                                    System.out.println("Player "+(1+parent.getReadyPlayers())+" selected Warrior.");
-
-
-
-//                                    System.out.println((parent.getNumOfPlayers()-parent.getReadyPlayers()) + " players to go.");
-
-                                parent.createNewBoard();
-                                parent.changeScreen(Andor.MULTIGAME);
-                            }
-                        }
-                    }.show(stage);
 
                 }
 
@@ -177,35 +158,7 @@ public class MultiPlayerSetupScreen implements Screen {
                     updateServer(selectedHero);
 
 
-                    new Dialog("Waiting other players ...", parent.skin) {
-                        {
 
-                            text("Start?\n");
-                            text("Other players :\n ");
-
-                            for(String key : friendlyPlayers.keySet()){
-                                text(friendlyPlayers.get(key));
-                            }
-                            button("Yes", true);
-                            button("No", false);
-                        }
-
-                        @Override
-                        protected void result(Object object) {
-                            if (object.equals(true)) {
-
-//                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Archer.");
-
-
-
-
-//                                    System.out.println((parent.getNumOfPlayers() - parent.getReadyPlayers()) + " players to go.");
-
-                                parent.createNewBoard();
-                                parent.changeScreen(Andor.MULTIGAME);
-                            }
-                        }
-                    }.show(stage);
                 }
 
 
@@ -231,33 +184,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
                     updateServer(selectedHero);
 
-                    new Dialog("Waiting other players ...", parent.skin) {
-                        {
-                            text("Start?\n");
-                            text("Other players : \n");
 
-                            for(String key : friendlyPlayers.keySet()){
-                            text(friendlyPlayers.get(key));
-                        }
-                            button("Yes", true);
-                            button("No", false);
-                        }
-
-                        @Override
-                        protected void result(Object object) {
-                            if (object.equals(true)) {
-
-//                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Wizard.");
-
-
-
-//                                    System.out.println((parent.getNumOfPlayers() - parent.getReadyPlayers()) + " players to go.");
-
-                                parent.createNewBoard();
-                                parent.changeScreen(Andor.MULTIGAME);
-                            }
-                        }
-                    }.show(stage);
                 }
 
 
@@ -282,35 +209,7 @@ public class MultiPlayerSetupScreen implements Screen {
 //                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Dwarf.");
 
                     updateServer(selectedHero);
-                    new Dialog("Waiting other players ...", parent.skin) {
-                        {
 
-                            text("Start?\n");
-                            text("Other players :\n ");
-
-                            for(String key : friendlyPlayers.keySet()){
-                                text(friendlyPlayers.get(key));
-                            }
-
-                            button("Yes", true);
-                            button("No", false);
-                        }
-
-                        @Override
-                        protected void result(Object object) {
-                            if (object.equals(true)) {
-
-
-
-
-
-//                                    System.out.println((parent.getNumOfPlayers() - parent.getReadyPlayers()) + " players to go.");
-
-                                parent.createNewBoard();
-                                parent.changeScreen(Andor.MULTIGAME);
-                            }
-                        }
-                    }.show(stage);
                 }
 
 
@@ -319,10 +218,24 @@ public class MultiPlayerSetupScreen implements Screen {
 
         }
         table.row().pad(30, 0, 0, 0);
-        table.add(backButton).colspan(4);
+
+        titleLabel2 =  new Label( "Lobby ", parent.skin);
+        table.add(titleLabel2).colspan(4);
+        table.row().pad(30, 0, 0, 0);
+        ListConnectedPlayers = new TextArea("",parent.skin);
+        ListConnectedPlayers.setDisabled(true);
+        table.add(ListConnectedPlayers).prefSize(300).colspan(4);
+        table.row().pad(30, 0, 0, 0);
+
+
+        table.add(backButton).colspan(2);
+
         backButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+
+                socket.disconnect();
+
                 if (parent.getReadyPlayers() > 0) {
                     Hero removedHero = parent.removeLastSelectedHero();
                     if (removedHero.getTypeOfHero() == 1) {
@@ -340,13 +253,23 @@ public class MultiPlayerSetupScreen implements Screen {
                 }
             }
         });
+        table.add(startButton).colspan(2);
+        startButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                parent.createNewBoard();
+                parent.changeScreen(Andor.MULTIGAME);
+            }
+        });
+
+
         return table;
     }
 
     @Override
     public void render(float delta)
     {
-       // updateServer(Gdx.graphics.getDeltaTime() );
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -414,25 +337,16 @@ public class MultiPlayerSetupScreen implements Screen {
             public void call(Object... args) {
                 Gdx.app.log("SocketIO","Connected");
             }
-        }).on("socketID", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                JSONObject data = (JSONObject)args[0];
-                try {
-                    String id = data.getString("id");
-                    Gdx.app.log("SocketIO", "My Id : " + id);
-                }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error getting the id");
-                }
-
-            }
         }).on("newPlayer", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONObject data = (JSONObject)args[0];
+                JSONArray objects = (JSONArray)args[0];
                 try {
-                    String id = data.getString("id");
-                    Gdx.app.log("SocketIO", "New player connect: "+id);
+                    ListConnectedPlayers.setText("");
+                    for(int i =0;i<objects.length();i++) {
+                        String id = ((String) objects.getJSONObject(i).getString("id"));
+                        ListConnectedPlayers.appendText("- " + id + "\n");
+                    }
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error getting the new player id");
                 }
@@ -456,55 +370,41 @@ public class MultiPlayerSetupScreen implements Screen {
                     Gdx.app.log("SocketIO", "Error disconnecting the player");
                 }
             }
-        }).on("getPlayers", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                JSONArray objects = (JSONArray) args[0];
-                try {
-                    for(int i = 0; i < objects.length(); i++){
-
-                        String id = ((String) objects.getJSONObject(i).getString("id"));
-                        String name = ((String) objects.getJSONObject(i).getString("name"));
-                        friendlyPlayers.put(id,name);
-                        Gdx.app.log("SocketIO", "Other player already connected is : "+ id);
-
-                    }
-                } catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error getting the players");
-                }
-            }
         }).on("playerChose", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONObject data = (JSONObject)args[0];
+                JSONArray objects = (JSONArray)args[0];
                 try {
-                    String id = data.getString("id");
-                    String name = data.getString("name");
-                    Gdx.app.log("SocketIO", "the other player "+ id+ " chose : "  +name);
+                    ListConnectedPlayers.setText("");
+                    for(int i =0;i<objects.length();i++) {
+                        String id = ((String) objects.getJSONObject(i).getString("id"));
+                        String name = ((String) objects.getJSONObject(i).getString("name"));
+                        ListConnectedPlayers.appendText("- " + name + "\n");
+                        parent.disableHero(name);
 
-                    friendlyPlayers.put(id,name);
-                    if(name.equals("Archer")) {
-                        Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Archer");
+                        friendlyPlayers.put(id, name);
+                        if (name.equals("Archer")) {
+                            Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
+                            parent.selectHero(selectedHero);
 
-                    }else if(name.equals("Warrior")) {
-                        Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Warrior");
 
-                    }else if(name.equals("Wizard")) {
-                        Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Wizard");
+                        } else if (name.equals("Warrior")) {
+                            Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
+                            parent.selectHero(selectedHero);
 
-                    }else if(name.equals("Dwarf")) {
-                        Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
-                        parent.disableHero("Dwarf");
+
+                        } else if (name.equals("Wizard")) {
+                            Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
+                            parent.selectHero(selectedHero);
+
+
+                        } else if (name.equals("Dwarf")) {
+                            Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
+                            parent.selectHero(selectedHero);
+
+                        }
 
                     }
-
 
 
                 }catch(Exception e){
