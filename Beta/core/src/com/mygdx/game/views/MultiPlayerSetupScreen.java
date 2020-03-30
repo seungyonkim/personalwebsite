@@ -110,28 +110,31 @@ public class MultiPlayerSetupScreen implements Screen {
         table.add(titleLabel).colspan(4);
         table.row().pad(50, 0, 0, 0);
 
-        HashMap<String, Boolean> availableHeroes = parent.getAvailableHeroes();
+        final HashMap<String, Boolean> availableHeroes = parent.getAvailableHeroes();
+
+
 
 
         if (availableHeroes.get("Warrior") == true) {
             warriorTexture = new Texture(Gdx.files.internal("characters/warrior_male_portrait.png"));
-            Image warriorImage = new Image(warriorTexture);
+            final Image warriorImage = new Image(warriorTexture);
             warriorImage.setSize(120, 160);
             warriorImage.setPosition(Gdx.graphics.getWidth() / 5 - warriorImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
 
             warriorImage.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-//                System.out.println("Warrior clicked");
-//                parent.changeScreen(Andor.SINGLESETUP);
+                if(availableHeroes.get("Archer")) {
 
                     Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
                     parent.selectHero(selectedHero);
                     parent.disableHero("Warrior");
-
                     updateServer(selectedHero);
 
 
+                }else{
+                    System.out.println("Already used");
+                }
 
 
                 }
@@ -149,14 +152,17 @@ public class MultiPlayerSetupScreen implements Screen {
             archerImage.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    //                System.out.println("Archer clicked");
-                    //                parent.changeScreen(Andor.SINGLESETUP);
-                    Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                    parent.selectHero(selectedHero);
-                    parent.disableHero("Archer");
+                   if(availableHeroes.get("Archer")) {
+                       Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
+                       parent.selectHero(selectedHero);
+                       parent.disableHero("Archer");
 
-                    updateServer(selectedHero);
+                       updateServer(selectedHero);
+                   }else{
+                       System.out.println("Already used");
+                   }
 
+                    //parent.changeScreen(Andor.MULTISETUP);
 
 
                 }
@@ -176,14 +182,17 @@ public class MultiPlayerSetupScreen implements Screen {
                 @Override
 
                 public void clicked(InputEvent event, float x, float y) {
-                    //                System.out.println("Wizard clicked");
-                    //                parent.changeScreen(Andor.SINGLESETUP);
-                    Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                    parent.selectHero(selectedHero);
-                    parent.disableHero("Wizard");
+                    if(availableHeroes.get("Wizard")) {
+                        Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
+                        parent.selectHero(selectedHero);
+                        parent.disableHero("Wizard");
 
-                    updateServer(selectedHero);
 
+                        updateServer(selectedHero);
+                        //parent.changeScreen(Andor.MULTISETUP);
+                    }else{
+                        System.out.println("Already used");
+                    }
 
                 }
 
@@ -200,15 +209,21 @@ public class MultiPlayerSetupScreen implements Screen {
             dwarfImage.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                    //                System.out.println("Dwarf clicked");
-                    //                parent.changeScreen(Andor.SINGLESETUP);
 
-                    Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                    parent.selectHero(selectedHero);
-                    parent.disableHero("Dwarf");
-//                                    System.out.println("Player " + (1 + parent.getReadyPlayers()) + " selected Dwarf.");
+                    if(availableHeroes.get("Dwarf")){
+                        Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
+                        parent.selectHero(selectedHero);
+                        parent.disableHero("Dwarf");
 
-                    updateServer(selectedHero);
+
+                        updateServer(selectedHero);
+                    }else{
+
+                        System.out.println("Already used!");
+                    }
+
+
+
 
                 }
 
@@ -224,6 +239,7 @@ public class MultiPlayerSetupScreen implements Screen {
         table.row().pad(30, 0, 0, 0);
         ListConnectedPlayers = new TextArea("",parent.skin);
         ListConnectedPlayers.setDisabled(true);
+
         table.add(ListConnectedPlayers).prefSize(300).colspan(4);
         table.row().pad(30, 0, 0, 0);
 
@@ -344,8 +360,9 @@ public class MultiPlayerSetupScreen implements Screen {
                 try {
                     ListConnectedPlayers.setText("");
                     for(int i =0;i<objects.length();i++) {
-                        String id = ((String) objects.getJSONObject(i).getString("id"));
-                        ListConnectedPlayers.appendText("- " + id + "\n");
+
+                        String name = ((String) objects.getJSONObject(i).getString("name"));
+                        ListConnectedPlayers.appendText("- " + name + "\n");
                     }
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error getting the new player id");
@@ -405,6 +422,7 @@ public class MultiPlayerSetupScreen implements Screen {
                         }
 
                     }
+
 
 
                 }catch(Exception e){

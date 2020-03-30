@@ -28,6 +28,7 @@ import com.mygdx.game.character.Warrior;
 import com.mygdx.game.character.Wizard;
 import com.mygdx.game.monster.Gor;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import io.socket.client.IO;
@@ -656,19 +657,25 @@ public class MultiGameScreen implements Screen {
         socket.on("playerMoved", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONObject data = (JSONObject)args[0];
+                JSONArray objects = (JSONArray) args[0];
                 Hero currentHero = parent.whoseTurn();
 
                 try {
-                    String id = data.getString("id");
+                    for(int i =0 ;i < objects.length();i++){
 
-                    float x = ((float)data.getDouble("x"));
-                    float y = ((float)data.getDouble("y"));
-                    Region from = gameBoard.getRegion(currentHero.getPosition());
-                    Region to = findRegion(x,y);
-                    currentHero.moveTo(from,to);
+                        
+                        String id = ((String) objects.getJSONObject(i).getString("id"));
 
-                    Gdx.app.log("SocketIO", "the other player "+ id+ " Moved ");
+                        float x = ((float) objects.getJSONObject(i).getInt("x"));
+                        float y = ((float) objects.getJSONObject(i).getInt("y"));
+                        Region from = gameBoard.getRegion(currentHero.getPosition());
+                        Region to = findRegion(x,y);
+                        currentHero.moveTo(from,to);
+
+
+                    }
+
+
 
 
 

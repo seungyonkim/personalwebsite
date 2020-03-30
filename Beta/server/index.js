@@ -32,7 +32,7 @@ io.on('connect',function(socket){
     });
      socket.on('playerMoved',function(data){
             data.id=socket.id;
-            io.emit('playerMoved',data);
+
 
             console.log("Player moved : " + data.id);
             for(var i=0; i <players.length ; i++){
@@ -41,6 +41,8 @@ io.on('connect',function(socket){
                     players[i].y = data.y;
                 }
             }
+
+            io.emit('playerMoved',players);
 
         });
 

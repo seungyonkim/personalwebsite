@@ -113,7 +113,8 @@ public class Andor extends Game {
 		}
 	}
 
-    public HashMap<String, Boolean> getAvailableHeroes() {
+
+	public HashMap<String, Boolean> getAvailableHeroes() {
         return availableHeroes;
     }
 
