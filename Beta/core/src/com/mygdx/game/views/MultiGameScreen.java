@@ -642,10 +642,9 @@ public class MultiGameScreen implements Screen {
         if( currentHero.hasMoved()){
             JSONObject data = new JSONObject();
             try{
-                int x = gameBoard.getRegion(currentHero.getPosition()).getX();
-                int y = gameBoard.getRegion(currentHero.getPosition()).getY();
+                int x = currentHero.getPosition();
                 data.put("x",x);
-                data.put("y",y);
+
                 socket.emit("playerMoved", data);
             }catch(Exception e){
                 Gdx.app.log("SocketIO", "Error moving the Player");
@@ -663,15 +662,48 @@ public class MultiGameScreen implements Screen {
                 try {
                     for(int i =0 ;i < objects.length();i++){
 
-                        
-                        String id = ((String) objects.getJSONObject(i).getString("id"));
 
-                        float x = ((float) objects.getJSONObject(i).getInt("x"));
-                        float y = ((float) objects.getJSONObject(i).getInt("y"));
-                        Region from = gameBoard.getRegion(currentHero.getPosition());
-                        Region to = findRegion(x,y);
-                        currentHero.moveTo(from,to);
+                        String name = ((String) objects.getJSONObject(i).getString("name"));
 
+                        if(name.equals(currentHero.getTypeOfHeroString())) {
+
+
+                            int toRegionNum = (objects.getJSONObject(i).getInt("x"));
+                            int fromRegionNum = currentHero.getPosition();
+                            Region from = gameBoard.getRegion(fromRegionNum);
+                            Region to = gameBoard.getRegion(toRegionNum);
+
+                            currentHero.moveTo(from, to);
+                            currentHero.setMoved();
+                            System.out.println("Hero "+currentHero.getTypeOfHero()+" moved to region "+currentHero.getPosition());
+                            System.out.println("Hero "+currentHero.getTypeOfHero()+" used "+currentHero.getHours()+" hours in total in the day.");
+                            if (currentHero instanceof Warrior) {
+                                int x = gameBoard.getRegion(currentHero.getPosition()).getX();
+                                int y = gameBoard.getRegion(currentHero.getPosition()).getY();
+                                warrior.x = calcX(x) - warrior.width/2;
+                                warrior.y = calcY(y) - warrior.height/2;
+                                skipping = false;
+                            } else if (currentHero instanceof Archer) {
+                                int x = gameBoard.getRegion(currentHero.getPosition()).getX();
+                                int y = gameBoard.getRegion(currentHero.getPosition()).getY();
+                                archer.x = calcX(x) - archer.width/2;
+                                archer.y = calcY(y) - archer.height/2;
+                                skipping = false;
+                            } else if (currentHero instanceof Wizard) {
+                                int x = gameBoard.getRegion(currentHero.getPosition()).getX();
+                                int y = gameBoard.getRegion(currentHero.getPosition()).getY();
+                                wizard.x = calcX(x) - wizard.width/2;
+                                wizard.y = calcY(y) - wizard.height/2;
+                                skipping = false;
+                            } else if (currentHero instanceof Dwarf) {
+                                int x = gameBoard.getRegion(currentHero.getPosition()).getX();
+                                int y = gameBoard.getRegion(currentHero.getPosition()).getY();
+                                dwarf.x = calcX(x) - dwarf.width/2;
+                                dwarf.y = calcY(y) - dwarf.height/2;
+                                skipping = false;
+                            }
+                            show();
+                        }
 
                     }
 
@@ -696,13 +728,5 @@ public class MultiGameScreen implements Screen {
         }
     }
 
-    public Region findRegion(float x , float y ){
-        for(int i =0 ;i < availableRegions.size();i++){
-            if(availableRegions.get(i).getX() == x && availableRegions.get(i).getY()== y){
-                return availableRegions.get(i);
-            }
-        }
-        System.out.println("Cannot find the new region");
-        return null;
-    }
+
 }

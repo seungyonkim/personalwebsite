@@ -12,7 +12,7 @@ server.listen(8080,function(){
 io.on('connect',function(socket){
 
     console.log("Player connected");
-    players.push(new player(socket.id,"Choosing....",0,0));
+    players.push(new player(socket.id,"Choosing....",0));
     io.emit('newPlayer',players);
 
 
@@ -34,15 +34,14 @@ io.on('connect',function(socket){
             data.id=socket.id;
 
 
-            console.log("Player moved : " + data.id);
+            console.log("Player moved to region = " + data.x );
             for(var i=0; i <players.length ; i++){
                 if(players[i].id == data.id){
                     players[i].x = data.x;
-                    players[i].y = data.y;
                 }
             }
 
-            io.emit('playerMoved',players);
+            socket.broadcast.emit('playerMoved',players);
 
         });
 
@@ -73,11 +72,10 @@ io.on('connect',function(socket){
 
 });
 
-function player (id, name, x, y){
+function player (id, name, x){
     this.id =id;
     this.name = name;
     this.x = x;
-    this.y = y;
 
 }
 
