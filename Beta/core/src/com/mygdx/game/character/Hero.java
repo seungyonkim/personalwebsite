@@ -58,6 +58,8 @@ public class Hero {
     }
     public boolean hasMoved(){return moved;}
     public void setMoved(){moved = true;}
+    public void restoreMoved(){moved = false;}
+
 
 
     public int getRank() { return this.rank; }

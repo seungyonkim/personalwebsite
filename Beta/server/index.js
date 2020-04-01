@@ -34,7 +34,7 @@ io.on('connect',function(socket){
             data.id=socket.id;
 
 
-            console.log("Player moved to region = " + data.x );
+            console.log("Player moved to region " + data.x );
             for(var i=0; i <players.length ; i++){
                 if(players[i].id == data.id){
                     players[i].x = data.x;

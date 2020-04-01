@@ -70,6 +70,7 @@ public class Andor extends Game {
 	private HashMap<String, Boolean> availableHeroes;
 
 	private HashMap<String,String> friendlyPlayers; // hash map of the players and their id for the server
+	private Hero myHero;
 
 	public final float UPDATE_TIME =1/60f;
 	public float timer;
@@ -147,6 +148,18 @@ public class Andor extends Game {
 	public Hero whoseTurn() {
         return currentTurn;
     }
+    public Hero getMyHero(){
+		if (myHero == null) {
+			System.out.println("NULL MY HERO");
+			return myHero;
+		}
+    	else{
+				return myHero;
+
+			}
+
+	}
+    public void setMyHero(Hero hero){myHero =hero;}
 
     public void nextTurn() {
 		for (int i = 0; i < playerHeroes.size(); i++) {

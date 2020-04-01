@@ -324,8 +324,8 @@ public class MultiPlayerSetupScreen implements Screen {
         stage.dispose();
     }
     public void updateServer(Hero selectedHero){
-
-            JSONObject data =new JSONObject();
+        parent.setMyHero(selectedHero);
+        JSONObject data =new JSONObject();
             try{
                 data.put("name", selectedHero.getTypeOfHeroString());
 
