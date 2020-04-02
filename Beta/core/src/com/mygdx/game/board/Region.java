@@ -1,3 +1,4 @@
+
 package com.mygdx.game.board;
 
 import com.mygdx.game.character.Hero;

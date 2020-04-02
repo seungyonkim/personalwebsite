@@ -47,7 +47,7 @@ public class PreferenceScreen implements Screen {
 
         Table table = new Table();
         table.setFillParent(true);
-        table.setDebug(false);
+        table.setDebug(true);
         stage.addActor(table);
 
 //        Skin skin  = new Skin(Gdx.files.internal("skin/Shadeui/uiskin.json"));

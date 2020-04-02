@@ -36,6 +36,7 @@ public class MenuScreen implements Screen {
     @Override
     public void show()
     {
+        stage.clear();
 
         Gdx.input.setInputProcessor(stage);
 
