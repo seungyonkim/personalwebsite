@@ -13,6 +13,7 @@ import java.util.Random;
 public class Hero {
 
     private int position;
+    private boolean moved;
     private int gold;
     private int willPower;
     private int strengthPoint;
@@ -21,7 +22,7 @@ public class Hero {
     private ArrayList<Item> items;
     private int hours = 0;
     private boolean canPlay = true;
-//    private Farmer farmer;
+    //    private Farmer farmer;
     private ArrayList<Farmer> farmers;
 
     public Hero(int position, int gold, int wp, int sp, int rank, String name)
@@ -89,7 +90,7 @@ public class Hero {
         return this.hours;
     }
 
-//    public Farmer getFarmer() {
+    //    public Farmer getFarmer() {
 //        return this.farmer;
 //    }
     public ArrayList<Farmer> getFarmers() {
@@ -112,8 +113,17 @@ public class Hero {
         this.strengthPoint += sp;
         if(this.strengthPoint > 14) this.strengthPoint = 14;
     }
+    public String getTypeOfHeroString() {
+        if(this instanceof Archer) return "Archer";
+        if(this instanceof Dwarf) return "Dwarf";
+        if(this instanceof Warrior) return "Warrior";
+        if(this instanceof Wizard) return "Wizard";
+        else return "";
+    }
 
-
+    public boolean hasMoved(){return moved;}
+    public void setMoved(){moved = true;}
+    public void restoreMoved(){moved = false;}
     public boolean moveTo(Region from, Region to) {
         if(canPlay)
         {

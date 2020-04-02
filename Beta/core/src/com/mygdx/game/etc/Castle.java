@@ -48,4 +48,3 @@ public class Castle extends Region {
 
     public int getFarmerCount() { return this.farmerCount; }
 }
-

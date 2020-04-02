@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/Greg/StudioProjects/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "outputFile": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/Greg/StudioProjects/f2019-hexanome-06/Beta/android/res/values/color.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "55",
-                        "endOffsets": "106"
-                    }
-                },
-                {
-                    "source": "/Users/Greg/StudioProjects/f2019-hexanome-06/Beta/android/res/values/strings.xml",
+                    "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/values/strings.xml",
                     "from": {
                         "startLines": "3",
                         "startColumns": "4",
@@ -31,7 +21,17 @@
                     }
                 },
                 {
-                    "source": "/Users/Greg/StudioProjects/f2019-hexanome-06/Beta/android/res/values/styles.xml",
+                    "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/values/color.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                },
+                {
+                    "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/values/styles.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

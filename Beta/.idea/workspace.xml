@@ -1,0 +1,1806 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8110eef8-25d0-462a-afa6-b8de295dbbee" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Beta.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp_okhttp_2_5_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp_okhttp_ws_2_5_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_6_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__core_core_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__desktop_desktop_1_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__engine_io_client_0_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_socket_engine_io_client_0_6_2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_socket_socket_io_client_0_6_2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__json_20090211.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__okhttp_2_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__okhttp_ws_2_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__okio_1_6_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_json_json_20090211_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__socket_io_client_0_6_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/++pXxduwVuIKBEEgtuckccBjIpE=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/+z9YfkynYz45Z4T3tagjffHdl9g=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/1LjQkNctSncArp6ofNKNzDfgfQA=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/7m3gz8M3LjaJ_njL4UTUqpjaizg=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/9osc9bcz_HGCCOt0XLU6cNiUPb0=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/O+PNapr1Bwql4uYLz5z6yf2OTvE=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/O8xrAc_M9H2Y5Rwy8o8v6TgDdkc=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/SYxcI9HQPNOBcrUu61CA22wdqKg=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/b+urB5Sv4B07siJqshhXwsGXNtk=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/c_sUfVh1GAycW9NUhRdu4CaDEgA=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/dzgXCoHYrVAxEZDdy83tK3h5+U8=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/t+C8_Rvx1F8ejYOGXQDVclvu4hw=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/ta9jHfgMqt2gcGEHdiZhKpZyI80=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/++pXxduwVuIKBEEgtuckccBjIpE=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/+z9YfkynYz45Z4T3tagjffHdl9g=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/1LjQkNctSncArp6ofNKNzDfgfQA=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/7m3gz8M3LjaJ_njL4UTUqpjaizg=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/9osc9bcz_HGCCOt0XLU6cNiUPb0=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/O+PNapr1Bwql4uYLz5z6yf2OTvE=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/O8xrAc_M9H2Y5Rwy8o8v6TgDdkc=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/SYxcI9HQPNOBcrUu61CA22wdqKg=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/b+urB5Sv4B07siJqshhXwsGXNtk=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/c_sUfVh1GAycW9NUhRdu4CaDEgA=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/dzgXCoHYrVAxEZDdy83tK3h5+U8=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/t+C8_Rvx1F8ejYOGXQDVclvu4hw=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/ta9jHfgMqt2gcGEHdiZhKpZyI80=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/GVIschGFuPdF1tSv0wICVcP+HSM=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/XWztZZtH8L6TTw+KRc1JRs7dQxQ=" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/.transforms/2f3e7e9dcc88c8aa8dd4c4d8aa310d57.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/.transforms/ac57284af0443d35f494e6f162f357c1.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/.transforms/ac57284af0443d35f494e6f162f357c1/classes.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/ChatScreen$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/ChatScreen$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/ChatScreen$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/ChatScreen$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/ChatScreen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$10.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$11.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$12.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$13.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$14.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$15.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$10.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$6.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$7.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$8.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$9.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/build/libs/desktop-1.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/build/tmp/jar/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid16455.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/replay_pid16455.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/.bin/mime" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/accepts/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/accepts/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/accepts/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/accepts/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/accepts/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/after/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/after/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/after/LICENCE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/after/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/after/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/after/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/after/test/after-test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/array-flatten/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/array-flatten/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/array-flatten/array-flatten.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/array-flatten/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/arraybuffer.slice/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/arraybuffer.slice/LICENCE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/arraybuffer.slice/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/arraybuffer.slice/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/arraybuffer.slice/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/arraybuffer.slice/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/arraybuffer.slice/test/slice-buffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/async-limiter/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/async-limiter/.nycrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/async-limiter/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/async-limiter/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/async-limiter/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/async-limiter/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/async-limiter/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/backo2/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64-arraybuffer/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64-arraybuffer/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64-arraybuffer/LICENSE-MIT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64-arraybuffer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64-arraybuffer/lib/base64-arraybuffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64-arraybuffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64id/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64id/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64id/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64id/lib/base64id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/base64id/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/better-assert/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/better-assert/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/better-assert/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/better-assert/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/better-assert/example.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/better-assert/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/better-assert/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.idea/blob.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.idea/markdown-navigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.idea/markdown-navigator/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/.zuul.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/blob/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/lib/read.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/lib/types/json.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/lib/types/raw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/lib/types/text.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/src/inspector-log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/body-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/bytes/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/bytes/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/bytes/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/bytes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/bytes/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/callsite/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/callsite/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/callsite/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/callsite/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/callsite/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/callsite/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-bind/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-bind/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-bind/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-bind/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-bind/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-bind/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-bind/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-emitter/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-emitter/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-emitter/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-emitter/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-emitter/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/component-inherit/test/inherit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-disposition/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-disposition/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-disposition/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-disposition/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-disposition/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-type/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-type/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-type/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-type/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/content-type/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie-signature/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie-signature/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie-signature/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie-signature/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie-signature/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/cookie/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/dist/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/src/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/lib/browser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/lib/compat/callsite-tostring.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/lib/compat/event-listener-count.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/lib/compat/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/depd/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/destroy/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/destroy/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/destroy/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/destroy/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ee-first/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ee-first/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ee-first/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ee-first/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/encodeurl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/engine.io.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/socket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/transport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/transports/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/transports/polling-jsonp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/transports/polling-xhr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/transports/polling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/transports/websocket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/lib/xmlhttprequest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/buffer-util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/event-target.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/extension.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/permessage-deflate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/receiver.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/sender.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/validation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/websocket-server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/lib/websocket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/node_modules/ws/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-client/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-parser/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-parser/lib/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-parser/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-parser/lib/keys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-parser/lib/utf8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/engine.io.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/socket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/transport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/transports/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/transports/polling-jsonp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/transports/polling-xhr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/transports/polling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/lib/transports/websocket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/engine.io/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/escape-html/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/escape-html/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/escape-html/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/escape-html/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/etag/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/etag/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/etag/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/etag/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/etag/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/application.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/express.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/middleware/init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/middleware/query.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/request.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/response.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/router/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/router/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/lib/view.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/cookie/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/cookie/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/cookie/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/cookie/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/cookie/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/src/inspector-log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/express/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/src/inspector-log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/finalhandler/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/forwarded/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/forwarded/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/forwarded/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/forwarded/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/forwarded/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/fresh/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/fresh/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/fresh/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/fresh/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/fresh/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-binary2/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-binary2/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-binary2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-binary2/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-binary2/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/has-cors/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/http-errors/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/http-errors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/http-errors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/http-errors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/http-errors/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/Changelog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/dbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/dbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/internal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/sbcs-codec.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/sbcs-data-generated.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/sbcs-data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/big5-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/cp936.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/cp949.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/cp950.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/eucjp.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/gb18030-ranges.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/gbk-added.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/tables/shiftjis.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/utf16.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/encodings/utf7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/lib/bom-handling.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/lib/extend-node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/lib/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/lib/streams.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/iconv-lite/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/indexof/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/indexof/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/indexof/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/indexof/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/indexof/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/indexof/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/inherits/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/inherits/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/inherits/inherits.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/inherits/inherits_browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/inherits/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ipaddr.js/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ipaddr.js/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ipaddr.js/ipaddr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ipaddr.js/lib/ipaddr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ipaddr.js/lib/ipaddr.js.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ipaddr.js/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/isarray/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/isarray/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/isarray/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/media-typer/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/media-typer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/media-typer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/media-typer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/media-typer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/merge-descriptors/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/methods/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/methods/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/methods/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/methods/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/methods/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-db/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-db/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-db/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-db/db.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-db/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-db/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-types/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-types/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-types/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-types/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime-types/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/cli.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/mime.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/src/build.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/src/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/mime/types.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/lib/charset.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/lib/encoding.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/lib/language.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/lib/mediaType.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/negotiator/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/object-component/test/object.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/on-finished/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/on-finished/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/on-finished/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/on-finished/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/on-finished/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseqs/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseqs/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseqs/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseqs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseqs/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseqs/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseqs/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseuri/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseurl/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseurl/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseurl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseurl/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/parseurl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/path-to-regexp/History.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/path-to-regexp/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/path-to-regexp/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/path-to-regexp/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/path-to-regexp/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/proxy-addr/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/proxy-addr/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/proxy-addr/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/proxy-addr/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/proxy-addr/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/dist/qs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/formats.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/stringify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/lib/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/test/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/test/parse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/test/stringify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/qs/test/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/range-parser/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/range-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/range-parser/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/range-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/range-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/raw-body/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/raw-body/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/raw-body/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/raw-body/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/raw-body/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/raw-body/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safe-buffer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safe-buffer/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safe-buffer/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safe-buffer/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safe-buffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safer-buffer/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safer-buffer/Porting-Buffer.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safer-buffer/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safer-buffer/dangerous.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safer-buffer/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safer-buffer/safer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/safer-buffer/tests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/component.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/src/inspector-log.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/send/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/serve-static/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/serve-static/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/serve-static/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/serve-static/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/serve-static/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/setprototypeof/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/setprototypeof/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/setprototypeof/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/setprototypeof/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/setprototypeof/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/setprototypeof/test/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/.idea/$CACHE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/.idea/socket.io-adapter.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-adapter/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.dev.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.slim.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.slim.dev.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.slim.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/dist/socket.io.slim.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/lib/manager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/lib/on.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/lib/socket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/lib/url.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/ms/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/ms/license.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/ms/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/ms/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/binary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/is-buffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/.coveralls.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/.eslintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/karma.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/debug.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/node_modules/debug/src/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/node_modules/socket.io-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-client/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-parser/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-parser/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-parser/binary.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-parser/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-parser/is-buffer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io-parser/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/lib/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/lib/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/lib/namespace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/lib/parent-namespace.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/lib/socket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/socket.io/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/statuses/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/statuses/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/statuses/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/statuses/codes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/statuses/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/statuses/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/to-array/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/to-array/LICENCE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/to-array/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/to-array/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/to-array/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/toidentifier/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/toidentifier/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/toidentifier/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/toidentifier/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/type-is/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/type-is/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/type-is/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/type-is/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/type-is/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/unpipe/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/unpipe/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/unpipe/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/unpipe/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/unpipe/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/utils-merge/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/utils-merge/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/utils-merge/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/utils-merge/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/utils-merge/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/vary/HISTORY.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/vary/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/vary/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/vary/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/vary/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/browser.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/buffer-util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/event-target.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/extension.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/limiter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/permessage-deflate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/receiver.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/sender.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/stream.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/validation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/websocket-server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/lib/websocket.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/ws/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/autotest.watchr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/example/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/lib/XMLHttpRequest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-events.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-exceptions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-headers.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-redirect-302.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-redirect-303.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-redirect-307.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-request-methods.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/test-request-protocols.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/xmlhttprequest-ssl/tests/testdata.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/yeast/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/yeast/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/yeast/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/node_modules/yeast/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_1_9_10_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_1_9_10_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_backend_android_1_9_10_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_backend_android_1_9_10_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_box2d_1_9_10_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_badlogicgames_gdx_gdx_box2d_1_9_10_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/multi-v2/values.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/external_libs_dex/debug/mergeExtDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/external_libs_dex/debug/mergeExtDexDebug/out/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/2VIsBSn0988rcwAVf2Zxv12hnDM=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/2VIsBSn0988rcwAVf2Zxv12hnDM=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/2ZMQUwKEzwjFBonjP_IT+3MzByE=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/2ZMQUwKEzwjFBonjP_IT+3MzByE=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/4DSiu1Z7ebx+vZMespyYql2flEY=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/4DSiu1Z7ebx+vZMespyYql2flEY=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/64Ks14uZpGabGqlHJ9tNjpDsxUs=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/64Ks14uZpGabGqlHJ9tNjpDsxUs=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/AiM8OzMlkf4Z13MWk9asGmXbGRY=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/AiM8OzMlkf4Z13MWk9asGmXbGRY=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/hToggp71x7HhoZq7QnT5W9QZr_U=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/hToggp71x7HhoZq7QnT5W9QZr_U=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/uMG178XpclkfpWuhk3TfecMQcv8=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/uMG178XpclkfpWuhk3TfecMQcv8=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/2VIsBSn0988rcwAVf2Zxv12hnDM=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/2VIsBSn0988rcwAVf2Zxv12hnDM=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/2ZMQUwKEzwjFBonjP_IT+3MzByE=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/2ZMQUwKEzwjFBonjP_IT+3MzByE=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/4DSiu1Z7ebx+vZMespyYql2flEY=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/4DSiu1Z7ebx+vZMespyYql2flEY=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/64Ks14uZpGabGqlHJ9tNjpDsxUs=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/64Ks14uZpGabGqlHJ9tNjpDsxUs=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/AiM8OzMlkf4Z13MWk9asGmXbGRY=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/AiM8OzMlkf4Z13MWk9asGmXbGRY=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/hToggp71x7HhoZq7QnT5W9QZr_U=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/hToggp71x7HhoZq7QnT5W9QZr_U=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/uMG178XpclkfpWuhk3TfecMQcv8=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/uMG178XpclkfpWuhk3TfecMQcv8=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/jB9KaXLuyJpjEiGjIDJWKCyx8A8=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/jB9KaXLuyJpjEiGjIDJWKCyx8A8=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/jpsbo5ciW8DpUnKDT+QuMeBO4F4=" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/jpsbo5ciW8DpUnKDT+QuMeBO4F4=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher_foreground.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher_foreground.xml.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher.png.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher.png.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/values_values.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/res/merged/debug/values_values.arsc.flat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/signing_config/debug/out/signing-config.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/signing_config/debug/out/signing-config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/dexBuilder/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/dexBuilder/debug/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJavaRes/debug/0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJavaRes/debug/0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/outputs/apk/debug/android-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/outputs/apk/debug/android-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/android/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/.transforms/0d0fece58a3d144b46a075aea4fd8dd7.bin" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/.transforms/0d0fece58a3d144b46a075aea4fd8dd7.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/.transforms/5b0bc3a790a77a77fe9dbabe2daf31f6.bin" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/.transforms/5b0bc3a790a77a77fe9dbabe2daf31f6.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/.transforms/b41f08e0107b8397c71c68e69044df46.bin" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/.transforms/b41f08e0107b8397c71c68e69044df46.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/.transforms/b41f08e0107b8397c71c68e69044df46/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/.transforms/b41f08e0107b8397c71c68e69044df46/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/Andor.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/Andor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/board/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/board/Region.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/character/Archer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/character/Dwarf.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/character/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/character/Hero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/character/Warrior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/character/Wizard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Castle.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Castle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Farmer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Fog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Merchant.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Merchant.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/etc/Well.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/monster/Gor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/monster/Monster.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/monster/Monster.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/monster/Skral.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/preference/AppPreferences.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$14.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$15.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$16.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$17.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$18.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$19.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$20.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$3$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$5$1$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$5$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/GameScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/MenuScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/NewGameScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/NewGameScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/NewGameScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/NewGameScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/NewGameScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/NewGameScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/PreferenceScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/mygdx/game/views/PreferenceScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Castle.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Castle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Farmer.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Farmer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Merchant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Well.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Well.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/monster/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/monster/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/PreferenceScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/PreferenceScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/desktop.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/build/classes/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/desktop/.gradle/" />
+    <ignored path="$PROJECT_DIR$/desktop/build/" />
+    <ignored path="$PROJECT_DIR$/core/.gradle/" />
+    <ignored path="$PROJECT_DIR$/core/build/" />
+    <ignored path="$PROJECT_DIR$/android/build/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="202" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_C_API_28" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2826">
+              <caret line="117" column="16" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3956#3957#0" expanded="true" />
+                <element signature="e#6213#6214#0" expanded="true" />
+                <element signature="e#7317#7318#0" expanded="true" />
+                <element signature="e#7391#7392#0" expanded="true" />
+                <element signature="e#7474#7475#0" expanded="true" />
+                <element signature="e#9723#9724#0" expanded="true" />
+                <element signature="e#9783#9784#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/monster/Monster.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2550">
+              <caret line="193" column="1" selection-start-line="193" selection-start-column="1" selection-end-line="193" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/GameScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="249" column="29" selection-start-line="249" selection-start-column="19" selection-end-line="249" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#9978#9979#0" expanded="true" />
+                <element signature="e#10036#10037#0" expanded="true" />
+                <element signature="e#10069#10070#0" expanded="true" />
+                <element signature="e#10133#10134#0" expanded="true" />
+                <element signature="e#18280#18281#0" expanded="true" />
+                <element signature="e#18340#18341#0" expanded="true" />
+                <element signature="e#24713#24714#0" expanded="true" />
+                <element signature="e#24773#24774#0" expanded="true" />
+                <element signature="e#31695#31696#0" expanded="true" />
+                <element signature="e#31755#31756#0" expanded="true" />
+                <element signature="e#33011#33012#0" expanded="true" />
+                <element signature="e#33063#33064#0" expanded="true" />
+                <element signature="e#37648#37974#0" expanded="true" />
+                <element signature="e#37973#37974#0" expanded="true" />
+                <element signature="e#38899#41597#0" expanded="true" />
+                <element signature="e#41596#41597#0" expanded="true" />
+                <element signature="e#42137#42517#0" expanded="true" />
+                <element signature="e#42516#42517#0" expanded="true" />
+                <element signature="e#42754#43121#0" expanded="true" />
+                <element signature="e#43120#43121#0" expanded="true" />
+                <element signature="e#43432#43812#0" expanded="true" />
+                <element signature="e#43811#43812#0" expanded="true" />
+                <element signature="e#45211#46011#0" expanded="true" />
+                <element signature="e#46010#46011#0" expanded="true" />
+                <element signature="e#46356#46697#0" expanded="true" />
+                <element signature="e#46696#46697#0" expanded="true" />
+                <element signature="e#47072#47420#0" expanded="true" />
+                <element signature="e#47419#47420#0" expanded="true" />
+                <element signature="e#47773#48122#0" expanded="true" />
+                <element signature="e#48121#48122#0" expanded="true" />
+                <element signature="e#48583#48968#0" expanded="true" />
+                <element signature="e#48967#48968#0" expanded="true" />
+                <element signature="e#49396#49818#0" expanded="true" />
+                <element signature="e#49817#49818#0" expanded="true" />
+                <element signature="e#50374#50837#0" expanded="true" />
+                <element signature="e#50836#50837#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1606">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1166#1167#0" expanded="true" />
+                <element signature="e#1203#1204#0" expanded="true" />
+                <element signature="e#1239#1240#0" expanded="true" />
+                <element signature="e#1275#1276#0" expanded="true" />
+                <element signature="e#1316#1317#0" expanded="true" />
+                <element signature="e#1357#1358#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1421#1422#0" expanded="true" />
+                <element signature="e#1562#1563#0" expanded="true" />
+                <element signature="e#1597#1598#0" expanded="true" />
+                <element signature="e#1629#1630#0" expanded="true" />
+                <element signature="e#1664#1665#0" expanded="true" />
+                <element signature="e#1697#1698#0" expanded="true" />
+                <element signature="e#1733#1734#0" expanded="true" />
+                <element signature="e#1779#1780#0" expanded="true" />
+                <element signature="e#1812#1813#0" expanded="true" />
+                <element signature="e#1845#1846#0" expanded="true" />
+                <element signature="e#1878#1879#0" expanded="true" />
+                <element signature="e#1999#2000#0" expanded="true" />
+                <element signature="e#2034#2035#0" expanded="true" />
+                <element signature="e#2075#2076#0" expanded="true" />
+                <element signature="e#2108#2109#0" expanded="true" />
+                <element signature="e#5272#5273#0" expanded="true" />
+                <element signature="e#5302#5303#0" expanded="true" />
+                <element signature="e#5931#5932#0" expanded="true" />
+                <element signature="e#5958#5959#0" expanded="true" />
+                <element signature="e#5990#5991#0" expanded="true" />
+                <element signature="e#6017#6018#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="943">
+              <caret line="648" column="32" selection-start-line="648" selection-start-column="24" selection-end-line="648" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="547">
+              <caret line="117" column="29" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="29" />
+              <folding>
+                <element signature="e#3744#3745#0" expanded="true" />
+                <element signature="e#3793#3794#0" expanded="true" />
+                <element signature="e#3958#3959#0" expanded="true" />
+                <element signature="e#3998#3999#0" expanded="true" />
+                <element signature="e#4039#4040#0" expanded="true" />
+                <element signature="e#4076#4077#0" expanded="true" />
+                <element signature="e#4115#4116#0" expanded="true" />
+                <element signature="e#4150#4151#0" expanded="true" />
+                <element signature="e#4200#4201#0" expanded="true" />
+                <element signature="e#4238#4239#0" expanded="true" />
+                <element signature="e#4680#4681#0" expanded="true" />
+                <element signature="e#4707#4708#0" expanded="true" />
+                <element signature="e#4739#4740#0" expanded="true" />
+                <element signature="e#4766#4767#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4770">
+              <caret line="318" column="1" selection-start-line="318" selection-start-column="1" selection-end-line="318" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#494#502#0" expanded="true" />
+                <element signature="e#4797#4798#0" expanded="true" />
+                <element signature="e#4835#4836#0" expanded="true" />
+                <element signature="e#4884#4885#0" expanded="true" />
+                <element signature="e#4933#4934#0" expanded="true" />
+                <element signature="e#4966#4967#0" expanded="true" />
+                <element signature="e#5000#5001#0" expanded="true" />
+                <element signature="e#5780#5788#0" expanded="true" />
+                <element signature="e#5997#6005#0" expanded="true" />
+                <element signature="e#6737#6745#0" expanded="true" />
+                <element signature="e#7251#7259#0" expanded="true" />
+                <element signature="e#7554#7562#0" expanded="true" />
+                <element signature="e#9837#9843#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/etc/Castle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="593">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#607#608#0" expanded="true" />
+                <element signature="e#641#642#0" expanded="true" />
+                <element signature="e#1053#1054#0" expanded="true" />
+                <element signature="e#1082#1083#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/etc/Farmer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>board</find>
+      <find>getposition</find>
+      <find>getREgion</find>
+      <find>moveTO</find>
+      <find>setMoved</find>
+      <find>playerHeroes</find>
+      <find>current</find>
+      <find>selectHero</find>
+      <find>updateserver</find>
+      <find>getmy</find>
+      <find>chat</find>
+      <find>picj</find>
+      <find>setMyHero</find>
+      <find>upd</find>
+      <find>calcX</find>
+      <find>moveTo</find>
+      <find>hero</find>
+      <find>config</find>
+      <find>resize</find>
+      <find>update</find>
+      <find>farmer</find>
+      <find>show</find>
+      <find>GameScreen</find>
+      <find>public void show()</find>
+      <find>public void show()</find>
+      <find>getdi</find>
+      <find>removeMonster</find>
+      <find>get</find>
+      <find>getTypeOf</find>
+      <find>hasMoved</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/android/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/ChooseHeroScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/PreferenceScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" />
+        <option value="$PROJECT_DIR$/server/index.js" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/views/GameScreen.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/etc/Castle.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/monster/Monster.java" />
+        <option value="$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="board" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="etc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="core" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="preference" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="desktop" type="e9137016:NonAndroidModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_C_API_28" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-03-11T16:54:47.664Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="experimental" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Unnamed">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="android" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="android" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DesktopLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.desktop.DesktopLauncher" />
+      <module name="desktop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed (1)" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.desktop.DesktopLauncher" />
+      <module name="desktop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.desktop.DesktopLauncher" />
+      <module name="desktop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Android App.android" />
+      <item itemvalue="Application.DesktopLauncher" />
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.Unnamed (1)" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8110eef8-25d0-462a-afa6-b8de295dbbee" name="Default Changelist" comment="" />
+      <created>1583892841912</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583892841912</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" id="Project" order="1" visible="true" weight="0.18597998" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Build Variants" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="Resources Explorer" order="6" weight="0.3297568" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.32891566" />
+      <window_info anchor="bottom" id="Logcat" order="1" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49928468" weight="0.32891566" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5064378" side_tool="true" visible="true" weight="0.39036146" />
+      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49356222" visible="true" weight="0.39036146" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49427754" weight="0.15301205" />
+      <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49928468" weight="0.32891566" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Coverage" order="5" side_tool="true" weight="0.3297568" />
+    </layout>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Beta$Desktop.ic" NAME="Desktop Coverage Results" MODIFIED="1583944435066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/android/src/com/mygdx/game/AndroidLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="28" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/android/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="97" column="50" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Dwarf.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/LoadingScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/jre/jdk/Contents/Home/jre/lib/rt.jar!/java/util/HashMap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="483" column="26" selection-start-line="483" selection-start-column="19" selection-end-line="483" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/PreferenceScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="49" column="22" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Warrior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="586">
+          <caret line="69" column="13" selection-start-line="69" selection-end-line="70" />
+          <folding>
+            <element signature="e#1911#2145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/SinglePlayerSetupScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="102" column="34" selection-start-line="102" selection-start-column="23" selection-end-line="102" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChatScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2580">
+          <caret line="200" column="51" selection-start-line="200" selection-start-column="49" selection-end-line="200" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Archer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChooseHeroScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="98" column="24" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Wizard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/etc/Merchant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1245">
+          <caret line="102" column="31" selection-start-line="102" selection-start-column="31" selection-end-line="102" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/preference/AppPreferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/etc/Castle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#607#608#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
+            <element signature="e#1082#1083#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/etc/Farmer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4770">
+          <caret line="318" column="1" selection-start-line="318" selection-start-column="1" selection-end-line="318" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#494#502#0" expanded="true" />
+            <element signature="e#4797#4798#0" expanded="true" />
+            <element signature="e#4835#4836#0" expanded="true" />
+            <element signature="e#4884#4885#0" expanded="true" />
+            <element signature="e#4933#4934#0" expanded="true" />
+            <element signature="e#4966#4967#0" expanded="true" />
+            <element signature="e#5000#5001#0" expanded="true" />
+            <element signature="e#5780#5788#0" expanded="true" />
+            <element signature="e#5997#6005#0" expanded="true" />
+            <element signature="e#6737#6745#0" expanded="true" />
+            <element signature="e#7251#7259#0" expanded="true" />
+            <element signature="e#7554#7562#0" expanded="true" />
+            <element signature="e#9837#9843#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2826">
+          <caret line="117" column="16" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3956#3957#0" expanded="true" />
+            <element signature="e#6213#6214#0" expanded="true" />
+            <element signature="e#7317#7318#0" expanded="true" />
+            <element signature="e#7391#7392#0" expanded="true" />
+            <element signature="e#7474#7475#0" expanded="true" />
+            <element signature="e#9723#9724#0" expanded="true" />
+            <element signature="e#9783#9784#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="117" column="29" selection-start-line="117" selection-start-column="16" selection-end-line="117" selection-end-column="29" />
+          <folding>
+            <element signature="e#3744#3745#0" expanded="true" />
+            <element signature="e#3793#3794#0" expanded="true" />
+            <element signature="e#3958#3959#0" expanded="true" />
+            <element signature="e#3998#3999#0" expanded="true" />
+            <element signature="e#4039#4040#0" expanded="true" />
+            <element signature="e#4076#4077#0" expanded="true" />
+            <element signature="e#4115#4116#0" expanded="true" />
+            <element signature="e#4150#4151#0" expanded="true" />
+            <element signature="e#4200#4201#0" expanded="true" />
+            <element signature="e#4238#4239#0" expanded="true" />
+            <element signature="e#4680#4681#0" expanded="true" />
+            <element signature="e#4707#4708#0" expanded="true" />
+            <element signature="e#4739#4740#0" expanded="true" />
+            <element signature="e#4766#4767#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="43" column="46" selection-start-line="43" selection-start-column="46" selection-end-line="43" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/monster/Monster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="193" column="1" selection-start-line="193" selection-start-column="1" selection-end-line="193" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/GameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="249" column="29" selection-start-line="249" selection-start-column="19" selection-end-line="249" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9978#9979#0" expanded="true" />
+            <element signature="e#10036#10037#0" expanded="true" />
+            <element signature="e#10069#10070#0" expanded="true" />
+            <element signature="e#10133#10134#0" expanded="true" />
+            <element signature="e#18280#18281#0" expanded="true" />
+            <element signature="e#18340#18341#0" expanded="true" />
+            <element signature="e#24713#24714#0" expanded="true" />
+            <element signature="e#24773#24774#0" expanded="true" />
+            <element signature="e#31695#31696#0" expanded="true" />
+            <element signature="e#31755#31756#0" expanded="true" />
+            <element signature="e#33011#33012#0" expanded="true" />
+            <element signature="e#33063#33064#0" expanded="true" />
+            <element signature="e#37648#37974#0" expanded="true" />
+            <element signature="e#37973#37974#0" expanded="true" />
+            <element signature="e#38899#41597#0" expanded="true" />
+            <element signature="e#41596#41597#0" expanded="true" />
+            <element signature="e#42137#42517#0" expanded="true" />
+            <element signature="e#42516#42517#0" expanded="true" />
+            <element signature="e#42754#43121#0" expanded="true" />
+            <element signature="e#43120#43121#0" expanded="true" />
+            <element signature="e#43432#43812#0" expanded="true" />
+            <element signature="e#43811#43812#0" expanded="true" />
+            <element signature="e#45211#46011#0" expanded="true" />
+            <element signature="e#46010#46011#0" expanded="true" />
+            <element signature="e#46356#46697#0" expanded="true" />
+            <element signature="e#46696#46697#0" expanded="true" />
+            <element signature="e#47072#47420#0" expanded="true" />
+            <element signature="e#47419#47420#0" expanded="true" />
+            <element signature="e#47773#48122#0" expanded="true" />
+            <element signature="e#48121#48122#0" expanded="true" />
+            <element signature="e#48583#48968#0" expanded="true" />
+            <element signature="e#48967#48968#0" expanded="true" />
+            <element signature="e#49396#49818#0" expanded="true" />
+            <element signature="e#49817#49818#0" expanded="true" />
+            <element signature="e#50374#50837#0" expanded="true" />
+            <element signature="e#50836#50837#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1606">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1166#1167#0" expanded="true" />
+            <element signature="e#1203#1204#0" expanded="true" />
+            <element signature="e#1239#1240#0" expanded="true" />
+            <element signature="e#1275#1276#0" expanded="true" />
+            <element signature="e#1316#1317#0" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1421#1422#0" expanded="true" />
+            <element signature="e#1562#1563#0" expanded="true" />
+            <element signature="e#1597#1598#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+            <element signature="e#1664#1665#0" expanded="true" />
+            <element signature="e#1697#1698#0" expanded="true" />
+            <element signature="e#1733#1734#0" expanded="true" />
+            <element signature="e#1779#1780#0" expanded="true" />
+            <element signature="e#1812#1813#0" expanded="true" />
+            <element signature="e#1845#1846#0" expanded="true" />
+            <element signature="e#1878#1879#0" expanded="true" />
+            <element signature="e#1999#2000#0" expanded="true" />
+            <element signature="e#2034#2035#0" expanded="true" />
+            <element signature="e#2075#2076#0" expanded="true" />
+            <element signature="e#2108#2109#0" expanded="true" />
+            <element signature="e#5272#5273#0" expanded="true" />
+            <element signature="e#5302#5303#0" expanded="true" />
+            <element signature="e#5931#5932#0" expanded="true" />
+            <element signature="e#5958#5959#0" expanded="true" />
+            <element signature="e#5990#5991#0" expanded="true" />
+            <element signature="e#6017#6018#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="943">
+          <caret line="648" column="32" selection-start-line="648" selection-start-column="24" selection-end-line="648" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

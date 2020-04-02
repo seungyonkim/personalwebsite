@@ -51,7 +51,7 @@ public class Region {
     private Well well;
     private Fog fog;
     private ArrayList<Farmer> farmers;
-//    private Farmer farmer;
+    //    private Farmer farmer;
     private Monster monster;
     private int x;
     private int y;
@@ -88,7 +88,7 @@ public class Region {
     public int getAvailableMonsterPath() { return this.monsterAvailablePath; }
     public Well getWell() { return this.well; }
     public Fog getFog() { return this.fog; }
-//    public Farmer getFarmer() { return this.farmer; }
+    //    public Farmer getFarmer() { return this.farmer; }
     public ArrayList<Farmer> getFarmers() { return this.farmers; }
     public Monster getMonster() { return this.monster; }
     public int getX() { return this.x; }

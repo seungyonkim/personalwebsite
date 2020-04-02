@@ -70,7 +70,7 @@ public class GameScreen implements Screen {
     private Rectangle farmer2;
     private Rectangle coveredFog;
     private Rectangle well;
-//    private Rectangle gor;
+    //    private Rectangle gor;
     private Rectangle skral;
     private ArrayList<Rectangle> gors;
 //    private ArrayList<Rectangle> farmers;
@@ -79,7 +79,7 @@ public class GameScreen implements Screen {
     private Image pathButtonImage;
     private ArrayList<Region> availableRegions;
     private ArrayList<TextButton> pathButtons;
-//    private TextButton timeMarker;
+    //    private TextButton timeMarker;
     private TextButton heroInformation;
     private TextButton goldInformation;
     private TextButton dropGoldButton;
