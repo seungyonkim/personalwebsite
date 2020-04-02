@@ -11,3 +11,5 @@ android_app/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java
      with run configuration:
           - working directory: android_app/android/assets
           - classpath of module: desktop
+ 
+To play a multiPlayer game, run the server by going into the Beta/server folder and enter "node index.js" in the terminal, this will make the the server running locally.
