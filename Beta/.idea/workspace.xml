@@ -7,7 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8110eef8-25d0-462a-afa6-b8de295dbbee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/Beta-core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/desktop.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -46,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
+            <state relative-caret-position="4650">
               <caret line="314" column="20" selection-start-line="314" selection-start-column="8" selection-end-line="314" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,12 +80,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
+            <state relative-caret-position="149">
               <caret line="67" selection-start-line="67" selection-end-line="67" />
-              <folding>
-                <element signature="e#3111#3112#0" expanded="true" />
-                <element signature="e#3142#3143#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -85,7 +89,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2097">
+            <state relative-caret-position="510">
               <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -97,7 +101,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3539">
+            <state relative-caret-position="1200">
               <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -122,7 +126,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChooseHeroScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4002">
+            <state relative-caret-position="405">
               <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -134,24 +138,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
+            <state relative-caret-position="2025">
               <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3744#3745#0" expanded="true" />
-                <element signature="e#3793#3794#0" expanded="true" />
-                <element signature="e#3958#3959#0" expanded="true" />
-                <element signature="e#3998#3999#0" expanded="true" />
-                <element signature="e#4039#4040#0" expanded="true" />
-                <element signature="e#4076#4077#0" expanded="true" />
-                <element signature="e#4115#4116#0" expanded="true" />
-                <element signature="e#4150#4151#0" expanded="true" />
-                <element signature="e#4200#4201#0" expanded="true" />
-                <element signature="e#4238#4239#0" expanded="true" />
-                <element signature="e#4680#4681#0" expanded="true" />
-                <element signature="e#4707#4708#0" expanded="true" />
-                <element signature="e#4739#4740#0" expanded="true" />
-                <element signature="e#4766#4767#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,23 +150,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
+            <state relative-caret-position="4440">
               <caret line="296" column="14" selection-start-line="296" selection-start-column="14" selection-end-line="296" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#494#502#0" expanded="true" />
                 <element signature="e#4797#4798#0" expanded="true" />
                 <element signature="e#4835#4836#0" expanded="true" />
                 <element signature="e#4884#4885#0" expanded="true" />
                 <element signature="e#4933#4934#0" expanded="true" />
                 <element signature="e#4966#4967#0" expanded="true" />
                 <element signature="e#5000#5001#0" expanded="true" />
-                <element signature="e#5780#5788#0" expanded="true" />
-                <element signature="e#5997#6005#0" expanded="true" />
-                <element signature="e#6737#6745#0" expanded="true" />
-                <element signature="e#7251#7259#0" expanded="true" />
-                <element signature="e#7554#7562#0" expanded="true" />
-                <element signature="e#9837#9843#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -185,7 +168,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
+            <state relative-caret-position="645">
               <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
             </state>
           </provider>
@@ -292,68 +275,9 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="character" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="etc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="monster" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="preference" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="core" type="e9137016:NonAndroidModuleNode" />
-              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
             <path>
               <item name="Beta" type="1abcf292:AndroidViewProjectNode" />
               <item name="desktop" type="e9137016:NonAndroidModuleNode" />
@@ -362,6 +286,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -504,9 +430,9 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.49928468" weight="0.32891566" />
-      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5064378" side_tool="true" visible="true" weight="0.15301205" />
-      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49356222" weight="0.3686747" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" sideWeight="0.49356222" visible="true" weight="0.15301205" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5078684" side_tool="true" visible="true" weight="0.3686747" />
+      <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49213162" visible="true" weight="0.3686747" />
+      <window_info anchor="bottom" id="Run" order="7" sideWeight="0.49284694" weight="0.15301205" />
       <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49928468" weight="0.32891566" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -534,12 +460,12 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/android/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="38" selection-start-column="38" selection-end-column="38" />
         </state>
       </provider>
-      <provider editor-type-id="android-manifest" />
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
@@ -749,111 +675,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/monster/Skral.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3744#3745#0" expanded="true" />
-            <element signature="e#3793#3794#0" expanded="true" />
-            <element signature="e#3958#3959#0" expanded="true" />
-            <element signature="e#3998#3999#0" expanded="true" />
-            <element signature="e#4039#4040#0" expanded="true" />
-            <element signature="e#4076#4077#0" expanded="true" />
-            <element signature="e#4115#4116#0" expanded="true" />
-            <element signature="e#4150#4151#0" expanded="true" />
-            <element signature="e#4200#4201#0" expanded="true" />
-            <element signature="e#4238#4239#0" expanded="true" />
-            <element signature="e#4680#4681#0" expanded="true" />
-            <element signature="e#4707#4708#0" expanded="true" />
-            <element signature="e#4739#4740#0" expanded="true" />
-            <element signature="e#4766#4767#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="296" column="14" selection-start-line="296" selection-start-column="14" selection-end-line="296" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#494#502#0" expanded="true" />
-            <element signature="e#4797#4798#0" expanded="true" />
-            <element signature="e#4835#4836#0" expanded="true" />
-            <element signature="e#4884#4885#0" expanded="true" />
-            <element signature="e#4933#4934#0" expanded="true" />
-            <element signature="e#4966#4967#0" expanded="true" />
-            <element signature="e#5000#5001#0" expanded="true" />
-            <element signature="e#5780#5788#0" expanded="true" />
-            <element signature="e#5997#6005#0" expanded="true" />
-            <element signature="e#6737#6745#0" expanded="true" />
-            <element signature="e#7251#7259#0" expanded="true" />
-            <element signature="e#7554#7562#0" expanded="true" />
-            <element signature="e#9837#9843#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2097">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChooseHeroScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4002">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3539">
-          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/LoadingScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="30" column="38" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="38" />
-          <folding>
-            <element signature="e#747#748#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/Andor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
+        <state relative-caret-position="4650">
           <caret line="314" column="20" selection-start-line="314" selection-start-column="8" selection-end-line="314" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -875,14 +699,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/character/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/LoadingScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="30" column="38" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="38" />
+          <folding>
+            <element signature="e#747#748#0" expanded="true" />
+            <element signature="e#794#795#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/ChooseHeroScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Region.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="154" column="1" selection-start-line="154" selection-start-column="1" selection-end-line="154" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/board/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4440">
+          <caret line="296" column="14" selection-start-line="296" selection-start-column="14" selection-end-line="296" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4797#4798#0" expanded="true" />
+            <element signature="e#4835#4836#0" expanded="true" />
+            <element signature="e#4884#4885#0" expanded="true" />
+            <element signature="e#4933#4934#0" expanded="true" />
+            <element signature="e#4966#4967#0" expanded="true" />
+            <element signature="e#5000#5001#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/MenuScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/monster/Skral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/NewGameScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
+        <state relative-caret-position="149">
           <caret line="67" selection-start-line="67" selection-end-line="67" />
-          <folding>
-            <element signature="e#3111#3112#0" expanded="true" />
-            <element signature="e#3142#3143#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
