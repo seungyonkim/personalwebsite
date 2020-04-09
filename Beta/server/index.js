@@ -3,6 +3,7 @@ var server =require('http').Server(app);
 var io = require('socket.io')(server);
 var players= [];
 var messages =[];
+var difficulty=0;
 
 
 server.listen(8080,function(){
@@ -21,12 +22,19 @@ io.on('connect',function(socket){
 
 
         console.log("Player chose : " + data.name);
+
+        if(data.difficulty == "Easy" ){
+            difficulty = -1;
+        }
+        if(data.difficulty == "Hard"){
+            difficulty = 1;
+        }
         for(var i=0; i <players.length ; i++){
             if(players[i].id == data.id){
                 players[i].name = data.name;
             }
         }
-        io.emit('playerChose',players);
+        io.emit('playerChose', players );
 
 
     });
