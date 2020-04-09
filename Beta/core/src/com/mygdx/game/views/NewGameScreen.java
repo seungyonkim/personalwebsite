@@ -65,7 +65,7 @@ public class NewGameScreen implements Screen {
         multiPlayer.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-//                parent.changeScreen(Andor.MULTISETUP);
+                parent.changeScreen(Andor.MULTISETUP);
             }
         });
 

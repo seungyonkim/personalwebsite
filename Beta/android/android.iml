@@ -90,6 +90,12 @@
     <orderEntry type="library" name="Gradle: com.badlogicgames.gdx:gdx-freetype:1.9.10@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.badlogicgames.ashley:ashley:1.7.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.badlogicgames.gdx:gdx:1.9.10@jar" level="project" />
-    <orderEntry type="module" module-name="core" />
+    <orderEntry type="library" name="Gradle: io.socket:socket.io-client:0.6.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: io.socket:engine.io-client:0.6.2@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp:okhttp-ws:2.5.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okhttp:okhttp:2.5.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.6.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: org.json:json:20090211@jar" level="project" />
+    <orderEntry type="module" module-name="Beta-core" />
   </component>
 </module>
