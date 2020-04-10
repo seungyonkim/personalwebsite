@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Mar 28 17:04:39 CET 2020
+#Fri Apr 10 12:50:05 CEST 2020
 5.base=/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/transforms/mergeJniLibs/debug/0
 42.base=/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/transforms/mergeJniLibs/debug/0
 22.path=characters/Mage_male.png

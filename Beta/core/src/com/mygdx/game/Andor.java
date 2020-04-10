@@ -96,10 +96,10 @@ public class Andor extends Game {
 		this.readyPlayers = 0;
 		this.difficulty = difficulty;
 	}
-	public void setUpMultiPlayer() {
-		this.numOfPlayers = 4;
+	public void setUpMultiPlayer(int numOfPlayers, int difficulty) {
+		this.numOfPlayers = numOfPlayers;
 		this.readyPlayers = 0;
-		this.difficulty = 1;
+		this.difficulty = difficulty;
 	}
 	public Socket getSocket(){return socket;}
 	public int getNumOfPlayers() {

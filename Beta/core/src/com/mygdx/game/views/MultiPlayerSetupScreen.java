@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -54,6 +55,8 @@ public class MultiPlayerSetupScreen implements Screen {
     private Label titleLabel;
     private TextArea ListConnectedPlayers;
     private Label titleLabel2;
+    private SelectBox<String> difficulty;
+
 
 
     //    private TextureRegion myTextureRegion;
@@ -124,16 +127,19 @@ public class MultiPlayerSetupScreen implements Screen {
             warriorImage.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                if(availableHeroes.get("Archer")) {
+
+                if(!parent.getFriendlyPlayers().containsValue("Warrior")) {
 
                     Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
-                    parent.selectHero(selectedHero);
+                    //parent.selectHero(selectedHero);
                     parent.disableHero("Warrior");
                     updateServer(selectedHero);
 
 
                 }else{
-                    System.out.println("Already used");
+
+                    ListConnectedPlayers.appendText("Already used!");
+
                 }
 
 
@@ -152,14 +158,14 @@ public class MultiPlayerSetupScreen implements Screen {
             archerImage.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-                   if(availableHeroes.get("Archer")) {
+                    if(!parent.getFriendlyPlayers().containsValue("Archer")) {
                        Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                       parent.selectHero(selectedHero);
+                       //parent.selectHero(selectedHero);
                        parent.disableHero("Archer");
 
                        updateServer(selectedHero);
                    }else{
-                       System.out.println("Already used");
+                        ListConnectedPlayers.appendText("Already used!");
                    }
 
                     //parent.changeScreen(Andor.MULTISETUP);
@@ -182,16 +188,16 @@ public class MultiPlayerSetupScreen implements Screen {
                 @Override
 
                 public void clicked(InputEvent event, float x, float y) {
-                    if(availableHeroes.get("Wizard")) {
+                    if(!parent.getFriendlyPlayers().containsValue("Wizard")) {
                         Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
+                        //parent.selectHero(selectedHero);
                         parent.disableHero("Wizard");
 
 
                         updateServer(selectedHero);
                         //parent.changeScreen(Andor.MULTISETUP);
                     }else{
-                        System.out.println("Already used");
+                        ListConnectedPlayers.appendText("Already used!");
                     }
 
                 }
@@ -210,16 +216,16 @@ public class MultiPlayerSetupScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
 
-                    if(availableHeroes.get("Dwarf")){
+                    if(!parent.getFriendlyPlayers().containsValue("Dwarf")) {
                         Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                        parent.selectHero(selectedHero);
+                        //parent.selectHero(selectedHero);
                         parent.disableHero("Dwarf");
 
 
                         updateServer(selectedHero);
                     }else{
 
-                        System.out.println("Already used!");
+                        ListConnectedPlayers.appendText("Already used!");
                     }
 
 
@@ -232,16 +238,29 @@ public class MultiPlayerSetupScreen implements Screen {
             table.add(dwarfImage).width(120).height(160).padRight(10);
 
         }
+
+
+
         table.row().pad(30, 0, 0, 0);
 
         titleLabel2 =  new Label( "Lobby ", parent.skin);
         table.add(titleLabel2).colspan(4);
-        table.row().pad(30, 0, 0, 0);
+
+        table.row().pad(20, 0, 0, 0);
+
+
         ListConnectedPlayers = new TextArea("",parent.skin);
         ListConnectedPlayers.setDisabled(true);
 
         table.add(ListConnectedPlayers).prefSize(300).colspan(4);
+
         table.row().pad(30, 0, 0, 0);
+            difficulty = new SelectBox<String>(parent.skin);
+            difficulty.setItems("Easy", "Hard");
+            table.add(difficulty).width(150).colspan(4);
+            table.row().pad(20, 0, 0, 0);
+
+
 
 
         table.add(backButton).colspan(2);
@@ -273,6 +292,9 @@ public class MultiPlayerSetupScreen implements Screen {
         startButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                int size = friendlyPlayers.size();
+                int size2 =parent.getPlayerHeroes().size();
+                parent.setUpMultiPlayer(size,1);
                 parent.createNewBoard();
                 parent.changeScreen(Andor.MULTIGAME);
             }
@@ -328,9 +350,12 @@ public class MultiPlayerSetupScreen implements Screen {
         JSONObject data =new JSONObject();
             try{
                 data.put("name", selectedHero.getTypeOfHeroString());
+                data.put("difficulty", difficulty.getSelected());
 
                 socket.emit("playerChose", data);
                 Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : "+data.get("name"));
+                Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : "+data.get("difficulty"));
+
             }catch(Exception e){
                 Gdx.app.log("SOCKET.IO", "Error sending data");
             }
@@ -363,6 +388,28 @@ public class MultiPlayerSetupScreen implements Screen {
 
                         String name = ((String) objects.getJSONObject(i).getString("name"));
                         ListConnectedPlayers.appendText("- " + name + "\n");
+                        if(!friendlyPlayers.containsValue(name)){
+                            if (name.equals("Archer")) {
+                                Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+
+
+                            } if (name.equals("Warrior")) {
+                                Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+
+
+                            } if (name.equals("Wizard")) {
+                                Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+
+
+                            } if (name.equals("Dwarf")) {
+                                Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+
+                            }
+                        }
                     }
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error getting the new player id");
@@ -397,28 +444,36 @@ public class MultiPlayerSetupScreen implements Screen {
                         String id = ((String) objects.getJSONObject(i).getString("id"));
                         String name = ((String) objects.getJSONObject(i).getString("name"));
                         ListConnectedPlayers.appendText("- " + name + "\n");
-                        parent.disableHero(name);
+                        if(!friendlyPlayers.containsValue(name)) {
+                            friendlyPlayers.put(id, name);
+                            if (name.equals("Archer")) {
 
-                        friendlyPlayers.put(id, name);
-                        if (name.equals("Archer")) {
-                            Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
-
-
-                        } else if (name.equals("Warrior")) {
-                            Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
+                                Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+                                parent.disableHero(name);
 
 
-                        } else if (name.equals("Wizard")) {
-                            Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
+                            }
+                            if (name.equals("Warrior")) {
+                                Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+                                parent.disableHero(name);
 
 
-                        } else if (name.equals("Dwarf")) {
-                            Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                            parent.selectHero(selectedHero);
+                            }
+                            if (name.equals("Wizard")) {
+                                Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+                                parent.disableHero(name);
 
+
+                            }
+                            if (name.equals("Dwarf")) {
+                                Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
+                                parent.selectHero(selectedHero);
+                                parent.disableHero(name);
+
+                            }
                         }
 
                     }

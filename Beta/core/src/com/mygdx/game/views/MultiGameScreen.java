@@ -281,6 +281,7 @@ public class MultiGameScreen implements Screen {
     }
 
     public void updateHeroPosition(Hero hero, Rectangle rectangle) {
+        hero.setMoved();
         int x = gameBoard.getRegion(hero.getPosition()).getX();
         int y = gameBoard.getRegion(hero.getPosition()).getY();
         rectangle.x = calcX(x) - rectangle.width/2;
@@ -692,7 +693,6 @@ public class MultiGameScreen implements Screen {
 
 
 
-        if(parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
 
 
             if (parent.getFinishedHeroes().size() == parent.getPlayerHeroes().size()) {
@@ -713,9 +713,11 @@ public class MultiGameScreen implements Screen {
 //            System.out.println(r.getPosition());
 //        }
 
+        if(parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
 
-        // Portrait of the current player hero
-        final Hero currentHero = parent.whoseTurn();
+
+            // Portrait of the current player hero
+            final Hero currentHero = parent.whoseTurn();
 
             if (currentHero instanceof Warrior) {
                 warriorPortraitImage.setSize(Gdx.graphics.getWidth()*45/640, Gdx.graphics.getHeight()*70/480);
@@ -758,16 +760,17 @@ public class MultiGameScreen implements Screen {
 //            });
                 stage.addActor(dwarfPortraitImage);
             }
-    // Displaying Hero Information
+            // Displaying Hero Information
 //        heroInformation = new TextButton(String.valueOf(currentHero.getHours()), parent.skin);
-    heroInformation = new TextButton("GOLD: " + parent.whoseTurn().getGold()
-            + "\nSTRENGTH: " + parent.whoseTurn().getStrengthPoint()
-            + "\nWILLPOWER: " + parent.whoseTurn().getWillPower()
-            + "\nUSED HOURS: " + parent.whoseTurn().getHours(), parent.skin);
-    heroInformation.setTouchable(Touchable.disabled);
-    heroInformation.getLabel().setFontScale(0.8f);
-    heroInformation.setPosition(Gdx.graphics.getWidth() / 4 + warriorPortraitImage.getWidth(), Gdx.graphics.getHeight() - heroInformation.getHeight() - 5);
-    stage.addActor(heroInformation);
+            heroInformation = new TextButton("GOLD: " + parent.whoseTurn().getGold()
+                    + "\nSTRENGTH: " + parent.whoseTurn().getStrengthPoint()
+                    + "\nWILLPOWER: " + parent.whoseTurn().getWillPower()
+                    + "\nUSED HOURS: " + parent.whoseTurn().getHours(), parent.skin);
+            heroInformation.setTouchable(Touchable.disabled);
+            heroInformation.getLabel().setFontScale(0.8f);
+            heroInformation.setPosition(Gdx.graphics.getWidth() / 4 + warriorPortraitImage.getWidth(), Gdx.graphics.getHeight() - heroInformation.getHeight() - 5);
+            stage.addActor(heroInformation);
+
 
 
     ///////////////////////////
@@ -839,6 +842,7 @@ public class MultiGameScreen implements Screen {
                             }
                             show();
                             updateMove();
+
 
                         }
                     });
@@ -1314,19 +1318,19 @@ public class MultiGameScreen implements Screen {
                                 warrior.x = calcX(x) - warrior.width/2;
                                 warrior.y = calcY(y) - warrior.height/2;
                                 skipping = false;
-                            } else if (currentHero instanceof Archer) {
+                            } if (currentHero instanceof Archer) {
                                 int x = gameBoard.getRegion(currentHero.getPosition()).getX();
                                 int y = gameBoard.getRegion(currentHero.getPosition()).getY();
                                 archer.x = calcX(x) - archer.width/2;
                                 archer.y = calcY(y) - archer.height/2;
                                 skipping = false;
-                            } else if (currentHero instanceof Wizard) {
+                            } if (currentHero instanceof Wizard) {
                                 int x = gameBoard.getRegion(currentHero.getPosition()).getX();
                                 int y = gameBoard.getRegion(currentHero.getPosition()).getY();
                                 wizard.x = calcX(x) - wizard.width/2;
                                 wizard.y = calcY(y) - wizard.height/2;
                                 skipping = false;
-                            } else if (currentHero instanceof Dwarf) {
+                            } if (currentHero instanceof Dwarf) {
                                 int x = gameBoard.getRegion(currentHero.getPosition()).getX();
                                 int y = gameBoard.getRegion(currentHero.getPosition()).getY();
                                 dwarf.x = calcX(x) - dwarf.width/2;
