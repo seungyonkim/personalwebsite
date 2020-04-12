@@ -73,6 +73,13 @@ public class MultiPlayerSetupScreen implements Screen {
         friendlyPlayers = parent.getFriendlyPlayers();
         this.socket= parent.getSocket();
 
+        archerTexture = new Texture(Gdx.files.internal("characters/archer_male_portrait.png"));
+        wizardTexture = new Texture(Gdx.files.internal("characters/wizard_male_portrait.png"));
+        dwarfTexture = new Texture(Gdx.files.internal("characters/dwarf_male_portrait.png"));
+        warriorTexture = new Texture(Gdx.files.internal("characters/warrior_male_portrait.png"));
+        titleLabel = new Label( "Choose your hero ", parent.skin);
+
+
     }
 
 
@@ -80,6 +87,7 @@ public class MultiPlayerSetupScreen implements Screen {
     public void show()
     {
         stage.clear();
+
 
         connectSocket();
         configSocketEvents();
@@ -105,7 +113,6 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
 //        titleLabel = new Label( "Choose Heroes upto "+parent.getNumOfPlayers(), parent.skin);
-        titleLabel = new Label( "Choose your hero ", parent.skin);
         TextButton backButton = new TextButton("Back", parent.skin);
         TextButton startButton = new TextButton("Start",parent.skin);
 
@@ -119,7 +126,6 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
         if (availableHeroes.get("Warrior") == true) {
-            warriorTexture = new Texture(Gdx.files.internal("characters/warrior_male_portrait.png"));
             final Image warriorImage = new Image(warriorTexture);
             warriorImage.setSize(120, 160);
             warriorImage.setPosition(Gdx.graphics.getWidth() / 5 - warriorImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -151,7 +157,6 @@ public class MultiPlayerSetupScreen implements Screen {
         }
 
         if (availableHeroes.get("Archer") == true) {
-            archerTexture = new Texture(Gdx.files.internal("characters/archer_male_portrait.png"));
             Image archerImage = new Image(archerTexture);
             archerImage.setSize(120, 160);
             archerImage.setPosition(Gdx.graphics.getWidth() * 2 / 5 - archerImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -179,7 +184,6 @@ public class MultiPlayerSetupScreen implements Screen {
         }
 
         if (availableHeroes.get("Wizard") == true) {
-            wizardTexture = new Texture(Gdx.files.internal("characters/wizard_male_portrait.png"));
             Image wizardImage = new Image(wizardTexture);
             wizardImage.setSize(120, 160);
             wizardImage.setPosition(Gdx.graphics.getWidth() * 3 / 5 - wizardImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -208,7 +212,6 @@ public class MultiPlayerSetupScreen implements Screen {
         }
 
         if (availableHeroes.get("Dwarf") == true) {
-            dwarfTexture = new Texture(Gdx.files.internal("characters/dwarf_male_portrait.png"));
             Image dwarfImage = new Image(dwarfTexture);
             dwarfImage.setSize(120, 160);
             dwarfImage.setPosition(Gdx.graphics.getWidth() * 4 / 5 - dwarfImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -293,7 +296,8 @@ public class MultiPlayerSetupScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 int size = friendlyPlayers.size();
-                int size2 =parent.getPlayerHeroes().size();
+               int size2 =parent.getPlayerHeroes().size();
+
                 parent.setUpMultiPlayer(size,1);
                 parent.createNewBoard();
                 parent.changeScreen(Andor.MULTIGAME);
@@ -388,28 +392,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
                         String name = ((String) objects.getJSONObject(i).getString("name"));
                         ListConnectedPlayers.appendText("- " + name + "\n");
-                        if(!friendlyPlayers.containsValue(name)){
-                            if (name.equals("Archer")) {
-                                Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
-                                parent.selectHero(selectedHero);
 
-
-                            } if (name.equals("Warrior")) {
-                                Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
-                                parent.selectHero(selectedHero);
-
-
-                            } if (name.equals("Wizard")) {
-                                Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
-                                parent.selectHero(selectedHero);
-
-
-                            } if (name.equals("Dwarf")) {
-                                Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
-                                parent.selectHero(selectedHero);
-
-                            }
-                        }
                     }
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error getting the new player id");
@@ -418,7 +401,6 @@ public class MultiPlayerSetupScreen implements Screen {
         }).on("playerDisconnected", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONObject data = (JSONObject)args[0];
                 try {
                     if (parent.whoseTurn().getTypeOfHero() == 1) {
                         parent.enableHero("Archer");
@@ -477,6 +459,8 @@ public class MultiPlayerSetupScreen implements Screen {
                         }
 
                     }
+
+
 
 
 

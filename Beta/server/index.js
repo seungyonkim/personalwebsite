@@ -49,9 +49,13 @@ io.on('connect',function(socket){
                 }
             }
 
-            socket.broadcast.emit('playerMoved',players);
+            io.emit('playerMoved',players);
 
         });
+     socket.on("nextPlayer",function(){
+        console.log("Next player turn" );
+         socket.broadcast.emit("nextPlayer");
+     });
 
     socket.on('disconnect',function(){
         console.log("Player disconnected");
