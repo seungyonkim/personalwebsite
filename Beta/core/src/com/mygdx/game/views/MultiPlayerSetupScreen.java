@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -54,6 +55,8 @@ public class MultiPlayerSetupScreen implements Screen {
     private Label titleLabel;
     private TextArea ListConnectedPlayers;
     private Label titleLabel2;
+
+    private Label difficultyLabel;
 
 
     //    private TextureRegion myTextureRegion;
@@ -103,6 +106,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
 //        titleLabel = new Label( "Choose Heroes upto "+parent.getNumOfPlayers(), parent.skin);
         titleLabel = new Label( "Choose your hero ", parent.skin);
+        difficultyLabel = new Label("Difficulty", parent.skin);
         TextButton backButton = new TextButton("Back", parent.skin);
         TextButton startButton = new TextButton("Start",parent.skin);
 
@@ -112,7 +116,9 @@ public class MultiPlayerSetupScreen implements Screen {
 
         final HashMap<String, Boolean> availableHeroes = parent.getAvailableHeroes();
 
-
+        // Dropdown for selecting difficulty of the game
+        final SelectBox<String> difficulty = new SelectBox<String>(parent.skin);
+        difficulty.setItems("Easy", "Hard");
 
 
         if (availableHeroes.get("Warrior") == true) {
@@ -232,11 +238,16 @@ public class MultiPlayerSetupScreen implements Screen {
             table.add(dwarfImage).width(120).height(160).padRight(10);
 
         }
-        table.row().pad(30, 0, 0, 0);
+        table.row().pad(15, 0, 0, 0);
+
+
+        table.add(difficultyLabel).colspan(2).right().padRight(15);
+        table.add(difficulty).width(150);
+        table.row().pad(10, 0, 0, 0);
 
         titleLabel2 =  new Label( "Lobby ", parent.skin);
         table.add(titleLabel2).colspan(4);
-        table.row().pad(30, 0, 0, 0);
+        table.row().pad(10, 0, 0, 0);
         ListConnectedPlayers = new TextArea("",parent.skin);
         ListConnectedPlayers.setDisabled(true);
 
@@ -273,8 +284,13 @@ public class MultiPlayerSetupScreen implements Screen {
         startButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                parent.createNewBoard();
-                parent.changeScreen(Andor.MULTIGAME);
+                if (difficulty.getSelected().equals("Easy")) {
+                    parent.createNewBoard(-1);
+                    parent.changeScreen(Andor.MULTIGAME);
+                } else {
+                    parent.createNewBoard(1);
+                    parent.changeScreen(Andor.MULTIGAME);
+                }
             }
         });
 

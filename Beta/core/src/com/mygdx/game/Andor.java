@@ -151,12 +151,22 @@ public class Andor extends Game {
 
     public void createNewBoard() {
 		// create new board for a new game
-		gameBoard = new Board(playerHeroes, difficulty);
+		gameBoard = new Board(playerHeroes, this.difficulty);
 //		System.out.println("NEW BOARD CREATED");
 		currentTurn = playerHeroes.get(0);
 //		playersFinishedDay = 0;
 		finishedHeroes = new ArrayList<Hero>();
 	}
+
+    public void createNewBoard(int difficulty) {
+        // create new board for a new game
+		this.difficulty = difficulty;
+        gameBoard = new Board(playerHeroes, this.difficulty);
+//		System.out.println("NEW BOARD CREATED");
+        currentTurn = playerHeroes.get(0);
+//		playersFinishedDay = 0;
+        finishedHeroes = new ArrayList<Hero>();
+    }
 
 	public Hero whoseTurn() {
 		// returns whose turn it is right now
