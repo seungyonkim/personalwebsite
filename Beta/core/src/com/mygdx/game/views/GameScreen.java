@@ -123,8 +123,6 @@ public class GameScreen implements Screen {
         canBattle = true;
         hasToStop = false;
 
-//        font = new BitmapFont();
-
         warriorTexture = new Texture(Gdx.files.internal("characters/andor_warrior_M.png"));
         archerTexture = new Texture(Gdx.files.internal("characters/andor_archer_M.png"));
         wizardTexture = new Texture(Gdx.files.internal("characters/andor_wizard_M.png"));
@@ -256,6 +254,7 @@ public class GameScreen implements Screen {
             farmer2.x = calcX(x) - farmer2.width / 2;
             farmer2.y = calcY(y) - farmer2.height / 2;
         }
+
 
         // create camera
         camera = new OrthographicCamera();
@@ -421,7 +420,7 @@ public class GameScreen implements Screen {
         }
     }
 
-    public void archerBattleDiaglogue(Archer a, final Monster monster, int r, int n, int lastRoll, int l) {
+    public void archerBattleDialogue(Archer a, final Monster monster, int r, int n, int lastRoll, int l) {
         System.out.println("Battle started.");
 //        final Gor gor = (Gor) monster;
         final int lastResult = l;
@@ -483,7 +482,7 @@ public class GameScreen implements Screen {
                                     } else if (monster.getWillPower() == 0) {
                                         playerWin(monster);
                                     } else {
-                                        archerBattleDiaglogue(archer, monster, round + 1, newNumOfDice, 0, newResult);
+                                        archerBattleDialogue(archer, monster, round + 1, newNumOfDice, 0, newResult);
                                     }
                                 } else {
                                     // if player decides to leave battle
@@ -495,7 +494,7 @@ public class GameScreen implements Screen {
                         // Roll another dice
                         Random r = new Random();
                         int newRoll = r.nextInt(6) + 1;
-                        archerBattleDiaglogue(archer, monster, round, numOfDice-1, newRoll, lastResult);
+                        archerBattleDialogue(archer, monster, round, numOfDice-1, newRoll, lastResult);
                     } else {
                         // if player decides to leave battle
                         leaveBattle(monster);
@@ -913,7 +912,7 @@ public class GameScreen implements Screen {
                     // Perform battle
                     Monster monster = gameBoard.getRegion(currentHero.getPosition()).getMonster();
                     if (currentHero instanceof Archer) {
-                        archerBattleDiaglogue((Archer)currentHero, monster, 1, ((Archer) currentHero).getNumOfDice(), 0, 0);
+                        archerBattleDialogue((Archer)currentHero, monster, 1, ((Archer) currentHero).getNumOfDice(), 0, 0);
                     } else if (currentHero instanceof Wizard) {
                         wizardBattleDialogue((Wizard)currentHero, monster, 1, 0);
                     } else {
@@ -1065,15 +1064,6 @@ public class GameScreen implements Screen {
 
 
         // Draw farmers
-//        if (gameBoard.getFarmers().get(0).isAlive()) {
-//            stage.getBatch().draw(farmerTexture, farmer1.x, farmer1.y, farmer1.width, farmer1.height);
-//        }
-//        if (parent.getDifficulty() == 1) {
-//            if (gameBoard.getFarmerRegions().get(1).getFarmer().isAlive()) {
-//                stage.getBatch().draw(farmerTexture, farmer2.x, farmer2.y, farmer2.width, farmer2.height);
-//            }
-//        }
-
         for (Farmer farmer : gameBoard.getFarmers()) {
             if (farmer.isAlive()) {
                 if (farmer.getFarmerNumber() == 1) {
