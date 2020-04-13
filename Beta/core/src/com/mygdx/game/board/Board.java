@@ -223,6 +223,16 @@ public class Board {
         return result;
     }
 
+    public ArrayList<Region> getFogRegions() {
+        ArrayList<Region> result = new ArrayList<Region>();
+        for (Region region : this.regions) {
+            if (region != null) {
+                if (region.getFog() != null) result.add(region);
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString()
     {

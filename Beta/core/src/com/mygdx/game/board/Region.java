@@ -44,6 +44,20 @@ public class Region {
             {958,641},{827,625},{786,676},{1005,372},{733,609}
     };
 
+    private final int[][] fog_coordinates = {
+            // 8, 11, 12, 13, 16
+            {}, {}, {}, {}, {}, {}, {}, {}, {248,92}, {}, {}, {294,143}, {356,142}, {423,190}, {}, {}, {505,264},
+            {},{},{},{},{},{},{},{},{},{},{},{},{},{},{},
+            // 32, 42, 44, 46, 47, 48, 49
+            {565,290}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {641,392}, {}, {645,358}, {}, {661,303}, {657,249}, {604,218}, {501,170},
+            // 56, 63, 64
+            {}, {}, {}, {}, {}, {}, {762,242}, {}, {}, {}, {}, {}, {}, {942,248}, {793,291}
+    };
+
+    private final int[][] well_coordinates = {
+
+    };
+
     private ArrayList<Hero> heroes;
     private int position;
     private int gold = 0;
@@ -56,6 +70,8 @@ public class Region {
     private Monster monster;
     private int x;
     private int y;
+    private int fogX;
+    private int fogY;
 
     // Legend 2 the starting positions of Gors: 8, 20, 21, 26, 48
     // Legend 2 the starting positions of Skral: 19
@@ -77,6 +93,12 @@ public class Region {
             Well well = new Well(position);
             this.well = well;
         }
+        if (position == 8 || position == 11 || position == 12 || position == 13 || position == 16 || position == 32 || position == 42 || position == 44 || position == 46 || position == 47 || position == 48 || position == 49 || position == 56 || position == 63 || position == 64) {
+            Fog fog = new Fog(position);
+            this.fog = fog;
+            this.fogX = fog_coordinates[position][0];
+            this.fogY = fog_coordinates[position][1];
+        }
         this.x = character_coordinates[position][0];
         this.y = character_coordinates[position][1];
     }
@@ -94,6 +116,8 @@ public class Region {
     public Monster getMonster() { return this.monster; }
     public int getX() { return this.x; }
     public int getY() { return this.y; }
+    public int getFogX() { return this.fogX; }
+    public int getFogY() { return this.fogY; }
     public Board getBoard() { return this.board; }
 
 

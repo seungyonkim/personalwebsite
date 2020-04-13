@@ -77,7 +77,8 @@ public class MultiGameScreen implements Screen {
 
     private Rectangle farmer1;
     private Rectangle farmer2;
-    private Rectangle coveredFog;
+//    private Rectangle coveredFog;
+    private ArrayList<Rectangle> fogs;
     private Rectangle well;
     //    private Rectangle gor;
     private Rectangle skral;
@@ -152,9 +153,10 @@ public class MultiGameScreen implements Screen {
         skralTexture = new Texture(Gdx.files.internal("monsters/andor_skral.png"));
 
 
-        coveredFog = new Rectangle();
-        coveredFog.width = 300;
-        coveredFog.height = 300;
+//        coveredFog = new Rectangle();
+//        coveredFog.width = 300;
+//        coveredFog.height = 300;
+        fogs = new ArrayList<Rectangle>();
 
         well = new Rectangle();
         well.width = 300;
@@ -209,6 +211,18 @@ public class MultiGameScreen implements Screen {
                 wizard.x = calcX(x) - wizard.width/2;
                 wizard.y = calcY(y) - wizard.height/2;
             }
+        }
+
+        ArrayList<Region> fogRegions = gameBoard.getFogRegions();
+        for (Region region : fogRegions) {
+            int x = region.getFogX();
+            int y = region.getFogY();
+            Rectangle fog = new Rectangle();
+            fog.width = 300;
+            fog.height = 300;
+            fog.x = calcX(x) - fog.width/2;
+            fog.y = calcY(y) - fog.height/2;
+            fogs.add(fog);
         }
 
         ArrayList<Region> skralRegions = gameBoard.getMonsterRegions();
@@ -812,8 +826,8 @@ public class MultiGameScreen implements Screen {
                                 skipping = false;
                                 canBattle = false;
                             }
-                            show();
                             updateMove();
+                            show();
                         }
                     });
                     pathButtons.add(pathButton);
@@ -1058,7 +1072,12 @@ public class MultiGameScreen implements Screen {
         stage.getBatch().draw(parent.andorBoard, 0, 0);
 //        parent.batch.draw(playerTexture, player.x, player.y, player.width, player.height);
 
+        // Draw fogs
+        for (Rectangle fog : fogs) {
+            stage.getBatch().draw(coveredFogTexture, fog.x, fog.y, fog.width, fog.height);
+        }
 
+        // Draw skral
         stage.getBatch().draw(skralTexture, skral.x, skral.y, skral.width, skral.height);
 
         // Draw gors
