@@ -272,6 +272,7 @@ public class MultiGameScreen implements Screen {
 
 
     public void updateHeroPosition(Hero hero, Rectangle rectangle) {
+        hero.setMoved();
         int x = gameBoard.getRegion(hero.getPosition()).getX();
         int y = gameBoard.getRegion(hero.getPosition()).getY();
         rectangle.x = calcX(x) - rectangle.width/2;
@@ -661,8 +662,7 @@ public class MultiGameScreen implements Screen {
     public void show() {
         stage.clear();
         Gdx.input.setInputProcessor(stage);
-
-        if(!parent.whoseTurn().hasMoved()) {
+        if(!parent.getMyHero().hasMoved() || parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
             connectSocket();
             configSocketEvents();
         }
@@ -684,6 +684,9 @@ public class MultiGameScreen implements Screen {
         final Hero currentHero = parent.whoseTurn();
         // Portrait of the current player hero
         final Hero myHero = parent.getMyHero();
+
+        availableRegions = myHero.getAvailableRegions(gameBoard);
+
 
         if (myHero instanceof Warrior) {
             warriorPortraitImage.setSize(Gdx.graphics.getWidth()*45/640, Gdx.graphics.getHeight()*70/480);
@@ -739,10 +742,6 @@ public class MultiGameScreen implements Screen {
         stage.addActor(heroInformation);
 
 
-        // Only the player whose turn it is currently sees the following buttons
-        if(parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
-            // List of spaces that the current hero can move to (all adjacent spaces)
-            availableRegions = parent.whoseTurn().getAvailableRegions(gameBoard);
 
             ///////////////////////////
             // Show button to display the available paths for current hero
@@ -753,7 +752,7 @@ public class MultiGameScreen implements Screen {
             pathButtonImage.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
-        //                System.out.println("Path Button Clicked.");
+                    //                System.out.println("Path Button Clicked.");
                     for (Region r : availableRegions) {
                         System.out.println(r.getPosition());
                     }
@@ -776,38 +775,33 @@ public class MultiGameScreen implements Screen {
                     pathButton.addListener(new ChangeListener() {
                         @Override
                         public void changed(ChangeEvent event, Actor actor) {
-                            currentHero.moveTo(gameBoard.getRegion(currentHero.getPosition()), region);
-                            //                    System.out.println("Hero "+currentHero.getTypeOfHero()+" moved to region "+currentHero.getPosition());
-                            //                    System.out.println("Hero "+currentHero.getTypeOfHero()+" used "+currentHero.getHours()+" hours in total in the day.");
-                            if (currentHero instanceof Warrior) {
-                                //                        int x = gameBoard.getRegion(currentHero.getPosition()).getX();
-                                //                        int y = gameBoard.getRegion(currentHero.getPosition()).getY();
-                                //                        warrior.x = calcX(x) - warrior.width/2;
-                                //                        warrior.y = calcY(y) - warrior.height/2;
-                                updateHeroPosition(currentHero, warrior);
-                                if (currentHero.getFarmers().size() > 0) {
-                                    updateFarmerPosition(currentHero.getFarmers());
+                            myHero.moveTo(gameBoard.getRegion(myHero.getPosition()), region);
+
+                            if (myHero instanceof Warrior) {
+                                updateHeroPosition(myHero, warrior);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
                                 }
                                 skipping = false;
                                 canBattle = false;
-                            } else if (currentHero instanceof Archer) {
-                                updateHeroPosition(currentHero, archer);
-                                if (currentHero.getFarmers().size() > 0) {
-                                    updateFarmerPosition(currentHero.getFarmers());
+                            } else if (myHero instanceof Archer) {
+                                updateHeroPosition(myHero, archer);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
                                 }
                                 skipping = false;
                                 canBattle = false;
-                            } else if (currentHero instanceof Wizard) {
-                                updateHeroPosition(currentHero, wizard);
-                                if (currentHero.getFarmers().size() > 0) {
-                                    updateFarmerPosition(currentHero.getFarmers());
+                            } else if (myHero instanceof Wizard) {
+                                updateHeroPosition(myHero, wizard);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
                                 }
                                 skipping = false;
                                 canBattle = false;
-                            } else if (currentHero instanceof Dwarf) {
-                                updateHeroPosition(currentHero, dwarf);
-                                if (currentHero.getFarmers().size() > 0) {
-                                    updateFarmerPosition(currentHero.getFarmers());
+                            } else if (myHero instanceof Dwarf) {
+                                updateHeroPosition(myHero, dwarf);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
                                 }
                                 skipping = false;
                                 canBattle = false;
@@ -838,6 +832,8 @@ public class MultiGameScreen implements Screen {
                             hasToStop = false;
                             canBattle = true;
                             show();
+                            updateFinish();
+
                         }
                     });
                     stage.addActor(skipTurn);
@@ -852,6 +848,8 @@ public class MultiGameScreen implements Screen {
                             canBattle = true;
                             hasToStop = false;
                             show();
+                            updateFinish();
+
                         }
                     });
                     stage.addActor(finishTurn);
@@ -1024,8 +1022,6 @@ public class MultiGameScreen implements Screen {
                 }
             }
 
-        } // end of the big IF
-
         chat = new TextButton("Chat",parent.skin);
         chat.setPosition(Gdx.graphics.getWidth() - chat.getWidth() - 10, 100);
         chat.addListener(new ChangeListener() {
@@ -1129,7 +1125,6 @@ public class MultiGameScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
-        if(parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
 
             heroPortraitResize(warriorPortraitImage);
             heroPortraitResize(archerPortraitImage);
@@ -1153,7 +1148,7 @@ public class MultiGameScreen implements Screen {
             pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
             drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-250, 10);
             merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
-        }
+
         chat.setPosition(Gdx.graphics.getWidth()-chat.getWidth()-10, 100);
     }
 
@@ -1190,16 +1185,28 @@ public class MultiGameScreen implements Screen {
         wellTexture.dispose();
         coveredFogTexture.dispose();
     }
+    public void updateFinish(){
 
+        try{
+
+            socket.emit("nextPlayer");
+        }catch(Exception e){
+            Gdx.app.log("SocketIO", "Error ending the turn");
+
+        }
+
+
+    }
     public void updateMove(){
 
-        Hero currentHero = parent.whoseTurn();
-        if( currentHero.hasMoved()){
+        Hero currentHero = parent.getMyHero();
+        if( parent.getMyHero().hasMoved()){
             JSONObject data = new JSONObject();
             currentHero.restoreMoved();
             try{
                 int x = currentHero.getPosition();
                 data.put("x",x);
+
 
                 socket.emit("playerMoved", data);
             }catch(Exception e){
@@ -1208,64 +1215,88 @@ public class MultiGameScreen implements Screen {
             }
         }
     }
-
     public void configSocketEvents(){
         socket.on("playerMoved", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-            JSONArray objects = (JSONArray) args[0];
-            Hero currentHero = parent.whoseTurn();
+                JSONArray objects = (JSONArray) args[0];
+                Hero currentHero = parent.whoseTurn();
+                System.out.println("has to moved" + currentHero.getTypeOfHeroString());
+                try {
+                    for(int i =0 ;i < objects.length();i++){
 
-            try {
-                for(int i =0 ;i < objects.length();i++){
 
-                    String name = ((String) objects.getJSONObject(i).getString("name"));
+                        String name = ((String) objects.getJSONObject(i).getString("name"));
 
-                    if(name.equals(currentHero.getTypeOfHeroString())) {
+                        if(name.equals(currentHero.getTypeOfHeroString())) {
 
-                        int toRegionNum = (objects.getJSONObject(i).getInt("x"));
-                        int fromRegionNum = currentHero.getPosition();
-                        Region from = gameBoard.getRegion(fromRegionNum);
-                        Region to = gameBoard.getRegion(toRegionNum);
 
-                        currentHero.moveTo(from, to);
-                        currentHero.setMoved();
-                        System.out.println("Hero "+currentHero.getTypeOfHero()+" moved to region "+currentHero.getPosition());
-                        System.out.println("Hero "+currentHero.getTypeOfHero()+" used "+currentHero.getHours()+" hours in total in the day.");
-                        if (currentHero instanceof Warrior) {
-                            int x = gameBoard.getRegion(currentHero.getPosition()).getX();
-                            int y = gameBoard.getRegion(currentHero.getPosition()).getY();
-                            warrior.x = calcX(x) - warrior.width/2;
-                            warrior.y = calcY(y) - warrior.height/2;
-                            skipping = false;
-                        } else if (currentHero instanceof Archer) {
-                            int x = gameBoard.getRegion(currentHero.getPosition()).getX();
-                            int y = gameBoard.getRegion(currentHero.getPosition()).getY();
-                            archer.x = calcX(x) - archer.width/2;
-                            archer.y = calcY(y) - archer.height/2;
-                            skipping = false;
-                        } else if (currentHero instanceof Wizard) {
-                            int x = gameBoard.getRegion(currentHero.getPosition()).getX();
-                            int y = gameBoard.getRegion(currentHero.getPosition()).getY();
-                            wizard.x = calcX(x) - wizard.width/2;
-                            wizard.y = calcY(y) - wizard.height/2;
-                            skipping = false;
-                        } else if (currentHero instanceof Dwarf) {
-                            int x = gameBoard.getRegion(currentHero.getPosition()).getX();
-                            int y = gameBoard.getRegion(currentHero.getPosition()).getY();
-                            dwarf.x = calcX(x) - dwarf.width/2;
-                            dwarf.y = calcY(y) - dwarf.height/2;
-                            skipping = false;
+                            int toRegionNum = (objects.getJSONObject(i).getInt("x"));
+                            int fromRegionNum = currentHero.getPosition();
+                            Region from = gameBoard.getRegion(fromRegionNum);
+                            Region to = gameBoard.getRegion(toRegionNum);
+
+                            currentHero.moveTo(from, to);
+                            currentHero.setMoved();
+                            //System.out.println("Hero "+currentHero.getTypeOfHero()+" moved to region "+currentHero.getPosition());
+                            //System.out.println("Hero "+currentHero.getTypeOfHero()+" used "+currentHero.getHours()+" hours in total in the day.");
+                            if (currentHero instanceof Warrior) {
+
+                                updateHeroPosition(currentHero, warrior);
+                                if (currentHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(currentHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            } else if (currentHero instanceof Archer) {
+                                updateHeroPosition(currentHero, archer);
+                                if (currentHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(currentHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            } else if (currentHero instanceof Wizard) {
+                                updateHeroPosition(currentHero, wizard);
+                                if (currentHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(currentHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            } else if (currentHero instanceof Dwarf) {
+                                updateHeroPosition(currentHero, dwarf);
+                                if (currentHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(currentHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            }
                         }
+
                     }
 
+
+                }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error handling the other player moves");
                 }
-
-                show();
-
-            }catch(Exception e){
-               Gdx.app.log("SocketIO", "Error handling the other player moves");
             }
+        }).on("nextPlayer", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+
+                try {
+
+
+                    System.out.println("PAST " + parent.whoseTurn().getTypeOfHeroString() );
+                    parent.nextTurn();
+                    skipping = true;
+                    canBattle = true;
+                    hasToStop = false;
+                    System.out.println("New " + parent.whoseTurn().getTypeOfHeroString() );
+
+
+                }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error next turn on the client side");
+                }
             }
         });
 
