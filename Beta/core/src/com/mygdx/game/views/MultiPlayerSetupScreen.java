@@ -297,7 +297,6 @@ public class MultiPlayerSetupScreen implements Screen {
             public void changed(ChangeEvent event, Actor actor) {
                 int size = friendlyPlayers.size();
                 int size2 =parent.getPlayerHeroes().size();
-
                 parent.setUpMultiPlayer(size,1);
                 parent.createNewBoard();
                 parent.changeScreen(Andor.MULTIGAME);

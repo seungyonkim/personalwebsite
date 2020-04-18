@@ -679,11 +679,46 @@ public class MultiGameScreen implements Screen {
             show();
         }
 
-        System.out.println("Current Hero: "+parent.whoseTurn());
+
 
         final Hero currentHero = parent.whoseTurn();
         // Portrait of the current player hero
         final Hero myHero = parent.getMyHero();
+
+
+        if(currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())&& !myHero.hasMoved()) {
+            new Dialog("It is your turn", parent.skin) {
+                {
+                    text("Clicked to play,  "+ currentHero.getTypeOfHeroString());
+                    button("Ok",true);
+                }
+
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        remove();
+                    }
+
+                }
+            }.show(stage);
+        }else if (!currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())){
+            new Dialog("It is not your turn", parent.skin) {
+                {
+                    text("Wait, "+ currentHero.getTypeOfHeroString() + " is playing");
+                    button("Ok",true);
+                }
+
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        remove();
+                    }
+
+                }
+            }.show(stage);
+
+        }
+
 
         availableRegions = myHero.getAvailableRegions(gameBoard);
 
@@ -776,7 +811,7 @@ public class MultiGameScreen implements Screen {
                         @Override
                         public void changed(ChangeEvent event, Actor actor) {
                             myHero.moveTo(gameBoard.getRegion(myHero.getPosition()), region);
-
+                            currentHero.setMoved();
                             if (myHero instanceof Warrior) {
                                 updateHeroPosition(myHero, warrior);
                                 if (myHero.getFarmers().size() > 0) {
@@ -832,7 +867,7 @@ public class MultiGameScreen implements Screen {
                             hasToStop = false;
                             canBattle = true;
                             show();
-                            updateFinish();
+                            updateFinish(1);
 
                         }
                     });
@@ -848,7 +883,7 @@ public class MultiGameScreen implements Screen {
                             canBattle = true;
                             hasToStop = false;
                             show();
-                            updateFinish();
+                            updateFinish(2);
 
                         }
                     });
@@ -868,6 +903,8 @@ public class MultiGameScreen implements Screen {
                         hasToStop = false;
                         canBattle = true;
                         parent.finishDay();
+                        updateFinish(3);
+
                         show();
                     }
                 });
@@ -1185,11 +1222,15 @@ public class MultiGameScreen implements Screen {
         wellTexture.dispose();
         coveredFogTexture.dispose();
     }
-    public void updateFinish(){
-
+    public void updateFinish(int choice){
+        Hero currentHero = parent.whoseTurn();
+        currentHero.restoreMoved();
         try{
+            JSONObject data = new JSONObject();
+            data.put("choice",choice);
 
-            socket.emit("nextPlayer");
+
+            socket.emit("finishTurn",data);
         }catch(Exception e){
             Gdx.app.log("SocketIO", "Error ending the turn");
 
@@ -1202,7 +1243,6 @@ public class MultiGameScreen implements Screen {
         Hero currentHero = parent.getMyHero();
         if( parent.getMyHero().hasMoved()){
             JSONObject data = new JSONObject();
-            currentHero.restoreMoved();
             try{
                 int x = currentHero.getPosition();
                 data.put("x",x);
@@ -1221,7 +1261,6 @@ public class MultiGameScreen implements Screen {
             public void call(Object... args) {
                 JSONArray objects = (JSONArray) args[0];
                 Hero currentHero = parent.whoseTurn();
-                System.out.println("has to moved" + currentHero.getTypeOfHeroString());
                 try {
                     for(int i =0 ;i < objects.length();i++){
 
@@ -1237,7 +1276,6 @@ public class MultiGameScreen implements Screen {
                             Region to = gameBoard.getRegion(toRegionNum);
 
                             currentHero.moveTo(from, to);
-                            currentHero.setMoved();
                             //System.out.println("Hero "+currentHero.getTypeOfHero()+" moved to region "+currentHero.getPosition());
                             //System.out.println("Hero "+currentHero.getTypeOfHero()+" used "+currentHero.getHours()+" hours in total in the day.");
                             if (currentHero instanceof Warrior) {
@@ -1279,21 +1317,53 @@ public class MultiGameScreen implements Screen {
                     Gdx.app.log("SocketIO", "Error handling the other player moves");
                 }
             }
-        }).on("nextPlayer", new Emitter.Listener() {
+        }).on("finishTurn", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-
+                JSONObject data = (JSONObject) args[0];
+                final Hero currentHero = parent.whoseTurn();
+                Hero myHero = parent.getMyHero();
                 try {
 
 
-                    System.out.println("PAST " + parent.whoseTurn().getTypeOfHeroString() );
-                    parent.nextTurn();
-                    skipping = true;
-                    canBattle = true;
-                    hasToStop = false;
-                    System.out.println("New " + parent.whoseTurn().getTypeOfHeroString() );
+                    int choice = data.getInt("choice");
 
+                    if (choice == 1) {
+                        currentHero.incrementHours();
+                        parent.nextTurn();
+                        hasToStop = false;
+                        canBattle = true;
 
+                    }else if (choice == 2) {
+                        currentHero.restoreMoved();
+                        parent.nextTurn();
+                        skipping = true;
+                        canBattle = true;
+                        hasToStop = false;
+                    }else{
+                        skipping = true;
+                        hasToStop = false;
+                        canBattle = true;
+                        parent.finishDay();
+                    }
+
+                    if (!currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
+                        new Dialog("It is your turn", parent.skin) {
+                            {
+                                text("Click to play, " + currentHero.getTypeOfHeroString());
+                                button("Ok", true);
+                            }
+
+                            @Override
+                            protected void result(Object object) {
+                                if (object.equals(true)) {
+                                    remove();
+                                }
+
+                            }
+                        }.show(stage);
+
+                    }
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error next turn on the client side");
                 }
