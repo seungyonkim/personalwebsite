@@ -953,14 +953,14 @@ public class MultiGameScreen implements Screen {
 
             // Buttons to drop/pickup gold
             dropGoldButton = new TextButton("Drop Gold", parent.skin);
-            if (currentHero.getGold() > 0) {
+            if (myHero.getGold() > 0) {
                 dropGoldButton.setPosition(Gdx.graphics.getWidth() - dropGoldButton.getWidth() - 10, 10);
                 dropGoldButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform Drop Gold
-                        currentHero.dropGold();
-                        gameBoard.getRegion(currentHero.getPosition()).addGold();
+                        myHero.dropGold();
+                        gameBoard.getRegion(myHero.getPosition()).addGold();
                         show();
                     }
                 });
@@ -968,14 +968,14 @@ public class MultiGameScreen implements Screen {
             }
 
             pickUpGoldButton = new TextButton("Pickup Gold", parent.skin);
-            if (gameBoard.getRegion(currentHero.getPosition()).getGold() > 0) {
+            if (gameBoard.getRegion(myHero.getPosition()).getGold() > 0) {
                 pickUpGoldButton.setPosition(Gdx.graphics.getWidth()-pickUpGoldButton.getWidth()-10, dropGoldButton.getHeight()+15);
                 pickUpGoldButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform Pickup Gold
-                        currentHero.pickUpGold();
-                        gameBoard.getRegion(currentHero.getPosition()).removeGold();
+                        myHero.pickUpGold();
+                        gameBoard.getRegion(myHero.getPosition()).removeGold();
                         show();
                     }
                 });
@@ -985,13 +985,13 @@ public class MultiGameScreen implements Screen {
 
             // Buttons to pickup/drop off farmer
             dropFarmer = new TextButton("Drop Off Farmer", parent.skin);
-            if (currentHero.getFarmers().size() != 0) {
+            if (myHero.getFarmers().size() != 0) {
                 dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
                 dropFarmer.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform Drop Farmer
-                        currentHero.dropOffFarmer(currentHero.getFarmers().get(0), gameBoard.getRegion(currentHero.getPosition()));
+                        myHero.dropOffFarmer(myHero.getFarmers().get(0), gameBoard.getRegion(myHero.getPosition()));
                         show();
                     }
                 });
@@ -999,14 +999,14 @@ public class MultiGameScreen implements Screen {
             }
 
             pickUpFarmer = new TextButton("Pickup Farmer", parent.skin);
-            if (gameBoard.getRegion(currentHero.getPosition()).getFarmers().size() > 0) {
+            if (gameBoard.getRegion(myHero.getPosition()).getFarmers().size() > 0) {
                 pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
 //            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, 10);
                 pickUpFarmer.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform Pickup Farmer
-                        currentHero.pickupFarmer(gameBoard.getRegion(currentHero.getPosition()).getFarmers().get(0), gameBoard.getRegion(currentHero.getPosition()));
+                        myHero.pickupFarmer(gameBoard.getRegion(myHero.getPosition()).getFarmers().get(0), gameBoard.getRegion(myHero.getPosition()));
                         show();
                     }
                 });
@@ -1016,13 +1016,13 @@ public class MultiGameScreen implements Screen {
 
             // Well interaction button
             drinkWell = new TextButton("Drink Well", parent.skin);
-            if (gameBoard.getRegion(currentHero.getPosition()).getWell() != null && !gameBoard.getRegion(currentHero.getPosition()).getWell().isEmpty()) {
+            if (gameBoard.getRegion(myHero.getPosition()).getWell() != null && !gameBoard.getRegion(myHero.getPosition()).getWell().isEmpty()) {
                 drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-250, 10);
                 drinkWell.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform drink well
-                        currentHero.drinkWell(gameBoard.getRegion(currentHero.getPosition()).getWell());
+                        myHero.drinkWell(gameBoard.getRegion(myHero.getPosition()).getWell());
                         if (!skipping) {
                             hasToStop = true;
                         }
@@ -1035,15 +1035,15 @@ public class MultiGameScreen implements Screen {
 
             // Merchant interaction button
             merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
-            if (gameBoard.getRegion(currentHero.getPosition()) instanceof Merchant) {
-                if (currentHero.getGold() >= 2) {
+            if (gameBoard.getRegion(myHero.getPosition()) instanceof Merchant) {
+                if (myHero.getGold() >= 2) {
                     merchantButton.setText("Buy SP for 2G");
                     merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
                     merchantButton.addListener(new ChangeListener() {
                         @Override
                         public void changed(ChangeEvent event, Actor actor) {
                             // Perform SP purchase
-                            ((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellSP(currentHero);
+                            ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
                             if (!skipping) {
                                 hasToStop = true;
                             }
@@ -1346,11 +1346,10 @@ public class MultiGameScreen implements Screen {
                         canBattle = true;
                         parent.finishDay();
                     }
-
-                    if (!currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
+                    if ( parent.whoseTurn().getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
                         new Dialog("It is your turn", parent.skin) {
                             {
-                                text("Click to play, " + currentHero.getTypeOfHeroString());
+                                text("Click to play, " + parent.whoseTurn().getTypeOfHeroString());
                                 button("Ok", true);
                             }
 
