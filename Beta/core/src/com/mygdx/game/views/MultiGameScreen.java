@@ -928,20 +928,20 @@ public class MultiGameScreen implements Screen {
 
             // Battle button
             battleButton = new TextButton("Start Battle", parent.skin);
-            if(gameBoard.getRegion(currentHero.getPosition()).getMonster() != null && canBattle) {
+            if(gameBoard.getRegion(myHero.getPosition()).getMonster() != null && canBattle) {
                 // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
                 battleButton.setPosition(200, goldInformation.getHeight()+15);
                 battleButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform battle
-                        Monster monster = gameBoard.getRegion(currentHero.getPosition()).getMonster();
-                        if (currentHero instanceof Archer) {
-                            archerBattleDialogue((Archer)currentHero, monster, 1, ((Archer) currentHero).getNumOfDice(), 0, 0);
-                        } else if (currentHero instanceof Wizard) {
-                            wizardBattleDialogue((Wizard)currentHero, monster, 1, 0);
+                        Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
+                        if (myHero instanceof Archer) {
+                            archerBattleDialogue((Archer)myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
+                        } else if (myHero instanceof Wizard) {
+                            wizardBattleDialogue((Wizard)myHero, monster, 1, 0);
                         } else {
-                            battleDialog(currentHero, monster, 1, 0);
+                            battleDialog(myHero, monster, 1, 0);
                         }
                         skipping = false;
 //                    show();
@@ -1374,7 +1374,8 @@ public class MultiGameScreen implements Screen {
     public void connectSocket(){
 
         try{
-            socket =IO.socket("http://localhost:8080");
+            socket =IO.socket("http://10.0.2.2:8080");
+            //to make it work on the android emulator use http://10.0.2.2:8080
             socket.connect();
         }catch(Exception e){
             System.out.println(e);
