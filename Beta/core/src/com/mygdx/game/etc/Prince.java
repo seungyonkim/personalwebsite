@@ -51,7 +51,7 @@ public class Prince {
     }
 
     public void battleLost() {
-        alive = false; //remove prince from board
-    }
+        alive = false; /*remove prince from board*/
+    } //does prince die after losing a battle?
 
 }
