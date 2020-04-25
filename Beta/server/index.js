@@ -52,9 +52,18 @@ io.on('connect',function(socket){
             io.emit('playerMoved',players);
 
         });
-     socket.on("nextPlayer",function(){
-        console.log("Next player turn" );
-         socket.broadcast.emit("nextPlayer");
+     socket.on("finishTurn",function(data){
+        var choice = data.choice;
+        if(choice == 1 ){
+            console.log(choice + ". player skip his turn" );
+        }else if (choice ==2){
+            console.log(choice + ". Next player turn" );
+        }
+        else{
+            console.log(choice + ". End day" );
+        }
+
+         socket.broadcast.emit("finishTurn", {choice : choice });
      });
 
     socket.on('disconnect',function(){

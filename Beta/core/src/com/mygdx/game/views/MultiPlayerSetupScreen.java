@@ -297,7 +297,6 @@ public class MultiPlayerSetupScreen implements Screen {
             public void changed(ChangeEvent event, Actor actor) {
                 int size = friendlyPlayers.size();
                 int size2 =parent.getPlayerHeroes().size();
-
                 parent.setUpMultiPlayer(size,1);
                 parent.createNewBoard();
                 parent.changeScreen(Andor.MULTIGAME);
@@ -370,7 +369,8 @@ public class MultiPlayerSetupScreen implements Screen {
     public void connectSocket(){
 
         try{
-            socket =IO.socket("http://localhost:8080");
+            socket =IO.socket("http://10.0.2.2:8080");
+            //to make it work on the android emulator use http://10.0.2.2:8080
             socket.connect();
         }catch(Exception e){
             System.out.println(e);
