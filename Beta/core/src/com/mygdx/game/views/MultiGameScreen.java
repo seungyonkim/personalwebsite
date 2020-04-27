@@ -715,6 +715,21 @@ public class MultiGameScreen implements Screen {
                     }
                 }
             }.show(stage);
+        } else if (gameBoard.checkWin()) {
+            //win popup
+            new Dialog("You Win", parent.skin) {
+                {
+                    text("You Win");
+                    button("Finish Game", true);
+                }
+
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        Gdx.app.exit();
+                    }
+                }
+            }.show(stage);
         } else if(currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())&& !myHero.hasMoved()) {
             new Dialog("It is your turn", parent.skin) {
                 {

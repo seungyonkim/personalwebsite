@@ -311,6 +311,18 @@ public class Board {
         return false;
     }
 
+    //returns true for losing
+    public boolean checkLose(){
+        Region skralRegion=getRegion(19);
+        //TODO ADD MEDICINE LOSE CONDITION
+        if(legend=='N'){
+            if(skralRegion.getMonster()!=null){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
     // POST: Method creates/overloads "comp361_BoardLog.txt"
