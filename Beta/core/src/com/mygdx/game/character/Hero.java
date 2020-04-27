@@ -12,6 +12,9 @@ import java.util.Random;
 
 public class Hero {
 
+    private static final long serialVersionUID = 4L; // DO NOT CHANGE AND DELETE
+
+
     private int position;
     private boolean moved;
     private int gold;
