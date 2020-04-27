@@ -994,6 +994,7 @@ public class MultiGameScreen implements Screen {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform battle
+
                         Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
                         if (myHero instanceof Archer) {
                             archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
@@ -1298,9 +1299,11 @@ public class MultiGameScreen implements Screen {
     public void updateFinish(int choice){
         Hero currentHero = parent.whoseTurn();
         currentHero.restoreMoved();
+        Hero myHero = parent.getMyHero();
         try{
             JSONObject data = new JSONObject();
             data.put("choice",choice);
+            data.put("pastPlayer", myHero.getTypeOfHeroString());
 
 
             socket.emit("finishTurn",data);
@@ -1414,46 +1417,47 @@ public class MultiGameScreen implements Screen {
                 Hero myHero = parent.getMyHero();
                 try {
 
-
+                    String pastPlayer = data.getString("pastPlayer");
                     int choice = data.getInt("choice");
+                    if(pastPlayer.equals(parent.whoseTurn().getTypeOfHeroString())) {
+                        if (choice == 1) {
+                            currentHero.incrementHours();
+                            parent.nextTurn();
+                            hasToStop = false;
+                            canBattle = true;
 
-                    if (choice == 1) {
-                        currentHero.incrementHours();
-                        parent.nextTurn();
-                        hasToStop = false;
-                        canBattle = true;
+                        } else if (choice == 2) {
+                            currentHero.restoreMoved();
+                            parent.nextTurn();
+                            skipping = true;
+                            canBattle = true;
+                            hasToStop = false;
+                        } else {
+                            skipping = true;
+                            hasToStop = false;
+                            canBattle = true;
+                            parent.finishDay();
+                        }
+                        System.out.println(myHero.getTypeOfHeroString() + " says it is the turn of :" + parent.whoseTurn().getTypeOfHeroString());
+                        if (parent.whoseTurn().getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
+                            System.out.println(myHero.getTypeOfHeroString() + " says it is the turn of :" + parent.whoseTurn().getTypeOfHeroString());
 
-                    }else if (choice == 2) {
-                        currentHero.restoreMoved();
-                        parent.nextTurn();
-                        skipping = true;
-                        canBattle = true;
-                        hasToStop = false;
-                    }else{
-                        skipping = true;
-                        hasToStop = false;
-                        canBattle = true;
-                        parent.finishDay();
-                    }
-                    System.out.println(myHero.getTypeOfHeroString()+" says it is the turn of :" + parent.whoseTurn().getTypeOfHeroString());
-                    if ( parent.whoseTurn().getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
-                        System.out.println(myHero.getTypeOfHeroString()+" says it is the turn of :" + parent.whoseTurn().getTypeOfHeroString());
-
-                        new Dialog("It is your turn", parent.skin) {
-                            {
-                                text("Click to play, " + parent.whoseTurn().getTypeOfHeroString());
-                                button("Ok", true);
-                            }
-
-                            @Override
-                            protected void result(Object object) {
-                                if (object.equals(true)) {
-                                    remove();
+                            new Dialog("It is your turn", parent.skin) {
+                                {
+                                    text("Click to play, " + parent.whoseTurn().getTypeOfHeroString());
+                                    button("Ok", true);
                                 }
 
-                            }
-                        }.show(stage);
+                                @Override
+                                protected void result(Object object) {
+                                    if (object.equals(true)) {
+                                        remove();
+                                    }
 
+                                }
+                            }.show(stage);
+
+                        }
                     }
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error next turn on the client side");
@@ -1487,15 +1491,6 @@ public class MultiGameScreen implements Screen {
                             protected void result(Object object) {
                                 if (object.equals(true)) {
 
-                                    Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
-                                    if (startHero.equals("Archer") ) {
-                                        archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
-                                    } else if (startHero.equals("Wizard")) {
-                                        wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
-                                    } else {
-                                        battleDialog(myHero, monster, 1, 0);
-                                    }
-                                    skipping = false;
 
                                 }
 
@@ -1504,7 +1499,7 @@ public class MultiGameScreen implements Screen {
                     }else{
                         new Dialog("A battle started", parent.skin) {
                             {
-                                text("Other players are in a battle");
+                                text("Other players are in a battle, wait till they are finish");
 
                                 button("Okay", false);
                             }

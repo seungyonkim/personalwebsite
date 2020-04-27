@@ -75,6 +75,7 @@ io.on('connect',function(socket){
      });
      socket.on("finishTurn",function(data){
         var choice = data.choice;
+        var pastPlayer = data.pastPlayer;
         if(choice == 1 ){
             console.log(choice + ". player skip his turn" );
         }else if (choice ==2){
@@ -84,7 +85,7 @@ io.on('connect',function(socket){
             console.log(choice + ". End day" );
         }
 
-         socket.broadcast.emit("finishTurn", {choice : choice });
+         socket.broadcast.emit("finishTurn", {choice : choice , pastPlayer : pastPlayer});
      });
 
      socket.on("updateBattle",function(data){
