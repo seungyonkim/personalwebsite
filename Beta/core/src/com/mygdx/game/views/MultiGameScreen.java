@@ -701,7 +701,7 @@ public class MultiGameScreen implements Screen {
         // Portrait of the current player hero
         final Hero myHero = parent.getMyHero();
 
-        if (gameBoard.getCastle().getShield() < 0) {
+        if (gameBoard.getCastle().getShield() < 0 || gameBoard.checkLose()) {
             new Dialog("Game Over", parent.skin) {
                 {
                     text("Game Over. You Lost.");
