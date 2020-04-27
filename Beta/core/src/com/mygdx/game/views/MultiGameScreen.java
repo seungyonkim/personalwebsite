@@ -1509,7 +1509,7 @@ public class MultiGameScreen implements Screen {
                                 button("Okay", false);
                             }
 
-                            @Override 
+                            @Override
                             protected void result(Object object) {
 
                             }
