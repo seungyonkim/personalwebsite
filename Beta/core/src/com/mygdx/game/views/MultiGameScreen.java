@@ -78,7 +78,8 @@ public class MultiGameScreen implements Screen {
 
     private Rectangle farmer1;
     private Rectangle farmer2;
-    private Rectangle coveredFog;
+//    private Rectangle coveredFog;
+    private ArrayList<Rectangle> fogs;
     private Rectangle well;
     //    private Rectangle gor;
     private Rectangle skral;
@@ -100,6 +101,8 @@ public class MultiGameScreen implements Screen {
     private TextButton merchantButton;
     private TextButton battleButton;
     private TextButton chat;
+    private TextButton mainMenuButton;
+    private TextButton castleShields;
 
 //    private BitmapFont font;
 
@@ -153,9 +156,10 @@ public class MultiGameScreen implements Screen {
         skralTexture = new Texture(Gdx.files.internal("monsters/andor_skral.png"));
 
 
-        coveredFog = new Rectangle();
-        coveredFog.width = 300;
-        coveredFog.height = 300;
+//        coveredFog = new Rectangle();
+//        coveredFog.width = 300;
+//        coveredFog.height = 300;
+        fogs = new ArrayList<Rectangle>();
 
         well = new Rectangle();
         well.width = 300;
@@ -210,6 +214,18 @@ public class MultiGameScreen implements Screen {
                 wizard.x = calcX(x) - wizard.width/2;
                 wizard.y = calcY(y) - wizard.height/2;
             }
+        }
+
+        ArrayList<Region> fogRegions = gameBoard.getFogRegions();
+        for (Region region : fogRegions) {
+            int x = region.getFogX();
+            int y = region.getFogY();
+            Rectangle fog = new Rectangle();
+            fog.width = 300;
+            fog.height = 300;
+            fog.x = calcX(x) - fog.width/2;
+            fog.y = calcY(y) - fog.height/2;
+            fogs.add(fog);
         }
 
         ArrayList<Region> skralRegions = gameBoard.getMonsterRegions();
@@ -685,8 +701,21 @@ public class MultiGameScreen implements Screen {
         // Portrait of the current player hero
         final Hero myHero = parent.getMyHero();
 
+        if (gameBoard.getCastle().getShield() < 0) {
+            new Dialog("Game Over", parent.skin) {
+                {
+                    text("Game Over. You Lost.");
+                    button("Exit Game", true);
+                }
 
-        if(currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())&& !myHero.hasMoved()) {
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        Gdx.app.exit();
+                    }
+                }
+            }.show(stage);
+        } else if(currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())&& !myHero.hasMoved()) {
             new Dialog("It is your turn", parent.skin) {
                 {
                     text("Clicked to play,  "+ currentHero.getTypeOfHeroString());
@@ -701,7 +730,7 @@ public class MultiGameScreen implements Screen {
 
                 }
             }.show(stage);
-        }else if (!currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())){
+        } else if (!currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())){
             new Dialog("It is not your turn", parent.skin) {
                 {
                     text("Wait, "+ currentHero.getTypeOfHeroString() + " is playing");
@@ -776,29 +805,35 @@ public class MultiGameScreen implements Screen {
         heroInformation.setPosition(Gdx.graphics.getWidth() / 4 + Gdx.graphics.getWidth()*45/640, Gdx.graphics.getHeight() - Gdx.graphics.getHeight()*70/480 - 5);
         stage.addActor(heroInformation);
 
+        // Displaying number of castle shields
+        castleShields = new TextButton("Remaining Shields: " + gameBoard.getCastle().getShield(), parent.skin);
+        castleShields.setTouchable(Touchable.disabled);
+        castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
+        stage.addActor(castleShields);
 
-
-            ///////////////////////////
-            // Show button to display the available paths for current hero
-            pathTexture = new Texture(Gdx.files.internal("andor_path_button.png"));
-            pathButtonImage = new Image(pathTexture);
-            pathButtonImage.setSize(Gdx.graphics.getWidth() * 30 / 640, Gdx.graphics.getWidth() * 30 / 640);
-            pathButtonImage.setPosition(Gdx.graphics.getWidth() - pathButtonImage.getWidth() - 10, Gdx.graphics.getHeight() - pathButtonImage.getHeight() - 10);
-            pathButtonImage.addListener(new ClickListener() {
-                @Override
-                public void clicked(InputEvent event, float x, float y) {
-                    //                System.out.println("Path Button Clicked.");
-                    for (Region r : availableRegions) {
-                        System.out.println(r.getPosition());
-                    }
+        ///////////////////////////
+        // Show button to display the available paths for current hero
+        pathTexture = new Texture(Gdx.files.internal("andor_path_button.png"));
+        pathButtonImage = new Image(pathTexture);
+        pathButtonImage.setSize(Gdx.graphics.getWidth() * 30 / 640, Gdx.graphics.getWidth() * 30 / 640);
+        pathButtonImage.setPosition(Gdx.graphics.getWidth() - pathButtonImage.getWidth() - 10, Gdx.graphics.getHeight() - pathButtonImage.getHeight() - 10);
+        pathButtonImage.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                //                System.out.println("Path Button Clicked.");
+                for (Region r : availableRegions) {
+                    System.out.println(r.getPosition());
                 }
-            });
-            stage.addActor(pathButtonImage);
+            }
+        });
+        stage.addActor(pathButtonImage);
 
 
-            pathButtons.clear();
+        pathButtons.clear();
+//        // Only show following buttons for current player
+//        if (currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
             // if the player doesn't have to stop, or if he is the only one remaining in the day
-            if (!hasToStop || parent.getPlayerHeroes().size()-parent.getFinishedHeroes().size() == 1) {
+            if (!hasToStop || parent.getPlayerHeroes().size() - parent.getFinishedHeroes().size() == 1) {
                 float newY = pathButtonImage.getY();
                 for (int i = 0; i < availableRegions.size(); i++) {
                     final Region region = availableRegions.get(i);
@@ -840,8 +875,8 @@ public class MultiGameScreen implements Screen {
                                 skipping = false;
                                 canBattle = false;
                             }
-                            show();
                             updateMove();
+                            show();
                         }
                     });
                     pathButtons.add(pathButton);
@@ -849,12 +884,50 @@ public class MultiGameScreen implements Screen {
                 }
             }
 
+            // Show where golds are dropped in the map
+            String displayGoldInfo = "Golds dropped: ";
+            for (Region region : gameBoard.getGoldRegions()) {
+                int golds = region.getGold();
+                int position = region.getPosition();
+                displayGoldInfo += golds + "G in " + position + ",";
+            }
+            goldInformation = new TextButton(displayGoldInfo, parent.skin);
+            goldInformation.setTouchable(Touchable.disabled);
+            goldInformation.setPosition(200, 10);
+            stage.addActor(goldInformation);
+
+
+
+            // Main Menu button
+            mainMenuButton = new TextButton("Main Menu", parent.skin);
+            mainMenuButton.setPosition(pathButtonImage.getX() - mainMenuButton.getWidth() - 10, Gdx.graphics.getHeight() - mainMenuButton.getHeight() - 5);
+            mainMenuButton.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    // Main menu pop up
+                    new Dialog("Main Menu", parent.skin) {
+                        {
+                            button("Save & Quit Game", true);
+                        }
+
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
+                                // Quit Game
+                                System.out.println("Quitting Game");
+                            }
+                        }
+                    }.show(stage);
+                }
+            });
+            stage.addActor(mainMenuButton);
+
             //////////////////////////
 
 
             // Add button to skip/finish turn
             // don't allow the player to skip or finish turn if he/she is the only one remaining in the day
-            if (parent.getPlayerHeroes().size()-parent.getFinishedHeroes().size() > 1) {
+            if (parent.getPlayerHeroes().size() - parent.getFinishedHeroes().size() > 1) {
                 if (skipping) {
                     TextButton skipTurn = new TextButton("Skip Turn", parent.skin);
                     skipTurn.setPosition(10, 10);
@@ -911,39 +984,25 @@ public class MultiGameScreen implements Screen {
             }
 
 
-
-            // Show where golds are dropped in the map
-            String displayGoldInfo = "Golds dropped: ";
-            for (Region region : gameBoard.getGoldRegions()) {
-                int golds = region.getGold();
-                int position = region.getPosition();
-                displayGoldInfo += golds + "G in " + position + ",";
-            }
-            goldInformation = new TextButton(displayGoldInfo, parent.skin);
-            goldInformation.setTouchable(Touchable.disabled);
-            goldInformation.setPosition(200, 10);
-            stage.addActor(goldInformation);
-
-
             // Battle button
             battleButton = new TextButton("Start Battle", parent.skin);
-            if(gameBoard.getRegion(myHero.getPosition()).getMonster() != null && canBattle) {
+            if (gameBoard.getRegion(myHero.getPosition()).getMonster() != null && canBattle) {
                 // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
-                battleButton.setPosition(200, goldInformation.getHeight()+15);
+                battleButton.setPosition(200, goldInformation.getHeight() + 15);
                 battleButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
                         // Perform battle
                         Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
                         if (myHero instanceof Archer) {
-                            archerBattleDialogue((Archer)myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
+                            archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
                         } else if (myHero instanceof Wizard) {
-                            wizardBattleDialogue((Wizard)myHero, monster, 1, 0);
+                            wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
                         } else {
                             battleDialog(myHero, monster, 1, 0);
                         }
                         skipping = false;
-//                    show();
+                        //                    show();
                     }
                 });
                 stage.addActor(battleButton);
@@ -968,7 +1027,7 @@ public class MultiGameScreen implements Screen {
 
             pickUpGoldButton = new TextButton("Pickup Gold", parent.skin);
             if (gameBoard.getRegion(myHero.getPosition()).getGold() > 0) {
-                pickUpGoldButton.setPosition(Gdx.graphics.getWidth()-pickUpGoldButton.getWidth()-10, dropGoldButton.getHeight()+15);
+                pickUpGoldButton.setPosition(Gdx.graphics.getWidth() - pickUpGoldButton.getWidth() - 10, dropGoldButton.getHeight() + 15);
                 pickUpGoldButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
@@ -985,7 +1044,7 @@ public class MultiGameScreen implements Screen {
             // Buttons to pickup/drop off farmer
             dropFarmer = new TextButton("Drop Off Farmer", parent.skin);
             if (myHero.getFarmers().size() != 0) {
-                dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
+                dropFarmer.setPosition(Gdx.graphics.getWidth() - dropFarmer.getWidth() - 110, 10);
                 dropFarmer.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
@@ -999,8 +1058,8 @@ public class MultiGameScreen implements Screen {
 
             pickUpFarmer = new TextButton("Pickup Farmer", parent.skin);
             if (gameBoard.getRegion(myHero.getPosition()).getFarmers().size() > 0) {
-                pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
-//            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, 10);
+                pickUpFarmer.setPosition(Gdx.graphics.getWidth() - pickUpFarmer.getWidth() - 110, dropFarmer.getHeight() + 15);
+                //            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, 10);
                 pickUpFarmer.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
@@ -1016,7 +1075,7 @@ public class MultiGameScreen implements Screen {
             // Well interaction button
             drinkWell = new TextButton("Drink Well", parent.skin);
             if (gameBoard.getRegion(myHero.getPosition()).getWell() != null && !gameBoard.getRegion(myHero.getPosition()).getWell().isEmpty()) {
-                drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-250, 10);
+                drinkWell.setPosition(Gdx.graphics.getWidth() - drinkWell.getWidth() - 250, 10);
                 drinkWell.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
@@ -1031,32 +1090,34 @@ public class MultiGameScreen implements Screen {
                 stage.addActor(drinkWell);
             }
 
+//        } // End if (current player's turn)
 
-            // Merchant interaction button
-            merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
-            if (gameBoard.getRegion(myHero.getPosition()) instanceof Merchant) {
-                if (myHero.getGold() >= 2) {
-                    merchantButton.setText("Buy SP for 2G");
-                    merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
-                    merchantButton.addListener(new ChangeListener() {
-                        @Override
-                        public void changed(ChangeEvent event, Actor actor) {
-                            // Perform SP purchase
-                            ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
-                            if (!skipping) {
-                                hasToStop = true;
-                            }
-                            show();
+
+        // Merchant interaction button
+        merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
+        if (gameBoard.getRegion(myHero.getPosition()) instanceof Merchant) {
+            if (myHero.getGold() >= 2) {
+                merchantButton.setText("Buy SP for 2G");
+                merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+                merchantButton.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        // Perform SP purchase
+                        ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
+                        if (!skipping) {
+                            hasToStop = true;
                         }
-                    });
-                    stage.addActor(merchantButton);
-                } else {
-                    merchantButton.setText("Not Enough Gold");
-                    merchantButton.setTouchable(Touchable.disabled);
-                    merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
-                    stage.addActor(merchantButton);
-                }
+                        show();
+                    }
+                });
+                stage.addActor(merchantButton);
+            } else {
+                merchantButton.setText("Not Enough Gold");
+                merchantButton.setTouchable(Touchable.disabled);
+                merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+                stage.addActor(merchantButton);
             }
+        }
 
         chat = new TextButton("Chat",parent.skin);
         chat.setPosition(Gdx.graphics.getWidth() - chat.getWidth() - 10, 100);
@@ -1068,7 +1129,7 @@ public class MultiGameScreen implements Screen {
         });
         stage.addActor(chat);
 
-    }
+    } // end show()
 
     @Override
     public void render(float delta) {
@@ -1090,7 +1151,12 @@ public class MultiGameScreen implements Screen {
         stage.getBatch().draw(parent.andorBoard, 0, 0);
 //        parent.batch.draw(playerTexture, player.x, player.y, player.width, player.height);
 
+        // Draw fogs
+        for (Rectangle fog : fogs) {
+            stage.getBatch().draw(coveredFogTexture, fog.x, fog.y, fog.width, fog.height);
+        }
 
+        // Draw skral
         stage.getBatch().draw(skralTexture, skral.x, skral.y, skral.width, skral.height);
 
         // Draw gors
@@ -1160,17 +1226,21 @@ public class MultiGameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+
         stage.getViewport().update(width, height, true);
 
-            heroPortraitResize(warriorPortraitImage);
-            heroPortraitResize(archerPortraitImage);
-            heroPortraitResize(wizardPortraitImage);
-            heroPortraitResize(dwarfPortraitImage);
+        heroPortraitResize(warriorPortraitImage);
+        heroPortraitResize(archerPortraitImage);
+        heroPortraitResize(wizardPortraitImage);
+        heroPortraitResize(dwarfPortraitImage);
 
-            heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
+        heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
 
-            pathButtonImage.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
-            pathButtonImage.setPosition(Gdx.graphics.getWidth()-pathButtonImage.getWidth()-10, Gdx.graphics.getHeight()-pathButtonImage.getHeight()-10);
+        pathButtonImage.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
+        pathButtonImage.setPosition(Gdx.graphics.getWidth()-pathButtonImage.getWidth()-10, Gdx.graphics.getHeight()-pathButtonImage.getHeight()-10);
+
+//        // Only resize following buttons for current player
+//        if (parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
             float newY = pathButtonImage.getY();
             for (TextButton button : pathButtons) {
                 button.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
@@ -1179,11 +1249,12 @@ public class MultiGameScreen implements Screen {
             }
 
             dropGoldButton.setPosition(Gdx.graphics.getWidth() - dropGoldButton.getWidth() - 10, 10);
-            pickUpGoldButton.setPosition(Gdx.graphics.getWidth()-pickUpGoldButton.getWidth()-10, dropGoldButton.getHeight()+15);
-            dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
-            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
-            drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-250, 10);
-            merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+            pickUpGoldButton.setPosition(Gdx.graphics.getWidth() - pickUpGoldButton.getWidth() - 10, dropGoldButton.getHeight() + 15);
+            dropFarmer.setPosition(Gdx.graphics.getWidth() - dropFarmer.getWidth() - 110, 10);
+            pickUpFarmer.setPosition(Gdx.graphics.getWidth() - pickUpFarmer.getWidth() - 110, dropFarmer.getHeight() + 15);
+            drinkWell.setPosition(Gdx.graphics.getWidth() - drinkWell.getWidth() - 250, 10);
+            merchantButton.setPosition(Gdx.graphics.getWidth() - merchantButton.getWidth() - 10, dropGoldButton.getHeight() + pickUpGoldButton.getHeight() + 15);
+//        }
 
         chat.setPosition(Gdx.graphics.getWidth()-chat.getWidth()-10, 100);
     }

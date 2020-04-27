@@ -89,6 +89,7 @@ public class GameScreen implements Screen {
     private TextButton drinkWell;
     private TextButton merchantButton;
     private TextButton battleButton;
+    private TextButton castleShields;
 
 //    private BitmapFont font;
 
@@ -691,6 +692,22 @@ public class GameScreen implements Screen {
             show();
         }
 
+        if (gameBoard.getCastle().getShield() < 0) {
+            new Dialog("Game Over", parent.skin) {
+                {
+                    text("Game Over. You Lost.");
+                    button("Exit Game", true);
+                }
+
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        Gdx.app.exit();
+                    }
+                }
+            }.show(stage);
+        }
+
         availableRegions = parent.whoseTurn().getAvailableRegions(gameBoard);
 //        System.out.println("Current Hero position: "+parent.whoseTurn().getPosition());
 //        for (Region r : availableRegions) {
@@ -752,6 +769,12 @@ public class GameScreen implements Screen {
         heroInformation.getLabel().setFontScale(0.8f);
         heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
         stage.addActor(heroInformation);
+
+        // Displaying number of castle shields
+        castleShields = new TextButton("Remaining Shields: " + gameBoard.getCastle().getShield(), parent.skin);
+        castleShields.setTouchable(Touchable.disabled);
+        castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
+        stage.addActor(castleShields);
 
 
         // Show button to display the available paths for current hero

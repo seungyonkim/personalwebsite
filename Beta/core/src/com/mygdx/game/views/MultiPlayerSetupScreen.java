@@ -437,6 +437,7 @@ public class MultiPlayerSetupScreen implements Screen {
                     parent.createNewBoard();
                     parent.changeScreen(Andor.MULTIGAME);
                 }
+
             }
         });
 

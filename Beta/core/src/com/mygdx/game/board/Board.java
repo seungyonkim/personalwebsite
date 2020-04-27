@@ -10,12 +10,16 @@ import com.mygdx.game.etc.Merchant;
 import com.mygdx.game.etc.Well;
 import com.mygdx.game.monster.Monster;
 import com.mygdx.game.monster.Skral;
+import com.mygdx.game.preference.FileIO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class Board {
+
+    private static final long serialVersionUID = 1L; // DO NOT CHANGE AND DELETE
+
 
     private ArrayList<Region> regions = new ArrayList<Region>();
     private int difficulty;
@@ -223,6 +227,16 @@ public class Board {
         return result;
     }
 
+    public ArrayList<Region> getFogRegions() {
+        ArrayList<Region> result = new ArrayList<Region>();
+        for (Region region : this.regions) {
+            if (region != null) {
+                if (region.getFog() != null) result.add(region);
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString()
     {
@@ -273,6 +287,17 @@ public class Board {
                 region.getWell().replenish();
             }
         }
+    }
+
+    // POST: Method creates/overloads "comp361_BoardLog.txt"
+    public void saveBoard() {
+        FileIO.WriteObjectToFile(this);
+    }
+
+    // POST: Method returns new Board object
+    public Board loadBoard() {
+        Board result = (Board) FileIO.ReadBoardFromFile();
+        return result;
     }
 
 

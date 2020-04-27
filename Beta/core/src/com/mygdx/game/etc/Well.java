@@ -6,7 +6,7 @@ public class Well { // 5, 35, 45, 55
 
     public Well(int position) {
         this.position = position;
-        isEmpty = false;
+        this.isEmpty = false;
     }
 
     public void empty() {
