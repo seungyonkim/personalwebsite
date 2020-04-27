@@ -87,6 +87,12 @@ io.on('connect',function(socket){
          socket.broadcast.emit("finishTurn", {choice : choice });
      });
 
+     socket.on("updateBattle",function(data){
+        var wantToJoin = data.wantToJoin;
+        socket.broadcast.emit("updateBattle", {wantToJoin : wantToJoin});
+
+     });
+
     socket.on('disconnect',function(){
         console.log("Player disconnected");
         socket.broadcast.emit("playerDisconnected",{id : socket.id});

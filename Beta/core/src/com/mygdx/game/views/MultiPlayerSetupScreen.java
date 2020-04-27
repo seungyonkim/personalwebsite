@@ -393,6 +393,8 @@ public class MultiPlayerSetupScreen implements Screen {
         startButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+
+
                 if(friendlyPlayers.size()>=2) {
                     int size = friendlyPlayers.size();
                     int d;
@@ -675,9 +677,6 @@ public class MultiPlayerSetupScreen implements Screen {
                         difficulty.setSelected(level);
                         difficulty.setDisabled(true);
 
-
-
-
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error handling the other player choosing");
                 }
@@ -704,7 +703,7 @@ public class MultiPlayerSetupScreen implements Screen {
                         if (name.equals("Wizard")) {
 
                             int WizardGold = objects.getJSONObject(i).getInt("gold");
-                            int WizardWine = objects.getJSONObject(i).getInt("winekine");
+                            int WizardWine = objects.getJSONObject(i).getInt("wineskin");
                             goldWizard.setSelected(WizardGold);
                             wineskinWizard.setSelected(WizardWine);
                         }
