@@ -138,33 +138,35 @@ public class Hero {
             if(result) {
                 if (this.farmers.size() == 1) {
                     if (to.getMonster() != null) {
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
-                        System.out.println("Farmer "+farmers.get(0).getFarmerNumber()+" died because he encountered a monster.");
+                        int farmerNum = this.farmers.get(0).getFarmerNumber();
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
+//                        System.out.println("Farmer "+farmers.get(0).getFarmerNumber()+" died because he encountered a monster.");
+                        System.out.println("Farmer "+farmerNum+" died because he encountered a monster.");
                     } else if (to.getPosition() == 0) {
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
                         to.getBoard().getCastle().farmerArrive();
                     } else {
-                        farmers.get(0).setPosition(to.getPosition());
+                        this.farmers.get(0).setPosition(to.getPosition());
                     }
                 } else if (this.farmers.size() == 2) {
                     if (to.getMonster() != null) {
-                        farmers.get(1).die();
-                        this.farmers.remove(farmers.get(1));
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
+                        this.farmers.get(1).die();
+                        this.farmers.remove(this.farmers.get(1));
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
                         System.out.println("Both farmers died because they encountered a monster.");
                     } else if (to.getPosition() == 0) {
-                        farmers.get(1).die();
-                        this.farmers.remove(farmers.get(1));
+                        this.farmers.get(1).die();
+                        this.farmers.remove(this.farmers.get(1));
                         to.getBoard().getCastle().farmerArrive();
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
                         to.getBoard().getCastle().farmerArrive();
                     } else {
-                        farmers.get(0).setPosition(to.getPosition());
-                        farmers.get(1).setPosition(to.getPosition());
+                        this.farmers.get(0).setPosition(to.getPosition());
+                        this.farmers.get(1).setPosition(to.getPosition());
                     }
                 }
                 from.removeHero(this);

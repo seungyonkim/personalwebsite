@@ -68,6 +68,7 @@ public class Andor extends Game {
 	private int readyPlayers; // number of ready players at singleplayer game setup stage
 	private ArrayList<Hero> playerHeroes; // in order (in real life clockwise direction)
 	private Hero rooster; // player who finished the day first; gets to start the next day first
+	private boolean gameOver = false;
 //	private int playersFinishedDay; // number of players that have finished the day
 	private ArrayList<Hero> finishedHeroes;
 	private HashMap<String, Boolean> availableHeroes; // to keep track of "taken" heroes at singleplayer game setup stage

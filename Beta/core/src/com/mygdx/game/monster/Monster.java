@@ -119,7 +119,12 @@ public class Monster {
             c.decrementShield();
             to.removeMonster();
             this.position = 80;
-//            System.out.println("Monster in. Remaining shields: "+c.getShield());
+            System.out.println("Monster in. Remaining shields: "+c.getShield());
+            if (this instanceof Gor) {
+                System.out.println("Gor in castle.");
+            } else {
+                System.out.println("Skral in castle.");
+            }
             if (c.getShield() <= 0) {
                 return false;
             } else {
