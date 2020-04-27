@@ -13,24 +13,19 @@ server.listen(8080,function(){
 io.on('connect',function(socket){
 
     console.log("Player connected");
-    players.push(new player(socket.id,"Choosing....",0));
+    players.push(new player(socket.id,"Choosing...",0,"",0,0));
     io.emit('newPlayer',players);
 
 
     socket.on('playerChose',function(data){
         data.id=socket.id;
 
-
         console.log("Player chose : " + data.name);
+        console.log("Game will be : " + data.difficulty);
 
-        if(data.difficulty == "Easy" ){
-            difficulty = -1;
-        }
-        if(data.difficulty == "Hard"){
-            difficulty = 1;
-        }
         for(var i=0; i <players.length ; i++){
             if(players[i].id == data.id){
+                players[i].level = data.difficulty;
                 players[i].name = data.name;
             }
         }
@@ -52,6 +47,32 @@ io.on('connect',function(socket){
             io.emit('playerMoved',players);
 
         });
+
+     socket.on("GoldWine",function(data){
+
+            for(var i =0 ;i<players.length; i++){
+                 if(players[i].name == "Archer" ){
+                    players[i].gold = data.goldArcher;
+                    players[i].wineskin = data.wineArcher;
+                 }
+                 if(players[i].name == "Warrior" ){
+                    players[i].gold = data.goldWarrior;
+                    players[i].wineskin = data.wineWarrior;
+                 }
+                 if(players[i].name == "Wizard" ){
+                    players[i].gold = data.goldWizard;
+                    players[i].wineskin = data.wineWizard;
+                 }
+                 if(players[i].name == "Dwarf" ){
+                    players[i].gold = data.goldDwarf;
+                    players[i].wineskin = data.wineDwarf;
+                  }
+
+
+             }
+
+        socket.broadcast.emit("GoldWine",players);
+     });
      socket.on("finishTurn",function(data){
         var choice = data.choice;
         if(choice == 1 ){
@@ -93,10 +114,14 @@ io.on('connect',function(socket){
 
 });
 
-function player (id, name, x){
+function player (id, name, x,level,gold,wineskin){
     this.id =id;
     this.name = name;
     this.x = x;
+    this.level = level;
+    this.gold =gold;
+    this.wineskin = wineskin;
+
 
 }
 

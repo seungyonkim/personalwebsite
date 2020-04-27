@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -680,7 +681,6 @@ public class MultiGameScreen implements Screen {
         }
 
 
-
         final Hero currentHero = parent.whoseTurn();
         // Portrait of the current player hero
         final Hero myHero = parent.getMyHero();
@@ -811,7 +811,6 @@ public class MultiGameScreen implements Screen {
                         @Override
                         public void changed(ChangeEvent event, Actor actor) {
                             myHero.moveTo(gameBoard.getRegion(myHero.getPosition()), region);
-                            currentHero.setMoved();
                             if (myHero instanceof Warrior) {
                                 updateHeroPosition(myHero, warrior);
                                 if (myHero.getFarmers().size() > 0) {
@@ -892,7 +891,7 @@ public class MultiGameScreen implements Screen {
                 }
             }
 
-            if ((currentHero.getHours() >= 7) && (currentHero.getWillPower() >= 2)) {
+            if ((myHero.getHours() >= 7) && (myHero.getWillPower() >= 2)) {
                 TextButton finishDay = new TextButton("Finish Day", parent.skin);
                 finishDay.setPosition(100, 10);
                 finishDay.addListener(new ChangeListener() {
@@ -1242,12 +1241,11 @@ public class MultiGameScreen implements Screen {
 
         Hero currentHero = parent.getMyHero();
         if( parent.getMyHero().hasMoved()){
+
             JSONObject data = new JSONObject();
             try{
                 int x = currentHero.getPosition();
                 data.put("x",x);
-
-
                 socket.emit("playerMoved", data);
             }catch(Exception e){
                 Gdx.app.log("SocketIO", "Error moving the Player");
@@ -1374,7 +1372,7 @@ public class MultiGameScreen implements Screen {
     public void connectSocket(){
 
         try{
-            socket =IO.socket("http://10.0.2.2:8080");
+            socket =IO.socket("http://localhost:8080");
             //to make it work on the android emulator use http://10.0.2.2:8080
             socket.connect();
         }catch(Exception e){

@@ -57,6 +57,8 @@ public class Andor extends Game {
 	public final static int MULTIGAME = 7;
 	public final static int CHAT = 8;
 
+	public int decider= 0;
+
 	private Socket socket;
 	private Board gameBoard;
 
