@@ -68,11 +68,6 @@ public class ChatScreen implements Screen{
 
 
         table = new Table();
-
-
-
-
-
         scrollMessage = new TextArea("",parent.skin);
         scrollMessage.setDisabled(true);
 
@@ -95,7 +90,11 @@ public class ChatScreen implements Screen{
             @Override
             public void clicked(InputEvent event, float x, float y){
                 sendMess(" leaved the chat room");
-                parent.changeScreen(Andor.MULTIGAME);
+                if(parent.getGameBoard()==null){
+                    parent.changeScreen(Andor.MULTISETUP);
+                }else {
+                    parent.changeScreen(Andor.MULTIGAME);
+                }
             }
         });
 
