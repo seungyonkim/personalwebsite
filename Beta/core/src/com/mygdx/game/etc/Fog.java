@@ -20,4 +20,6 @@ public class Fog {
         this.covered=false;
     }
 
+    public boolean getCover() { return this.covered; }
+
 }
