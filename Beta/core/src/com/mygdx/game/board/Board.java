@@ -277,7 +277,7 @@ public class Board {
     // Triggered at the end of every day
     public void newDay() {
         //TODO roll for event card
-
+        incrementLegend();
         // Monsters move
         for (Region region : getMonsterRegions()) {
 //            region.getMonster().moveTo(region, getRegion(region.getAvailableMonsterPath()));
@@ -292,14 +292,11 @@ public class Board {
         }
     }
 
-    public void incrementLegend(){
+    private void incrementLegend(){
         checkWin();
+        checkLose();
         //TODO ADD END GAME FUNCTION
         legend+=1;
-        if(legend=='N'){
-            //TODO LOSE GAME FUNCTION
-            System.out.println("You lose");//temp
-        }
     }
 
     public boolean checkWin(){
@@ -316,9 +313,7 @@ public class Board {
         Region skralRegion=getRegion(19);
         //TODO ADD MEDICINE LOSE CONDITION
         if(legend=='N'){
-            if(skralRegion.getMonster()!=null){
-                return true;
-            }
+            return skralRegion.getMonster() != null;
         }
         return false;
     }
