@@ -54,8 +54,30 @@ public class MultiPlayerSetupScreen implements Screen {
     private Texture dwarfTexture;
     private Label titleLabel;
     private TextArea ListConnectedPlayers;
+    private TextButton chat;
+
+
     private Label titleLabel2;
     private SelectBox<String> difficulty;
+
+    private SelectBox<Integer> wineskinWarrior;
+    private SelectBox<Integer> goldWarrior;
+
+    private SelectBox<Integer> wineskinArcher;
+    private SelectBox<Integer> goldArcher;
+
+
+    private SelectBox<Integer> wineskinWizard;
+    private SelectBox<Integer> goldWizard;
+
+
+    private SelectBox<Integer> wineskinDwarf;
+    private SelectBox<Integer> goldDwarf;
+
+    TextButton startButton;
+    TextButton backButton;
+
+
 
 
 
@@ -77,7 +99,7 @@ public class MultiPlayerSetupScreen implements Screen {
         wizardTexture = new Texture(Gdx.files.internal("characters/wizard_male_portrait.png"));
         dwarfTexture = new Texture(Gdx.files.internal("characters/dwarf_male_portrait.png"));
         warriorTexture = new Texture(Gdx.files.internal("characters/warrior_male_portrait.png"));
-        titleLabel = new Label( "Choose your hero ", parent.skin);
+        titleLabel = new Label( "Choose your hero and difficulty ", parent.skin);
 
 
     }
@@ -113,12 +135,17 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
 //        titleLabel = new Label( "Choose Heroes upto "+parent.getNumOfPlayers(), parent.skin);
-        TextButton backButton = new TextButton("Back", parent.skin);
-        TextButton startButton = new TextButton("Start",parent.skin);
-
-
+         backButton = new TextButton("Back", parent.skin);
+         startButton = new TextButton("Start",parent.skin);
         table.add(titleLabel).colspan(4);
-        table.row().pad(50, 0, 0, 0);
+        difficulty = new SelectBox<String>(parent.skin);
+        difficulty.setItems("Easy", "Hard");
+        table.add(difficulty).width(150).colspan(4);
+        difficulty.setDisabled(true);
+
+
+
+        table.row().pad(30, 0, 0, 0);
 
         final HashMap<String, Boolean> availableHeroes = parent.getAvailableHeroes();
 
@@ -138,7 +165,6 @@ public class MultiPlayerSetupScreen implements Screen {
 
                         Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
                         //parent.selectHero(selectedHero);
-                        parent.disableHero("Warrior");
                         updateServer(selectedHero);
 
 
@@ -153,7 +179,10 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
             });
-            table.add(warriorImage).width(120).height(160).padRight(10);
+            table.add(warriorImage).width(120).height(160).padRight(10).colspan(2);
+
+
+
         }
 
         if (availableHeroes.get("Archer") == true) {
@@ -166,7 +195,6 @@ public class MultiPlayerSetupScreen implements Screen {
                     if(!parent.getFriendlyPlayers().containsValue("Archer")) {
                         Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
                         //parent.selectHero(selectedHero);
-                        parent.disableHero("Archer");
 
                         updateServer(selectedHero);
                     }else{
@@ -180,7 +208,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
             });
-            table.add(archerImage).width(120).height(160).padRight(10);
+            table.add(archerImage).width(120).height(160).padRight(10).colspan(2);
         }
 
         if (availableHeroes.get("Wizard") == true) {
@@ -195,7 +223,6 @@ public class MultiPlayerSetupScreen implements Screen {
                     if(!parent.getFriendlyPlayers().containsValue("Wizard")) {
                         Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
                         //parent.selectHero(selectedHero);
-                        parent.disableHero("Wizard");
 
 
                         updateServer(selectedHero);
@@ -208,7 +235,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
             });
-            table.add(wizardImage).width(120).height(160).padRight(10);
+            table.add(wizardImage).width(120).height(160).padRight(10).colspan(2);
         }
 
         if (availableHeroes.get("Dwarf") == true) {
@@ -222,7 +249,6 @@ public class MultiPlayerSetupScreen implements Screen {
                     if(!parent.getFriendlyPlayers().containsValue("Dwarf")) {
                         Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
                         //parent.selectHero(selectedHero);
-                        parent.disableHero("Dwarf");
 
 
                         updateServer(selectedHero);
@@ -238,16 +264,58 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
             });
-            table.add(dwarfImage).width(120).height(160).padRight(10);
+            table.add(dwarfImage).width(120).height(160).padRight(10).colspan(2);
+
+
 
         }
+        table.row().pad(10, 0, 0, 0);
+
+
+        wineskinWarrior = new SelectBox<Integer>(parent.skin);
+        wineskinWarrior.setItems(0,1, 2);
+        table.add(wineskinWarrior).width(30).height(20).colspan(1);
+        goldWarrior = new SelectBox<Integer>(parent.skin);
+        goldWarrior.setItems(0,1, 2,3,4,5);
+        table.add(goldWarrior).width(30).height(20).colspan(1);
+        wineskinWarrior.setDisabled(true);
+        goldWarrior.setDisabled(true);
+
+
+        wineskinArcher = new SelectBox<Integer>(parent.skin);
+        wineskinArcher.setItems(0,1, 2);
+        table.add(wineskinArcher).width(30).height(20).colspan(1);
+        goldArcher = new SelectBox<Integer>(parent.skin);
+        goldArcher.setItems(0,1, 2,3,4,5);
+        table.add(goldArcher).width(30).height(20).colspan(1);
+        wineskinArcher.setDisabled(true);
+        goldArcher.setDisabled(true);
+
+        wineskinWizard = new SelectBox<Integer>(parent.skin);
+        wineskinWizard.setItems(0,1, 2);
+        table.add(wineskinWizard).width(30).height(20).colspan(1);
+        goldWizard = new SelectBox<Integer>(parent.skin);
+        goldWizard.setItems(0,1, 2,3,4,5);
+        table.add(goldWizard).width(30).height(20).colspan(1);
+        wineskinWizard.setDisabled(true);
+        goldWizard.setDisabled(true);
+
+        wineskinDwarf = new SelectBox<Integer>(parent.skin);
+        wineskinDwarf.setItems(0,1, 2);
+        table.add(wineskinDwarf).width(30).height(20).colspan(1);
+        goldDwarf = new SelectBox<Integer>(parent.skin);
+        goldDwarf.setItems(0,1, 2,3,4,5);
+        table.add(goldDwarf).width(30).height(20).colspan(1);
+        wineskinDwarf.setDisabled(true);
+        goldDwarf.setDisabled(true);
 
 
 
-        table.row().pad(30, 0, 0, 0);
+
+        table.row().pad(10, 0, 0, 0);
 
         titleLabel2 =  new Label( "Lobby ", parent.skin);
-        table.add(titleLabel2).colspan(4);
+        table.add(titleLabel2).colspan(8);
 
         table.row().pad(20, 0, 0, 0);
 
@@ -255,18 +323,35 @@ public class MultiPlayerSetupScreen implements Screen {
         ListConnectedPlayers = new TextArea("",parent.skin);
         ListConnectedPlayers.setDisabled(true);
 
-        table.add(ListConnectedPlayers).prefSize(300).colspan(4);
+
+        table.add(ListConnectedPlayers).prefSize(300).colspan(8);
+        for(int i =0 ;i<parent.getPlayerHeroes().size();i++) {
+            ListConnectedPlayers.appendText("- " + parent.getPlayerHeroes().get(i).getTypeOfHeroString() + "\n");
+            if (parent.decider == 1) {
+                String name = parent.getPlayerHeroes().get(i).getTypeOfHeroString();
+                if (name.equals("Warrior")) {
+                    goldWarrior.setDisabled(false);
+                    wineskinWarrior.setDisabled(false);
+                } else if (name.equals("Wizard")) {
+                    goldWizard.setDisabled(false);
+                    wineskinWizard.setDisabled(false);
+                } else if (name.equals("Archer")) {
+                    goldArcher.setDisabled(false);
+                    wineskinArcher.setDisabled(false);
+                } else if (name.equals("Dwarf")) {
+                    goldDwarf.setDisabled(false);
+                    wineskinDwarf.setDisabled(false);
+                }
+            }
+        }
+
+
 
         table.row().pad(30, 0, 0, 0);
-        difficulty = new SelectBox<String>(parent.skin);
-        difficulty.setItems("Easy", "Hard");
-        table.add(difficulty).width(150).colspan(4);
-        table.row().pad(20, 0, 0, 0);
 
 
 
-
-        table.add(backButton).colspan(2);
+        table.add(backButton).colspan(3);
 
         backButton.addListener(new ChangeListener() {
             @Override
@@ -291,23 +376,78 @@ public class MultiPlayerSetupScreen implements Screen {
                 }
             }
         });
-        table.add(startButton).colspan(2);
+
+        chat = new TextButton("Chat",parent.skin);
+        chat.setPosition(Gdx.graphics.getWidth() - chat.getWidth() - 10, 100);
+        chat.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                parent.changeScreen(Andor.CHAT);
+            }
+        });
+        table.add(chat).colspan(2);
+        chat.setDisabled(true);
+
+
+        table.add(startButton).colspan(3);
         startButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                int diff;
-                int size = friendlyPlayers.size();
-                int size2 =parent.getPlayerHeroes().size();
-                if (difficulty.getSelected().equals("Easy")) {
-                    diff = -1;
-                } else {
-                    diff = 1;
+
+
+                if(friendlyPlayers.size()>=2) {
+                    int size = friendlyPlayers.size();
+                    int d;
+                    if (difficulty.getSelected().equals("Easy")) {
+                        d = -1;
+                    } else {
+                        d = 1;
+                    }
+                    int totalGold = goldWarrior.getSelected() + goldWizard.getSelected()+ goldArcher.getSelected()+ goldDwarf.getSelected();
+                    int totalWineskin = wineskinArcher.getSelected() + wineskinDwarf.getSelected()+ wineskinWarrior.getSelected()+ wineskinWizard.getSelected();
+
+                    if(totalGold<=5 && totalWineskin<=2){
+                        /*for(int i =0 ; i < parent.getPlayerHeroes().size();i++){
+                            if(parent.getPlayerHeroes().get(i).getTypeOfHeroString().equals("Warrior")){
+                                parent.getPlayerHeroes().get(i).addGold(goldWarrior.getSelected());
+                            }else if (parent.getPlayerHeroes().get(i).getTypeOfHeroString().equals("Archer")){
+                                parent.getPlayerHeroes().get(i).addGold(goldArcher.getSelected());
+                            }else if (parent.getPlayerHeroes().get(i).getTypeOfHeroString().equals("Wizard")){
+                                parent.getPlayerHeroes().get(i).addGold(goldWizard.getSelected());
+                            }else if (parent.getPlayerHeroes().get(i).getTypeOfHeroString().equals("Dwarf")){
+                                parent.getPlayerHeroes().get(i).addGold(goldDwarf.getSelected());
+
+                            }
+                        }*/
+
+                        if(parent.getMyHero().getTypeOfHeroString().equals("Warrior")){
+                            parent.getMyHero().addGold(goldWarrior.getSelected());
+                        }else if (parent.getMyHero().getTypeOfHeroString().equals("Archer")){
+                            parent.getMyHero().addGold(goldArcher.getSelected());
+                        }else if (parent.getMyHero().getTypeOfHeroString().equals("Wizard")){
+                            parent.getMyHero().addGold(goldWizard.getSelected());
+                        }else if (parent.getMyHero().getTypeOfHeroString().equals("Dwarf")){
+                            parent.getMyHero().addGold(goldDwarf.getSelected());
+
+                        }
+                        updateGoldWine();
+                    }
+
+
+
+                    parent.setUpMultiPlayer(size, d);
+                    parent.createNewBoard();
+                    parent.changeScreen(Andor.MULTIGAME);
                 }
-                parent.setUpMultiPlayer(size,diff);
-                parent.createNewBoard();
-                parent.changeScreen(Andor.MULTIGAME);
+
             }
         });
+
+        if(parent.decider != 1 ){
+            startButton.setDisabled(true);
+        }
+
+
 
 
         return table;
@@ -354,9 +494,32 @@ public class MultiPlayerSetupScreen implements Screen {
     public void dispose() {
         stage.dispose();
     }
+    public void updateGoldWine(){
+        JSONObject data =new JSONObject();
+        try{
+            data.put("goldArcher", goldArcher.getSelected());
+            data.put("goldWarrior", goldWarrior.getSelected());
+            data.put("goldWizard", goldWizard.getSelected());
+            data.put("goldDwarf", goldDwarf.getSelected());
+            data.put("wineDwarf", wineskinDwarf.getSelected());
+            data.put("wineArcher", wineskinArcher.getSelected());
+            data.put("wineWizard", wineskinWizard.getSelected());
+            data.put("wineWarrior", wineskinWarrior.getSelected());
+
+
+
+            socket.emit("GoldWine", data);
+
+        }catch(Exception e){
+            Gdx.app.log("SOCKET.IO", "Error sending data");
+        }
+
+    }
+
     public void updateServer(Hero selectedHero){
         parent.setMyHero(selectedHero);
         JSONObject data =new JSONObject();
+
         try{
             data.put("name", selectedHero.getTypeOfHeroString());
             data.put("difficulty", difficulty.getSelected());
@@ -391,15 +554,43 @@ public class MultiPlayerSetupScreen implements Screen {
         }).on("newPlayer", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONArray objects = (JSONArray)args[0];
+                final JSONArray objects = (JSONArray)args[0];
                 try {
+
                     ListConnectedPlayers.setText("");
                     for(int i =0;i<objects.length();i++) {
+                        if(objects.length() == 1){
+                            parent.decider =1;
+                        }
 
                         String name = ((String) objects.getJSONObject(i).getString("name"));
                         ListConnectedPlayers.appendText("- " + name + "\n");
 
                     }
+                    if(parent.decider ==1 ) {
+                        difficulty.setDisabled(false);
+                        startButton.setDisabled(false);
+
+
+                        new Dialog("You are the Leader", parent.skin) {
+                            {
+                                text("You must select the difficulty now. \nAnd you will be in charge of distributing Gold and Wineskin.\nNumber of players : "+objects.length());
+                                button("Okay", true);
+                            }
+
+                            @Override
+                            protected void result(Object object) {
+
+                            }
+                        }.show(stage);
+                    }else{
+
+                        String level = (String)objects.getJSONObject(0).getString("level");
+                        difficulty.setSelected(level);
+                        difficulty.setDisabled(true);
+
+                    }
+
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error getting the new player id");
                 }
@@ -427,6 +618,8 @@ public class MultiPlayerSetupScreen implements Screen {
             public void call(Object... args) {
                 JSONArray objects = (JSONArray)args[0];
                 try {
+
+                    chat.setDisabled(false);
                     ListConnectedPlayers.setText("");
                     for(int i =0;i<objects.length();i++) {
                         String id = ((String) objects.getJSONObject(i).getString("id"));
@@ -438,30 +631,99 @@ public class MultiPlayerSetupScreen implements Screen {
 
                                 Archer selectedHero = new Archer(String.valueOf(1 + parent.getReadyPlayers()));
                                 parent.selectHero(selectedHero);
-                                parent.disableHero(name);
+                                if(parent.decider ==1){
+                                    goldArcher.setDisabled(false);
+                                    wineskinArcher.setDisabled(false);
+                                }
 
 
                             }
                             if (name.equals("Warrior")) {
                                 Warrior selectedHero = new Warrior(String.valueOf(1 + parent.getReadyPlayers()));
                                 parent.selectHero(selectedHero);
-                                parent.disableHero(name);
+
+                                if(parent.decider ==1){
+                                    goldWarrior.setDisabled(false);
+                                    wineskinWarrior.setDisabled(false);
+                                }
 
 
                             }
                             if (name.equals("Wizard")) {
                                 Wizard selectedHero = new Wizard(String.valueOf(1 + parent.getReadyPlayers()));
                                 parent.selectHero(selectedHero);
-                                parent.disableHero(name);
+
+                                if(parent.decider ==1){
+                                    goldWizard.setDisabled(false);
+                                    wineskinWizard.setDisabled(false);
+                                }
 
 
                             }
                             if (name.equals("Dwarf")) {
                                 Dwarf selectedHero = new Dwarf(String.valueOf(1 + parent.getReadyPlayers()));
                                 parent.selectHero(selectedHero);
-                                parent.disableHero(name);
+
+                                if(parent.decider ==1){
+                                    goldDwarf.setDisabled(false);
+                                    wineskinDwarf.setDisabled(false);
+                                }
 
                             }
+                        }
+
+                    }
+                        String level = (String)objects.getJSONObject(0).getString("level");
+                        difficulty.setSelected(level);
+                        difficulty.setDisabled(true);
+
+                }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error handling the other player choosing");
+                }
+            }
+        }).on("GoldWine", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                JSONArray objects = (JSONArray)args[0];
+
+                try {
+                    startButton.setDisabled(false);
+
+                    for(int i =0;i<objects.length();i++) {
+                        String name = ((String) objects.getJSONObject(i).getString("name"));
+                        if (name.equals("Warrior")) {
+
+                            int WarriorGold = objects.getJSONObject(i).getInt("gold");
+                            int WarriorWine = objects.getJSONObject(i).getInt("wineskin");
+                            goldWarrior.setSelected(WarriorGold);
+                            wineskinWarrior.setSelected(WarriorWine);
+
+
+                        }
+                        if (name.equals("Wizard")) {
+
+                            int WizardGold = objects.getJSONObject(i).getInt("gold");
+                            int WizardWine = objects.getJSONObject(i).getInt("wineskin");
+                            goldWizard.setSelected(WizardGold);
+                            wineskinWizard.setSelected(WizardWine);
+                        }
+                        if (name.equals("Archer")) {
+
+                            int ArcherGold = objects.getJSONObject(i).getInt("gold");
+                            int ArcherWine = objects.getJSONObject(i).getInt("wineskin");
+                            goldArcher.setSelected(ArcherGold);
+                            wineskinArcher.setSelected(ArcherWine);
+                        }
+
+                        if (name.equals("Dwarf")) {
+
+                            int DwarfGold = objects.getJSONObject(i).getInt("gold");
+                            int DwarfWine = objects.getJSONObject(i).getInt("wineskin");
+                            goldDwarf.setSelected(DwarfGold);
+                            wineskinDwarf.setSelected(DwarfWine);
+
+
+
                         }
 
                     }
@@ -470,8 +732,8 @@ public class MultiPlayerSetupScreen implements Screen {
 
 
 
-                }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error handling the other player choosing");
+                    }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error distributing Gold and wineskin");
                 }
             }
         });

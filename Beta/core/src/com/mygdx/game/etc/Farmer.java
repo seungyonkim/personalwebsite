@@ -39,6 +39,22 @@ public class Farmer {
         this.alive = false;
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if(o == this) return true;
+        else
+        {
+            if(o instanceof Farmer)
+            {
+                Farmer pFarmer = (Farmer) o;
+                return (pFarmer.getFarmerNumber() == this.getFarmerNumber() && pFarmer.getPosition() == this.getPosition() &&
+                        pFarmer.isAlive() == this.isAlive());
+            }
+            else return false;
+        }
+    }
+
 //    public void moveFarmer(Region from, Region to) {
 //        from.removeFarmer(this);
 //        to.addFarmer(this);

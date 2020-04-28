@@ -89,7 +89,9 @@ public class GameScreen implements Screen {
     private TextButton drinkWell;
     private TextButton merchantButton;
     private TextButton battleButton;
+    private TextButton castleShields;
 
+    private TextButton equipmentBagButton;
 //    private BitmapFont font;
 
     private boolean skipping;
@@ -691,6 +693,22 @@ public class GameScreen implements Screen {
             show();
         }
 
+        if (gameBoard.getCastle().getShield() < 0) {
+            new Dialog("Game Over", parent.skin) {
+                {
+                    text("Game Over. You Lost.");
+                    button("Exit Game", true);
+                }
+
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        Gdx.app.exit();
+                    }
+                }
+            }.show(stage);
+        }
+
         availableRegions = parent.whoseTurn().getAvailableRegions(gameBoard);
 //        System.out.println("Current Hero position: "+parent.whoseTurn().getPosition());
 //        for (Region r : availableRegions) {
@@ -753,6 +771,12 @@ public class GameScreen implements Screen {
         heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
         stage.addActor(heroInformation);
 
+        // Displaying number of castle shields
+        castleShields = new TextButton("Remaining Shields: " + gameBoard.getCastle().getShield(), parent.skin);
+        castleShields.setTouchable(Touchable.disabled);
+        castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
+        stage.addActor(castleShields);
+
 
         // Show button to display the available paths for current hero
         pathTexture = new Texture(Gdx.files.internal("andor_path_button.png"));
@@ -769,6 +793,36 @@ public class GameScreen implements Screen {
             }
         });
         stage.addActor(pathButtonImage);
+
+        //Equipment bag button
+
+
+        equipmentBagButton = new TextButton("Equipment Bag", parent.skin);
+
+        equipmentBagButton.setTouchable(Touchable.enabled);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
+
+        equipmentBagButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if(currentHero instanceof Warrior){
+                    parent.changeScreen(Andor.EQUIPMENT_WARRIOR);
+                }
+                else if(currentHero instanceof Archer){
+                    parent.changeScreen(Andor.EQUIPMENT_ARCHER);
+                }
+                else if(currentHero instanceof Wizard){
+                    parent.changeScreen(Andor.EQUIPMENT_WIZARD);
+                }
+                else if(currentHero instanceof Dwarf){
+                    parent.changeScreen(Andor.EQUIPMENT_DWARF);
+                }
+
+
+            }
+        });
+
+        stage.addActor(equipmentBagButton);
 
         pathButtons.clear();
         // if the player doesn't have to stop, or if he is the only one remaining in the day
@@ -1011,17 +1065,34 @@ public class GameScreen implements Screen {
         merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
         if (gameBoard.getRegion(currentHero.getPosition()) instanceof Merchant) {
             if (currentHero.getGold() >= 2) {
-                merchantButton.setText("Buy SP for 2G");
+                merchantButton.setText("Visit Merchant Store");
                 merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+//                merchantButton.addListener(new ChangeListener() {
+//                    @Override
+//                    public void changed(ChangeEvent event, Actor actor) {
+//                        // Perform SP purchase
+//                        //((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellSP(currentHero);
+//                        parent.changeScreen(Andor.PREFERENCE);
+//                        if (!skipping) {
+//                            hasToStop = true;
+//                        }
+//
+//                        show();
+//                    }
+//                });
+
                 merchantButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
-                        // Perform SP purchase
-                        ((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellSP(currentHero);
+
+                        parent.changeScreen(Andor.MERCHANT);
+
                         if (!skipping) {
                             hasToStop = true;
                         }
                         show();
+
+
                     }
                 });
                 stage.addActor(merchantButton);
@@ -1173,6 +1244,7 @@ public class GameScreen implements Screen {
         dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
         pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
         drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-250, 10);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(),Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
         merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
     }
 

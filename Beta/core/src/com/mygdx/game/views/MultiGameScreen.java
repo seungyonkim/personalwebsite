@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
@@ -101,6 +102,9 @@ public class MultiGameScreen implements Screen {
     private TextButton battleButton;
     private TextButton chat;
     private TextButton mainMenuButton;
+    private TextButton castleShields;
+
+    private TextButton equipmentBagButton;
 
 //    private BitmapFont font;
 
@@ -695,13 +699,40 @@ public class MultiGameScreen implements Screen {
         }
 
 
-
         final Hero currentHero = parent.whoseTurn();
         // Portrait of the current player hero
         final Hero myHero = parent.getMyHero();
 
+        if (gameBoard.getCastle().getShield() < 0 || gameBoard.checkLose()) {
+            new Dialog("Game Over", parent.skin) {
+                {
+                    text("Game Over. You Lost.");
+                    button("Exit Game", true);
+                }
 
-        if(currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())&& !myHero.hasMoved()) {
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        Gdx.app.exit();
+                    }
+                }
+            }.show(stage);
+        } else if (gameBoard.checkWin()) {
+            //win popup
+            new Dialog("You Win", parent.skin) {
+                {
+                    text("You Win");
+                    button("Finish Game", true);
+                }
+
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        Gdx.app.exit();
+                    }
+                }
+            }.show(stage);
+        } else if(currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())&& !myHero.hasMoved()) {
             new Dialog("It is your turn", parent.skin) {
                 {
                     text("Clicked to play,  "+ currentHero.getTypeOfHeroString());
@@ -716,10 +747,10 @@ public class MultiGameScreen implements Screen {
 
                 }
             }.show(stage);
-        }else if (!currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())){
+        } else if (!currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())){
             new Dialog("It is not your turn", parent.skin) {
                 {
-                    text("Wait, "+ currentHero.getTypeOfHeroString() + " is playing");
+                    text("Wait, other player are playing.\nWe will tell you when to play.");
                     button("Ok",true);
                 }
 
@@ -791,6 +822,11 @@ public class MultiGameScreen implements Screen {
         heroInformation.setPosition(Gdx.graphics.getWidth() / 4 + Gdx.graphics.getWidth()*45/640, Gdx.graphics.getHeight() - Gdx.graphics.getHeight()*70/480 - 5);
         stage.addActor(heroInformation);
 
+        // Displaying number of castle shields
+        castleShields = new TextButton("Remaining Shields: " + gameBoard.getCastle().getShield(), parent.skin);
+        castleShields.setTouchable(Touchable.disabled);
+        castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
+        stage.addActor(castleShields);
 
         ///////////////////////////
         // Show button to display the available paths for current hero
@@ -809,287 +845,355 @@ public class MultiGameScreen implements Screen {
         });
         stage.addActor(pathButtonImage);
 
-
-        pathButtons.clear();
-        // if the player doesn't have to stop, or if he is the only one remaining in the day
-        if (!hasToStop || parent.getPlayerHeroes().size()-parent.getFinishedHeroes().size() == 1) {
-            float newY = pathButtonImage.getY();
-            for (int i = 0; i < availableRegions.size(); i++) {
-                final Region region = availableRegions.get(i);
-                TextButton pathButton = new TextButton(String.valueOf(region.getPosition()), parent.skin);
-                pathButton.setSize(Gdx.graphics.getWidth() * 30 / 640, Gdx.graphics.getWidth() * 30 / 640);
-                newY -= pathButton.getHeight();
-                //            pathButton.setPosition(Gdx.graphics.getWidth()-pathButton.getWidth()-10, newY);
-                pathButton.setPosition(pathButtonImage.getX(), newY);
-                pathButton.addListener(new ChangeListener() {
-                    @Override
-                    public void changed(ChangeEvent event, Actor actor) {
-                        myHero.moveTo(gameBoard.getRegion(myHero.getPosition()), region);
-                        currentHero.setMoved();
-                        if (myHero instanceof Warrior) {
-                            updateHeroPosition(myHero, warrior);
-                            if (myHero.getFarmers().size() > 0) {
-                                updateFarmerPosition(myHero.getFarmers());
-                            }
-                            skipping = false;
-                            canBattle = false;
-                        } else if (myHero instanceof Archer) {
-                            updateHeroPosition(myHero, archer);
-                            if (myHero.getFarmers().size() > 0) {
-                                updateFarmerPosition(myHero.getFarmers());
-                            }
-                            skipping = false;
-                            canBattle = false;
-                        } else if (myHero instanceof Wizard) {
-                            updateHeroPosition(myHero, wizard);
-                            if (myHero.getFarmers().size() > 0) {
-                                updateFarmerPosition(myHero.getFarmers());
-                            }
-                            skipping = false;
-                            canBattle = false;
-                        } else if (myHero instanceof Dwarf) {
-                            updateHeroPosition(myHero, dwarf);
-                            if (myHero.getFarmers().size() > 0) {
-                                updateFarmerPosition(myHero.getFarmers());
-                            }
-                            skipping = false;
-                            canBattle = false;
-                        }
-                        updateMove();
-                        show();
-                    }
-                });
-                pathButtons.add(pathButton);
-                stage.addActor(pathButton);
-            }
-        }
-
-        //////////////////////////
+        //Equipment bag button
 
 
-        // Add button to skip/finish turn
-        // don't allow the player to skip or finish turn if he/she is the only one remaining in the day
-        if (parent.getPlayerHeroes().size()-parent.getFinishedHeroes().size() > 1) {
-            if (skipping) {
-                TextButton skipTurn = new TextButton("Skip Turn", parent.skin);
-                skipTurn.setPosition(10, 10);
-                skipTurn.addListener(new ChangeListener() {
-                    @Override
-                    public void changed(ChangeEvent event, Actor actor) {
-                        currentHero.incrementHours();
-                        parent.nextTurn();
-                        hasToStop = false;
-                        canBattle = true;
-                        show();
-                        updateFinish(1);
+        equipmentBagButton = new TextButton("Equipment Bag", parent.skin);
 
-                    }
-                });
-                stage.addActor(skipTurn);
-            } else {
-                TextButton finishTurn = new TextButton("Finish Turn", parent.skin);
-                finishTurn.setPosition(10, 10);
-                finishTurn.addListener(new ChangeListener() {
-                    @Override
-                    public void changed(ChangeEvent event, Actor actor) {
-                        parent.nextTurn();
-                        skipping = true;
-                        canBattle = true;
-                        hasToStop = false;
-                        show();
-                        updateFinish(2);
+        equipmentBagButton.setTouchable(Touchable.enabled);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
 
-                    }
-                });
-                stage.addActor(finishTurn);
-
-            }
-        }
-
-        if ((currentHero.getHours() >= 7) && (currentHero.getWillPower() >= 2)) {
-            TextButton finishDay = new TextButton("Finish Day", parent.skin);
-            finishDay.setPosition(100, 10);
-            finishDay.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    // Finish Day for This Hero
-                    skipping = true;
-                    hasToStop = false;
-                    canBattle = true;
-                    parent.finishDay();
-                    updateFinish(3);
-
-                    show();
-                }
-            });
-            stage.addActor(finishDay);
-        }
-
-
-
-        // Show where golds are dropped in the map
-        String displayGoldInfo = "Golds dropped: ";
-        for (Region region : gameBoard.getGoldRegions()) {
-            int golds = region.getGold();
-            int position = region.getPosition();
-            displayGoldInfo += golds + "G in " + position + ",";
-        }
-        goldInformation = new TextButton(displayGoldInfo, parent.skin);
-        goldInformation.setTouchable(Touchable.disabled);
-        goldInformation.setPosition(200, 10);
-        stage.addActor(goldInformation);
-
-
-        // Battle button
-        battleButton = new TextButton("Start Battle", parent.skin);
-        if(gameBoard.getRegion(myHero.getPosition()).getMonster() != null && canBattle) {
-            // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
-            battleButton.setPosition(200, goldInformation.getHeight()+15);
-            battleButton.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    // Perform battle
-                    Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
-                    if (myHero instanceof Archer) {
-                        archerBattleDialogue((Archer)myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
-                    } else if (myHero instanceof Wizard) {
-                        wizardBattleDialogue((Wizard)myHero, monster, 1, 0);
-                    } else {
-                        battleDialog(myHero, monster, 1, 0);
-                    }
-                    skipping = false;
-//                    show();
-                }
-            });
-            stage.addActor(battleButton);
-        }
-
-        // Main Menu button
-        mainMenuButton = new TextButton("Main Menu", parent.skin);
-        mainMenuButton.setPosition(pathButtonImage.getX() - mainMenuButton.getWidth() - 10, Gdx.graphics.getHeight() - mainMenuButton.getHeight() - 5);
-        mainMenuButton.addListener(new ChangeListener() {
+        equipmentBagButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                // Main menu pop up
-                new Dialog("Main Menu", parent.skin) {
-                    {
-                        button("Save & Quit Game", true);
-                    }
+                if(myHero instanceof Warrior){
+                    parent.changeScreen(Andor.EQUIPMENT_WARRIOR);
+                }
+                else if(myHero instanceof Archer){
+                    parent.changeScreen(Andor.EQUIPMENT_ARCHER);
+                }
+                else if(myHero instanceof Wizard){
+                    parent.changeScreen(Andor.EQUIPMENT_WIZARD);
+                }
+                else if(myHero instanceof Dwarf){
+                    parent.changeScreen(Andor.EQUIPMENT_DWARF);
+                }
 
-                    @Override
-                    protected void result(Object object) {
-                        if (object.equals(true)) {
-                            // Quit Game
-                            System.out.println("Quitting Game");
-                        }
-                    }
-                }.show(stage);
+
             }
         });
-        stage.addActor(mainMenuButton);
+
+        stage.addActor(equipmentBagButton);
+
+
+        pathButtons.clear();
+//        // Only show following buttons for current player
+//        if (currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
+            // if the player doesn't have to stop, or if he is the only one remaining in the day
+            if (!hasToStop || parent.getPlayerHeroes().size() - parent.getFinishedHeroes().size() == 1) {
+                float newY = pathButtonImage.getY();
+                for (int i = 0; i < availableRegions.size(); i++) {
+                    final Region region = availableRegions.get(i);
+                    TextButton pathButton = new TextButton(String.valueOf(region.getPosition()), parent.skin);
+                    pathButton.setSize(Gdx.graphics.getWidth() * 30 / 640, Gdx.graphics.getWidth() * 30 / 640);
+                    newY -= pathButton.getHeight();
+                    //            pathButton.setPosition(Gdx.graphics.getWidth()-pathButton.getWidth()-10, newY);
+                    pathButton.setPosition(pathButtonImage.getX(), newY);
+                    pathButton.addListener(new ChangeListener() {
+                        @Override
+                        public void changed(ChangeEvent event, Actor actor) {
+                            myHero.moveTo(gameBoard.getRegion(myHero.getPosition()), region);
+                            if (myHero instanceof Warrior) {
+                                updateHeroPosition(myHero, warrior);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            } else if (myHero instanceof Archer) {
+                                updateHeroPosition(myHero, archer);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            } else if (myHero instanceof Wizard) {
+                                updateHeroPosition(myHero, wizard);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            } else if (myHero instanceof Dwarf) {
+                                updateHeroPosition(myHero, dwarf);
+                                if (myHero.getFarmers().size() > 0) {
+                                    updateFarmerPosition(myHero.getFarmers());
+                                }
+                                skipping = false;
+                                canBattle = false;
+                            }
+                            updateMove();
+                            show();
+                        }
+                    });
+                    pathButtons.add(pathButton);
+                    stage.addActor(pathButton);
+                }
+            }
+
+            // Show where golds are dropped in the map
+            String displayGoldInfo = "Golds dropped: ";
+            for (Region region : gameBoard.getGoldRegions()) {
+                int golds = region.getGold();
+                int position = region.getPosition();
+                displayGoldInfo += golds + "G in " + position + ",";
+            }
+            goldInformation = new TextButton(displayGoldInfo, parent.skin);
+            goldInformation.setTouchable(Touchable.disabled);
+            goldInformation.setPosition(200, 10);
+            stage.addActor(goldInformation);
 
 
 
-        // Buttons to drop/pickup gold
-        dropGoldButton = new TextButton("Drop Gold", parent.skin);
-        if (myHero.getGold() > 0) {
-            dropGoldButton.setPosition(Gdx.graphics.getWidth() - dropGoldButton.getWidth() - 10, 10);
-            dropGoldButton.addListener(new ChangeListener() {
+            // Main Menu button
+            mainMenuButton = new TextButton("Main Menu", parent.skin);
+            mainMenuButton.setPosition(pathButtonImage.getX() - mainMenuButton.getWidth() - 10, Gdx.graphics.getHeight() - mainMenuButton.getHeight() - 5);
+            mainMenuButton.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    // Perform Drop Gold
-                    myHero.dropGold();
-                    gameBoard.getRegion(myHero.getPosition()).addGold();
-                    show();
+                    // Main menu pop up
+                    new Dialog("Main Menu", parent.skin) {
+                        {
+                            button("Save & Quit Game", true);
+                        }
+
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
+                                // Quit Game
+                                System.out.println("Quitting Game");
+                            }
+                        }
+                    }.show(stage);
                 }
             });
-            stage.addActor(dropGoldButton);
-        }
+            stage.addActor(mainMenuButton);
 
-        pickUpGoldButton = new TextButton("Pickup Gold", parent.skin);
-        if (gameBoard.getRegion(myHero.getPosition()).getGold() > 0) {
-            pickUpGoldButton.setPosition(Gdx.graphics.getWidth()-pickUpGoldButton.getWidth()-10, dropGoldButton.getHeight()+15);
-            pickUpGoldButton.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    // Perform Pickup Gold
-                    myHero.pickUpGold();
-                    gameBoard.getRegion(myHero.getPosition()).removeGold();
-                    show();
+            //////////////////////////
+
+
+            // Add button to skip/finish turn
+            // don't allow the player to skip or finish turn if he/she is the only one remaining in the day
+            if (parent.getPlayerHeroes().size() - parent.getFinishedHeroes().size() > 1) {
+                if (skipping) {
+                    TextButton skipTurn = new TextButton("Skip Turn", parent.skin);
+                    skipTurn.setPosition(10, 10);
+                    skipTurn.addListener(new ChangeListener() {
+                        @Override
+                        public void changed(ChangeEvent event, Actor actor) {
+                            currentHero.incrementHours();
+                            parent.nextTurn();
+                            hasToStop = false;
+                            canBattle = true;
+                            show();
+                            updateFinish(1);
+
+                        }
+                    });
+                    stage.addActor(skipTurn);
+                } else {
+                    TextButton finishTurn = new TextButton("Finish Turn", parent.skin);
+                    finishTurn.setPosition(10, 10);
+                    finishTurn.addListener(new ChangeListener() {
+                        @Override
+                        public void changed(ChangeEvent event, Actor actor) {
+                            parent.nextTurn();
+                            skipping = true;
+                            canBattle = true;
+                            hasToStop = false;
+                            show();
+                            updateFinish(2);
+
+                        }
+                    });
+                    stage.addActor(finishTurn);
+
                 }
-            });
-            stage.addActor(pickUpGoldButton);
-        }
+            }
 
-
-        // Buttons to pickup/drop off farmer
-        dropFarmer = new TextButton("Drop Off Farmer", parent.skin);
-        if (myHero.getFarmers().size() != 0) {
-            dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
-            dropFarmer.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    // Perform Drop Farmer
-                    myHero.dropOffFarmer(myHero.getFarmers().get(0), gameBoard.getRegion(myHero.getPosition()));
-                    show();
-                }
-            });
-            stage.addActor(dropFarmer);
-        }
-
-        pickUpFarmer = new TextButton("Pickup Farmer", parent.skin);
-        if (gameBoard.getRegion(myHero.getPosition()).getFarmers().size() > 0) {
-            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
-//            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, 10);
-            pickUpFarmer.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    // Perform Pickup Farmer
-                    myHero.pickupFarmer(gameBoard.getRegion(myHero.getPosition()).getFarmers().get(0), gameBoard.getRegion(myHero.getPosition()));
-                    show();
-                }
-            });
-            stage.addActor(pickUpFarmer);
-        }
-
-
-        // Well interaction button
-        drinkWell = new TextButton("Drink Well", parent.skin);
-        if (gameBoard.getRegion(myHero.getPosition()).getWell() != null && !gameBoard.getRegion(myHero.getPosition()).getWell().isEmpty()) {
-            drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-250, 10);
-            drinkWell.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    // Perform drink well
-                    myHero.drinkWell(gameBoard.getRegion(myHero.getPosition()).getWell());
-                    if (!skipping) {
-                        hasToStop = true;
-                    }
-                    show();
-                }
-            });
-            stage.addActor(drinkWell);
-        }
-
-
-        // Merchant interaction button
-        merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
-        if (gameBoard.getRegion(myHero.getPosition()) instanceof Merchant) {
-            if (myHero.getGold() >= 2) {
-                merchantButton.setText("Buy SP for 2G");
-                merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
-                merchantButton.addListener(new ChangeListener() {
+            if ((myHero.getHours() >= 7) && (myHero.getWillPower() >= 2)) {
+                TextButton finishDay = new TextButton("Finish Day", parent.skin);
+                finishDay.setPosition(100, 10);
+                finishDay.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
-                        // Perform SP purchase
-                        ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
+                        // Finish Day for This Hero
+                        skipping = true;
+                        hasToStop = false;
+                        canBattle = true;
+                        parent.finishDay();
+
+                        show();
+                        updateFinish(3);
+
+                    }
+                });
+                stage.addActor(finishDay);
+            }
+
+
+            // Battle button
+            if (gameBoard.getRegion(myHero.getPosition()).getMonster() != null && canBattle && gameBoard.getRegion(myHero.getPosition()).getHeroes() != null) {
+                battleButton = new TextButton("Start Battle", parent.skin);
+                // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
+                battleButton.setPosition(200, goldInformation.getHeight() + 15);
+                battleButton.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        // Perform battle
+
+                        Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
+                        if (myHero instanceof Archer) {
+                            archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
+                        } else if (myHero instanceof Wizard) {
+                            wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
+                        } else {
+                            battleDialog(myHero, monster, 1, 0);
+                        }
+                        skipping = false;
+                        updateBattle();
+
+                        //                    show();
+                    }
+                });
+                stage.addActor(battleButton);
+            }
+
+
+            // Buttons to drop/pickup gold
+            dropGoldButton = new TextButton("Drop Gold", parent.skin);
+            if (myHero.getGold() > 0) {
+                dropGoldButton.setPosition(Gdx.graphics.getWidth() - dropGoldButton.getWidth() - 10, 10);
+                dropGoldButton.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        // Perform Drop Gold
+                        myHero.dropGold();
+                        gameBoard.getRegion(myHero.getPosition()).addGold();
+                        show();
+                    }
+                });
+                stage.addActor(dropGoldButton);
+            }
+
+            pickUpGoldButton = new TextButton("Pickup Gold", parent.skin);
+            if (gameBoard.getRegion(myHero.getPosition()).getGold() > 0) {
+                pickUpGoldButton.setPosition(Gdx.graphics.getWidth() - pickUpGoldButton.getWidth() - 10, dropGoldButton.getHeight() + 15);
+                pickUpGoldButton.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        // Perform Pickup Gold
+                        myHero.pickUpGold();
+                        gameBoard.getRegion(myHero.getPosition()).removeGold();
+                        show();
+                    }
+                });
+                stage.addActor(pickUpGoldButton);
+            }
+
+
+            // Buttons to pickup/drop off farmer
+            dropFarmer = new TextButton("Drop Off Farmer", parent.skin);
+            if (myHero.getFarmers().size() != 0) {
+                dropFarmer.setPosition(Gdx.graphics.getWidth() - dropFarmer.getWidth() - 110, 10);
+                dropFarmer.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        // Perform Drop Farmer
+                        myHero.dropOffFarmer(myHero.getFarmers().get(0), gameBoard.getRegion(myHero.getPosition()));
+                        show();
+                    }
+                });
+                stage.addActor(dropFarmer);
+            }
+
+            pickUpFarmer = new TextButton("Pickup Farmer", parent.skin);
+            if (gameBoard.getRegion(myHero.getPosition()).getFarmers().size() > 0) {
+                pickUpFarmer.setPosition(Gdx.graphics.getWidth() - pickUpFarmer.getWidth() - 110, dropFarmer.getHeight() + 15);
+                //            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, 10);
+                pickUpFarmer.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        // Perform Pickup Farmer
+                        myHero.pickupFarmer(gameBoard.getRegion(myHero.getPosition()).getFarmers().get(0), gameBoard.getRegion(myHero.getPosition()));
+                        show();
+                    }
+                });
+                stage.addActor(pickUpFarmer);
+            }
+
+
+            // Well interaction button
+            drinkWell = new TextButton("Drink Well", parent.skin);
+            if (gameBoard.getRegion(myHero.getPosition()).getWell() != null && !gameBoard.getRegion(myHero.getPosition()).getWell().isEmpty()) {
+                drinkWell.setPosition(Gdx.graphics.getWidth() - drinkWell.getWidth() - 250, 10);
+                drinkWell.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        // Perform drink well
+                        myHero.drinkWell(gameBoard.getRegion(myHero.getPosition()).getWell());
                         if (!skipping) {
                             hasToStop = true;
                         }
                         show();
                     }
                 });
+                stage.addActor(drinkWell);
+            }
+
+//        } // End if (current player's turn)
+
+
+        // Merchant interaction button
+        merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
+        if (gameBoard.getRegion(myHero.getPosition()) instanceof Merchant) {
+            if (myHero.getGold() >= 2) {
+                merchantButton.setText("Visit Merchant Store");
+                merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+//                merchantButton.addListener(new ChangeListener() {
+//                    @Override
+//                    public void changed(ChangeEvent event, Actor actor) {
+//                        // Perform SP purchase
+//                        //((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellSP(currentHero);
+//                        parent.changeScreen(Andor.PREFERENCE);
+//                        if (!skipping) {
+//                            hasToStop = true;
+//                        }
+//
+//                        show();
+//                    }
+//                });
+
+                merchantButton.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+
+                        parent.changeScreen(Andor.MERCHANT);
+
+                        if (!skipping) {
+                            hasToStop = true;
+                        }
+
+
+                    }
+                });
+
                 stage.addActor(merchantButton);
+
+//                merchantButton.setText("Buy SP for 2G");
+//                merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+//                merchantButton.addListener(new ChangeListener() {
+//                    @Override
+//                    public void changed(ChangeEvent event, Actor actor) {
+//                        // Perform SP purchase
+//                        ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
+//                        if (!skipping) {
+//                            hasToStop = true;
+//                        }
+//                        show();
+//                    }
+//                });
+//                stage.addActor(merchantButton);
             } else {
                 merchantButton.setText("Not Enough Gold");
                 merchantButton.setTouchable(Touchable.disabled);
@@ -1205,17 +1309,23 @@ public class MultiGameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
+
         stage.getViewport().update(width, height, true);
 
-            heroPortraitResize(warriorPortraitImage);
-            heroPortraitResize(archerPortraitImage);
-            heroPortraitResize(wizardPortraitImage);
-            heroPortraitResize(dwarfPortraitImage);
+        heroPortraitResize(warriorPortraitImage);
+        heroPortraitResize(archerPortraitImage);
+        heroPortraitResize(wizardPortraitImage);
+        heroPortraitResize(dwarfPortraitImage);
 
-            heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
+        heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(),Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
 
-            pathButtonImage.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
-            pathButtonImage.setPosition(Gdx.graphics.getWidth()-pathButtonImage.getWidth()-10, Gdx.graphics.getHeight()-pathButtonImage.getHeight()-10);
+
+        pathButtonImage.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
+        pathButtonImage.setPosition(Gdx.graphics.getWidth()-pathButtonImage.getWidth()-10, Gdx.graphics.getHeight()-pathButtonImage.getHeight()-10);
+
+//        // Only resize following buttons for current player
+//        if (parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
             float newY = pathButtonImage.getY();
             for (TextButton button : pathButtons) {
                 button.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
@@ -1224,11 +1334,12 @@ public class MultiGameScreen implements Screen {
             }
 
             dropGoldButton.setPosition(Gdx.graphics.getWidth() - dropGoldButton.getWidth() - 10, 10);
-            pickUpGoldButton.setPosition(Gdx.graphics.getWidth()-pickUpGoldButton.getWidth()-10, dropGoldButton.getHeight()+15);
-            dropFarmer.setPosition(Gdx.graphics.getWidth()-dropFarmer.getWidth()-110, 10);
-            pickUpFarmer.setPosition(Gdx.graphics.getWidth()-pickUpFarmer.getWidth()-110, dropFarmer.getHeight()+15);
-            drinkWell.setPosition(Gdx.graphics.getWidth()-drinkWell.getWidth()-250, 10);
-            merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+            pickUpGoldButton.setPosition(Gdx.graphics.getWidth() - pickUpGoldButton.getWidth() - 10, dropGoldButton.getHeight() + 15);
+            dropFarmer.setPosition(Gdx.graphics.getWidth() - dropFarmer.getWidth() - 110, 10);
+            pickUpFarmer.setPosition(Gdx.graphics.getWidth() - pickUpFarmer.getWidth() - 110, dropFarmer.getHeight() + 15);
+            drinkWell.setPosition(Gdx.graphics.getWidth() - drinkWell.getWidth() - 250, 10);
+            merchantButton.setPosition(Gdx.graphics.getWidth() - merchantButton.getWidth() - 10, dropGoldButton.getHeight() + pickUpGoldButton.getHeight() + 15);
+//        }
 
         chat.setPosition(Gdx.graphics.getWidth()-chat.getWidth()-10, 100);
     }
@@ -1269,9 +1380,11 @@ public class MultiGameScreen implements Screen {
     public void updateFinish(int choice){
         Hero currentHero = parent.whoseTurn();
         currentHero.restoreMoved();
+        Hero myHero = parent.getMyHero();
         try{
             JSONObject data = new JSONObject();
             data.put("choice",choice);
+            data.put("pastPlayer", myHero.getTypeOfHeroString());
 
 
             socket.emit("finishTurn",data);
@@ -1286,15 +1399,31 @@ public class MultiGameScreen implements Screen {
 
         Hero currentHero = parent.getMyHero();
         if( parent.getMyHero().hasMoved()){
+
             JSONObject data = new JSONObject();
             try{
                 int x = currentHero.getPosition();
                 data.put("x",x);
-
-
                 socket.emit("playerMoved", data);
             }catch(Exception e){
                 Gdx.app.log("SocketIO", "Error moving the Player");
+
+            }
+        }
+    }
+
+    public void updateBattle(){
+
+        Hero myHero = parent.getMyHero();
+        if( parent.getMyHero().hasMoved()){
+
+            JSONObject data = new JSONObject();
+            try{
+                String wantToJoin = myHero.getTypeOfHeroString();
+                data.put("wantToJoin",wantToJoin);
+                socket.emit("updateBattle", data);
+            }catch(Exception e){
+                Gdx.app.log("SocketIO", "Error joining battle");
 
             }
         }
@@ -1369,44 +1498,100 @@ public class MultiGameScreen implements Screen {
                 Hero myHero = parent.getMyHero();
                 try {
 
-
+                    String pastPlayer = data.getString("pastPlayer");
                     int choice = data.getInt("choice");
+                    if(pastPlayer.equals(parent.whoseTurn().getTypeOfHeroString())) {
+                        if (choice == 1) {
+                            currentHero.incrementHours();
+                            parent.nextTurn();
+                            hasToStop = false;
+                            canBattle = true;
 
-                    if (choice == 1) {
-                        currentHero.incrementHours();
-                        parent.nextTurn();
-                        hasToStop = false;
-                        canBattle = true;
+                        } else if (choice == 2) {
+                            currentHero.restoreMoved();
+                            parent.nextTurn();
+                            skipping = true;
+                            canBattle = true;
+                            hasToStop = false;
+                        } else {
+                            skipping = true;
+                            hasToStop = false;
+                            canBattle = true;
+                            parent.finishDay();
+                        }
+                        System.out.println(myHero.getTypeOfHeroString() + " says it is the turn of :" + parent.whoseTurn().getTypeOfHeroString());
+                        if (parent.whoseTurn().getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
+                            System.out.println(myHero.getTypeOfHeroString() + " says it is the turn of :" + parent.whoseTurn().getTypeOfHeroString());
 
-                    }else if (choice == 2) {
-                        currentHero.restoreMoved();
-                        parent.nextTurn();
-                        skipping = true;
-                        canBattle = true;
-                        hasToStop = false;
-                    }else{
-                        skipping = true;
-                        hasToStop = false;
-                        canBattle = true;
-                        parent.finishDay();
+                            new Dialog("It is your turn", parent.skin) {
+                                {
+                                    text("Click to play, " + parent.whoseTurn().getTypeOfHeroString());
+                                    button("Ok", true);
+                                }
+
+                                @Override
+                                protected void result(Object object) {
+                                    if (object.equals(true)) {
+                                        remove();
+                                    }
+
+                                }
+                            }.show(stage);
+
+                        }
                     }
-                    if ( parent.whoseTurn().getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
-                        new Dialog("It is your turn", parent.skin) {
+                }catch(Exception e){
+                    Gdx.app.log("SocketIO", "Error next turn on the client side");
+                }
+            }
+        }).on("updateBattle", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                final JSONObject data = (JSONObject) args[0];
+                final Hero myHero = parent.getMyHero();
+                ArrayList<Hero> heroOnRegion = gameBoard.getRegion(myHero.getPosition()).getHeroes();
+                boolean ask = false;
+                try {
+                    final String startHero = data.getString("wantToJoin");
+                    for(Hero hero : heroOnRegion) {
+                       if(hero.getTypeOfHeroString().equals(startHero)) {
+                           ask = true;
+                       }
+                    }
+
+                    if (ask){
+                        new Dialog("A battle started", parent.skin) {
                             {
-                                text("Click to play, " + parent.whoseTurn().getTypeOfHeroString());
-                                button("Ok", true);
+                                text("Do you want to join the current battle started by " + startHero);
+
+                                button("Yes", true);
+                                button("No", false);
                             }
 
                             @Override
                             protected void result(Object object) {
                                 if (object.equals(true)) {
-                                    remove();
+
+
                                 }
 
                             }
                         }.show(stage);
+                    }else{
+                        new Dialog("A battle started", parent.skin) {
+                            {
+                                text("Other players are in a battle, wait till they are finish");
 
+                                button("Okay", false);
+                            }
+
+                            @Override
+                            protected void result(Object object) {
+
+                            }
+                        }.show(stage);
                     }
+
                 }catch(Exception e){
                     Gdx.app.log("SocketIO", "Error next turn on the client side");
                 }

@@ -22,8 +22,10 @@ public class Board {
 
 
     private ArrayList<Region> regions = new ArrayList<Region>();
+    private ArrayList<Hero> heroes = new ArrayList<Hero>();
     private int difficulty;
     private Castle castle;
+    private char legend='A';
 
     private final int[][] allHeroPaths = {
             // 0
@@ -88,6 +90,7 @@ public class Board {
     public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
         this.difficulty = difficulty;
+        this.heroes = heroes;
         for(int i = 0; i < 85; i++)
         {
             if(i == 0) { // This is for castle
@@ -275,6 +278,8 @@ public class Board {
 
     // Triggered at the end of every day
     public void newDay() {
+        //TODO roll for event card
+        incrementLegend();
         // Monsters move
         for (Region region : getMonsterRegions()) {
 //            region.getMonster().moveTo(region, getRegion(region.getAvailableMonsterPath()));
@@ -289,6 +294,34 @@ public class Board {
         }
     }
 
+    private void incrementLegend(){
+        checkWin();
+        checkLose();
+        //TODO ADD END GAME FUNCTION
+        legend+=1;
+    }
+
+    public boolean checkWin(){
+        Region r=getRegion(19);
+        //TODO ADD MEDICINE WIN CONDITION
+        if(r.getMonster()==null && castle.getShield()!=0){
+            return true;
+        }
+        return false;
+    }
+
+    //returns true for losing
+    public boolean checkLose(){
+        Region skralRegion=getRegion(19);
+        //TODO ADD MEDICINE LOSE CONDITION
+        if(legend=='N'){
+            return skralRegion.getMonster() != null;
+        }
+        return false;
+    }
+
+
+
     // POST: Method creates/overloads "comp361_BoardLog.txt"
     public void saveBoard() {
         FileIO.WriteObjectToFile(this);
@@ -300,11 +333,25 @@ public class Board {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this == o) return true;
+        else
+        {
+            if(o instanceof Board)
+            {
+                Board pBoard = (Board) o;
+                return (pBoard.regions.equals(this.regions) && pBoard.heroes.equals(this.heroes));
+            }
+            else return false;
+        }
+    }
 
     // Test to create a Board object
     public static void main(String[] args)
     {
-        Archer a = new Archer("Greg");
+        /*Archer a = new Archer("Greg");
         Warrior w = new Warrior("Steven");
         ArrayList<Hero> h = new ArrayList<Hero>();
         h.add(a);
@@ -334,10 +381,10 @@ public class Board {
 
 
 //        System.out.println(region instanceof Castle);
-        System.out.println(b.toString());
-
-
-
+        System.out.println(b.toString());*/
+        char test = 'A';
+        test+=1;
+        System.out.println(test);
 
     }
 

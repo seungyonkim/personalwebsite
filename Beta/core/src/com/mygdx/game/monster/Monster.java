@@ -119,7 +119,12 @@ public class Monster {
             c.decrementShield();
             to.removeMonster();
             this.position = 80;
-//            System.out.println("Monster in. Remaining shields: "+c.getShield());
+            System.out.println("Monster in. Remaining shields: "+c.getShield());
+            if (this instanceof Gor) {
+                System.out.println("Gor in castle.");
+            } else {
+                System.out.println("Skral in castle.");
+            }
             if (c.getShield() <= 0) {
                 return false;
             } else {
@@ -190,5 +195,42 @@ public class Monster {
         return highestValue;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        else
+        {
+            if(o instanceof Monster)
+            {
+                Monster pMonster = (Monster) o;
+                if(pMonster instanceof Skral && this instanceof Skral)
+                {
+                    Skral a = (Skral) pMonster;
+                    Skral b = (Skral) this;
+
+                    return (a.getPosition() == b.getPosition() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRewardGold() == b.getRewardGold() &&
+                            a.getRewardWP() == b.getRewardWP());
+                }
+                else if(pMonster instanceof Gor && this instanceof Gor)
+                {
+                    Gor a = (Gor) pMonster;
+                    Gor b = (Gor) this;
+
+                    return (a.getPosition() == b.getPosition() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRewardGold() == b.getRewardGold() &&
+                            a.getRewardWP() == b.getRewardWP());
+                }
+                else return false;
+            }
+            else return false;
+        }
+    }
+
+    //    private int position; // if position == 80 then this monster is no more available.
+//    private int willPower;
+//    private int strengthPoint;
+//    private int rewardGold;
+//    private int rewardWP;
 
 }

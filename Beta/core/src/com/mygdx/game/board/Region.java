@@ -6,6 +6,7 @@ import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Fog;
 import com.mygdx.game.etc.Merchant;
 import com.mygdx.game.etc.Well;
+import com.mygdx.game.etc.Witch;
 import com.mygdx.game.monster.Gor;
 import com.mygdx.game.monster.Monster;
 import com.mygdx.game.monster.Skral;
@@ -72,6 +73,7 @@ public class Region {
     private int y;
     private int fogX;
     private int fogY;
+    private Witch witch;
 
     // Legend 2 the starting positions of Gors: 8, 20, 21, 26, 48
     // Legend 2 the starting positions of Skral: 19
@@ -93,12 +95,19 @@ public class Region {
             Well well = new Well(position);
             this.well = well;
         }
-        if (position == 8 || position == 11 || position == 12 || position == 13 || position == 16 || position == 32 || position == 42 || position == 44 || position == 46 || position == 47 || position == 48 || position == 49 || position == 56 || position == 63 || position == 64) {
+        if (position == 8 || position == 11 || position == 12 || position == 13 || position == 16 ||
+                position == 32 || position == 42 || position == 44 || position == 46 || position == 47
+                || position == 48 || position == 49 || position == 56 || position == 63 || position == 64) {
             Fog fog = new Fog(position);
             this.fog = fog;
             this.fogX = fog_coordinates[position][0];
             this.fogY = fog_coordinates[position][1];
         }
+        Witch witch=new Witch();
+        if(position==witch.getPosition()){
+            this.witch=witch;
+        }
+
         this.x = character_coordinates[position][0];
         this.y = character_coordinates[position][1];
     }
@@ -119,6 +128,7 @@ public class Region {
     public int getFogX() { return this.fogX; }
     public int getFogY() { return this.fogY; }
     public Board getBoard() { return this.board; }
+    public Witch getWitch() { return this.witch; }
 
 
     public void setAvailableHeroPaths(int[] regions)
@@ -174,6 +184,69 @@ public class Region {
         this.gold--;
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if(o == this) return true;
+        else
+        {
+            if(o instanceof Region)
+            {
+                Region pRegion = (Region) o;
+                // To prevent nullpointer excpetion
+                if((this.getMonster() == null && pRegion.getMonster() == null) && (this.getWitch() == null && this.getWitch() == null))
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() );
+                }
+                else if(this.getMonster() == null && pRegion.getMonster() == null)
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() && pRegion.getWitch().equals(this.getWitch()));
+                }
+                else if(this.getWitch() == null && pRegion.getWitch() == null)
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() && this.getMonster().equals(pRegion.getWitch()));
+                }
+                else if(this.getWitch() == null || pRegion.getWitch() == null || pRegion.getMonster() == null || this.getMonster() == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() && pRegion.getMonster().equals(this.getMonster()) &&
+                            pRegion.getWitch().equals(this.getWitch()));
+                }
+            }
+            else return false;
+        }
+//        private ArrayList<Hero> heroes; // completed
+//        private int position;
+//        private int gold = 0;
+//        private Well well;// completed
+//        private Fog fog; // Completed
+//        private ArrayList<Farmer> farmers;
+//        private Monster monster; // Completed
+//        private int x;
+//        private int y;
+//        private int fogX;
+//        private int fogY;
+//        private Witch witch; // Completed
 
+    }
 
 }

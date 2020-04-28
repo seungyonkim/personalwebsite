@@ -1,85 +1,85 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
 	package
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:3:5-29
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:3:5-29
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:1-30:12
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:1-30:12
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:2:11-69
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:5:5-67
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:5:5-67
 	android:name
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:5:22-64
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:6:5-76
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:6:5-76
 	android:name
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:6:22-73
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:6:22-73
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:7:5-79
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:7:5-79
 	android:name
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:7:22-76
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:7:22-76
 application
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:8:5-28:19
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:8:5-28:19
 	android:label
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:15:9-41
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:15:9-41
 	android:appCategory
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:14:9-35
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:14:9-35
 	android:icon
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:12:9-45
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:12:9-45
 	android:allowBackup
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:11:9-35
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:16:9-40
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:16:9-40
 	android:isGame
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:13:9-30
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:13:9-30
 	android:usesCleartextTraffic
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:9:9-44
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:9:9-44
 activity#com.mygdx.game.AndroidLauncher
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:18:9-27:20
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:18:9-27:20
 	android:screenOrientation
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:21:13-50
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:21:13-50
 	android:label
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:20:13-45
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:20:13-45
 	android:configChanges
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:22:13-107
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:22:13-107
 	android:name
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:19:13-58
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:19:13-58
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:23:13-26:29
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:23:13-26:29
 action#android.intent.action.MAIN
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:24:17-69
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:24:25-66
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:25:17-77
+ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml:25:27-74
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml:25:27-74
 uses-sdk
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-		ADDED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
-		INJECTED from /Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/AndroidManifest.xml
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+		ADDED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml
+		INJECTED from /Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/AndroidManifest.xml

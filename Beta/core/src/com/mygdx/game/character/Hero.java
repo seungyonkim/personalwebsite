@@ -1,11 +1,14 @@
 package com.mygdx.game.character;
 
+import com.mygdx.game.Equipment.Equipment;
 import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
 import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Item;
 import com.mygdx.game.etc.Well;
 import com.mygdx.game.monster.Monster;
+import com.mygdx.game.preference.FileIO;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreen;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,6 +28,7 @@ public class Hero {
     private ArrayList<Item> items;
     private int hours = 0;
     private boolean canPlay = true;
+    private boolean wineskinActivated =false;
     //    private Farmer farmer;
     private ArrayList<Farmer> farmers;
 
@@ -70,6 +74,7 @@ public class Hero {
     public int getRank() { return this.rank; }
     public String getUsername() { return this.username; }
 
+    public boolean getWineskinActicated() { return this.wineskinActivated; }
     public boolean getCanPlay() {
         return this.canPlay;
     }
@@ -83,6 +88,7 @@ public class Hero {
     }
 
 
+
     public ArrayList<Item> getItems()
     {
         return this.items;
@@ -91,6 +97,7 @@ public class Hero {
     public int getHours()
     {
         return this.hours;
+
     }
 
     //    public Farmer getFarmer() {
@@ -116,6 +123,15 @@ public class Hero {
         this.strengthPoint += sp;
         if(this.strengthPoint > 14) this.strengthPoint = 14;
     }
+
+    public void activateEquipment(Equipment equipment){
+
+    }
+
+    public void activateWineskin(boolean b){
+        this.wineskinActivated=b;
+    }
+
     public String getTypeOfHeroString() {
         if(this instanceof Archer) return "Archer";
         if(this instanceof Dwarf) return "Dwarf";
@@ -141,39 +157,44 @@ public class Hero {
             if(result) {
                 if (this.farmers.size() == 1) {
                     if (to.getMonster() != null) {
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
-                        System.out.println("Farmer "+farmers.get(0).getFarmerNumber()+" died because he encountered a monster.");
+                        int farmerNum = this.farmers.get(0).getFarmerNumber();
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
+//                        System.out.println("Farmer "+farmers.get(0).getFarmerNumber()+" died because he encountered a monster.");
+                        System.out.println("Farmer "+farmerNum+" died because he encountered a monster.");
                     } else if (to.getPosition() == 0) {
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
                         to.getBoard().getCastle().farmerArrive();
                     } else {
-                        farmers.get(0).setPosition(to.getPosition());
+                        this.farmers.get(0).setPosition(to.getPosition());
                     }
                 } else if (this.farmers.size() == 2) {
                     if (to.getMonster() != null) {
-                        farmers.get(1).die();
-                        this.farmers.remove(farmers.get(1));
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
+                        this.farmers.get(1).die();
+                        this.farmers.remove(this.farmers.get(1));
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
                         System.out.println("Both farmers died because they encountered a monster.");
                     } else if (to.getPosition() == 0) {
-                        farmers.get(1).die();
-                        this.farmers.remove(farmers.get(1));
+                        this.farmers.get(1).die();
+                        this.farmers.remove(this.farmers.get(1));
                         to.getBoard().getCastle().farmerArrive();
-                        farmers.get(0).die();
-                        this.farmers.remove(farmers.get(0));
+                        this.farmers.get(0).die();
+                        this.farmers.remove(this.farmers.get(0));
                         to.getBoard().getCastle().farmerArrive();
                     } else {
-                        farmers.get(0).setPosition(to.getPosition());
-                        farmers.get(1).setPosition(to.getPosition());
+                        this.farmers.get(0).setPosition(to.getPosition());
+                        this.farmers.get(1).setPosition(to.getPosition());
                     }
                 }
                 from.removeHero(this);
                 to.addHero(this);
                 this.position = to.getPosition();
+
                 incrementHours();
+
+
             }
             return result;
         }
@@ -182,36 +203,51 @@ public class Hero {
 
     public void incrementHours()
     {
-        if (hours < 7) {
-            this.hours++;
+
+        boolean bool= EquipmentScreen.activateWineskin();
+        if(bool){
+            EquipmentScreen.usedWineskin();
         }
-        else if(7 <= hours && hours < 10 && willPower >= 2)
-        {
-            this.hours++;
-            this.willPower -= 2;
-            if (hours == 10) {
-                this.canPlay = false;
+        else{
+            if (hours < 7) {
+                this.hours ++;
+
+
             }
+            else if(7 <= hours && hours < 10 && willPower >= 2 )
+            {
+
+              this.hours++;
+//
+//            this.willPower -= 2;
+//            if (hours == 10) {
+//                this.canPlay = false;
+//            }
+            }
+            else this.canPlay = false;
         }
+
 //        else if(hours == 10) this.canPlay = false;
-        else this.canPlay = false;
+       // else this.canPlay = false;
 
         if (this.hours >= 7 && this.willPower <= 2) {
             this.canPlay = false;
         }
+
+
     }
 
     public void resetHours() {
         this.hours = 0;
     }
 
-    public void pass()
-    {
-        if(canPlay)
-        {
-            incrementHours();
-        }
-    }
+//    public void pass()
+//    {
+//        if(canPlay)
+//        {
+//            incrementHours();
+//        }
+//    }
 
     /*
     1 = archer
@@ -319,6 +355,87 @@ public class Hero {
         }
 
         return highestValue;
+    }
+
+    // POST: Method creates/overloads "comp361_HeroLog.txt"
+    public void saveBoard() {
+        FileIO.WriteObjectToFile(this);
+    }
+
+    // POST: Method returns new Board object
+    public Board loadHero() {
+        Board result = (Board) FileIO.ReadBoardFromFile();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if(o == this) return true;
+        else
+        {
+            if(o instanceof Hero)
+            {
+                Hero pHero = (Hero) o;
+                int pType = pHero.getTypeOfHero();
+                int aType = this.getTypeOfHero();
+                // type == 1 : Archer
+                if(pType == 1 && aType == 1)
+                {
+                    Archer a = (Archer) pHero;
+                    Archer b = (Archer) this;
+                    // Need to add item : private ArrayList<Item> items
+                    return (a.getPosition() == b.getPosition() && a.hasMoved() == b.hasMoved() &&
+                            a.getGold() == b.getGold() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRank() == b.getRank() &&
+                            a.getUsername().equals(b.getUsername()) && a.getHours() == b.getHours() &&
+                            a.getCanPlay() == b.getCanPlay() && a.getWineskinActicated() == b.getWineskinActicated() &&
+                            a.getFarmers().equals(b.getFarmers()));
+                }
+                // type == 2 : Dwarf
+                else if(pType == 2 && aType == 2)
+                {
+                    Dwarf a = (Dwarf) pHero;
+                    Dwarf b = (Dwarf) this;
+                    // Need to add item : private ArrayList<Item> items
+                    return (a.getPosition() == b.getPosition() && a.hasMoved() == b.hasMoved() &&
+                            a.getGold() == b.getGold() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRank() == b.getRank() &&
+                            a.getUsername().equals(b.getUsername()) && a.getHours() == b.getHours() &&
+                            a.getCanPlay() == b.getCanPlay() && a.getWineskinActicated() == b.getWineskinActicated() &&
+                            a.getFarmers().equals(b.getFarmers()));
+                }
+                // type == 3 : Warrior
+                else if(pType == 3 && aType == 3)
+                {
+                    Warrior a = (Warrior) pHero;
+                    Warrior b = (Warrior) this;
+                    // Need to add item : private ArrayList<Item> items
+                    return (a.getPosition() == b.getPosition() && a.hasMoved() == b.hasMoved() &&
+                            a.getGold() == b.getGold() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRank() == b.getRank() &&
+                            a.getUsername().equals(b.getUsername()) && a.getHours() == b.getHours() &&
+                            a.getCanPlay() == b.getCanPlay() && a.getWineskinActicated() == b.getWineskinActicated() &&
+                            a.getFarmers().equals(b.getFarmers()));
+                }
+                // type == 4 : Wizard
+                else if(pType == 4 && aType == 4)
+                {
+                    Wizard a = (Wizard) pHero;
+                    Wizard b = (Wizard) this;
+                    // Need to add item : private ArrayList<Item> items
+                    return (a.getPosition() == b.getPosition() && a.hasMoved() == b.hasMoved() &&
+                            a.getGold() == b.getGold() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRank() == b.getRank() &&
+                            a.getUsername().equals(b.getUsername()) && a.getHours() == b.getHours() &&
+                            a.getCanPlay() == b.getCanPlay() && a.getWineskinActicated() == b.getWineskinActicated() &&
+                            a.getFarmers().equals(b.getFarmers()));
+                }
+                else return false;
+
+            }
+            else return false;
+        }
     }
 
 }
