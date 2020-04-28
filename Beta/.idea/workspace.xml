@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0b8f7ca6-47f5-4b5e-9b5a-390f4047df16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/BattleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/BattleScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/views/MultiGameScreen.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/BattleScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="686" column="69" selection-start-line="686" selection-start-column="69" selection-end-line="686" selection-end-column="69" />
+            <state relative-caret-position="683">
+              <caret line="695" column="5" lean-forward="true" selection-start-line="695" selection-start-column="5" selection-end-line="695" selection-end-column="5" />
               <folding>
                 <element signature="e#2610#3525#0" />
                 <element signature="e#18369#18377#0" expanded="true" />
@@ -639,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/mygdx/game/views/BattleScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="686" column="69" selection-start-line="686" selection-start-column="69" selection-end-line="686" selection-end-column="69" />
+        <state relative-caret-position="683">
+          <caret line="695" column="5" lean-forward="true" selection-start-line="695" selection-start-column="5" selection-end-line="695" selection-end-column="5" />
           <folding>
             <element signature="e#2610#3525#0" />
             <element signature="e#18369#18377#0" expanded="true" />

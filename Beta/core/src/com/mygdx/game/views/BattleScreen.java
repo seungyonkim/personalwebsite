@@ -647,20 +647,20 @@ public class BattleScreen implements Screen {
             System.out.println(e);
         }
     }
-    public void configSocketEvents(){
+    public void configSocketEvents() {
         socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                Gdx.app.log("SocketIO","Connected");
+                Gdx.app.log("SocketIO", "Connected");
             }
         }).on("newPlayer", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                final JSONArray objects = (JSONArray)args[0];
+                final JSONArray objects = (JSONArray) args[0];
                 try {
 
 
-                }catch(Exception e){
+                } catch (Exception e) {
                     Gdx.app.log("SocketIO", "Error getting the new player id");
                 }
             }
@@ -668,12 +668,11 @@ public class BattleScreen implements Screen {
         }).on("playerChose", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONArray objects = (JSONArray)args[0];
+                JSONArray objects = (JSONArray) args[0];
                 try {
 
 
-
-                }catch(Exception e){
+                } catch (Exception e) {
                     Gdx.app.log("SocketIO", "Error handling the other player choosing");
                 }
             }
@@ -684,13 +683,14 @@ public class BattleScreen implements Screen {
 
                 try {
 
-                areaInfo.appendText("- " + data.getString("wantToJoin"));
+                    areaInfo.appendText("- " + data.getString("wantToJoin"));
 
-                }catch(Exception e){
+                } catch (Exception e) {
                 }
             }
+
         });
 
-
+    }
 
     }
