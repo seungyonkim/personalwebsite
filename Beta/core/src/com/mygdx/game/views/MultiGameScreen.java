@@ -1662,14 +1662,8 @@ public class MultiGameScreen implements Screen {
                             protected void result(Object object) {
                                 if (object.equals(true)) {
                                     // Perform battle
-                                        Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
-                                    if (startHero.equals("Archer")) {
-                                        archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
-                                    } else if (startHero.equals("Wizard")) {
-                                        wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
-                                    } else {
-                                        battleDialog(myHero, monster, 1, 0);
-                                    }
+                                    parent.addHeroBattling(myHero);
+                                    parent.changeScreen(Andor.BATTLE);
                                     skipping = false;
 
 

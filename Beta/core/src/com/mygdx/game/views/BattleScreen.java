@@ -367,15 +367,14 @@ public class BattleScreen implements Screen {
         connectSocket();
         configSocketEvents();
 
+        updateBattle();
+
 
         Gdx.input.setInputProcessor(stage);
 
         Table table = createTable();
 
         stage.addActor(table);
-
-
-
 
 
 
@@ -628,6 +627,7 @@ public class BattleScreen implements Screen {
 
         JSONObject data = new JSONObject();
         try{
+            areaInfo.appendText("- "+myHero.getTypeOfHeroString());
             String wantToJoin = myHero.getTypeOfHeroString();
             data.put("wantToJoin",wantToJoin);
             socket.emit("updateBattle", data);
@@ -664,24 +664,7 @@ public class BattleScreen implements Screen {
                     Gdx.app.log("SocketIO", "Error getting the new player id");
                 }
             }
-        }).on("playerDisconnected", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                try {
-                    if (parent.whoseTurn().getTypeOfHero() == 1) {
-                        parent.enableHero("Archer");
-                    } else if (parent.whoseTurn().getTypeOfHero() == 2) {
-                        parent.enableHero("Dwarf");
-                    } else if (parent.whoseTurn().getTypeOfHero() == 3) {
-                        parent.enableHero("Warrior");
-                    } else if (parent.whoseTurn().getTypeOfHero() == 4) {
-                        parent.enableHero("Wizard");
-                    }
 
-                }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error disconnecting the player");
-                }
-            }
         }).on("playerChose", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
@@ -694,20 +677,20 @@ public class BattleScreen implements Screen {
                     Gdx.app.log("SocketIO", "Error handling the other player choosing");
                 }
             }
-        }).on("GoldWine", new Emitter.Listener() {
+        }).on("updateBattle", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONArray objects = (JSONArray)args[0];
+                final JSONObject data = (JSONObject) args[0];
 
                 try {
 
+                areaInfo.appendText("- " + data.getString("wantToJoin"));
 
                 }catch(Exception e){
-                    Gdx.app.log("SocketIO", "Error distributing Gold and wineskin");
                 }
             }
         });
+
+
+
     }
-
-
-}
