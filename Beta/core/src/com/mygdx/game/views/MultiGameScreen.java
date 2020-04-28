@@ -103,6 +103,8 @@ public class MultiGameScreen implements Screen {
     private TextButton mainMenuButton;
     private TextButton castleShields;
 
+    private TextButton equipmentBagButton;
+
 //    private BitmapFont font;
 
     private boolean skipping;
@@ -828,6 +830,36 @@ public class MultiGameScreen implements Screen {
         });
         stage.addActor(pathButtonImage);
 
+        //Equipment bag button
+
+
+        equipmentBagButton = new TextButton("Equipment Bag", parent.skin);
+
+        equipmentBagButton.setTouchable(Touchable.enabled);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
+
+        equipmentBagButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if(myHero instanceof Warrior){
+                    parent.changeScreen(Andor.EQUIPMENT_WARRIOR);
+                }
+                else if(myHero instanceof Archer){
+                    parent.changeScreen(Andor.EQUIPMENT_ARCHER);
+                }
+                else if(myHero instanceof Wizard){
+                    parent.changeScreen(Andor.EQUIPMENT_WIZARD);
+                }
+                else if(myHero instanceof Dwarf){
+                    parent.changeScreen(Andor.EQUIPMENT_DWARF);
+                }
+
+
+            }
+        });
+
+        stage.addActor(equipmentBagButton);
+
 
         pathButtons.clear();
 //        // Only show following buttons for current player
@@ -1098,20 +1130,52 @@ public class MultiGameScreen implements Screen {
         merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
         if (gameBoard.getRegion(myHero.getPosition()) instanceof Merchant) {
             if (myHero.getGold() >= 2) {
-                merchantButton.setText("Buy SP for 2G");
+                merchantButton.setText("Visit Merchant Store");
                 merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+//                merchantButton.addListener(new ChangeListener() {
+//                    @Override
+//                    public void changed(ChangeEvent event, Actor actor) {
+//                        // Perform SP purchase
+//                        //((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellSP(currentHero);
+//                        parent.changeScreen(Andor.PREFERENCE);
+//                        if (!skipping) {
+//                            hasToStop = true;
+//                        }
+//
+//                        show();
+//                    }
+//                });
+
                 merchantButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
-                        // Perform SP purchase
-                        ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
+
+                        parent.changeScreen(Andor.MERCHANT);
+
                         if (!skipping) {
                             hasToStop = true;
                         }
-                        show();
+
+
                     }
                 });
+
                 stage.addActor(merchantButton);
+
+//                merchantButton.setText("Buy SP for 2G");
+//                merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+//                merchantButton.addListener(new ChangeListener() {
+//                    @Override
+//                    public void changed(ChangeEvent event, Actor actor) {
+//                        // Perform SP purchase
+//                        ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
+//                        if (!skipping) {
+//                            hasToStop = true;
+//                        }
+//                        show();
+//                    }
+//                });
+//                stage.addActor(merchantButton);
             } else {
                 merchantButton.setText("Not Enough Gold");
                 merchantButton.setTouchable(Touchable.disabled);
@@ -1236,6 +1300,8 @@ public class MultiGameScreen implements Screen {
         heroPortraitResize(dwarfPortraitImage);
 
         heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(),Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
+
 
         pathButtonImage.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
         pathButtonImage.setPosition(Gdx.graphics.getWidth()-pathButtonImage.getWidth()-10, Gdx.graphics.getHeight()-pathButtonImage.getHeight()-10);
