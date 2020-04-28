@@ -1,5 +1,7 @@
 package com.mygdx.game.views;
 
+import com.mygdx.game.Equipment.Shield;
+import com.mygdx.game.Equipment.Wineskin;
 import com.mygdx.game.board.Board;
 import com.mygdx.game.etc.Merchant;
 import com.badlogic.gdx.Gdx;
@@ -24,6 +26,7 @@ import com.mygdx.game.character.Dwarf;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.character.Warrior;
 import com.mygdx.game.character.Wizard;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreen;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -52,6 +55,18 @@ public class MerchantScreen implements Screen {
 
     private Label titleLabel;
 
+    private Wineskin wineskin1=new Wineskin("Wineskin1");
+    private Wineskin wineskin2=new Wineskin("Wineskin2");
+    private Wineskin wineskin3=new Wineskin("Wineskin3");
+    private Wineskin wineskin4=new Wineskin("Wineskin4");
+    private Wineskin wineskin5=new Wineskin("Wineskin5");
+
+    private Shield shield1 = new Shield("Shield1");
+    private Shield shield2 = new Shield("Shield2");
+    private Shield shield3 = new Shield("Shield3");
+    private Shield shield4 = new Shield("Shield4");
+    private Shield shield5 = new Shield("Shield5");
+
 //    private TextureRegion myTextureRegion;
 //    private TextureRegionDrawable myTexRegionDrawable;
 //    private ImageButton button;
@@ -62,8 +77,17 @@ public class MerchantScreen implements Screen {
         this.parent = andor;
         stage = new Stage(new ScreenViewport());
         availableItems.put("SP",999);
-        availableItems.put("Wineskin",5);
-        availableItems.put("Shield",4);
+        //availableItems.put("Wineskin",5);
+        availableItems.put("Wineskin1",1);
+        availableItems.put("Wineskin2",1);
+        availableItems.put("Wineskin3",1);
+        availableItems.put("Wineskin4",1);
+        availableItems.put("Wineskin5",1);
+       // availableItems.put("Shield",4);
+        availableItems.put("Shield1",1);
+        availableItems.put("Shield2",1);
+        availableItems.put("Shield3",1);
+        availableItems.put("Shield4",1);
         availableItems.put("Bow", 3);
         availableItems.put("Helm",3);
         availableItems.put("Falcon",2);
@@ -74,16 +98,85 @@ public class MerchantScreen implements Screen {
     }
 
 
-    public void setWineskinAvailable(int num){
-        int currentNum = availableItems.get("Wineskin");
-        availableItems.remove("Wineskin");
-        availableItems.put("Wineskin",currentNum+num);
+    public void setWineskinAvailable(Wineskin wineskin,int integer){
+        if(wineskin.getName().equals("Wineskin1")){
+            availableItems.remove("Wineskin1");
+            availableItems.put("Wineskin1",integer);
+        }
+        if(wineskin.getName().equals("Wineskin2")){
+            availableItems.remove("Wineskin2");
+            availableItems.put("Wineskin2",integer);
+        }
+        if(wineskin.getName().equals("Wineskin3")){
+            availableItems.remove("Wineskin3");
+            availableItems.put("Wineskin3",integer);
+        }
+        if(wineskin.getName().equals("Wineskin4")){
+            availableItems.remove("Wineskin4");
+            availableItems.put("Wineskin4",integer);
+        }
+        if(wineskin.getName().equals("Wineskin5")){
+            availableItems.remove("Wineskin5");
+            availableItems.put("Wineskin5",integer);
+        }
     }
-    public void setShieldAvailable(int num){
-        int currentNum = availableItems.get("Shield");
-        availableItems.remove("Shield");
-        availableItems.put("Shield",currentNum+num);
+
+    public int getWineskinInStock(){
+        int stock=0;
+        if(availableItems.get("Wineskin1")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin2")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin3")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin4")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin5")==1){
+            stock++;
+        }
+        return stock;
     }
+
+    public void setShieldAvailable(Shield shield,int integer){
+        if(shield.getName().equals("Shield1")){
+            availableItems.remove("Shield1");
+            availableItems.put("Shield1",integer);
+        }
+        if(shield.getName().equals("Shield2")){
+            availableItems.remove("Shield2");
+            availableItems.put("Shield2",integer);
+        }
+        if(shield.getName().equals("Shield3")){
+            availableItems.remove("Shield3");
+            availableItems.put("Shield3",integer);
+        }
+        if(shield.getName().equals("Shield4")){
+            availableItems.remove("Shield4");
+            availableItems.put("Shield4",integer);
+        }
+    }
+
+    public int getShieldInStock(){
+        int stock=0;
+        if(availableItems.get("Shield1")==1){
+            stock++;
+        }
+        if(availableItems.get("Shield2")==1){
+            stock++;
+        }
+        if(availableItems.get("Shield3")==1){
+            stock++;
+        }
+        if(availableItems.get("Shield4")==1){
+            stock++;
+        }
+        return stock;
+    }
+
     public void setBowAvailable(int num){
         int currentNum = availableItems.get("Bow");
         availableItems.remove("Bow");
@@ -190,7 +283,7 @@ public class MerchantScreen implements Screen {
             table.add(spImage).width(90).height(130).padRight(10);
         }
 
-        if (availableItems.get("Wineskin")>=1) {
+        if (getWineskinInStock()>=1) {
             wineskinTexture = new Texture(Gdx.files.internal("items/wineskin.png"));
             Image wineskinImage = new Image(wineskinTexture);
             wineskinImage.setSize(120, 160);
@@ -200,49 +293,87 @@ public class MerchantScreen implements Screen {
                 public void clicked(InputEvent event, float x, float y) {
 
                     if(currentHero.getGold()>=2) {
-                        if(availableItems.get("Wineskin")>=1){
+
+
+
+                        if(getWineskinInStock()>=1){
                             new Dialog("Would you like to purchase a Wineskin?", parent.skin) {
                                 {
+                                    Wineskin ws ;
+                                    if(availableItems.get("Wineskin1")==1){
+                                        ws=wineskin1;
+                                    }
+                                    else if(availableItems.get("Wineskin2")==1){
+                                        ws=wineskin2;
+                                    }
+                                    else if(availableItems.get("Wineskin3")==1){
+                                        ws=wineskin3;
+                                    }
+                                    else if(availableItems.get("Wineskin4")==1){
+                                        ws=wineskin4;
+                                    }
+                                    else if(availableItems.get("Wineskin5")==1){
+                                        ws=wineskin5;
+                                    }
+                                    else ws=null;
+
                                     text("Note: You will have to finish your turn if you buy from the Merchant.\n\n" +
                                             "When hero chooses 'move action', he can use each side of the \n" +
                                             "wineskin token to move 1 space without advancing 1 hour.\n" +
-                                            +availableItems.get("Wineskin")+ " wineskins in stock");
+                                            +getWineskinInStock()+" wineskin(s) in stock\n" +
+                                            +availableItems.get("Wineskin1")+ " wineskin1 in stock\n" +
+                                            +availableItems.get("Wineskin2")+ " wineskin2 in stock\n" +
+                                            +availableItems.get("Wineskin3")+ " wineskin3 in stock\n" +
+                                            +availableItems.get("Wineskin4")+ " wineskin4 in stock\n" +
+                                            +availableItems.get("Wineskin5")+ " wineskin5 in stock\n" );
 
-                                    button("Yes", "true");
-                                    button("No", "false");
+                                    button("Yes", ws);
+                                    button("No", ws);
                                 }
 
                                 @Override
                                 protected void result(Object object) {
 
-                                    if (object == "true") {
+                                    if (object != null) {
                                         ((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellWineskin(currentHero);
 
+                                        if(((Wineskin)object)==wineskin1){
+                                            setWineskinAvailable(wineskin1,0);
+                                        }
+                                        else if(((Wineskin)object)==wineskin2){
+                                            setWineskinAvailable(wineskin2,0);
+                                        }
+                                        else if(((Wineskin)object)==wineskin3){
+                                            setWineskinAvailable(wineskin3,0);
+                                        }
+                                        else if(((Wineskin)object)==wineskin4){
+                                            setWineskinAvailable(wineskin4,0);
+                                        }
+                                        else if(((Wineskin)object)==wineskin5){
+                                            setWineskinAvailable(wineskin5,0);
+                                        }
 
-                                        int num = availableItems.get("Wineskin");
-                                        availableItems.remove("Wineskin");
-                                        availableItems.put("Wineskin",num-1);
 
                                         if(currentHero instanceof Warrior){
-                                            parent.getEquipmentScreenWarrior().setWineskinAvailable(1);
+                                            parent.getEquipmentScreenWarrior().setWineskinAvailable((Wineskin)object,1);
                                         }
                                         else if(currentHero instanceof Archer){
-                                            parent.getEquipmentScreenArcher().setWineskinAvailable(1);
+                                            parent.getEquipmentScreenArcher().setWineskinAvailable((Wineskin)object,1);
                                         }
                                         else if(currentHero instanceof Wizard){
-                                            parent.getEquipmentScreenWizard().setWineskinAvailable(1);
+                                            parent.getEquipmentScreenWizard().setWineskinAvailable((Wineskin)object,1);
                                         }
                                         else if(currentHero instanceof Dwarf){
-                                            parent.getEquipmentScreenDwarf().setWineskinAvailable(1);
+                                            parent.getEquipmentScreenDwarf().setWineskinAvailable((Wineskin)object,1);
                                         }
-
+                                        object=null;
                                         //parent.getEquipmentScreenWarrior().setWineskinAvailable(1);
                                     } else {
                                     }
                                 }
                             }.show(stage);
                         }
-                        else if(availableItems.get("Wineskin")==0){
+                        else if(getWineskinInStock()==0){
                             new Dialog("No more wineskin", parent.skin) {
                                 {
                                     text("Wineskin out of stock.\n" +
@@ -288,7 +419,7 @@ public class MerchantScreen implements Screen {
             table.add(wineskinImage).width(90).height(130).padRight(10);
         }
 
-        if (availableItems.get("Shield")>=1) {
+        if (getShieldInStock()>=1) {
             shieldTexture = new Texture(Gdx.files.internal("items/shield.png"));
             Image shieldImage = new Image(shieldTexture);
             shieldImage.setSize(120, 160);
@@ -299,48 +430,78 @@ public class MerchantScreen implements Screen {
 
                     if(currentHero.getGold()>=2) {
 
-                        if(availableItems.get("Shield")>=1){
+
+
+                        if(getShieldInStock()>=1){
                             new Dialog("Would you like to purchase a Shield?", parent.skin) {
                                 {
+                                    Shield sld ;
+                                    if(availableItems.get("Shield1")==1){
+                                        sld=shield1;
+                                    }
+                                    else if(availableItems.get("Shield2")==1){
+                                        sld=shield2;
+                                    }
+                                    else if(availableItems.get("Shield3")==1){
+                                        sld=shield3;
+                                    }
+                                    else if(availableItems.get("Shield4")==1){
+                                        sld=shield4;
+                                    }
+                                    else sld=null;
+
                                     text("Note: You will have to finish your turn if you buy from the Merchant.\n\n" +
                                             "Each side of the Shield can be used once, to either \n" +
                                             "prevent loss of one's Will Power after a battle round,\n" +
                                             "or to rend off a negative event card.\n" +
-                                            +availableItems.get("Shield")+" shields in stock.");
+                                            +getShieldInStock()+" shield(s) in stock\n" +
+                                            +availableItems.get("Shield1")+" shield1 in stock.\n" +
+                                            +availableItems.get("Shield2")+" shield2 in stock.\n" +
+                                            +availableItems.get("Shield3")+" shield3 in stock.\n" +
+                                            +availableItems.get("Shield4")+" shield4 in stock.\n" );
 
-                                    button("Yes", "true");
-                                    button("No", "false");
+                                    button("Yes", sld);
+                                    button("No", sld);
                                 }
 
                                 @Override
                                 protected void result(Object object) {
 
-                                    if (object == "true") {
+                                    if (object != null) {
                                         ((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellShield(currentHero);
-                                        int num = availableItems.get("Shield");
-                                        availableItems.remove("Shield");
-                                        availableItems.put("Shield",num-1);
+                                        if((Shield)object==shield1){
+                                            setShieldAvailable(shield1,0);
+                                        }
+                                        else if((Shield)object==shield2){
+                                            setShieldAvailable(shield2,0);
+                                        }
+                                        else if((Shield)object==shield3){
+                                            setShieldAvailable(shield3,0);
+                                        }
+                                        else if((Shield)object==shield4){
+                                            setShieldAvailable(shield4,0);
+                                        }
 
                                         if(currentHero instanceof Warrior){
-                                            parent.getEquipmentScreenWarrior().setShieldAvailable(1);
+                                            parent.getEquipmentScreenWarrior().setShieldAvailable((Shield)object,1);
                                         }
                                         else if(currentHero instanceof Archer){
-                                            parent.getEquipmentScreenArcher().setShieldAvailable(1);
+                                            parent.getEquipmentScreenArcher().setShieldAvailable((Shield)object,1);
                                         }
                                         else if(currentHero instanceof Wizard){
-                                            parent.getEquipmentScreenWizard().setShieldAvailable(1);
+                                            parent.getEquipmentScreenWizard().setShieldAvailable((Shield)object,1);
                                         }
                                         else if(currentHero instanceof Dwarf){
-                                            parent.getEquipmentScreenDwarf().setShieldAvailable(1);
+                                            parent.getEquipmentScreenDwarf().setShieldAvailable((Shield)object,1);
                                         }
-
+                                        object=null;
 
                                     } else {
                                     }
                                 }
                             }.show(stage);
                         }
-                        else if(availableItems.get("Sheild")==0){
+                        else if(getShieldInStock()==0){
                             new Dialog("No more shield", parent.skin) {
                                 {
                                     text("Shield out of stock.\n" +

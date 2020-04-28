@@ -14,6 +14,7 @@ import com.mygdx.game.views.EquipmentScreen.EquipmentScreenArcher;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenDwarf;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWarrior;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWizard;
+import com.mygdx.game.views.EquipmentScreen.UseFalconScreen;
 import com.mygdx.game.views.GameScreen;
 import com.mygdx.game.views.MerchantScreen;
 import com.mygdx.game.views.MultiGameScreen;
@@ -52,6 +53,7 @@ public class Andor extends Game {
 	private EquipmentScreenArcher equipmentScreenArcher;
 	private EquipmentScreenWizard equipmentScreenWizard;
 	private EquipmentScreenDwarf equipmentScreenDwarf;
+	private UseFalconScreen useFalconScreen;
 
 	public SpriteBatch batch;
 	public Skin skin;
@@ -74,6 +76,7 @@ public class Andor extends Game {
 	public final static int EQUIPMENT_ARCHER = 11;
 	public final static int EQUIPMENT_WIZARD = 12;
 	public final static int EQUIPMENT_DWARF = 13;
+	public final static int USE_FALCON =14;
 
 	public int decider= 0;
 
@@ -274,6 +277,7 @@ public class Andor extends Game {
 	    // reset the rooster to nobody
 	    rooster = null;
 	    finishedHeroes.clear();
+	    EquipmentScreen.setUsedFalconToday(false);
     }
 
 	public Board getGameBoard() {
@@ -359,7 +363,10 @@ public class Andor extends Game {
 				if (equipmentScreenDwarf == null) equipmentScreenDwarf= new EquipmentScreenDwarf(this);
 				this.setScreen(equipmentScreenDwarf);
 				break;
-
+			case USE_FALCON:
+				if (useFalconScreen == null) useFalconScreen= new UseFalconScreen(this);
+				this.setScreen(useFalconScreen);
+				break;
 
 		}
 	}
@@ -390,6 +397,13 @@ public class Andor extends Game {
 	}
 	public MerchantScreen getMerchantScreen(){
 		return merchantScreen;
+	}
+
+	public UseFalconScreen getUseFalconScreen(){
+		if(useFalconScreen==null){
+			useFalconScreen = new UseFalconScreen(this);
+		}
+		return useFalconScreen;
 	}
 
 	@Override

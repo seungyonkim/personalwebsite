@@ -1,22 +1,23 @@
 package com.mygdx.game.Equipment;
 
-//when a hero chooses 'move action', he can use each side of the wineskin token to move
-//one space without advancing an hour.
-//after its first use, must indicate that the wineskin is half full
-//after the second use, it is returned back to the equipment board (merchant's store)
 
-public class Wineskin {
+//Each side of the shield can be used once to either
+// 1) prevent the loss of a hero's will power after a battle round
+// 2) fend of a negative event card for the group of heros
+//after the first use, must indicate that it is half used
+//after the second use, shield goes back to the equipment board(merchant's store)
+
+public class Shield {
 
     private String name;
 
     private boolean usedOnce;
     private boolean usedTwice;
 
-
-    public Wineskin(String name){
-        this.name=name;
+    public Shield(String name){
         usedOnce=false;
         usedTwice=false;
+        this.name=name;
     }
 
     public String getName(){
@@ -29,6 +30,7 @@ public class Wineskin {
     public boolean getUsedTwice(){
         return usedTwice;
     }
+
     public void setUsedOnce(boolean bool){
         usedOnce=bool;
     }
