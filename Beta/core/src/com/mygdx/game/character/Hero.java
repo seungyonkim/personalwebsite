@@ -1,11 +1,13 @@
 package com.mygdx.game.character;
 
+import com.mygdx.game.Equipment.Equipment;
 import com.mygdx.game.board.Board;
 import com.mygdx.game.board.Region;
 import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Item;
 import com.mygdx.game.etc.Well;
 import com.mygdx.game.monster.Monster;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreen;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,6 +27,7 @@ public class Hero {
     private ArrayList<Item> items;
     private int hours = 0;
     private boolean canPlay = true;
+    private boolean wineskinActivated =false;
     //    private Farmer farmer;
     private ArrayList<Farmer> farmers;
 
@@ -91,6 +94,7 @@ public class Hero {
     public int getHours()
     {
         return this.hours;
+
     }
 
     //    public Farmer getFarmer() {
@@ -116,6 +120,15 @@ public class Hero {
         this.strengthPoint += sp;
         if(this.strengthPoint > 14) this.strengthPoint = 14;
     }
+
+    public void activateEquipment(Equipment equipment){
+
+    }
+
+    public void activateWineskin(boolean b){
+        this.wineskinActivated=b;
+    }
+
     public String getTypeOfHeroString() {
         if(this instanceof Archer) return "Archer";
         if(this instanceof Dwarf) return "Dwarf";
@@ -175,7 +188,10 @@ public class Hero {
                 from.removeHero(this);
                 to.addHero(this);
                 this.position = to.getPosition();
+
                 incrementHours();
+
+
             }
             return result;
         }
@@ -184,36 +200,51 @@ public class Hero {
 
     public void incrementHours()
     {
-        if (hours < 7) {
-            this.hours++;
+
+        boolean bool= EquipmentScreen.activateWineskin();
+        if(bool){
+            EquipmentScreen.usedWineskin();
         }
-        else if(7 <= hours && hours < 10 && willPower >= 2)
-        {
-            this.hours++;
-            this.willPower -= 2;
-            if (hours == 10) {
-                this.canPlay = false;
+        else{
+            if (hours < 7) {
+                this.hours ++;
+
+
             }
+            else if(7 <= hours && hours < 10 && willPower >= 2 )
+            {
+
+              this.hours++;
+//
+//            this.willPower -= 2;
+//            if (hours == 10) {
+//                this.canPlay = false;
+//            }
+            }
+            else this.canPlay = false;
         }
+
 //        else if(hours == 10) this.canPlay = false;
-        else this.canPlay = false;
+       // else this.canPlay = false;
 
         if (this.hours >= 7 && this.willPower <= 2) {
             this.canPlay = false;
         }
+
+
     }
 
     public void resetHours() {
         this.hours = 0;
     }
 
-    public void pass()
-    {
-        if(canPlay)
-        {
-            incrementHours();
-        }
-    }
+//    public void pass()
+//    {
+//        if(canPlay)
+//        {
+//            incrementHours();
+//        }
+//    }
 
     /*
     1 = archer

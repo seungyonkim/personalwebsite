@@ -96,6 +96,6 @@
     <orderEntry type="library" name="Gradle: com.squareup.okhttp:okhttp:2.5.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.6.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: org.json:json:20090211@jar" level="project" />
-    <orderEntry type="module" module-name="Beta-core" />
+    <orderEntry type="module" module-name="core" />
   </component>
 </module>
