@@ -20,4 +20,21 @@ public class Fog {
         this.covered=false;
     }
 
+    public boolean getCover() { return this.covered; }
+
+    public int getPosition() { return this.position; }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        else
+        {
+            if (o instanceof Fog)
+            {
+                Fog pFog = (Fog) o;
+                return (this.getPosition() == pFog.getPosition() && this.isCovered() == pFog.isCovered());
+            }
+            else return false;
+        }
+    }
 }
