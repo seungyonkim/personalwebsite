@@ -16,4 +16,10 @@ public class Fog {
         return this.covered;
     }
 
+    public void unCover(){
+        this.covered=false;
+    }
+
+    public boolean getCover() { return this.covered; }
+
 }

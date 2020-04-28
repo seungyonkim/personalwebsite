@@ -6,6 +6,7 @@ import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Fog;
 import com.mygdx.game.etc.Merchant;
 import com.mygdx.game.etc.Well;
+import com.mygdx.game.etc.Witch;
 import com.mygdx.game.monster.Gor;
 import com.mygdx.game.monster.Monster;
 import com.mygdx.game.monster.Skral;
@@ -72,6 +73,7 @@ public class Region {
     private int y;
     private int fogX;
     private int fogY;
+    private Witch witch;
 
     // Legend 2 the starting positions of Gors: 8, 20, 21, 26, 48
     // Legend 2 the starting positions of Skral: 19
@@ -93,12 +95,19 @@ public class Region {
             Well well = new Well(position);
             this.well = well;
         }
-        if (position == 8 || position == 11 || position == 12 || position == 13 || position == 16 || position == 32 || position == 42 || position == 44 || position == 46 || position == 47 || position == 48 || position == 49 || position == 56 || position == 63 || position == 64) {
+        if (position == 8 || position == 11 || position == 12 || position == 13 || position == 16 ||
+                position == 32 || position == 42 || position == 44 || position == 46 || position == 47
+                || position == 48 || position == 49 || position == 56 || position == 63 || position == 64) {
             Fog fog = new Fog(position);
             this.fog = fog;
             this.fogX = fog_coordinates[position][0];
             this.fogY = fog_coordinates[position][1];
         }
+        Witch witch=new Witch();
+        if(position==witch.getPosition()){
+            this.witch=witch;
+        }
+
         this.x = character_coordinates[position][0];
         this.y = character_coordinates[position][1];
     }

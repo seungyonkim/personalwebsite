@@ -69,6 +69,8 @@ public class Andor extends Game {
 	public final static int MULTIGAME = 7;
 	public final static int CHAT = 8;
 
+	public int decider= 0;
+
 	public final static int MERCHANT = 9;
 	public final static int EQUIPMENT_WARRIOR = 10;
 	public final static int EQUIPMENT_ARCHER = 11;
