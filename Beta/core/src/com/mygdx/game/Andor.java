@@ -238,14 +238,21 @@ public class Andor extends Game {
 		}
         // continue to next turn
         this.nextTurn();
+		System.out.println("A hero finished day.");
+//		if (this.finishedHeroes.size() == this.playerHeroes.size()) {
+//			System.out.println("Ending Day");
+//			endDay();
+//		}
     }
 
 	public void endDay() { // all players finished day
 		// update board for a new day
 	    gameBoard.newDay();
 	    for (Hero player : playerHeroes) {
+	    	System.out.println("Resetting player.");
 	    	player.enablePlay();
 	    	player.resetHours();
+//	    	System.out.println("Player now has hours: "+player.getHours());
 		}
 	    // find the player to go first for the new day
 	    for (Hero player : playerHeroes) {
