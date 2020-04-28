@@ -128,6 +128,7 @@ public class Region {
     public int getFogX() { return this.fogX; }
     public int getFogY() { return this.fogY; }
     public Board getBoard() { return this.board; }
+    public Witch getWitch() { return this.witch; }
 
 
     public void setAvailableHeroPaths(int[] regions)
@@ -183,6 +184,69 @@ public class Region {
         this.gold--;
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if(o == this) return true;
+        else
+        {
+            if(o instanceof Region)
+            {
+                Region pRegion = (Region) o;
+                // To prevent nullpointer excpetion
+                if((this.getMonster() == null && pRegion.getMonster() == null) && (this.getWitch() == null && this.getWitch() == null))
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() );
+                }
+                else if(this.getMonster() == null && pRegion.getMonster() == null)
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() && pRegion.getWitch().equals(this.getWitch()));
+                }
+                else if(this.getWitch() == null && pRegion.getWitch() == null)
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() && this.getMonster().equals(pRegion.getWitch()));
+                }
+                else if(this.getWitch() == null || pRegion.getWitch() == null || pRegion.getMonster() == null || this.getMonster() == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return ( pRegion.getHeroes().equals(this.getHeroes()) && pRegion.getPosition() == this.getPosition() &&
+                            pRegion.getGold() == this.getGold() && pRegion.getWell().equals(this.getWell()) &&
+                            pRegion.getFog().equals(this.getFog()) && pRegion.getFarmers().equals(this.getFarmers()) &&
+                            pRegion.getX() == this.getX() && pRegion.getY() == this.getY() && pRegion.getFogX() == this.getFogX() &&
+                            pRegion.getFogY() == this.getFogY() && pRegion.getMonster().equals(this.getMonster()) &&
+                            pRegion.getWitch().equals(this.getWitch()));
+                }
+            }
+            else return false;
+        }
+//        private ArrayList<Hero> heroes; // completed
+//        private int position;
+//        private int gold = 0;
+//        private Well well;// completed
+//        private Fog fog; // Completed
+//        private ArrayList<Farmer> farmers;
+//        private Monster monster; // Completed
+//        private int x;
+//        private int y;
+//        private int fogX;
+//        private int fogY;
+//        private Witch witch; // Completed
 
+    }
 
 }

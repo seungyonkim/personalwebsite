@@ -9,6 +9,8 @@ public class Well { // 5, 35, 45, 55
         this.isEmpty = false;
     }
 
+    public int getPosition(){ return this.position; }
+
     public void empty() {
         this.isEmpty = true;
     }
@@ -19,6 +21,21 @@ public class Well { // 5, 35, 45, 55
 
     public boolean isEmpty() {
         return this.isEmpty;
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (o == this) return true;
+        else
+        {
+            if(o instanceof Well)
+            {
+                Well pWell = (Well) o;
+                return (pWell.getPosition() == this.getPosition() && pWell.isEmpty() == this.isEmpty());
+            }
+            else return false;
+        }
     }
 
 }

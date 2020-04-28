@@ -10,7 +10,13 @@ import com.mygdx.game.monster.Monster;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.preference.AppPreferences;
 import com.mygdx.game.views.ChooseHeroScreen;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreen;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreenArcher;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreenDwarf;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWarrior;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWizard;
 import com.mygdx.game.views.GameScreen;
+import com.mygdx.game.views.MerchantScreen;
 import com.mygdx.game.views.MultiGameScreen;
 import com.mygdx.game.views.MenuScreen;
 import com.mygdx.game.views.NewGameScreen;
@@ -45,6 +51,12 @@ public class Andor extends Game {
 	private ChatScreen chatScreen;
 
 	private AppPreferences preferences;
+	private MerchantScreen merchantScreen;
+
+	private EquipmentScreenWarrior equipmentScreenWarrior;
+	private EquipmentScreenArcher equipmentScreenArcher;
+	private EquipmentScreenWizard equipmentScreenWizard;
+	private EquipmentScreenDwarf equipmentScreenDwarf;
 
 	public SpriteBatch batch;
 	public Skin skin;
@@ -61,7 +73,14 @@ public class Andor extends Game {
 	public final static int MULTISETUP = 6;
 	public final static int MULTIGAME = 7;
 	public final static int CHAT = 8;
-	public final static int BATTLE =9;
+
+	public final static int MERCHANT = 9;
+	public final static int EQUIPMENT_WARRIOR = 10;
+	public final static int EQUIPMENT_ARCHER = 11;
+	public final static int EQUIPMENT_WIZARD = 12;
+	public final static int EQUIPMENT_DWARF = 13;
+	public final static int BATTLE =14;
+
 
 	public int decider= 0;
 
@@ -268,14 +287,21 @@ public class Andor extends Game {
 		}
         // continue to next turn
         this.nextTurn();
+		System.out.println("A hero finished day.");
+//		if (this.finishedHeroes.size() == this.playerHeroes.size()) {
+//			System.out.println("Ending Day");
+//			endDay();
+//		}
     }
 
 	public void endDay() { // all players finished day
 		// update board for a new day
 	    gameBoard.newDay();
 	    for (Hero player : playerHeroes) {
+	    	System.out.println("Resetting player.");
 	    	player.enablePlay();
 	    	player.resetHours();
+//	    	System.out.println("Player now has hours: "+player.getHours());
 		}
 	    // find the player to go first for the new day
 	    for (Hero player : playerHeroes) {
@@ -353,10 +379,59 @@ public class Andor extends Game {
 				break;
 
 
+			case MERCHANT:
+				if (merchantScreen == null) merchantScreen = new MerchantScreen(this);
+				this.setScreen(merchantScreen);
+				break;
 
+			case EQUIPMENT_WARRIOR:
+				if (equipmentScreenWarrior == null) equipmentScreenWarrior = new EquipmentScreenWarrior(this);
+				this.setScreen(equipmentScreenWarrior);
+				break;
+
+			case EQUIPMENT_ARCHER:
+				if (equipmentScreenArcher == null) equipmentScreenArcher = new EquipmentScreenArcher(this);
+				this.setScreen(equipmentScreenArcher);
+				break;
+			case EQUIPMENT_WIZARD:
+				if (equipmentScreenWizard == null) equipmentScreenWizard= new EquipmentScreenWizard(this);
+				this.setScreen(equipmentScreenWizard);
+				break;
+			case EQUIPMENT_DWARF:
+				if (equipmentScreenDwarf == null) equipmentScreenDwarf= new EquipmentScreenDwarf(this);
+				this.setScreen(equipmentScreenDwarf);
+				break;
 
 
 		}
+	}
+
+	public EquipmentScreenWarrior getEquipmentScreenWarrior(){
+		if(equipmentScreenWarrior==null) {
+			equipmentScreenWarrior = new EquipmentScreenWarrior(this);
+		}
+		return  equipmentScreenWarrior;
+	}
+	public EquipmentScreenArcher getEquipmentScreenArcher(){
+		if(equipmentScreenArcher==null){
+			equipmentScreenArcher = new EquipmentScreenArcher(this);
+		}
+		return equipmentScreenArcher;
+	}
+	public EquipmentScreenWizard getEquipmentScreenWizard(){
+		if(equipmentScreenWizard == null){
+			equipmentScreenWizard = new EquipmentScreenWizard(this);
+		}
+		return equipmentScreenWizard;
+	}
+	public EquipmentScreenDwarf getEquipmentScreenDwarf(){
+		if(equipmentScreenDwarf==null){
+			equipmentScreenDwarf = new EquipmentScreenDwarf(this);
+		}
+		return equipmentScreenDwarf;
+	}
+	public MerchantScreen getMerchantScreen(){
+		return merchantScreen;
 	}
 
 	@Override

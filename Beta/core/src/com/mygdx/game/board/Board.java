@@ -22,6 +22,7 @@ public class Board {
 
 
     private ArrayList<Region> regions = new ArrayList<Region>();
+    private ArrayList<Hero> heroes = new ArrayList<Hero>();
     private int difficulty;
     private Castle castle;
     private char legend='A';
@@ -89,6 +90,7 @@ public class Board {
     public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
         this.difficulty = difficulty;
+        this.heroes = heroes;
         for(int i = 0; i < 85; i++)
         {
             if(i == 0) { // This is for castle
@@ -277,7 +279,7 @@ public class Board {
     // Triggered at the end of every day
     public void newDay() {
         //TODO roll for event card
-
+        incrementLegend();
         // Monsters move
         for (Region region : getMonsterRegions()) {
 //            region.getMonster().moveTo(region, getRegion(region.getAvailableMonsterPath()));
@@ -292,14 +294,11 @@ public class Board {
         }
     }
 
-    public void incrementLegend(){
+    private void incrementLegend(){
         checkWin();
+        checkLose();
         //TODO ADD END GAME FUNCTION
         legend+=1;
-        if(legend=='N'){
-            //TODO LOSE GAME FUNCTION
-            System.out.println("You lose");//temp
-        }
     }
 
     public boolean checkWin(){
@@ -307,6 +306,16 @@ public class Board {
         //TODO ADD MEDICINE WIN CONDITION
         if(r.getMonster()==null && castle.getShield()!=0){
             return true;
+        }
+        return false;
+    }
+
+    //returns true for losing
+    public boolean checkLose(){
+        Region skralRegion=getRegion(19);
+        //TODO ADD MEDICINE LOSE CONDITION
+        if(legend=='N'){
+            return skralRegion.getMonster() != null;
         }
         return false;
     }
@@ -324,6 +333,20 @@ public class Board {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this == o) return true;
+        else
+        {
+            if(o instanceof Board)
+            {
+                Board pBoard = (Board) o;
+                return (pBoard.regions.equals(this.regions) && pBoard.heroes.equals(this.heroes));
+            }
+            else return false;
+        }
+    }
 
     // Test to create a Board object
     public static void main(String[] args)

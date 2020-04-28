@@ -48,6 +48,7 @@ io.on('connect',function(socket){
 
         });
 
+
      socket.on("GoldWine",function(data){
 
             for(var i =0 ;i<players.length; i++){
@@ -73,6 +74,39 @@ io.on('connect',function(socket){
 
         socket.broadcast.emit("GoldWine",players);
      });
+
+
+     socket.on("farmerPickedUp", function(data) {
+//        data.id = socket.id;
+        console.log("A farmer picked up by a hero.");
+        var hero = data.hero;
+        socket.broadcast.emit("farmerPickedUp", {hero : hero});
+     });
+
+     socket.on("farmerDroppedOff", function(data) {
+        console.log("A farmer dropped off.");
+        var hero = data.hero;
+        socket.broadcast.emit("farmerDroppedOff", {hero : hero});
+     });
+
+     socket.on("goldDropped", function(data) {
+        console.log("Gold dropped in a region.");
+        var hero = data.hero;
+        socket.broadcast.emit("goldDropped", {hero : hero});
+     });
+
+     socket.on("goldPickedUp", function(data) {
+         console.log("Gold picked up by a hero.");
+         var hero = data.hero;
+         socket.broadcast.emit("goldPickedUp", {hero : hero});
+      });
+
+      socket.on("drankWell", function(data) {
+        console.log("A hero drank from a well.");
+        var hero = data.hero;
+        socket.broadcast.emit("drankWell", {hero : hero});
+      });
+
      socket.on("finishTurn",function(data){
         var choice = data.choice;
         var pastPlayer = data.pastPlayer;
