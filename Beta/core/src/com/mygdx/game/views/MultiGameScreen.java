@@ -381,6 +381,7 @@ public class MultiGameScreen implements Screen {
                             @Override
                             protected void result(Object object) {
                                 if (object.equals(true)) {
+
                                     // if player chooses to roll gor's dice
                                     int gorBattleValue = monster.getStrengthPoint() + monster.rollDice();
                                     int newResult = player.battle(heroBattleValue, gorBattleValue, monster);
@@ -984,7 +985,11 @@ public class MultiGameScreen implements Screen {
                 stage.addActor(finishDay);
             }
 
-
+            if(parent.wonLastBattle){
+                gameBoard.getRegion(parent.getMonsterBattling().getPosition()).removeMonster();
+                parent.getMonsterBattling().setPosition(80);
+                updateMonsterPositions();
+            }
             // Battle button
             if (gameBoard.getRegion(myHero.getPosition()).getMonster() != null && canBattle && gameBoard.getRegion(myHero.getPosition()).getHeroes() != null) {
                 battleButton = new TextButton("Start Battle", parent.skin);
@@ -996,6 +1001,7 @@ public class MultiGameScreen implements Screen {
                         // Perform battle
 
                         Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
+                        /*
                         if (myHero instanceof Archer) {
                             archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
                         } else if (myHero instanceof Wizard) {
@@ -1004,7 +1010,13 @@ public class MultiGameScreen implements Screen {
                             battleDialog(myHero, monster, 1, 0);
                         }
                         skipping = false;
+
+                         */
+                        parent.addMonsterBattling(monster);
+                        parent.addHeroBattling(myHero);
                         updateBattle();
+                        parent.changeScreen(Andor.BATTLE);
+
 
                         //                    show();
                     }
@@ -1334,7 +1346,7 @@ public class MultiGameScreen implements Screen {
     public void updateBattle(){
 
         Hero myHero = parent.getMyHero();
-        if( parent.getMyHero().hasMoved()){
+
 
             JSONObject data = new JSONObject();
             try{
@@ -1345,7 +1357,7 @@ public class MultiGameScreen implements Screen {
                 Gdx.app.log("SocketIO", "Error joining battle");
 
             }
-        }
+
     }
     public void configSocketEvents(){
         socket.on("playerMoved", new Emitter.Listener() {
@@ -1490,6 +1502,16 @@ public class MultiGameScreen implements Screen {
                             @Override
                             protected void result(Object object) {
                                 if (object.equals(true)) {
+                                    // Perform battle
+                                        Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
+                                    if (startHero.equals("Archer")) {
+                                        archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
+                                    } else if (startHero.equals("Wizard")) {
+                                        wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
+                                    } else {
+                                        battleDialog(myHero, monster, 1, 0);
+                                    }
+                                    skipping = false;
 
 
                                 }
@@ -1506,6 +1528,8 @@ public class MultiGameScreen implements Screen {
 
                             @Override
                             protected void result(Object object) {
+
+
 
                             }
                         }.show(stage);

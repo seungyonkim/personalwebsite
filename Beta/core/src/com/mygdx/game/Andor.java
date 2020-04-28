@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.game.board.Board;
+import com.mygdx.game.monster.Monster;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.preference.AppPreferences;
 import com.mygdx.game.views.ChooseHeroScreen;
@@ -18,6 +19,8 @@ import com.mygdx.game.views.LoadingScreen;
 import com.mygdx.game.views.SinglePlayerSetupScreen;
 import com.mygdx.game.views.MultiPlayerSetupScreen;
 import com.mygdx.game.views.ChatScreen;
+import com.mygdx.game.views.BattleScreen;
+
 
 
 import java.util.ArrayList;
@@ -36,6 +39,8 @@ public class Andor extends Game {
 	private ChooseHeroScreen chooseHeroScreen;
 	private GameScreen gameScreen;
 	private MultiGameScreen multiGameScreen;
+
+	private BattleScreen battleScreen;
 
 	private ChatScreen chatScreen;
 
@@ -56,6 +61,7 @@ public class Andor extends Game {
 	public final static int MULTISETUP = 6;
 	public final static int MULTIGAME = 7;
 	public final static int CHAT = 8;
+	public final static int BATTLE =9;
 
 	public int decider= 0;
 
@@ -80,6 +86,10 @@ public class Andor extends Game {
 
 	public final float UPDATE_TIME =1/60f;
 	public float timer;
+
+	private ArrayList<Hero> heroBattling;
+	private Monster monsterBattling;
+	public boolean wonLastBattle;
 
 
 //    public void printClaimedHeroes() {
@@ -127,7 +137,27 @@ public class Andor extends Game {
         return availableHeroes;
     }
 
-    public void disableHero(String hero) {
+    public void addHeroBattling(Hero hero){
+		if(heroBattling == null)
+			heroBattling = new ArrayList<Hero>();
+		heroBattling.add(hero);
+	}
+
+	public ArrayList<Hero> getHeroBattling() {
+		return heroBattling;
+	}
+
+	public void addMonsterBattling(Monster monster){
+
+		monsterBattling = (monster);
+	}
+
+	public Monster getMonsterBattling() {
+		return monsterBattling;
+	}
+
+
+	public void disableHero(String hero) {
 		// someone has picked this hero, so put it in the "taken" list so that no one else can pick it
 
         availableHeroes.put(hero, false);
@@ -316,6 +346,10 @@ public class Andor extends Game {
 			case CHAT:
 				if (chatScreen == null) chatScreen = new ChatScreen(this);
 				this.setScreen(chatScreen);
+				break;
+			case BATTLE:
+				if(battleScreen == null) battleScreen = new BattleScreen((this));
+				this.setScreen(battleScreen);
 				break;
 
 
