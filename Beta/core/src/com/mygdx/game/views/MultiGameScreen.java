@@ -78,6 +78,7 @@ public class MultiGameScreen implements Screen {
     private Texture wellTexture;
     private Texture gorTexture;
     private Texture skralTexture;
+    private Texture witchTexture;
 
     private Rectangle farmer1;
     private Rectangle farmer2;
@@ -88,6 +89,7 @@ public class MultiGameScreen implements Screen {
     private Rectangle skral;
     private ArrayList<Rectangle> gors;
 //    private ArrayList<Rectangle> farmers;
+    private Rectangle witch;
 
     private Texture pathTexture;
     private Image pathButtonImage;
@@ -159,11 +161,12 @@ public class MultiGameScreen implements Screen {
         wellTexture = new Texture(Gdx.files.internal("andor_well.png"));
         gorTexture = new Texture(Gdx.files.internal("monsters/andor_gor.png"));
         skralTexture = new Texture(Gdx.files.internal("monsters/andor_skral.png"));
+        witchTexture = new Texture(Gdx.files.internal("witch.png"));
 
 
 //        coveredFog = new Rectangle();
 //        coveredFog.width = 300;
-//        coveredFog.height = 300;
+//        coveredFog.height = 300;1
         fogs = new ArrayList<Rectangle>();
 
         well = new Rectangle();
@@ -276,6 +279,14 @@ public class MultiGameScreen implements Screen {
             farmer2.x = calcX(x) - farmer2.width / 2;
             farmer2.y = calcY(y) - farmer2.height / 2;
         }
+
+
+
+        witch = new Rectangle();
+        witch.width=300;
+        witch.height=400;
+        witch.x=calcX(gameBoard.getWitchRegion()) - witch.width/2;
+        witch.x=calcY(gameBoard.getWitchRegion()) - witch.width/2;
 
 
         // create camera
@@ -710,12 +721,27 @@ public class MultiGameScreen implements Screen {
         // Portrait of the current player hero
         final Hero myHero = parent.getMyHero();
 
-        if (gameBoard.getCastle().getShield() < 0) {
+        if (gameBoard.getCastle().getShield() < 0 || gameBoard.checkLose()) {
             updateGameOver();
             new Dialog("Game Over", parent.skin) {
                 {
                     text("Game Over. You Lost.");
                     button("Exit Game", true);
+                }
+
+                @Override
+                protected void result(Object object) {
+                    if (object.equals(true)) {
+                        Gdx.app.exit();
+                    }
+                }
+            }.show(stage);
+        } else if(gameBoard.checkWin()){
+            updateGameOver();
+            new Dialog("You win", parent.skin) {
+                {
+                    text("You won the game");
+                    button("Finish Game", true);
                 }
 
                 @Override
@@ -1306,6 +1332,9 @@ public class MultiGameScreen implements Screen {
             stage.getBatch().draw(gorTexture, gor.x, gor.y, gor.width, gor.height);
         }
 
+        //draw witch
+        stage.getBatch().draw(witchTexture, witch.x, witch.y, witch.width, witch.height);
+
 
         // Draw farmers
         for (Farmer farmer : gameBoard.getFarmers()) {
@@ -1317,6 +1346,10 @@ public class MultiGameScreen implements Screen {
                 }
             }
         }
+
+        //draw witch
+
+
 
         for (Hero hero : playerHeroes) {
             for (Farmer farmer : hero.getFarmers()) {
