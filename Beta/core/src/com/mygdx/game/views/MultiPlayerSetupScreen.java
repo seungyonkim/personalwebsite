@@ -539,7 +539,7 @@ public class MultiPlayerSetupScreen implements Screen {
     public void connectSocket(){
 
         try{
-            socket =IO.socket("https://5e4de4a1.ngrok.io");
+            socket =IO.socket("http://localhost:8080");
             //to make it work on the android emulator use http://10.0.2.2:8080
             socket.connect();
         }catch(Exception e){
