@@ -712,19 +712,20 @@ public class MultiGameScreen implements Screen {
 
         if (gameBoard.getCastle().getShield() < 0) {
             updateGameOver();
-            new Dialog("Game Over", parent.skin) {
-                {
-                    text("Game Over. You Lost.");
-                    button("Exit Game", true);
-                }
-
-                @Override
-                protected void result(Object object) {
-                    if (object.equals(true)) {
-                        Gdx.app.exit();
-                    }
-                }
-            }.show(stage);
+//            new Dialog("Game Over", parent.skin) {
+//                {
+//                    text("Game Over. You Lost.");
+//                    button("Exit Game", true);
+//                }
+//
+//                @Override
+//                protected void result(Object object) {
+//                    if (object.equals(true)) {
+//                        Gdx.app.exit();
+//                    }
+//                }
+//            }.show(stage);
+            parent.changeScreen(Andor.GAMEOVER);
         } else if(currentHero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString())&& !myHero.hasMoved()) {
             new Dialog("It is your turn", parent.skin) {
                 {
@@ -1816,19 +1817,21 @@ public class MultiGameScreen implements Screen {
             public void call(Object... args) {
                 final JSONObject data = (JSONObject) args[0];
                 try {
-                    new Dialog("Game Over", parent.skin) {
-                        {
-                            text("Game Over. You Lost.");
-                            button("Exit Game", true);
-                        }
-
-                        @Override
-                        protected void result(Object object) {
-                            if (object.equals(true)) {
-                                Gdx.app.exit();
-                            }
-                        }
-                    }.show(stage);
+//                    new Dialog("Game Over", parent.skin) {
+//                        {
+//                            text("Game Over. You Lost.");
+//                            button("Exit Game", true);
+//                        }
+//
+//                        @Override
+//                        protected void result(Object object) {
+//                            if (object.equals(true)) {
+//                                Gdx.app.exit();
+//                            }
+//                        }
+//                    }.show(stage);
+                    System.out.println("Game Over");
+                    parent.changeScreen(Andor.GAMEOVER);
                 } catch (Exception e) {
                     Gdx.app.log("SocketIO", "Error next turn on the client side");
                 }

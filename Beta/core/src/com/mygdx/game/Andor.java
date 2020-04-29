@@ -20,6 +20,7 @@ import com.mygdx.game.views.EquipmentScreen.EquipmentScreenDwarf;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWarrior;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWizard;
 import com.mygdx.game.views.EquipmentScreen.UseFalconScreen;
+import com.mygdx.game.views.GameOverScreen;
 import com.mygdx.game.views.GameScreen;
 import com.mygdx.game.views.LoadBattleGameScreen;
 import com.mygdx.game.views.LoadGameScreen;
@@ -73,6 +74,8 @@ public class Andor extends Game {
 	private EquipmentScreenDwarf equipmentScreenDwarf;
 	private UseFalconScreen useFalconScreen;
 
+	private GameOverScreen gameOverScreen;
+
 	public SpriteBatch batch;
 	public Skin skin;
 	public Texture menuScreenBG;
@@ -102,6 +105,8 @@ public class Andor extends Game {
 	public final static int LOADLOSEGAME = 17;
 	public final static int LOADBATTLEGAME = 18;
 	public final static int LOADMERCHANTGAME = 19;
+
+	public final static int GAMEOVER = 21;
 
 	public int decider= 0;
 
@@ -476,6 +481,11 @@ public class Andor extends Game {
 			case USE_FALCON:
 				if (useFalconScreen == null) useFalconScreen= new UseFalconScreen(this);
 				this.setScreen(useFalconScreen);
+				break;
+
+			case GAMEOVER:
+				if (gameOverScreen == null) gameOverScreen= new GameOverScreen(this);
+				this.setScreen(gameOverScreen);
 				break;
 
 		}
