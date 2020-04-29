@@ -24,4 +24,17 @@ public class Witch {
         System.out.println(x);
     }*/
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        else
+        {
+            if( o instanceof Witch)
+            {
+                Witch pWitch = (Witch) o;
+                return pWitch.getPosition() == this.getPosition();
+            }
+            else return false;
+        }
+    }
 }

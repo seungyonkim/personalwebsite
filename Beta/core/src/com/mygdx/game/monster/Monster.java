@@ -22,7 +22,7 @@ public class Monster {
         this.rewardGold = rGold;
         this.rewardWP = rWP;
     }
-
+    public String getMonsterType(){ return "HELLO";}
     public int getPosition() {
         return this.position;
     }
@@ -195,5 +195,42 @@ public class Monster {
         return highestValue;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        else
+        {
+            if(o instanceof Monster)
+            {
+                Monster pMonster = (Monster) o;
+                if(pMonster instanceof Skral && this instanceof Skral)
+                {
+                    Skral a = (Skral) pMonster;
+                    Skral b = (Skral) this;
+
+                    return (a.getPosition() == b.getPosition() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRewardGold() == b.getRewardGold() &&
+                            a.getRewardWP() == b.getRewardWP());
+                }
+                else if(pMonster instanceof Gor && this instanceof Gor)
+                {
+                    Gor a = (Gor) pMonster;
+                    Gor b = (Gor) this;
+
+                    return (a.getPosition() == b.getPosition() && a.getWillPower() == b.getWillPower() &&
+                            a.getStrengthPoint() == b.getStrengthPoint() && a.getRewardGold() == b.getRewardGold() &&
+                            a.getRewardWP() == b.getRewardWP());
+                }
+                else return false;
+            }
+            else return false;
+        }
+    }
+
+    //    private int position; // if position == 80 then this monster is no more available.
+//    private int willPower;
+//    private int strengthPoint;
+//    private int rewardGold;
+//    private int rewardWP;
 
 }

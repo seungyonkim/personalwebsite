@@ -22,6 +22,7 @@ public class Board {
 
 
     private ArrayList<Region> regions = new ArrayList<Region>();
+    private ArrayList<Hero> heroes = new ArrayList<Hero>();
     private int difficulty;
     private Castle castle;
     private char legend='A';
@@ -89,6 +90,7 @@ public class Board {
     public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
         this.difficulty = difficulty;
+        this.heroes = heroes;
         for(int i = 0; i < 85; i++)
         {
             if(i == 0) { // This is for castle
@@ -331,6 +333,20 @@ public class Board {
         return result;
     }
 
+    @Override
+    public boolean equals(Object o)
+    {
+        if(this == o) return true;
+        else
+        {
+            if(o instanceof Board)
+            {
+                Board pBoard = (Board) o;
+                return (pBoard.regions.equals(this.regions) && pBoard.heroes.equals(this.heroes));
+            }
+            else return false;
+        }
+    }
 
     // Test to create a Board object
     public static void main(String[] args)

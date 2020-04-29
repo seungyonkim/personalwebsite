@@ -274,7 +274,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
         wineskinWarrior = new SelectBox<Integer>(parent.skin);
         wineskinWarrior.setItems(0,1, 2);
-        table.add(wineskinWarrior).width(30).height(20).colspan(1);;
+        table.add(wineskinWarrior).width(30).height(20).colspan(1);
         goldWarrior = new SelectBox<Integer>(parent.skin);
         goldWarrior.setItems(0,1, 2,3,4,5);
         table.add(goldWarrior).width(30).height(20).colspan(1);
@@ -284,7 +284,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
         wineskinArcher = new SelectBox<Integer>(parent.skin);
         wineskinArcher.setItems(0,1, 2);
-        table.add(wineskinArcher).width(30).height(20).colspan(1);;
+        table.add(wineskinArcher).width(30).height(20).colspan(1);
         goldArcher = new SelectBox<Integer>(parent.skin);
         goldArcher.setItems(0,1, 2,3,4,5);
         table.add(goldArcher).width(30).height(20).colspan(1);
@@ -293,7 +293,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
         wineskinWizard = new SelectBox<Integer>(parent.skin);
         wineskinWizard.setItems(0,1, 2);
-        table.add(wineskinWizard).width(30).height(20).colspan(1);;
+        table.add(wineskinWizard).width(30).height(20).colspan(1);
         goldWizard = new SelectBox<Integer>(parent.skin);
         goldWizard.setItems(0,1, 2,3,4,5);
         table.add(goldWizard).width(30).height(20).colspan(1);
@@ -302,7 +302,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
         wineskinDwarf = new SelectBox<Integer>(parent.skin);
         wineskinDwarf.setItems(0,1, 2);
-        table.add(wineskinDwarf).width(30).height(20).colspan(1);;
+        table.add(wineskinDwarf).width(30).height(20).colspan(1);
         goldDwarf = new SelectBox<Integer>(parent.skin);
         goldDwarf.setItems(0,1, 2,3,4,5);
         table.add(goldDwarf).width(30).height(20).colspan(1);
