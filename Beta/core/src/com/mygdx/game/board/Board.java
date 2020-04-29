@@ -2,6 +2,7 @@ package com.mygdx.game.board;
 
 
 import com.mygdx.game.character.Archer;
+import com.mygdx.game.character.Dwarf;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.character.Warrior;
 import com.mygdx.game.etc.Castle;
@@ -86,6 +87,60 @@ public class Board {
             82
     };
 
+    public Board(ArrayList<Hero> heroes, char option)
+    {
+        this.heroes = heroes;
+        for(int i = 0; i < 85; i++)
+        {
+            if(i == 0) { // This is for castle
+                Castle castle = new Castle(this, 3, 0);
+                castle.setAvailabeMonsterPath(this.allMonsterPaths[i]);
+                castle.setAvailableHeroPaths(this.allHeroPaths[i]);
+                regions.add(castle);
+                this.castle = castle;
+            } else if(i >= 73 && i <= 79) { // Those regions don't exist
+                regions.add(null);
+            } else if(i == 18 || i == 57 || i == 71) { // These are for merchant
+                Merchant merchant = new Merchant(this, i);
+                merchant.setAvailableHeroPaths(this.allHeroPaths[i]);
+                merchant.setAvailabeMonsterPath(this.allMonsterPaths[i]);
+                regions.add(merchant);
+            } else  {
+                Region r = new Region(this, i);
+                r.setAvailableHeroPaths(this.allHeroPaths[i]);
+                r.setAvailabeMonsterPath(this.allMonsterPaths[i]);
+                regions.add(r);
+            }
+        }
+
+        for(Hero h: heroes) { // Set heroes on starting location
+            int pos = h.getPosition();
+            Region r = getRegion(pos);
+            r.addHero(h);
+        }
+
+        Farmer f = new Farmer(24, 1);
+        this.regions.get(24).addFarmer(f);
+
+        switch (option)
+        {
+            case 'a' :
+                // option == 'a' : Situation that allows us to test a collaborative fight
+            case 'b' :
+                // option == 'b' : Situation that allows us to buy several items from the merchant
+            case 'c' :
+                // option == 'c' : Losing the game
+                this.regions.get(19).getMonster().moveTo(this.regions.get(19),this.regions.get(3));
+                this.regions.get(8).getMonster().moveTo(this.regions.get(8),this.regions.get(7));
+                this.regions.get(20).getMonster().moveTo(this.regions.get(20),this.regions.get(1));
+                this.regions.get(21).getMonster().moveTo(this.regions.get(21),this.regions.get(4));
+                this.regions.get(26).getMonster().moveTo(this.regions.get(26),this.regions.get(25));
+                this.regions.get(48).getMonster().moveTo(this.regions.get(48),this.regions.get(16));
+
+            case 'd' :
+                // option == 'd' : Winning the game
+        }
+    }
 
     public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
@@ -133,6 +188,10 @@ public class Board {
 
 
 
+    }
+
+    public ArrayList<Hero> getHeroes() {
+        return this.heroes;
     }
 
     public int getDifficulty() {
@@ -373,19 +432,19 @@ public class Board {
         Region to = b.getMonsterAvailableRegion(from);
         m.moveTo(from, to);
 
-//        Region from = b.getRegion(a.getPosition());
-//        Region to = b.getRegion(0);
-//        a.moveTo(from, to);
+        Region from = b.getRegion(a.getPosition());
+        Region to = b.getRegion(0);
+        a.moveTo(from, to);
 
-//        System.out.println(b.toString());
+        System.out.println(b.toString());
 
 
-//        System.out.println(region instanceof Castle);
+        System.out.println(region instanceof Castle);
         System.out.println(b.toString());*/
+
         char test = 'A';
         test+=1;
         System.out.println(test);
-
     }
 
 }
