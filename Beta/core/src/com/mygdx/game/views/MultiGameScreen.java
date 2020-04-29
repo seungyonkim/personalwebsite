@@ -693,6 +693,7 @@ public class MultiGameScreen implements Screen {
         if (parent.getFinishedHeroes().size() == parent.getPlayerHeroes().size()) {
             // all the players have finished the day, so execute endDay
             parent.endDay();
+//            updateEndDay();
             updateMonsterPositions();
             show();
         }
@@ -708,6 +709,7 @@ public class MultiGameScreen implements Screen {
         final Hero myHero = parent.getMyHero();
 
         if (gameBoard.getCastle().getShield() < 0) {
+            updateGameOver();
             new Dialog("Game Over", parent.skin) {
                 {
                     text("Game Over. You Lost.");
@@ -754,8 +756,7 @@ public class MultiGameScreen implements Screen {
 
         }
 
-
-        availableRegions = myHero.getAvailableRegions(gameBoard);
+        availableRegions = parent.getMyHero().getAvailableRegions(gameBoard);
 
 
         if (myHero instanceof Warrior) {
@@ -1507,6 +1508,28 @@ public class MultiGameScreen implements Screen {
         }
     }
 
+    public void updateGameOver() {
+        Hero myHero = parent.getMyHero();
+        try {
+            JSONObject data = new JSONObject();
+            data.put("hero", myHero.getTypeOfHeroString());
+            socket.emit("gameOver", data);
+        } catch (Exception e) {
+            Gdx.app.log("SocketIO", "Error at game over.");
+        }
+    }
+
+    public void updateEndDay() {
+        Hero myHero = parent.getMyHero();
+        try {
+            JSONObject data = new JSONObject();
+            data.put("hero", myHero.getTypeOfHeroString());
+            socket.emit("endingDay", data);
+        } catch (Exception e) {
+            Gdx.app.log("SocketIO", "Error ending day.");
+        }
+    }
+
     public void updateMove(){
 
         Hero currentHero = parent.getMyHero();
@@ -1743,6 +1766,41 @@ public class MultiGameScreen implements Screen {
                             }
                         }
                     }
+                } catch (Exception e) {
+                    Gdx.app.log("SocketIO", "Error next turn on the client side");
+                }
+
+            }
+        }).on("gameOver", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                final JSONObject data = (JSONObject) args[0];
+                try {
+                    new Dialog("Game Over", parent.skin) {
+                        {
+                            text("Game Over. You Lost.");
+                            button("Exit Game", true);
+                        }
+
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
+                                Gdx.app.exit();
+                            }
+                        }
+                    }.show(stage);
+                } catch (Exception e) {
+                    Gdx.app.log("SocketIO", "Error next turn on the client side");
+                }
+
+            }
+        }).on("endingDay", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                final JSONObject data = (JSONObject) args[0];
+                try {
+                    parent.endDay();
+                    updateMonsterPositions();
                 } catch (Exception e) {
                     Gdx.app.log("SocketIO", "Error next turn on the client side");
                 }

@@ -223,6 +223,12 @@ public class Andor extends Game {
     }
 
     public void createNewBoard() {
+		// Since right now, myHero is not the same thing as the one in playerHeroes
+		for (Hero hero : playerHeroes) {
+			if (myHero.equals(hero)) {
+				myHero = hero;
+			}
+		}
 		// create new board for a new game
 		gameBoard = new Board(playerHeroes, this.difficulty);
 //		System.out.println("NEW BOARD CREATED");
@@ -242,26 +248,15 @@ public class Andor extends Game {
     }
 
     public void loadBoard(char option) {
+		for (Hero hero : playerHeroes) {
+			if (myHero.equals(hero)) {
+				myHero = hero;
+			}
+		}
 		gameBoard = new Board(playerHeroes, option);
 		currentTurn = playerHeroes.get(0);
+//		System.out.println("Position :" + currentTurn.getPosition());
 		finishedHeroes = new ArrayList<Hero>();
-//		if (option == 'c') { // Losing game
-//			for (Hero player : playerHeroes) {
-//				if (player instanceof Warrior) {
-//					System.out.println("Moving warrior from " + player.getPosition() + " to 46.");
-//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(46));
-//				} else if (player instanceof Archer) {
-//					System.out.println("Moving archer from " + player.getPosition() + " to 39.");
-//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(39));
-//				} else if (player instanceof Dwarf) {
-//					System.out.println("Moving dwarf from " + player.getPosition() + " to 48.");
-//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(48));
-//				} else if (player instanceof Wizard) {
-//					System.out.println("Moving wizard from " + player.getPosition() + " to 41.");
-//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(41));
-//				}
-//			}
-//		}
 	}
 
 	public Hero whoseTurn() {

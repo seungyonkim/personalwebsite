@@ -242,31 +242,8 @@ public class LoadLosingGameScreen implements Screen {
 
 
         table.add(ListConnectedPlayers).prefSize(300).colspan(8);
-//        for(int i =0 ;i<parent.getPlayerHeroes().size();i++) {
-//            ListConnectedPlayers.appendText("- " + parent.getPlayerHeroes().get(i).getTypeOfHeroString() + "\n");
-//            if (parent.decider == 1) {
-//                String name = parent.getPlayerHeroes().get(i).getTypeOfHeroString();
-//                if (name.equals("Warrior")) {
-//                    goldWarrior.setDisabled(false);
-//                    wineskinWarrior.setDisabled(false);
-//                } else if (name.equals("Wizard")) {
-//                    goldWizard.setDisabled(false);
-//                    wineskinWizard.setDisabled(false);
-//                } else if (name.equals("Archer")) {
-//                    goldArcher.setDisabled(false);
-//                    wineskinArcher.setDisabled(false);
-//                } else if (name.equals("Dwarf")) {
-//                    goldDwarf.setDisabled(false);
-//                    wineskinDwarf.setDisabled(false);
-//                }
-//            }
-//        }
-
-
 
         table.row().pad(30, 0, 0, 0);
-
-
 
         table.add(backButton).colspan(3);
 
@@ -330,9 +307,9 @@ public class LoadLosingGameScreen implements Screen {
             }
         });
 
-        if(parent.decider != 1 ){
-            startButton.setDisabled(true);
-        }
+//        if(parent.decider != 1 ){
+//            startButton.setDisabled(true);
+//        }
 
 
         return table;
