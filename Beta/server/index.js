@@ -154,6 +154,13 @@ io.on('connect',function(socket){
         socket.broadcast.emit("updateBattle", {wantToJoin : wantToJoin});
 
      });
+      socket.on("updateResult",function(data){
+             var HeroBattleValue = data.heroBattleValue;
+             var MonsterBattleValue = data.monsterHeroValue;
+             socket.broadcast.emit("updateResult", {HeroBattleValue : HeroBattleValue, MonsterBattleValue : MonsterBattleValue});
+
+          });
+
 
     socket.on('disconnect',function(){
         console.log("Player disconnected");
@@ -179,6 +186,8 @@ io.on('connect',function(socket){
 
 
         });
+
+
 
 });
 

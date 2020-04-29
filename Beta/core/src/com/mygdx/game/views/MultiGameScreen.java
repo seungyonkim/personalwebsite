@@ -1050,8 +1050,12 @@ public class MultiGameScreen implements Screen {
                         skipping = false;
 
                          */
+                    final ArrayList<Hero> heroOnRegion = gameBoard.getRegion(myHero.getPosition()).getHeroes();
+
                     parent.addMonsterBattling(monster);
-                    parent.addHeroBattling(myHero);
+                    for(Hero hero :heroOnRegion) {
+                            parent.addHeroBattling(hero);
+                    }
                     updateBattle();
                     parent.changeScreen(Andor.BATTLE);
 
@@ -1073,7 +1077,7 @@ public class MultiGameScreen implements Screen {
                 break;
             }
         }
-        if (canBattle && gameBoard.getRegion(myHero.getPosition()).getHeroes() != null) {
+        if(gameBoard.getRegion(currentHero.getPosition()).getMonster() != null && canBattle) {
             battleButton = new TextButton("Start Battle", parent.skin);
             // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
             battleButton.setPosition(200, goldInformation.getHeight() + 15);
@@ -1591,7 +1595,7 @@ public class MultiGameScreen implements Screen {
                 data.put("wantToJoin",wantToJoin);
                 socket.emit("updateBattle", data);
             }catch(Exception e){
-                Gdx.app.log("SocketIO", "Error joining battle");
+                Gdx.app.log("SocketIO", "Error joining battle on game screen");
 
             }
 
@@ -1842,7 +1846,7 @@ public class MultiGameScreen implements Screen {
             public void call(Object... args) {
                 final JSONObject data = (JSONObject) args[0];
                 final Hero myHero = parent.getMyHero();
-                ArrayList<Hero> heroOnRegion = gameBoard.getRegion(myHero.getPosition()).getHeroes();
+                final ArrayList<Hero> heroOnRegion = gameBoard.getRegion(myHero.getPosition()).getHeroes();
                 boolean ask = false;
                 try {
                     final String startHero = data.getString("wantToJoin");
@@ -1865,7 +1869,14 @@ public class MultiGameScreen implements Screen {
                             protected void result(Object object) {
                                 if (object.equals(true)) {
                                     // Perform battle
+
+                                    Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
+                                    parent.addMonsterBattling(monster);
                                     parent.addHeroBattling(myHero);
+                                    for(Hero hero :heroOnRegion) {
+                                        if(!hero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString()))
+                                        parent.addHeroBattling(hero);
+                                    }
                                     parent.changeScreen(Andor.BATTLE);
                                     skipping = false;
 
