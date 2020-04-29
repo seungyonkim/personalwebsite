@@ -34,6 +34,7 @@ import com.mygdx.game.etc.Merchant;
 import com.mygdx.game.monster.Gor;
 import com.mygdx.game.monster.Monster;
 import com.mygdx.game.monster.Skral;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreen;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,6 +44,7 @@ import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 
 public class MultiGameScreen implements Screen {
@@ -103,6 +105,8 @@ public class MultiGameScreen implements Screen {
     private TextButton chat;
     private TextButton mainMenuButton;
     private TextButton castleShields;
+
+    private TextButton equipmentBagButton;
 
 //    private BitmapFont font;
 
@@ -689,6 +693,7 @@ public class MultiGameScreen implements Screen {
         if (parent.getFinishedHeroes().size() == parent.getPlayerHeroes().size()) {
             // all the players have finished the day, so execute endDay
             parent.endDay();
+//            updateEndDay();
             updateMonsterPositions();
             show();
         }
@@ -704,6 +709,7 @@ public class MultiGameScreen implements Screen {
         final Hero myHero = parent.getMyHero();
 
         if (gameBoard.getCastle().getShield() < 0) {
+            updateGameOver();
             new Dialog("Game Over", parent.skin) {
                 {
                     text("Game Over. You Lost.");
@@ -750,8 +756,7 @@ public class MultiGameScreen implements Screen {
 
         }
 
-
-        availableRegions = myHero.getAvailableRegions(gameBoard);
+        availableRegions = parent.getMyHero().getAvailableRegions(gameBoard);
 
 
         if (myHero instanceof Warrior) {
@@ -797,6 +802,7 @@ public class MultiGameScreen implements Screen {
             stage.addActor(dwarfPortraitImage);
         }
 
+
         // Displaying Hero Information
         heroInformation = new TextButton("GOLD: " + parent.getMyHero().getGold()
                 + "\nSTRENGTH: " + parent.getMyHero().getStrengthPoint()
@@ -829,7 +835,35 @@ public class MultiGameScreen implements Screen {
             }
         });
         stage.addActor(pathButtonImage);
+//Equipment bag button
 
+
+        equipmentBagButton = new TextButton("Equipment Bag", parent.skin);
+
+        equipmentBagButton.setTouchable(Touchable.enabled);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
+
+        equipmentBagButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if(myHero instanceof Warrior){
+                    parent.changeScreen(Andor.EQUIPMENT_WARRIOR);
+                }
+                else if(myHero instanceof Archer){
+                    parent.changeScreen(Andor.EQUIPMENT_ARCHER);
+                }
+                else if(myHero instanceof Wizard){
+                    parent.changeScreen(Andor.EQUIPMENT_WIZARD);
+                }
+                else if(myHero instanceof Dwarf){
+                    parent.changeScreen(Andor.EQUIPMENT_DWARF);
+                }
+
+
+            }
+        });
+
+        stage.addActor(equipmentBagButton);
 
         pathButtons.clear();
         // if the player doesn't have to stop, or if he is the only one remaining in the day
@@ -1014,7 +1048,56 @@ public class MultiGameScreen implements Screen {
                         skipping = false;
 
                          */
+                    final ArrayList<Hero> heroOnRegion = gameBoard.getRegion(myHero.getPosition()).getHeroes();
+
                     parent.addMonsterBattling(monster);
+                    for(Hero hero :heroOnRegion) {
+                            parent.addHeroBattling(hero);
+                    }
+                    updateBattle();
+                    parent.changeScreen(Andor.BATTLE);
+
+                    //                    show();
+                }
+            });
+            stage.addActor(battleButton);
+        }
+
+
+        // Battle button
+        //here!!!!
+        Iterator<Region> availableRegionsIter = availableRegions.iterator();
+        Monster monsterAround = null;
+        while(EquipmentScreen.activateBow() &&availableRegionsIter.hasNext()){
+            Monster monster = availableRegionsIter.next().getMonster();
+            if(monster!=null){
+                monsterAround=monster;
+                break;
+            }
+        }
+        if(gameBoard.getRegion(currentHero.getPosition()).getMonster() != null && canBattle) {
+            battleButton = new TextButton("Start Battle", parent.skin);
+            // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
+            battleButton.setPosition(200, goldInformation.getHeight() + 15);
+            final Monster finalMonsterAround = monsterAround;
+            battleButton.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    // Perform battle
+
+                        /*
+                        if (myHero instanceof Archer) {
+                            archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
+                        } else if (myHero instanceof Wizard) {
+                            wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
+                        } else {
+                            battleDialog(myHero, monster, 1, 0);
+                        }
+                        skipping = false;
+
+                         */
+                    EquipmentScreen.usedBow();
+                    parent.addMonsterBattling(finalMonsterAround);
                     parent.addHeroBattling(myHero);
                     updateBattle();
                     parent.changeScreen(Andor.BATTLE);
@@ -1024,6 +1107,7 @@ public class MultiGameScreen implements Screen {
             });
             stage.addActor(battleButton);
         }
+
 
 
         // Buttons to drop/pickup gold
@@ -1117,20 +1201,52 @@ public class MultiGameScreen implements Screen {
         merchantButton = new TextButton("Not at Merchant Yet", parent.skin);
         if (gameBoard.getRegion(myHero.getPosition()) instanceof Merchant) {
             if (myHero.getGold() >= 2) {
-                merchantButton.setText("Buy SP for 2G");
+                merchantButton.setText("Visit Merchant Store");
                 merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+//                merchantButton.addListener(new ChangeListener() {
+//                    @Override
+//                    public void changed(ChangeEvent event, Actor actor) {
+//                        // Perform SP purchase
+//                        //((Merchant) gameBoard.getRegion(currentHero.getPosition())).sellSP(currentHero);
+//                        parent.changeScreen(Andor.PREFERENCE);
+//                        if (!skipping) {
+//                            hasToStop = true;
+//                        }
+//
+//                        show();
+//                    }
+//                });
+
                 merchantButton.addListener(new ChangeListener() {
                     @Override
                     public void changed(ChangeEvent event, Actor actor) {
-                        // Perform SP purchase
-                        ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
+
+                        parent.changeScreen(Andor.MERCHANT);
+
                         if (!skipping) {
                             hasToStop = true;
                         }
-                        show();
+
+
                     }
                 });
+
                 stage.addActor(merchantButton);
+
+//                merchantButton.setText("Buy SP for 2G");
+//                merchantButton.setPosition(Gdx.graphics.getWidth()-merchantButton.getWidth()-10, dropGoldButton.getHeight()+pickUpGoldButton.getHeight()+15);
+//                merchantButton.addListener(new ChangeListener() {
+//                    @Override
+//                    public void changed(ChangeEvent event, Actor actor) {
+//                        // Perform SP purchase
+//                        ((Merchant) gameBoard.getRegion(myHero.getPosition())).sellSP(myHero);
+//                        if (!skipping) {
+//                            hasToStop = true;
+//                        }
+//                        show();
+//                    }
+//                });
+//                stage.addActor(merchantButton);
             } else {
                 merchantButton.setText("Not Enough Gold");
                 merchantButton.setTouchable(Touchable.disabled);
@@ -1256,6 +1372,9 @@ public class MultiGameScreen implements Screen {
 
         heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
         castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(),Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
+
+
 
         pathButtonImage.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
         pathButtonImage.setPosition(Gdx.graphics.getWidth()-pathButtonImage.getWidth()-10, Gdx.graphics.getHeight()-pathButtonImage.getHeight()-10);
@@ -1393,6 +1512,28 @@ public class MultiGameScreen implements Screen {
         }
     }
 
+    public void updateGameOver() {
+        Hero myHero = parent.getMyHero();
+        try {
+            JSONObject data = new JSONObject();
+            data.put("hero", myHero.getTypeOfHeroString());
+            socket.emit("gameOver", data);
+        } catch (Exception e) {
+            Gdx.app.log("SocketIO", "Error at game over.");
+        }
+    }
+
+    public void updateEndDay() {
+        Hero myHero = parent.getMyHero();
+        try {
+            JSONObject data = new JSONObject();
+            data.put("hero", myHero.getTypeOfHeroString());
+            socket.emit("endingDay", data);
+        } catch (Exception e) {
+            Gdx.app.log("SocketIO", "Error ending day.");
+        }
+    }
+
     public void updateMove(){
 
         Hero currentHero = parent.getMyHero();
@@ -1422,7 +1563,7 @@ public class MultiGameScreen implements Screen {
                 data.put("wantToJoin",wantToJoin);
                 socket.emit("updateBattle", data);
             }catch(Exception e){
-                Gdx.app.log("SocketIO", "Error joining battle");
+                Gdx.app.log("SocketIO", "Error joining battle on game screen");
 
             }
 
@@ -1634,12 +1775,47 @@ public class MultiGameScreen implements Screen {
                 }
 
             }
+        }).on("gameOver", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                final JSONObject data = (JSONObject) args[0];
+                try {
+                    new Dialog("Game Over", parent.skin) {
+                        {
+                            text("Game Over. You Lost.");
+                            button("Exit Game", true);
+                        }
+
+                        @Override
+                        protected void result(Object object) {
+                            if (object.equals(true)) {
+                                Gdx.app.exit();
+                            }
+                        }
+                    }.show(stage);
+                } catch (Exception e) {
+                    Gdx.app.log("SocketIO", "Error next turn on the client side");
+                }
+
+            }
+        }).on("endingDay", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                final JSONObject data = (JSONObject) args[0];
+                try {
+                    parent.endDay();
+                    updateMonsterPositions();
+                } catch (Exception e) {
+                    Gdx.app.log("SocketIO", "Error next turn on the client side");
+                }
+
+            }
         }).on("updateBattle", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 final JSONObject data = (JSONObject) args[0];
                 final Hero myHero = parent.getMyHero();
-                ArrayList<Hero> heroOnRegion = gameBoard.getRegion(myHero.getPosition()).getHeroes();
+                final ArrayList<Hero> heroOnRegion = gameBoard.getRegion(myHero.getPosition()).getHeroes();
                 boolean ask = false;
                 try {
                     final String startHero = data.getString("wantToJoin");
@@ -1662,7 +1838,14 @@ public class MultiGameScreen implements Screen {
                             protected void result(Object object) {
                                 if (object.equals(true)) {
                                     // Perform battle
+
+                                    Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
+                                    parent.addMonsterBattling(monster);
                                     parent.addHeroBattling(myHero);
+                                    for(Hero hero :heroOnRegion) {
+                                        if(!hero.getTypeOfHeroString().equals(myHero.getTypeOfHeroString()))
+                                        parent.addHeroBattling(hero);
+                                    }
                                     parent.changeScreen(Andor.BATTLE);
                                     skipping = false;
 

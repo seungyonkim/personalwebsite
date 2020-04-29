@@ -1,5 +1,9 @@
 package com.mygdx.game.views.EquipmentScreen;
 
+import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+import com.mygdx.game.Equipment.Shield;
+import com.mygdx.game.Equipment.Wineskin;
 import com.mygdx.game.board.Board;
 import com.mygdx.game.etc.Merchant;
 import com.badlogic.gdx.Gdx;
@@ -26,6 +30,7 @@ import com.mygdx.game.character.Warrior;
 import com.mygdx.game.character.Wizard;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.xml.soap.Text;
@@ -41,16 +46,33 @@ public class EquipmentScreen implements Screen {
 
 //    private Skin skin;
 
-    private Texture wineskinTexture;
-    private Texture shieldTexture;
-    private Texture bowTexture;
-    private Texture helmTexture;
-    private Texture falconTexture;
-    private Texture telescopeTexture;
+    private Texture wineskinTexture = new Texture(Gdx.files.internal("items/wineskin.png"));;
+    private Texture shieldTexture = new Texture(Gdx.files.internal("items/shield.png"));
+    private Texture bowTexture = new Texture(Gdx.files.internal("items/bow.png"));
+    private Texture helmTexture = new Texture(Gdx.files.internal("items/helm.png"));
+    private Texture falconTexture = new Texture(Gdx.files.internal("items/falcon.png"));
+    private Texture telescopeTexture = new Texture(Gdx.files.internal("items/telescope.png"));
+
+
+    private Wineskin wineskin1=null;
+    private Wineskin wineskin2=null;
+    private Wineskin wineskin3=null;
+    private Wineskin wineskin4=null;
+    private Wineskin wineskin5=null;
+
+    private Shield shield1 = null;
+    private Shield shield2 = null;
+    private Shield shield3 = null;
+    private Shield shield4 = null;
 
 
 
     private Label titleLabel;
+
+    public static boolean usedFalconToday=false;
+    public static void setUsedFalconToday(boolean bool){
+        usedFalconToday=bool;
+    }
 
 
 
@@ -63,8 +85,17 @@ public class EquipmentScreen implements Screen {
     {
         this.parent = andor;
         stage = new Stage(new ScreenViewport());
-        availableItems.put("Wineskin",0);
-        availableItems.put("Shield",0);
+        //availableItems.put("Wineskin",5);
+        availableItems.put("Wineskin1",0);
+        availableItems.put("Wineskin2",0);
+        availableItems.put("Wineskin3",0);
+        availableItems.put("Wineskin4",0);
+        availableItems.put("Wineskin5",0);
+        // availableItems.put("Shield",4);
+        availableItems.put("Shield1",0);
+        availableItems.put("Shield2",0);
+        availableItems.put("Shield3",0);
+        availableItems.put("Shield4",0);
         availableItems.put("Bow", 0);
         availableItems.put("Helm",0);
         availableItems.put("Falcon",0);
@@ -82,22 +113,112 @@ public class EquipmentScreen implements Screen {
     public static void usedWineskin(){wineskinActivated=false;}
 
 
-    public void setWineskinAvailable(int num){
-        int currentNum = availableItems.get("Wineskin");
-        availableItems.remove("Wineskin");
-        availableItems.put("Wineskin",currentNum + (num*2));
-//        if(bool){
-//            numWineskin=2;
-//        }
+    private static boolean bowActivated=false;
+    public static boolean activateBow(){return bowActivated;}
+    public static void usedBow(){bowActivated=false;}
+
+    private static boolean shieldActivated=false;
+    public static boolean activateShield(){return shieldActivated;}
+    public static void usedShield(){shieldActivated=false;}
+
+
+
+    public void setWineskinAvailable(Wineskin wineskin,int integer){
+
+        if(wineskin.getName().equals("Wineskin1")){
+            wineskin1=wineskin;
+            availableItems.remove("Wineskin1");
+            availableItems.put("Wineskin1",integer);
+            System.out.println("W1 added to equipment bag");
+        }
+        if(wineskin.getName().equals("Wineskin2")){
+            wineskin2=wineskin;
+            availableItems.remove("Wineskin2");
+            availableItems.put("Wineskin2",integer);
+            System.out.println("W2 added to equipment bag");
+        }
+        if(wineskin.getName().equals("Wineskin3")){
+            wineskin3=wineskin;
+            availableItems.remove("Wineskin3");
+            availableItems.put("Wineskin3",integer);
+            System.out.println("W3 added to equipment bag");
+        }
+        if(wineskin.getName().equals("Wineskin4")){
+            wineskin4=wineskin;
+            availableItems.remove("Wineskin4");
+            availableItems.put("Wineskin4",integer);
+            System.out.println("W4 added to equipment bag");
+        }
+        if(wineskin.getName().equals("Wineskin5")){
+            wineskin5=wineskin;
+            availableItems.remove("Wineskin5");
+            availableItems.put("Wineskin5",integer);
+            System.out.println("W5 added to equipment bag");
+        }
+
+        System.out.println("how many wineskin: "+getWineskinInStock());
     }
-    public void setShieldAvailable(int num){
-        int currentNum = availableItems.get("Shield");
-        availableItems.remove("Shield");
-        availableItems.put("Shield",currentNum + (num*2));
-//        if(bool){
-//            numShield=2;
-//        }
+
+    public int getWineskinInStock(){
+        int stock=0;
+        if(availableItems.get("Wineskin1")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin2")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin3")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin4")==1){
+            stock++;
+        }
+        if(availableItems.get("Wineskin5")==1){
+            stock++;
+        }
+        return stock;
     }
+
+    public void setShieldAvailable(Shield shield,int integer){
+        if(shield.getName().equals("Shield1")){
+            shield1=shield;
+            availableItems.remove("Shield1");
+            availableItems.put("Shield1",integer);
+        }
+        if(shield.getName().equals("Shield2")){
+            shield2=shield;
+            availableItems.remove("Shield2");
+            availableItems.put("Shield2",integer);
+        }
+        if(shield.getName().equals("Shield3")){
+            shield3=shield;
+            availableItems.remove("Shield3");
+            availableItems.put("Shield3",integer);
+        }
+        if(shield.getName().equals("Shield4")){
+            shield4=shield;
+            availableItems.remove("Shield4");
+            availableItems.put("Shield4",integer);
+        }
+        System.out.println("how many shield : "+getShieldInStock());
+    }
+    public int getShieldInStock(){
+        int stock=0;
+        if(availableItems.get("Shield1")==1){
+            stock++;
+        }
+        if(availableItems.get("Shield2")==1){
+            stock++;
+        }
+        if(availableItems.get("Shield3")==1){
+            stock++;
+        }
+        if(availableItems.get("Shield4")==1){
+            stock++;
+        }
+        return stock;
+    }
+
     public void setBowAvailable(int num){
         int currentNum = availableItems.get("Bow");
         availableItems.remove("Bow");
@@ -144,8 +265,9 @@ public class EquipmentScreen implements Screen {
 
 
 
-        if (availableItems.get("Wineskin")>=1) {
-            wineskinTexture = new Texture(Gdx.files.internal("items/wineskin.png"));
+
+        if (getWineskinInStock()>=1) {
+
             Image wineskinImage = new Image(wineskinTexture);
             wineskinImage.setSize(120, 160);
             wineskinImage.setPosition(Gdx.graphics.getWidth() * 2 / 5 - wineskinImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -153,33 +275,106 @@ public class EquipmentScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
 
-                    if(availableItems.get("Wineskin")>=1) {
+                    if(getWineskinInStock()>=1) {
 
                         new Dialog("Would you like to activate Wineskin?", parent.skin) {
+
                             {
-                                text(availableItems.get("Wineskin") + " Wineskin(s) available.\n\n" +
-                                        "By activating a wineskin," +
+                                Wineskin ws ;
+                                String str="";
+                                if(availableItems.get("Wineskin1")==1){
+                                    if(wineskin1.getUsedOnce()){
+                                        str=str+"Wineskin1: 1/2 used";
+                                    }
+                                    else if(!wineskin1.getUsedOnce()){
+                                        str=str+"Wineskin1: 0/2 used";
+                                    }
+                                }
+                                if(availableItems.get("Wineskin2")==1){
+                                    if(wineskin2.getUsedOnce()){
+                                        str=str+"Wineskin2: 1/2 used";
+                                    }
+                                    else if(!wineskin2.getUsedOnce()){
+                                        str=str+"Wineskin2: 0/2 used";
+                                    }
+                                }
+                                if(availableItems.get("Wineskin3")==1){
+                                    if(wineskin3.getUsedOnce()){
+                                        str=str+"Wineskin3: 1/2 used";
+                                    }
+                                    else if(!wineskin3.getUsedOnce()){
+                                        str=str+"Wineskin3: 0/2 used";
+                                    }
+                                }
+                                if(availableItems.get("Wineskin4")==1){
+                                    if(wineskin4.getUsedOnce()){
+                                        str=str+"Wineskin4: 1/2 used";
+                                    }
+                                    else if(!wineskin4.getUsedOnce()){
+                                        str=str+"Wineskin4: 0/2 used";
+                                    }
+                                }
+                                if(availableItems.get("Wineskin5")==1){
+                                    if(wineskin5.getUsedOnce()){
+                                        str=str+"Wineskin5: 1/2 used";
+                                    }
+                                    else if(!wineskin5.getUsedOnce()){
+                                        str=str+"Wineskin5: 0/2 used";
+                                    }
+                                }
+
+
+                                if(availableItems.get("Wineskin1")==1){
+                                    ws=wineskin1;
+
+                                }
+                                else if(availableItems.get("Wineskin2")==1){
+                                    ws=wineskin2;
+                                }
+                                else if(availableItems.get("Wineskin3")==1){
+                                    ws=wineskin3;
+                                }
+                                else if(availableItems.get("Wineskin4")==1){
+                                    ws=wineskin4;
+                                }
+                                else if(availableItems.get("Wineskin5")==1){
+                                    ws=wineskin5;
+                                }
+                                else ws=null;
+                                System.out.println(str);
+
+                                text(str +
+                                        "\nBy activating a wineskin," +
                                         "When hero chooses 'move action', he can use the \n" +
                                         "wineskin token to move 1 space without advancing 1 hour.");
 
-                                button("Yes", "true");
-                                button("No", "false");
+                                button("Yes", ws);
+                                button("No", null);
                             }
 
                             @Override
                             protected void result(Object object) {
 
-                                if (object == "true") {
+                                if (object !=null) {
                                     //activate wineskin
                                     //currentHero.activateEquipment(null);
                                     wineskinActivated=true;
                                     System.out.println("activate wineskin from hero's equipment bag");
-                                    int numWineskin = availableItems.get("Wineskin");
-                                    availableItems.remove("Wineskin");
-                                    availableItems.put("Wineskin", numWineskin - 1);
-                                    if(availableItems.get("Wineskin")%2==0){
-                                        parent.getMerchantScreen().setWineskinAvailable(1);
+
+
+                                    if(((Wineskin)object).getUsedOnce()){
+                                        availableItems.remove(((Wineskin)object).getName());
+                                        availableItems.put(((Wineskin)object).getName(), 0);
+
+                                        ((Wineskin)object).setUsedOnce(false);
+                                        parent.getMerchantScreen().setWineskinAvailable(((Wineskin)object),1);
+
                                     }
+                                    else if(!((Wineskin)object).getUsedOnce()){
+                                        ((Wineskin)object).setUsedOnce(true);
+                                    }
+
+                                    object=null;
 
 
                                 } else {
@@ -188,7 +383,7 @@ public class EquipmentScreen implements Screen {
                         }.show(stage);
 
                     }
-                    else if (availableItems.get("Wineskin")==0){
+                    else if (getWineskinInStock()==0){
                         new Dialog("You have used all of your Wineskins.", parent.skin) {
                             {
                                 text("No more wineskin available.\n\n" +
@@ -211,8 +406,10 @@ public class EquipmentScreen implements Screen {
             table.add(wineskinImage).width(90).height(130).padRight(10);
         }
 
-        if (availableItems.get("Shield")>=1) {
-            shieldTexture = new Texture(Gdx.files.internal("items/shield.png"));
+
+
+        if (getShieldInStock()>=1) {
+
             Image shieldImage = new Image(shieldTexture);
             shieldImage.setSize(120, 160);
             shieldImage.setPosition(Gdx.graphics.getWidth() * 3 / 5 - shieldImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -220,38 +417,99 @@ public class EquipmentScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
 
-                    if(availableItems.get("Shield")>=1) {
+                    if(getShieldInStock()>=1) {
 
                         new Dialog("Would you like to activate Shield?", parent.skin) {
                             {
-                                text(availableItems.get("Shield")+" Shield(s) available.\n\n"+
-                                        "By activating a shield, a hero can either \n" +
+                                Shield sld ;
+                                String str="";
+
+
+                                if(availableItems.get("Shield1")==1){
+                                    if(shield1.getUsedOnce()){
+                                        str=str+"Shield1: 1/2 used\n";
+                                    }
+                                    else if(!shield1.getUsedOnce()){
+                                        str=str+"Shield1: 0/2 used\n";
+                                    }
+                                }
+                                if(availableItems.get("Shield2")==1){
+                                    if(shield2.getUsedOnce()){
+                                        str=str+"Shield2: 1/2 used\n";
+                                    }
+                                    else if(!shield2.getUsedOnce()){
+                                        str=str+"Shield2: 0/2 used\n";
+                                    }
+                                }
+                                if(availableItems.get("Shield3")==1){
+                                    if(shield3.getUsedOnce()){
+                                        str=str+"Shield3: 1/2 used\n";
+                                    }
+                                    else if(!shield3.getUsedOnce()){
+                                        str=str+"Shield3: 0/2 used\n";
+                                    }
+                                }
+                                if(availableItems.get("Shield4")==1){
+                                    if(shield4.getUsedOnce()){
+                                        str=str+"Shield4: 1/2 used\n";
+                                    }
+                                    else if(!shield4.getUsedOnce()){
+                                        str=str+"Shield4: 0/2 used\n";
+                                    }
+                                }
+
+
+                                if(availableItems.get("Shield1")==1){
+                                    sld=shield1;
+                                }
+                                else if(availableItems.get("Shield2")==1){
+                                    sld=shield2;
+                                }
+                                else if(availableItems.get("Shield3")==1){
+                                    sld=shield3;
+                                }
+                                else if(availableItems.get("Shield4")==1){
+                                    sld=shield4;
+                                }
+                                else sld=null;
+
+                                text(str+
+                                        "\nBy activating a shield, a hero can either \n" +
                                         "prevent loss of one's Will Power after a battle round,\n" +
                                         "or rend off a negative event card.");
 
-                                button("Yes", "true");
-                                button("No", "false");
+                                button("Yes", sld);
+                                button("No", null);
                             }
 
                             @Override
                             protected void result(Object object) {
 
-                                if (object == "true") {
-                                    currentHero.activateEquipment(null);
-                                    int numShield = availableItems.get("Shield");
-                                    availableItems.remove("Shield");
-                                    availableItems.put("Shield",numShield-1);
+                                if (object !=null) {
+                                    //currentHero.activateEquipment(null);
+                                    shieldActivated=true;
+                                    System.out.println("activate shield from hero's equipment bag");
 
-                                    if(availableItems.get("Shield")%2==0){
-                                        parent.getMerchantScreen().setShieldAvailable(1);
+                                    if(((Shield)object).getUsedOnce()){
+                                        availableItems.remove(((Shield)object).getName());
+                                        availableItems.put(((Shield)object).getName(), 0);
+
+                                        ((Shield)object).setUsedOnce(false);
+                                        parent.getMerchantScreen().setShieldAvailable(((Shield)object),1);
+
                                     }
+                                    else if(!((Shield)object).getUsedOnce()){
+                                        ((Shield)object).setUsedOnce(true);
+                                    }
+                                    object=null;
+
 
                                 } else {
                                 }
                             }
                         }.show(stage);
                     }
-                    if (availableItems.get("Shield")==0){
+                    else if (getShieldInStock()==0){
                         new Dialog("You have used all of your Shields.", parent.skin) {
                             {
                                 text("No more shield available.\n\n" +
@@ -272,8 +530,10 @@ public class EquipmentScreen implements Screen {
             table.add(shieldImage).width(90).height(130).padRight(10);
         }
 
+
+
         if (availableItems.get("Bow")>=1) {
-            bowTexture = new Texture(Gdx.files.internal("items/bow.png"));
+
             Image bowImage = new Image(bowTexture);
             bowImage.setSize(120, 160);
             bowImage.setPosition(Gdx.graphics.getWidth() * 4 / 5 - bowImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -297,8 +557,12 @@ public class EquipmentScreen implements Screen {
                             protected void result(Object object) {
 
                                 if (object == "true") {
-                                    currentHero.activateEquipment(null);
+                                    //currentHero.activateEquipment(null);
                                     //setBowAvailable(false);
+                                    bowActivated=true;
+                                    System.out.println("activate bow from hero's equipment bag");
+
+
                                     int numBow = availableItems.get("Bow");
                                     availableItems.remove("Bow");
                                     availableItems.put("Bow",numBow-1);
@@ -333,7 +597,7 @@ public class EquipmentScreen implements Screen {
         }
 
         if (availableItems.get("Helm")>=1) {
-            helmTexture = new Texture(Gdx.files.internal("items/helm.png"));
+
             Image helmImage = new Image(helmTexture);
             helmImage.setSize(120, 160);
             helmImage.setPosition(Gdx.graphics.getWidth() * 4 / 5 - helmImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -389,8 +653,8 @@ public class EquipmentScreen implements Screen {
             table.add(helmImage).width(90).height(130).padRight(10);
         }
 
-        if (availableItems.get("Falcon")>=1) {
-            falconTexture = new Texture(Gdx.files.internal("items/falcon.png"));
+        if (availableItems.get("Falcon")>=1&&!usedFalconToday) {
+
             Image falconImage = new Image(falconTexture);
             falconImage.setSize(120, 160);
             falconImage.setPosition(Gdx.graphics.getWidth() * 4 / 5 - falconImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -398,7 +662,7 @@ public class EquipmentScreen implements Screen {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
 
-                    if(availableItems.get("Falcon")>=1) {
+                    if(availableItems.get("Falcon")>=1&&!usedFalconToday) {
                         new Dialog("Would you like to activate Falcon?", parent.skin) {
                             {
                                 text("By activating falcon,\n" +
@@ -414,12 +678,24 @@ public class EquipmentScreen implements Screen {
                             protected void result(Object object) {
 
                                 if (object == "true") {
-                                    currentHero.activateEquipment(null);
-                                    int numFalcon = availableItems.get("Falcon");
-                                    availableItems.remove("Falcon");
-                                    availableItems.put("Falcon",numFalcon-1);
+                                    //currentHero.activateEquipment(null);
+                                    usedFalconToday=true;
+                                    parent.getUseFalconScreen().setWineskinStock(wineskin1,wineskin2,wineskin3,wineskin4,wineskin5);
+                                    parent.getUseFalconScreen().setShieldStock(shield1,shield2,shield3,shield4);
+                                    parent.getUseFalconScreen().setAvailableItems(
+                                            getWineskinInStock(),
+                                            getShieldInStock(),
+                                            availableItems.get("Bow"),
+                                            availableItems.get("Helm"),
+                                            availableItems.get("Falcon"),
+                                            availableItems.get("Telescope"));
+                                    parent.changeScreen(Andor.USE_FALCON);
 
-                                    parent.getMerchantScreen().setFalconAvailable(1);
+                                    //int numFalcon = availableItems.get("Falcon");
+                                   // availableItems.remove("Falcon");
+                                   // availableItems.put("Falcon",numFalcon-1);
+
+                                    //parent.getMerchantScreen().setFalconAvailable(1);
 
                                 } else {
                                 }
@@ -449,7 +725,7 @@ public class EquipmentScreen implements Screen {
         }
 
         if (availableItems.get("Telescope")>=1) {
-            telescopeTexture = new Texture(Gdx.files.internal("items/telescope.png"));
+
             Image telescopeImage = new Image(telescopeTexture);
             telescopeImage.setSize(120, 160);
             telescopeImage.setPosition(Gdx.graphics.getWidth() * 4 / 5 - telescopeImage.getWidth() / 2, Gdx.graphics.getHeight() / 4);
@@ -508,6 +784,10 @@ public class EquipmentScreen implements Screen {
         table.row().pad(30, 0, 0, 0);
         table.add(backButton).colspan(7);
 
+        table.row().pad(30, 0, 0, 0);
+        TextButton equipmentbagArcher = new TextButton("Archer Equipemtn Page",parent.skin);
+        table.add(equipmentbagArcher).colspan(9);
+
         stage.addActor(table);
 
 
@@ -518,7 +798,31 @@ public class EquipmentScreen implements Screen {
             }
         });
 
+        equipmentbagArcher.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+
+                parent.changeScreen(Andor.EQUIPMENT_ARCHER);
+            }
+        });
+
+
+
+
     }
+    private Label titleLabel2;
+    private SelectBox<String> toWhom;
+
+    private SelectBox<Integer> wineskinBox;
+    private SelectBox<Integer> shieldBox;
+    private SelectBox<Integer> helmBox;
+    private SelectBox<Integer> bowBox;
+    private SelectBox<Integer> falconBox;
+    private SelectBox<Integer> telescopeBox;
+
+
+
+
 
     @Override
     public void render(float delta)
