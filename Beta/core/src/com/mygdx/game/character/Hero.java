@@ -254,6 +254,8 @@ public class Hero {
 
     }
 
+    public void setHours(int hours) { this.hours += hours; }
+
     public void resetHours() {
         this.hours = 0;
     }
