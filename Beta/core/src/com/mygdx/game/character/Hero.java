@@ -254,6 +254,8 @@ public class Hero {
 
     }
 
+    public void setHours(int hours) { this.hours += hours; }
+
     public void resetHours() {
         this.hours = 0;
     }
@@ -331,7 +333,16 @@ public class Hero {
             monster.deductWP(heroBattleValue-monsterBattleValue);
             result = heroBattleValue - monsterBattleValue;
         } else if (heroBattleValue < monsterBattleValue) {
-            this.willPower -= (monsterBattleValue - heroBattleValue);
+            if(EquipmentScreen.activateShield()){
+                System.out.println("Shield activated.");
+
+            }
+            else if(!EquipmentScreen.activateShield()){
+                System.out.println("Shield not activated");
+                this.willPower -= (monsterBattleValue - heroBattleValue);
+            }
+
+
             if (this.willPower < 0) {
                 this.willPower = 0;
             }
@@ -370,6 +381,7 @@ public class Hero {
                 highestValue = roll;
             }
         }
+
 
         return highestValue;
     }

@@ -111,6 +111,7 @@ public class MultiPlayerSetupScreen implements Screen {
         stage.clear();
 
 
+
         connectSocket();
         configSocketEvents();
 

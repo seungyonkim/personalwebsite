@@ -1,6 +1,11 @@
 #Internal package file, do not edit.
+<<<<<<< HEAD
 #Wed Apr 29 14:07:29 CEST 2020
 60.set=NATIVE_RESOURCE
+=======
+#Wed Apr 29 04:12:21 PDT 2020
+60.set=ASSET
+>>>>>>> ebffda5d799afb2c15fd0f58ccb54027c4b90880
 52.set=ASSET
 53.base=/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/merged_assets/debug/out
 44.set=NATIVE_RESOURCE

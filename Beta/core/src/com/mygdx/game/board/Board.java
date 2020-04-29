@@ -127,8 +127,38 @@ public class Board {
         {
             case 'a' :
                 // option == 'a' : Situation that allows us to test a collaborative fight
+                for(Hero h: heroes) {
+                    // Archer and warrior
+                    if (h instanceof Warrior) {
+                        h.setPosition(20);
+                        h.setHours(3);
+                    } else if (h instanceof Archer) {
+                        h.setPosition(20);
+                        h.setHours(3);
+                    } else if (h instanceof Dwarf) {
+                        h.setPosition(40);
+                        h.setHours(6);
+                    } else if (h instanceof Wizard) {
+                        h.setPosition(50);
+                        h.setHours(6);
+
+                    }
+                    int pos = h.getPosition();
+                    Region r = getRegion(pos);
+                    r.addHero(h);
+                }
+                break;
+
             case 'b' :
                 // option == 'b' : Situation that allows us to buy several items from the merchant
+                for(Hero h: heroes) {
+                    int pos = h.getPosition();
+                    Region r = getRegion(pos);
+                    r.addHero(h);
+                    h.addGold(15);
+                }
+                break;
+
             case 'c' :
                 // option == 'c' : Losing the game
                 for(Hero h: heroes) {
@@ -153,10 +183,13 @@ public class Board {
                 this.regions.get(26).getMonster().moveTo(this.regions.get(26),this.regions.get(25));
                 this.regions.get(48).getMonster().moveTo(this.regions.get(48),this.regions.get(16));
 
+                break;
+
             case 'd' :
                 // option == 'd' : Winning the game
         }
     }
+
 
     public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
@@ -269,6 +302,18 @@ public class Board {
 //        }
 //        return result;
 //    }
+
+    public int getWitchRegion(){
+        for(Region region: this.regions){
+            if(region!=null){
+                if(region.getWitch() != null){
+                    return region.getWitch().getPosition();
+                }
+            }
+        }
+
+        return 80;
+    }
 
     public ArrayList<Farmer> getFarmers() {
         ArrayList<Farmer> result = new ArrayList<Farmer>();

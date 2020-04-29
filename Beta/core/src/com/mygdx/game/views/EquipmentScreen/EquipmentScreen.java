@@ -35,10 +35,16 @@ import java.util.HashMap;
 
 import javax.xml.soap.Text;
 
+import io.socket.client.IO;
+import io.socket.client.Socket;
+
 public class EquipmentScreen implements Screen {
 
     private Andor parent;
     private Stage stage;
+
+    private Socket socket;
+
     private Board gameBoard;
     private Hero currentHero ;
 
@@ -84,6 +90,7 @@ public class EquipmentScreen implements Screen {
     public EquipmentScreen(Andor andor)
     {
         this.parent = andor;
+        this.socket= parent.getSocket();
         stage = new Stage(new ScreenViewport());
         //availableItems.put("Wineskin",5);
         availableItems.put("Wineskin1",0);
@@ -119,7 +126,11 @@ public class EquipmentScreen implements Screen {
 
     private static boolean shieldActivated=false;
     public static boolean activateShield(){return shieldActivated;}
-    public static void usedShield(){shieldActivated=false;}
+    public static void usedShield(){shieldActivated=false;System.out.println("Shield deactivated");}
+
+    private static boolean helmActivated=false;
+    public static boolean activateHelm(){return helmActivated;}
+    public static void usedHelm(){helmActivated=false;System.out.println("Helm deactivated");}
 
 
 
@@ -245,6 +256,8 @@ public class EquipmentScreen implements Screen {
     public void show()
     {
         stage.clear();
+        connectSocket();
+       // configSocketEvents();
 
         Gdx.input.setInputProcessor(stage);
 
@@ -620,7 +633,8 @@ public class EquipmentScreen implements Screen {
                             protected void result(Object object) {
 
                                 if (object == "true") {
-                                    currentHero.activateEquipment(null);
+                                    //currentHero.activateEquipment(null);
+                                    helmActivated=true;
                                     int numHelm = availableItems.get("Helm");
                                     availableItems.remove("Helm");
                                     availableItems.put("Helm",numHelm-1);
@@ -864,6 +878,25 @@ public class EquipmentScreen implements Screen {
     public void dispose() {
         stage.dispose();
     }
+
+
+
+
+
+
+    public void connectSocket(){
+
+        try{
+            socket = IO.socket("http://localhost:8080");
+            //to make it work on the android emulator use http://10.0.2.2:8080
+            socket.connect();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+
+
 
 
 }

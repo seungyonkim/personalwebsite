@@ -21,8 +21,10 @@ import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWarrior;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWizard;
 import com.mygdx.game.views.EquipmentScreen.UseFalconScreen;
 import com.mygdx.game.views.GameScreen;
+import com.mygdx.game.views.LoadBattleGameScreen;
 import com.mygdx.game.views.LoadGameScreen;
 import com.mygdx.game.views.LoadLosingGameScreen;
+import com.mygdx.game.views.LoadMerchantGameScreen;
 import com.mygdx.game.views.MerchantScreen;
 import com.mygdx.game.views.MultiGameScreen;
 import com.mygdx.game.views.MenuScreen;
@@ -51,6 +53,8 @@ public class Andor extends Game {
 
 	private LoadGameScreen loadGameScreen;
 	private LoadLosingGameScreen loadLosingGameScreen;
+	private LoadBattleGameScreen loadBattleGameScreen;
+	private LoadMerchantGameScreen loadMerchantGameScreen;
 
 	private ChooseHeroScreen chooseHeroScreen;
 	private GameScreen gameScreen;
@@ -96,6 +100,8 @@ public class Andor extends Game {
 
 	public final static int LOADGAME = 16;
 	public final static int LOADLOSEGAME = 17;
+	public final static int LOADBATTLEGAME = 18;
+	public final static int LOADMERCHANTGAME = 19;
 
 	public int decider= 0;
 
@@ -256,8 +262,14 @@ public class Andor extends Game {
 		}
 		gameBoard = new Board(playerHeroes, option);
 		currentTurn = playerHeroes.get(0);
-//		System.out.println("Position :" + currentTurn.getPosition());
 		finishedHeroes = new ArrayList<Hero>();
+		if (option == 'a') {
+			System.out.println("Loading collaborative battle.");
+		} else if (option == 'b') {
+			System.out.println("Loading Merchant.");
+		} else if (option == 'c') {
+			System.out.println("Loading losing situation.");
+		}
 	}
 
 	public Hero whoseTurn() {
@@ -395,6 +407,16 @@ public class Andor extends Game {
 			case LOADLOSEGAME:
 				if (loadLosingGameScreen == null) loadLosingGameScreen = new LoadLosingGameScreen(this);
 				this.setScreen(loadLosingGameScreen);
+				break;
+
+			case LOADBATTLEGAME:
+				if (loadBattleGameScreen == null) loadBattleGameScreen = new LoadBattleGameScreen(this);
+				this.setScreen(loadBattleGameScreen);
+				break;
+
+			case LOADMERCHANTGAME:
+				if (loadMerchantGameScreen == null) loadMerchantGameScreen = new LoadMerchantGameScreen(this);
+				this.setScreen(loadMerchantGameScreen);
 				break;
 
             case SINGLESETUP:

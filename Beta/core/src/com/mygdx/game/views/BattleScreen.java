@@ -118,52 +118,52 @@ public class BattleScreen implements Screen {
 
     public void battleDialog(Hero p) {
 
-            if (p.getCanPlay()) {
-                // if the player can play on (has enough hours left or wp to use for overtime)
-                final Hero player = p;
+        if (p.getCanPlay()) {
+            // if the player can play on (has enough hours left or wp to use for overtime)
+            final Hero player = p;
 
-                if (round == 0) {
-                    areaInfo.setText("");
-                    areaInfo.appendText("Battle started.\n");
-                    areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
-                    startButton.remove();
-                    if(parent.decider==1)
-                    rollButton.setDisabled(false);
-                    round++;
-                } else {
-                    areaInfo.setText("");
-
-                    areaInfo.appendText("Battle vs. Monster / Round " + round + "\n");
-
-                    // if player chooses to roll the dice
-                    final int heroBattleValue = player.rollDice() + player.getStrengthPoint();
-                    // if player chooses to roll gor's dice
-                    int gorBattleValue = 0;
-                    if(parent.decider ==1 ) {
-                        gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
-                     areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
-                    }
-                    areaInfo.appendText("You just got a battle value of: " + heroBattleValue + "\n");
-
-                    round++;
-
-                    updateResult(heroBattleValue,gorBattleValue);
-
-
-
-                }
-
-
-            } else {
-                // if the player cannot play on because he has neither any hours left nor willpower to use for the overtime
+            if (round == 0) {
                 areaInfo.setText("");
-                areaInfo.appendText("Battle vs. Monster / Over");
+                areaInfo.appendText("Battle started.\n");
+                areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
+                startButton.remove();
+                if(parent.decider==1)
+                    rollButton.setDisabled(false);
+                round++;
+            } else {
+                areaInfo.setText("");
 
-                areaInfo.appendText("\nYou cannot continue the battle because you don't have any hours left in the day.\nTry again next day.");
+                areaInfo.appendText("Battle vs. Monster / Round " + round + "\n");
 
-                rollButton.setDisabled(true);
+                // if player chooses to roll the dice
+                final int heroBattleValue = player.rollDice() + player.getStrengthPoint();
+                // if player chooses to roll gor's dice
+                int gorBattleValue = 0;
+                if(parent.decider ==1 ) {
+                    gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
+                    areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
+                }
+                areaInfo.appendText("You just got a battle value of: " + heroBattleValue + "\n");
+
+                round++;
+
+                updateResult(heroBattleValue,gorBattleValue);
+
+
 
             }
+
+
+        } else {
+            // if the player cannot play on because he has neither any hours left nor willpower to use for the overtime
+            areaInfo.setText("");
+            areaInfo.appendText("Battle vs. Monster / Over");
+
+            areaInfo.appendText("\nYou cannot continue the battle because you don't have any hours left in the day.\nTry again next day.");
+
+            rollButton.setDisabled(true);
+
+        }
 
     }
     public void archerBattleDialogue(Archer archer, int n) {
@@ -180,7 +180,7 @@ public class BattleScreen implements Screen {
                 areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
                 startButton.remove();
                 if(parent.decider==1)
-                rollButton.setDisabled(false);
+                    rollButton.setDisabled(false);
                 round++;
             }else {
 
@@ -189,17 +189,17 @@ public class BattleScreen implements Screen {
                 areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
 
                 round = round + 1;
-                    areaInfo.setText("");
-                    final int heroBattleValue = this.lastRoll + archer.getStrengthPoint();
-                    int gorBattleValue = 0;
-                    if(parent.decider ==1 ) {
-                        gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
-                        areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
-                    }
+                areaInfo.setText("");
+                final int heroBattleValue = this.lastRoll + archer.getStrengthPoint();
+                int gorBattleValue = 0;
+                if(parent.decider ==1 ) {
+                    gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
+                    areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
+                }
 
-                    areaInfo.appendText("\n\nYou just got a battle value of: " + heroBattleValue + "\n");
-                    gorBattleValue+=monsterRound;
-                    updateResult(heroBattleValue,gorBattleValue);
+                areaInfo.appendText("\n\nYou just got a battle value of: " + heroBattleValue + "\n");
+                gorBattleValue+=monsterRound;
+                updateResult(heroBattleValue,gorBattleValue);
 
             }
 
@@ -240,7 +240,7 @@ public class BattleScreen implements Screen {
                 areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
                 startButton.remove();
                 if(parent.decider==1)
-                rollButton.setDisabled(false);
+                    rollButton.setDisabled(false);
                 round++;
             } else {
                 // Roll dice
@@ -304,9 +304,6 @@ public class BattleScreen implements Screen {
         } else if (monsterBattling.getWillPower() == 0) {
             playerWin(monsterBattling);
         }
-
-        resultRound=0;
-        monsterRound=0;
 
 
     }
@@ -515,16 +512,16 @@ public class BattleScreen implements Screen {
 
         areaInfo.appendText("Welcome to the battle screen. Start the battle.\n");
 
-            table.row().pad(10, 0, 0, 0);
+        table.row().pad(10, 0, 0, 0);
 
 
         table.add(stopRolling).colspan(2);
         stopRolling.addListener(new ChangeListener() {
-                @Override
-                public void changed(ChangeEvent event, Actor actor) {
-                    archerBattleDialogue((Archer) myHero, ((Archer) myHero).getNumOfDice());
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                archerBattleDialogue((Archer) myHero, ((Archer) myHero).getNumOfDice());
 
-                }
+            }
         });
 
         table.add(flipButton).colspan(2);
@@ -633,7 +630,7 @@ public class BattleScreen implements Screen {
 
         JSONObject data = new JSONObject();
         try{
-           // areaInfo.appendText("- "+myHero.getTypeOfHeroString());
+            // areaInfo.appendText("- "+myHero.getTypeOfHeroString());
             String wantToJoin = myHero.getTypeOfHeroString();
             data.put("wantToJoin",wantToJoin);
             socket.emit("updateBattle", data);
@@ -670,7 +667,7 @@ public class BattleScreen implements Screen {
     public void connectSocket(){
 
         try{
-            socket =IO.socket(parent.SOCKETURL);
+            socket =IO.socket("http://localhost:8080");
             //to make it work on the android emulator use http://10.0.2.2:8080
             socket.connect();
         }catch(Exception e){
@@ -691,9 +688,9 @@ public class BattleScreen implements Screen {
 
                 try {
 
-                   // areaInfo.appendText("- " + data.getString("wantToJoin"));
+                    // areaInfo.appendText("- " + data.getString("wantToJoin"));
                     if(parent.decider!=1)
-                    startButton.remove();
+                        startButton.remove();
 
                 } catch (Exception e) {
                 }
@@ -720,7 +717,6 @@ public class BattleScreen implements Screen {
                     playerWhoPlayed++;
                     if(playerWhoPlayed == parent.getHeroBattling().size()){
                         getResultBattle();
-
                     }else {
                         areaInfo.appendText("Your turn" + "\n");
                         rollButton.setDisabled(false);
@@ -736,4 +732,4 @@ public class BattleScreen implements Screen {
 
     }
 
-    }
+}
