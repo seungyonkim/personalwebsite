@@ -1347,8 +1347,6 @@ public class MultiGameScreen implements Screen {
             }
         }
 
-        //draw witch
-
 
 
         for (Hero hero : playerHeroes) {
