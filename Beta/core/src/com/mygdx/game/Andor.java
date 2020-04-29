@@ -124,6 +124,7 @@ public class Andor extends Game {
 	private ArrayList<Hero> heroBattling;
 	private Monster monsterBattling;
 	public boolean wonLastBattle;
+	public final String SOCKETURL = "http://localhost:8080";
 
 
 //    public void printClaimedHeroes() {

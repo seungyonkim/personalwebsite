@@ -1,30 +1,30 @@
 [
     {
-        "merged": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
-        "source": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/res/drawable-xxhdpi/ic_launcher.png"
+        "merged": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/drawable-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
-        "source": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/res/drawable-hdpi/ic_launcher.png"
+        "merged": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher.png.flat",
+        "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/drawable-hdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
-        "source": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/res/drawable-xhdpi/ic_launcher.png"
+        "merged": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/drawable-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher_foreground.xml.flat",
-        "source": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/res/drawable-anydpi-v26/ic_launcher_foreground.xml"
+        "merged": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher_foreground.xml.flat",
+        "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/drawable-anydpi-v26/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/res/merged/debug/drawable-anydpi-v26_ic_launcher.xml.flat",
-        "source": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/res/drawable-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/drawable-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
-        "source": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/res/drawable-mdpi/ic_launcher.png"
+        "merged": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/drawable-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher.png.flat",
-        "source": "/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/res/drawable-xxxhdpi/ic_launcher.png"
+        "merged": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher.png.flat",
+        "source": "/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/res/drawable-mdpi/ic_launcher.png"
     }
 ]

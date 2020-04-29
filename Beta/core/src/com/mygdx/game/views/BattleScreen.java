@@ -305,6 +305,9 @@ public class BattleScreen implements Screen {
             playerWin(monsterBattling);
         }
 
+        resultRound=0;
+        monsterRound=0;
+
 
     }
 
@@ -667,7 +670,7 @@ public class BattleScreen implements Screen {
     public void connectSocket(){
 
         try{
-            socket =IO.socket("http://localhost:8080");
+            socket =IO.socket(parent.SOCKETURL);
             //to make it work on the android emulator use http://10.0.2.2:8080
             socket.connect();
         }catch(Exception e){
@@ -717,6 +720,7 @@ public class BattleScreen implements Screen {
                     playerWhoPlayed++;
                     if(playerWhoPlayed == parent.getHeroBattling().size()){
                         getResultBattle();
+
                     }else {
                         areaInfo.appendText("Your turn" + "\n");
                         rollButton.setDisabled(false);
