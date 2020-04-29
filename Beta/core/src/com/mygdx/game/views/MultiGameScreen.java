@@ -78,7 +78,7 @@ public class MultiGameScreen implements Screen {
     private Texture wellTexture;
     private Texture gorTexture;
     private Texture skralTexture;
-    private Texture witchTexture;
+    //private Texture witchTexture;
 
     private Rectangle farmer1;
     private Rectangle farmer2;
@@ -89,7 +89,7 @@ public class MultiGameScreen implements Screen {
     private Rectangle skral;
     private ArrayList<Rectangle> gors;
 //    private ArrayList<Rectangle> farmers;
-    private Rectangle witch;
+    //private Rectangle witch;
 
     private Texture pathTexture;
     private Image pathButtonImage;
@@ -161,7 +161,7 @@ public class MultiGameScreen implements Screen {
         wellTexture = new Texture(Gdx.files.internal("andor_well.png"));
         gorTexture = new Texture(Gdx.files.internal("monsters/andor_gor.png"));
         skralTexture = new Texture(Gdx.files.internal("monsters/andor_skral.png"));
-        witchTexture = new Texture(Gdx.files.internal("witch.png"));
+        //witchTexture = new Texture(Gdx.files.internal("witch.png"));
 
 
 //        coveredFog = new Rectangle();
@@ -282,11 +282,11 @@ public class MultiGameScreen implements Screen {
 
 
 
-        witch = new Rectangle();
+        /*witch = new Rectangle();
         witch.width=300;
         witch.height=400;
         witch.x=calcX(gameBoard.getWitchRegion()) - witch.width/2;
-        witch.x=calcY(gameBoard.getWitchRegion()) - witch.width/2;
+        witch.x=calcY(gameBoard.getWitchRegion()) - witch.width/2;*/
 
 
         // create camera
@@ -1334,7 +1334,7 @@ public class MultiGameScreen implements Screen {
         }
 
         //draw witch
-        stage.getBatch().draw(witchTexture, witch.x, witch.y, witch.width, witch.height);
+        //stage.getBatch().draw(witchTexture, witch.x, witch.y, witch.width, witch.height);
 
 
         // Draw farmers
