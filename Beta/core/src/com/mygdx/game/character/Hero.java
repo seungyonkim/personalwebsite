@@ -201,6 +201,12 @@ public class Hero {
         return false;
     }
 
+    public void forceMove(Region from, Region to) {
+        from.removeHero(this);
+        to.addHero(this);
+        this.position = to.getPosition();
+    }
+
     public void incrementHours()
     {
 

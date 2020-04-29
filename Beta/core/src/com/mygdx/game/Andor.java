@@ -15,6 +15,7 @@ import com.mygdx.game.views.EquipmentScreen.EquipmentScreenDwarf;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWarrior;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWizard;
 import com.mygdx.game.views.GameScreen;
+import com.mygdx.game.views.LoadGameScreen;
 import com.mygdx.game.views.MerchantScreen;
 import com.mygdx.game.views.MultiGameScreen;
 import com.mygdx.game.views.MenuScreen;
@@ -38,6 +39,8 @@ public class Andor extends Game {
 	private NewGameScreen newGameScreen;
 	private SinglePlayerSetupScreen newSingleScreen;
 	private MultiPlayerSetupScreen newMultiScreen;
+
+	private LoadGameScreen loadGameScreen;
 
 	private ChooseHeroScreen chooseHeroScreen;
 	private GameScreen gameScreen;
@@ -74,6 +77,8 @@ public class Andor extends Game {
 	public final static int EQUIPMENT_ARCHER = 11;
 	public final static int EQUIPMENT_WIZARD = 12;
 	public final static int EQUIPMENT_DWARF = 13;
+
+	public final static int LOADGAME = 14;
 
 	public int decider= 0;
 
@@ -122,6 +127,12 @@ public class Andor extends Game {
 		this.readyPlayers = 0;
 		this.difficulty = difficulty;
 	}
+
+	public void setUpMultiPlayer(int numOfPlayers) {
+		this.numOfPlayers = numOfPlayers;
+		this.readyPlayers = 0;
+	}
+
 	public Socket getSocket(){return socket;}
 	public int getNumOfPlayers() {
 		return this.numOfPlayers;
@@ -313,6 +324,11 @@ public class Andor extends Game {
 			case NEWGAME:
 				if (newGameScreen == null) newGameScreen = new NewGameScreen(this);
 				this.setScreen(newGameScreen);
+				break;
+
+			case LOADGAME:
+				if (loadGameScreen == null) loadGameScreen = new LoadGameScreen(this);
+				this.setScreen(loadGameScreen);
 				break;
 
             case SINGLESETUP:
