@@ -147,6 +147,8 @@ public class Board {
                     Region r = getRegion(pos);
                     r.addHero(h);
                 }
+                break;
+
             case 'b' :
                 // option == 'b' : Situation that allows us to buy several items from the merchant
                 for(Hero h: heroes) {
@@ -155,6 +157,7 @@ public class Board {
                     r.addHero(h);
                     h.addGold(15);
                 }
+                break;
 
             case 'c' :
                 // option == 'c' : Losing the game
@@ -179,6 +182,8 @@ public class Board {
                 this.regions.get(21).getMonster().moveTo(this.regions.get(21),this.regions.get(4));
                 this.regions.get(26).getMonster().moveTo(this.regions.get(26),this.regions.get(25));
                 this.regions.get(48).getMonster().moveTo(this.regions.get(48),this.regions.get(16));
+
+                break;
 
             case 'd' :
                 // option == 'd' : Winning the game

@@ -64,14 +64,14 @@ public class LoadGameScreen implements Screen {
         collaborativeFight.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-
+                parent.changeScreen(Andor.LOADBATTLEGAME);
             }
         });
 
         merchant.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-
+                parent.changeScreen(Andor.LOADMERCHANTGAME);
             }
         });
 
