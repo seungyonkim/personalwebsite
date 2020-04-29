@@ -113,6 +113,14 @@ public class EquipmentScreen implements Screen {
     public static void usedWineskin(){wineskinActivated=false;}
 
 
+    private static boolean bowActivated=false;
+    public static boolean activateBow(){return bowActivated;}
+    public static void usedBow(){bowActivated=false;}
+
+    private static boolean shieldActivated=false;
+    public static boolean activateShield(){return shieldActivated;}
+    public static void usedShield(){shieldActivated=false;}
+
 
 
     public void setWineskinAvailable(Wineskin wineskin,int integer){
@@ -479,6 +487,8 @@ public class EquipmentScreen implements Screen {
 
                                 if (object !=null) {
                                     //currentHero.activateEquipment(null);
+                                    shieldActivated=true;
+                                    System.out.println("activate shield from hero's equipment bag");
 
                                     if(((Shield)object).getUsedOnce()){
                                         availableItems.remove(((Shield)object).getName());
@@ -547,8 +557,12 @@ public class EquipmentScreen implements Screen {
                             protected void result(Object object) {
 
                                 if (object == "true") {
-                                    currentHero.activateEquipment(null);
+                                    //currentHero.activateEquipment(null);
                                     //setBowAvailable(false);
+                                    bowActivated=true;
+                                    System.out.println("activate bow from hero's equipment bag");
+
+
                                     int numBow = availableItems.get("Bow");
                                     availableItems.remove("Bow");
                                     availableItems.put("Bow",numBow-1);

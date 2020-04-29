@@ -29,6 +29,7 @@ public class Hero {
     private int hours = 0;
     private boolean canPlay = true;
     private boolean wineskinActivated =false;
+    //private boolean bowActivated =false;
     //    private Farmer farmer;
     private ArrayList<Farmer> farmers;
 
@@ -77,6 +78,7 @@ public class Hero {
     public String getUsername() { return this.username; }
 
     public boolean getWineskinActicated() { return this.wineskinActivated; }
+    //public boolean getBowActivated(){return this.bowActivated;}
     public boolean getCanPlay() {
         return this.canPlay;
     }
@@ -116,7 +118,13 @@ public class Hero {
 
     public void addWillPower(int wp)
     {
-        this.willPower += wp;
+        if(wp<0 && EquipmentScreen.activateShield()){
+            EquipmentScreen.usedShield();
+        }
+        else{
+            this.willPower += wp;
+        }
+
         if(this.willPower > 20) this.willPower = 20;
     }
 
@@ -133,6 +141,7 @@ public class Hero {
     public void activateWineskin(boolean b){
         this.wineskinActivated=b;
     }
+    //public void activateBow(boolean b){this.bowActivated=b;}
 
     public String getTypeOfHeroString() {
         if(this instanceof Archer) return "Archer";
