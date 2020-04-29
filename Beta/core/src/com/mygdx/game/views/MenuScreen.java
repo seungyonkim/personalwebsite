@@ -74,6 +74,13 @@ public class MenuScreen implements Screen {
             }
         });
 
+        loadGame.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                parent.changeScreen(Andor.LOADGAME);
+            }
+        });
+
         preferences.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {

@@ -62,6 +62,8 @@ public class Hero {
         return this.position;
     }
 
+    public void setPosition(int position) { this.position = position; }
+
     public int getStrengthPoint()
     {
         return this.strengthPoint;
@@ -210,6 +212,12 @@ public class Hero {
         return false;
     }
 
+    public void forceMove(Region from, Region to) {
+        from.removeHero(this);
+        to.addHero(this);
+        this.position = to.getPosition();
+    }
+
     public void incrementHours()
     {
 
@@ -245,6 +253,8 @@ public class Hero {
 
 
     }
+
+    public void setHours(int hours) { this.hours += hours; }
 
     public void resetHours() {
         this.hours = 0;

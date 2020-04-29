@@ -33,6 +33,21 @@ io.on('connect',function(socket){
 
 
     });
+
+    socket.on('playerChose_Lose',function(data){
+        data.id=socket.id;
+
+        console.log("Player chose : " + data.name);
+
+        for(var i=0; i <players.length ; i++){
+            if(players[i].id == data.id){
+                players[i].name = data.name;
+            }
+        }
+        io.emit('playerChose', players );
+
+    });
+
      socket.on('playerMoved',function(data){
             data.id=socket.id;
 
@@ -107,6 +122,18 @@ io.on('connect',function(socket){
         socket.broadcast.emit("drankWell", {hero : hero});
       });
 
+      socket.on("gameOver", function(data) {
+          console.log("Game Over.");
+          var hero = data.hero;
+          socket.broadcast.emit("gameOver", {hero : hero});
+        });
+
+    socket.on("endingDay", function(data) {
+      console.log("Ending Day.");
+      var hero = data.hero;
+      socket.broadcast.emit("endingDay", {hero : hero});
+    });
+
      socket.on("finishTurn",function(data){
         var choice = data.choice;
         var pastPlayer = data.pastPlayer;
@@ -127,6 +154,13 @@ io.on('connect',function(socket){
         socket.broadcast.emit("updateBattle", {wantToJoin : wantToJoin});
 
      });
+      socket.on("updateResult",function(data){
+             var HeroBattleValue = data.heroBattleValue;
+             var MonsterBattleValue = data.monsterHeroValue;
+             socket.broadcast.emit("updateResult", {HeroBattleValue : HeroBattleValue, MonsterBattleValue : MonsterBattleValue});
+
+          });
+
 
     socket.on('disconnect',function(){
         console.log("Player disconnected");
@@ -152,6 +186,8 @@ io.on('connect',function(socket){
 
 
         });
+
+
 
 });
 

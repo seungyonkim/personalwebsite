@@ -5,6 +5,7 @@ import com.mygdx.game.character.Archer;
 import com.mygdx.game.character.Dwarf;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.character.Warrior;
+import com.mygdx.game.character.Wizard;
 import com.mygdx.game.etc.Castle;
 import com.mygdx.game.etc.Farmer;
 import com.mygdx.game.etc.Merchant;
@@ -93,7 +94,7 @@ public class Board {
         for(int i = 0; i < 85; i++)
         {
             if(i == 0) { // This is for castle
-                Castle castle = new Castle(this, 3, 0);
+                Castle castle = new Castle(this, heroes.size(), 0);
                 castle.setAvailabeMonsterPath(this.allMonsterPaths[i]);
                 castle.setAvailableHeroPaths(this.allHeroPaths[i]);
                 regions.add(castle);
@@ -113,11 +114,11 @@ public class Board {
             }
         }
 
-        for(Hero h: heroes) { // Set heroes on starting location
-            int pos = h.getPosition();
-            Region r = getRegion(pos);
-            r.addHero(h);
-        }
+//        for(Hero h: heroes) { // Set heroes on starting location
+//            int pos = h.getPosition();
+//            Region r = getRegion(pos);
+//            r.addHero(h);
+//        }
 
         Farmer f = new Farmer(24, 1);
         this.regions.get(24).addFarmer(f);
@@ -126,10 +127,52 @@ public class Board {
         {
             case 'a' :
                 // option == 'a' : Situation that allows us to test a collaborative fight
+                for(Hero h: heroes) {
+                    // Archer and warrior
+                    if (h instanceof Warrior) {
+                        h.setPosition(20);
+                        h.setHours(3);
+                    } else if (h instanceof Archer) {
+                        h.setPosition(20);
+                        h.setHours(3);
+                    } else if (h instanceof Dwarf) {
+                        h.setPosition(40);
+                        h.setHours(6);
+                    } else if (h instanceof Wizard) {
+                        h.setPosition(50);
+                        h.setHours(6);
+
+                    }
+                    int pos = h.getPosition();
+                    Region r = getRegion(pos);
+                    r.addHero(h);
+                }
             case 'b' :
                 // option == 'b' : Situation that allows us to buy several items from the merchant
+                for(Hero h: heroes) {
+                    int pos = h.getPosition();
+                    Region r = getRegion(pos);
+                    r.addHero(h);
+                    h.addGold(15);
+                }
+
             case 'c' :
                 // option == 'c' : Losing the game
+                for(Hero h: heroes) {
+                    if (h instanceof Warrior) {
+                        h.setPosition(46);
+                    } else if (h instanceof Archer) {
+                        h.setPosition(39);
+                    } else if (h instanceof Dwarf) {
+                        h.setPosition(48);
+                    } else if (h instanceof Wizard) {
+                        h.setPosition(41);
+                    }
+                    int pos = h.getPosition();
+                    Region r = getRegion(pos);
+                    r.addHero(h);
+                }
+
                 this.regions.get(19).getMonster().moveTo(this.regions.get(19),this.regions.get(3));
                 this.regions.get(8).getMonster().moveTo(this.regions.get(8),this.regions.get(7));
                 this.regions.get(20).getMonster().moveTo(this.regions.get(20),this.regions.get(1));
@@ -141,6 +184,7 @@ public class Board {
                 // option == 'd' : Winning the game
         }
     }
+
 
     public Board(ArrayList<Hero> heroes, int difficulty) // difficulty : easy(-1), hard(1)
     {
