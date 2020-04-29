@@ -212,7 +212,7 @@ public class ChatScreen implements Screen{
     public void connectSocket(){
 
         try{
-            socket =IO.socket("http://localhost:8080");
+            socket =IO.socket(parent.SOCKETURL);
             socket.connect();
         }catch(Exception e){
             System.out.println(e);
