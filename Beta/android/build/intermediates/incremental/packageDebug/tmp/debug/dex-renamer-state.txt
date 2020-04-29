@@ -1,4 +1,4 @@
-#Tue Apr 28 22:07:48 PDT 2020
+#Wed Apr 29 04:12:18 PDT 2020
 base.0=/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/dex/debug/mergeDexDebug/out
 path.0=classes.dex
 renamed.0=classes.dex

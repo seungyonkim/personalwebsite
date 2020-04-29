@@ -2,17 +2,105 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f398aa8d-92f5-4c1d-b351-5cef9e7a6975" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../core/Beta-core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../android/android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/board/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../core/src/com/mygdx/game/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../core/src/com/mygdx/game/board/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../desktop/desktop.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../desktop/desktop.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJavaRes/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/wu4NznTgsdrDU+rh4U3T0qSbnso=" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJavaRes/zip-cache/wu4NznTgsdrDU+rh4U3T0qSbnso=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJniLibs/merge-state" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJniLibs/merge-state" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/wu4NznTgsdrDU+rh4U3T0qSbnso=" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/incremental/debug-mergeJniLibs/zip-cache/wu4NznTgsdrDU+rh4U3T0qSbnso=" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/incremental/packageDebug/tmp/debug/file-input-save-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/transforms/mergeJavaRes/debug/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/intermediates/transforms/mergeJniLibs/debug/__content__.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../android/build/outputs/apk/debug/android-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/../android/build/outputs/apk/debug/android-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/.transforms/84530fc5780784c9676bcc0283a89e51/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/.transforms/84530fc5780784c9676bcc0283a89e51/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/character/Hero.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/character/Hero.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/BattleScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$1$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$1$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$2$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$2$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$2$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$3$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$3$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$3$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$4$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$4$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$5$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$5$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$6$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$6$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$6$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$6$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/EquipmentScreen/EquipmentScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$24.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$24.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$25.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$25.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$26.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$26.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$27.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$27.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$28.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$28.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$29.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$29.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$30.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$30.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$31.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$31.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$32$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$32$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$32$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$32$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$32.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$32.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$33.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$33.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$34.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$34.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$35.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$35.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$36.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$36.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$37.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$37.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$38$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$38$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$38.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$38.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$39.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen$39.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiGameScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$11$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/classes/java/main/com/mygdx/game/views/MultiPlayerSetupScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../core/build/libs/core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/src/com/mygdx/game/character/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/../core/src/com/mygdx/game/character/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/BattleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/BattleScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/EquipmentScreen/EquipmentScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/EquipmentScreen/EquipmentScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/MultiGameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/MultiGameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../core/src/com/mygdx/game/views/MultiPlayerSetupScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,9 +112,7 @@
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2090" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -35,7 +121,7 @@
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="57" />
     <option name="y" value="23" />
     <option name="width" value="1281" />
@@ -93,11 +179,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="23" width="1281" height="709" extended-state="1" />
+    <frame x="57" y="23" width="1281" height="709" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.32936507" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.16031747" />
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
@@ -114,9 +201,7 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2090" />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

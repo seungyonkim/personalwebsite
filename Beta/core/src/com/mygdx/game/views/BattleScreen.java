@@ -29,6 +29,7 @@ import com.mygdx.game.character.Wizard;
 import com.mygdx.game.monster.Gor;
 import com.mygdx.game.monster.Monster;
 import com.mygdx.game.monster.Skral;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -133,7 +134,16 @@ public class BattleScreen implements Screen {
                     areaInfo.appendText("Battle vs. Monster / Round " + round + "\n");
 
                     // if player chooses to roll the dice
-                    final int heroBattleValue = player.rollDice() + player.getStrengthPoint();
+                    int rollDiceValue=0;
+                    if(EquipmentScreen.activateHelm()){
+                        areaInfo.appendText("Helm activated, dice value doubles");
+                        rollDiceValue=player.rollDice()*2;
+                        EquipmentScreen.usedHelm();
+                    }
+                    else if(!EquipmentScreen.activateHelm()){
+                        rollDiceValue=player.rollDice();
+                    }
+                    final int heroBattleValue = rollDiceValue + player.getStrengthPoint();
                     // if player chooses to roll gor's dice
                     int monsterDice = monsterBattling.rollDice();
                     int gorBattleValue = monsterBattling.getStrengthPoint() + monsterDice;
@@ -145,7 +155,14 @@ public class BattleScreen implements Screen {
                     if (lastResult > 0) {
                         areaInfo.appendText("You have won the last round.\nMonster lost " + lastResult + " willpower.\nMonster's current attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
                     } else if (lastResult < 0) {
-                        areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's current attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + "/ Willpower: " + player.getWillPower() + "/ Hours used: " + player.getHours() + "\n");
+                        if(EquipmentScreen.activateShield()){
+                            areaInfo.appendText("You have lost the last round.\nHowever, you activated Shield and didn't lose any willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
+                            EquipmentScreen.usedShield();
+                        }
+                        else{
+                            areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
+                        }
+
                     } else {
                         areaInfo.appendText("Last round ended in a Draw.\nMonster's current attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + "  / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
                     }
@@ -191,11 +208,12 @@ public class BattleScreen implements Screen {
                 areaInfo.appendText("Battle vs. Monster / Round " + round + "\n");
                 Random rand = new Random();
                 int newRoll = rand.nextInt(6) + 1;
-                final int last = this.lastRoll;
+                int last = this.lastRoll;
                 if (!stopRoll) {
                     stopRolling.setDisabled(false);
                     areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\nRemaining Dice: " + numOfDiceLeft + "\n");
                     areaInfo.appendText("\n\nYou just got a dice value of: " + newRoll + "\n");
+
                     this.lastRoll = newRoll;
                     numberDiceUsed++;
                 }
@@ -203,6 +221,13 @@ public class BattleScreen implements Screen {
                     round = round + 1;
                     areaInfo.setText("");
                     // if player chooses to roll the dice
+                    if(EquipmentScreen.activateHelm()){
+                        areaInfo.appendText("Helm activated, your dice value gets doubled.\n");
+                        last = last*2;
+                    }
+                    else if(!EquipmentScreen.activateHelm()){
+
+                    }
                     final int heroBattleValue = last + archer.getStrengthPoint();
                     // if player chooses to roll gor's dice
                     int monsterDice = monsterBattling.rollDice();
@@ -214,7 +239,14 @@ public class BattleScreen implements Screen {
                     if (lastResult > 0) {
                         areaInfo.appendText("You have won the last round.\nMonster lost " + lastResult + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + "  / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
                     } else if (lastResult < 0) {
-                        areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                        if(EquipmentScreen.activateShield()){
+                            areaInfo.appendText("You have lost the last round.\nHowever, you activated Shield and didn't lose any willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                            EquipmentScreen.usedShield();
+                        }
+                        else{
+                            areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                        }
+
                     } else {
                         areaInfo.appendText("Last round ended in a Draw.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
                     }
@@ -261,12 +293,19 @@ public class BattleScreen implements Screen {
                 final int newRoll = rand.nextInt(6) + 1;
                 areaInfo.appendText("Battle vs. Monster / Round " + round +"\n");
                 areaInfo.appendText("Monster's current attributes:\nStrength: " + monsterBattling.getStrengthPoint() + "\nWillpower: " + monsterBattling.getWillPower() + "\n\n\nYour Strength: " + wizard.getStrengthPoint() + "\nWillpower: " + wizard.getWillPower() + "\nHours used: " + wizard.getHours() + "\nDice Rolled: " + newRoll + "\n");
-                int bv;
+                int bv=0;
                 if (flip) {
                     bv = (7 - newRoll) + wizard.getStrengthPoint();
                     flip = false;
                 } else {
-                    bv = newRoll + wizard.getStrengthPoint();
+                    if(EquipmentScreen.activateHelm()){
+                        areaInfo.appendText("Helm activated, double dice roll value.\n");
+                        bv = newRoll*2 + wizard.getStrengthPoint();
+                        EquipmentScreen.usedHelm();
+                    }
+                    else if(!EquipmentScreen.activateHelm()){
+                        bv = newRoll + wizard.getStrengthPoint();
+                    }
                 }
                 final int heroBattleValue = bv;
                 int gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
@@ -276,7 +315,14 @@ public class BattleScreen implements Screen {
                 if (lastResult > 0) {
                     areaInfo.appendText("You have won the last round.\nMonster lost " + lastResult + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + "  / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
                 } else if (lastResult < 0) {
-                    areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
+                    if(EquipmentScreen.activateShield()){
+                        areaInfo.appendText("You have lost the last round.\nHowever, you activated Shield and didn't lose any willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
+                        EquipmentScreen.usedShield();
+                    }
+                    else{
+                        areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
+                    }
+
                 } else {
                     areaInfo.appendText("Last round ended in a Draw.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
                 }
