@@ -5,9 +5,31 @@ package com.mygdx.game.Equipment;
 //after its first use, must indicate that the wineskin is half full
 //after the second use, it is returned back to the equipment board (merchant's store)
 
-public class Wineskin implements Equipment {
-    @Override
-    public void activate() {
-    //hero.activateWineskin(true);
+public class Wineskin {
+
+    private String name;
+
+    private boolean usedOnce;
+    private boolean usedTwice;
+
+
+    public Wineskin(String name){
+        this.name=name;
+        usedOnce=false;
+        usedTwice=false;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public boolean getUsedOnce(){
+        return usedOnce;
+    }
+    public boolean getUsedTwice(){
+        return usedTwice;
+    }
+    public void setUsedOnce(boolean bool){
+        usedOnce=bool;
     }
 }

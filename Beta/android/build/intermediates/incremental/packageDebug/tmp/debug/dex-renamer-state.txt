@@ -1,4 +1,4 @@
-#Sun Apr 26 16:59:35 CEST 2020
-base.0=/Users/victormassenet/OneDrive/Documents/McGill_S5/COMP_361/COMP361Project/f2019-hexanome-06/Beta/android/build/intermediates/dex/debug/mergeDexDebug/out
+#Mon Apr 27 22:37:40 PDT 2020
+base.0=/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/dex/debug/mergeDexDebug/out
 path.0=classes.dex
 renamed.0=classes.dex

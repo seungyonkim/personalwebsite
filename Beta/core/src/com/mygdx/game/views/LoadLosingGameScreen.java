@@ -323,6 +323,7 @@ public class LoadLosingGameScreen implements Screen {
 
                     parent.setUpMultiPlayer(size);
 //                    parent.createNewBoard();////////////////////////////////
+                    parent.loadBoard('c');
                     parent.changeScreen(Andor.MULTIGAME);
                 }
 
@@ -388,9 +389,9 @@ public class LoadLosingGameScreen implements Screen {
             data.put("name", selectedHero.getTypeOfHeroString());
 //            data.put("difficulty", difficulty.getSelected());
 
-            socket.emit("playerChose", data);
+            socket.emit("playerChose_Lose", data);
             Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : "+data.get("name"));
-            Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : "+data.get("difficulty"));
+//            Gdx.app.log("SOCKET.IO", "Successfully sending data to the server : "+data.get("difficulty"));
 
         }catch(Exception e){
             Gdx.app.log("SOCKET.IO", "Error sending data");

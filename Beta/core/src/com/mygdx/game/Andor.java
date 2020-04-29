@@ -6,6 +6,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.mygdx.game.board.Board;
+import com.mygdx.game.character.Archer;
+import com.mygdx.game.character.Dwarf;
+import com.mygdx.game.character.Warrior;
+import com.mygdx.game.character.Wizard;
+import com.mygdx.game.monster.Monster;
 import com.mygdx.game.character.Hero;
 import com.mygdx.game.preference.AppPreferences;
 import com.mygdx.game.views.ChooseHeroScreen;
@@ -14,8 +19,10 @@ import com.mygdx.game.views.EquipmentScreen.EquipmentScreenArcher;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenDwarf;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWarrior;
 import com.mygdx.game.views.EquipmentScreen.EquipmentScreenWizard;
+import com.mygdx.game.views.EquipmentScreen.UseFalconScreen;
 import com.mygdx.game.views.GameScreen;
 import com.mygdx.game.views.LoadGameScreen;
+import com.mygdx.game.views.LoadLosingGameScreen;
 import com.mygdx.game.views.MerchantScreen;
 import com.mygdx.game.views.MultiGameScreen;
 import com.mygdx.game.views.MenuScreen;
@@ -25,6 +32,8 @@ import com.mygdx.game.views.LoadingScreen;
 import com.mygdx.game.views.SinglePlayerSetupScreen;
 import com.mygdx.game.views.MultiPlayerSetupScreen;
 import com.mygdx.game.views.ChatScreen;
+import com.mygdx.game.views.BattleScreen;
+
 
 
 import java.util.ArrayList;
@@ -41,10 +50,13 @@ public class Andor extends Game {
 	private MultiPlayerSetupScreen newMultiScreen;
 
 	private LoadGameScreen loadGameScreen;
+	private LoadLosingGameScreen loadLosingGameScreen;
 
 	private ChooseHeroScreen chooseHeroScreen;
 	private GameScreen gameScreen;
 	private MultiGameScreen multiGameScreen;
+
+	private BattleScreen battleScreen;
 
 	private ChatScreen chatScreen;
 
@@ -55,6 +67,7 @@ public class Andor extends Game {
 	private EquipmentScreenArcher equipmentScreenArcher;
 	private EquipmentScreenWizard equipmentScreenWizard;
 	private EquipmentScreenDwarf equipmentScreenDwarf;
+	private UseFalconScreen useFalconScreen;
 
 	public SpriteBatch batch;
 	public Skin skin;
@@ -77,8 +90,12 @@ public class Andor extends Game {
 	public final static int EQUIPMENT_ARCHER = 11;
 	public final static int EQUIPMENT_WIZARD = 12;
 	public final static int EQUIPMENT_DWARF = 13;
+	public final static int USE_FALCON =15;
+	public final static int BATTLE =14;
 
-	public final static int LOADGAME = 14;
+
+	public final static int LOADGAME = 16;
+	public final static int LOADLOSEGAME = 17;
 
 	public int decider= 0;
 
@@ -103,6 +120,10 @@ public class Andor extends Game {
 
 	public final float UPDATE_TIME =1/60f;
 	public float timer;
+
+	private ArrayList<Hero> heroBattling;
+	private Monster monsterBattling;
+	public boolean wonLastBattle;
 
 
 //    public void printClaimedHeroes() {
@@ -156,7 +177,27 @@ public class Andor extends Game {
         return availableHeroes;
     }
 
-    public void disableHero(String hero) {
+    public void addHeroBattling(Hero hero){
+		if(heroBattling == null)
+			heroBattling = new ArrayList<Hero>();
+		heroBattling.add(hero);
+	}
+
+	public ArrayList<Hero> getHeroBattling() {
+		return heroBattling;
+	}
+
+	public void addMonsterBattling(Monster monster){
+
+		monsterBattling = (monster);
+	}
+
+	public Monster getMonsterBattling() {
+		return monsterBattling;
+	}
+
+
+	public void disableHero(String hero) {
 		// someone has picked this hero, so put it in the "taken" list so that no one else can pick it
 
         availableHeroes.put(hero, false);
@@ -199,6 +240,29 @@ public class Andor extends Game {
 //		playersFinishedDay = 0;
         finishedHeroes = new ArrayList<Hero>();
     }
+
+    public void loadBoard(char option) {
+		gameBoard = new Board(playerHeroes, option);
+		currentTurn = playerHeroes.get(0);
+		finishedHeroes = new ArrayList<Hero>();
+//		if (option == 'c') { // Losing game
+//			for (Hero player : playerHeroes) {
+//				if (player instanceof Warrior) {
+//					System.out.println("Moving warrior from " + player.getPosition() + " to 46.");
+//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(46));
+//				} else if (player instanceof Archer) {
+//					System.out.println("Moving archer from " + player.getPosition() + " to 39.");
+//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(39));
+//				} else if (player instanceof Dwarf) {
+//					System.out.println("Moving dwarf from " + player.getPosition() + " to 48.");
+//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(48));
+//				} else if (player instanceof Wizard) {
+//					System.out.println("Moving wizard from " + player.getPosition() + " to 41.");
+//					player.moveTo(gameBoard.getRegion(player.getPosition()), gameBoard.getRegion(41));
+//				}
+//			}
+//		}
+	}
 
 	public Hero whoseTurn() {
 		// returns whose turn it is right now
@@ -292,6 +356,7 @@ public class Andor extends Game {
 	    // reset the rooster to nobody
 	    rooster = null;
 	    finishedHeroes.clear();
+	    EquipmentScreen.setUsedFalconToday(false);
     }
 
 	public Board getGameBoard() {
@@ -331,6 +396,11 @@ public class Andor extends Game {
 				this.setScreen(loadGameScreen);
 				break;
 
+			case LOADLOSEGAME:
+				if (loadLosingGameScreen == null) loadLosingGameScreen = new LoadLosingGameScreen(this);
+				this.setScreen(loadLosingGameScreen);
+				break;
+
             case SINGLESETUP:
                 if (newSingleScreen == null) newSingleScreen = new SinglePlayerSetupScreen(this);
                 this.setScreen(newSingleScreen);
@@ -358,6 +428,10 @@ public class Andor extends Game {
 				if (chatScreen == null) chatScreen = new ChatScreen(this);
 				this.setScreen(chatScreen);
 				break;
+			case BATTLE:
+				if(battleScreen == null) battleScreen = new BattleScreen((this));
+				this.setScreen(battleScreen);
+				break;
 
 
 			case MERCHANT:
@@ -382,7 +456,10 @@ public class Andor extends Game {
 				if (equipmentScreenDwarf == null) equipmentScreenDwarf= new EquipmentScreenDwarf(this);
 				this.setScreen(equipmentScreenDwarf);
 				break;
-
+			case USE_FALCON:
+				if (useFalconScreen == null) useFalconScreen= new UseFalconScreen(this);
+				this.setScreen(useFalconScreen);
+				break;
 
 		}
 	}
@@ -413,6 +490,13 @@ public class Andor extends Game {
 	}
 	public MerchantScreen getMerchantScreen(){
 		return merchantScreen;
+	}
+
+	public UseFalconScreen getUseFalconScreen(){
+		if(useFalconScreen==null){
+			useFalconScreen = new UseFalconScreen(this);
+		}
+		return useFalconScreen;
 	}
 
 	@Override

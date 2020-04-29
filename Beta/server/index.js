@@ -33,6 +33,21 @@ io.on('connect',function(socket){
 
 
     });
+
+    socket.on('playerChose_Lose',function(data){
+        data.id=socket.id;
+
+        console.log("Player chose : " + data.name);
+
+        for(var i=0; i <players.length ; i++){
+            if(players[i].id == data.id){
+                players[i].name = data.name;
+            }
+        }
+        io.emit('playerChose', players );
+
+    });
+
      socket.on('playerMoved',function(data){
             data.id=socket.id;
 

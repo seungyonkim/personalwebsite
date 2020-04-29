@@ -22,7 +22,7 @@ public class Monster {
         this.rewardGold = rGold;
         this.rewardWP = rWP;
     }
-
+    public String getMonsterType(){ return "HELLO";}
     public int getPosition() {
         return this.position;
     }

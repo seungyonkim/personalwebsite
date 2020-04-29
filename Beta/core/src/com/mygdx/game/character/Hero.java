@@ -61,6 +61,8 @@ public class Hero {
         return this.position;
     }
 
+    public void setPosition(int position) { this.position = position; }
+
     public int getStrengthPoint()
     {
         return this.strengthPoint;

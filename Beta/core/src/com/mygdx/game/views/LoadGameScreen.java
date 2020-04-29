@@ -78,7 +78,7 @@ public class LoadGameScreen implements Screen {
         loseGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-
+                parent.changeScreen(Andor.LOADLOSEGAME);
             }
         });
 

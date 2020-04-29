@@ -104,6 +104,8 @@ public class MultiGameScreen implements Screen {
     private TextButton mainMenuButton;
     private TextButton castleShields;
 
+    private TextButton equipmentBagButton;
+
 //    private BitmapFont font;
 
     private boolean skipping;
@@ -381,6 +383,7 @@ public class MultiGameScreen implements Screen {
                             @Override
                             protected void result(Object object) {
                                 if (object.equals(true)) {
+
                                     // if player chooses to roll gor's dice
                                     int gorBattleValue = monster.getStrengthPoint() + monster.rollDice();
                                     int newResult = player.battle(heroBattleValue, gorBattleValue, monster);
@@ -796,6 +799,35 @@ public class MultiGameScreen implements Screen {
             stage.addActor(dwarfPortraitImage);
         }
 
+        //Equipment bag button
+
+
+        equipmentBagButton = new TextButton("Equipment Bag", parent.skin);
+
+        equipmentBagButton.setTouchable(Touchable.enabled);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
+
+        equipmentBagButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                if(myHero instanceof Warrior){
+                    parent.changeScreen(Andor.EQUIPMENT_WARRIOR);
+                }
+                else if(myHero instanceof Archer){
+                    parent.changeScreen(Andor.EQUIPMENT_ARCHER);
+                }
+                else if(myHero instanceof Wizard){
+                    parent.changeScreen(Andor.EQUIPMENT_WIZARD);
+                }
+                else if(myHero instanceof Dwarf){
+                    parent.changeScreen(Andor.EQUIPMENT_DWARF);
+                }
+
+
+            }
+        });
+
+        stage.addActor(equipmentBagButton);
         // Displaying Hero Information
         heroInformation = new TextButton("GOLD: " + parent.getMyHero().getGold()
                 + "\nSTRENGTH: " + parent.getMyHero().getStrengthPoint()
@@ -942,6 +974,7 @@ public class MultiGameScreen implements Screen {
 
                     }
                 });
+
                 stage.addActor(skipTurn);
             } else {
                 TextButton finishTurn = new TextButton("Finish Turn", parent.skin);
@@ -985,6 +1018,12 @@ public class MultiGameScreen implements Screen {
 
 
         // Battle button
+        if(parent.wonLastBattle){
+            gameBoard.getRegion(parent.getMonsterBattling().getPosition()).removeMonster();
+            parent.getMonsterBattling().setPosition(80);
+            updateMonsterPositions();
+        }
+        // Battle button
         if (gameBoard.getRegion(myHero.getPosition()).getMonster() != null && canBattle && gameBoard.getRegion(myHero.getPosition()).getHeroes() != null) {
             battleButton = new TextButton("Start Battle", parent.skin);
             // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
@@ -995,15 +1034,21 @@ public class MultiGameScreen implements Screen {
                     // Perform battle
 
                     Monster monster = gameBoard.getRegion(myHero.getPosition()).getMonster();
-                    if (myHero instanceof Archer) {
-                        archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
-                    } else if (myHero instanceof Wizard) {
-                        wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
-                    } else {
-                        battleDialog(myHero, monster, 1, 0);
-                    }
-                    skipping = false;
+                        /*
+                        if (myHero instanceof Archer) {
+                            archerBattleDialogue((Archer) myHero, monster, 1, ((Archer) myHero).getNumOfDice(), 0, 0);
+                        } else if (myHero instanceof Wizard) {
+                            wizardBattleDialogue((Wizard) myHero, monster, 1, 0);
+                        } else {
+                            battleDialog(myHero, monster, 1, 0);
+                        }
+                        skipping = false;
+
+                         */
+                    parent.addMonsterBattling(monster);
+                    parent.addHeroBattling(myHero);
                     updateBattle();
+                    parent.changeScreen(Andor.BATTLE);
 
                     //                    show();
                 }
@@ -1242,6 +1287,9 @@ public class MultiGameScreen implements Screen {
 
         heroInformation.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(), Gdx.graphics.getHeight()-heroInformation.getHeight()-5);
         castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
+        equipmentBagButton.setPosition(Gdx.graphics.getWidth()/4+warriorPortraitImage.getWidth(),Gdx.graphics.getHeight()-2*heroInformation.getHeight()+23);
+
+
 
         pathButtonImage.setSize(Gdx.graphics.getWidth()*30/640, Gdx.graphics.getWidth()*30/640);
         pathButtonImage.setPosition(Gdx.graphics.getWidth()-pathButtonImage.getWidth()-10, Gdx.graphics.getHeight()-pathButtonImage.getHeight()-10);
@@ -1400,7 +1448,7 @@ public class MultiGameScreen implements Screen {
     public void updateBattle(){
 
         Hero myHero = parent.getMyHero();
-        if( parent.getMyHero().hasMoved()){
+
 
             JSONObject data = new JSONObject();
             try{
@@ -1411,7 +1459,7 @@ public class MultiGameScreen implements Screen {
                 Gdx.app.log("SocketIO", "Error joining battle");
 
             }
-        }
+
     }
     public void configSocketEvents(){
         socket.on("playerMoved", new Emitter.Listener() {
@@ -1647,6 +1695,10 @@ public class MultiGameScreen implements Screen {
                             @Override
                             protected void result(Object object) {
                                 if (object.equals(true)) {
+                                    // Perform battle
+                                    parent.addHeroBattling(myHero);
+                                    parent.changeScreen(Andor.BATTLE);
+                                    skipping = false;
 
 
                                 }
@@ -1663,6 +1715,8 @@ public class MultiGameScreen implements Screen {
 
                             @Override
                             protected void result(Object object) {
+
+
 
                             }
                         }.show(stage);
