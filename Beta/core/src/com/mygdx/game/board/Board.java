@@ -303,6 +303,15 @@ public class Board {
 //        return result;
 //    }
 
+    public int getWitchRegion(){
+        for(Region region: this.regions){
+            if(region.getWitch() !=null){
+                return region.getWitch().getPosition();
+            }
+        }
+        return 80;
+    }
+
     public ArrayList<Farmer> getFarmers() {
         ArrayList<Farmer> result = new ArrayList<Farmer>();
         for (Region region : this.regions) {
