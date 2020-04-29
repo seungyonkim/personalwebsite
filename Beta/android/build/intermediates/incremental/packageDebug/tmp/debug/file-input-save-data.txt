@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Apr 28 22:07:49 PDT 2020
+#Wed Apr 29 04:12:21 PDT 2020
 60.set=ASSET
 52.set=ASSET
 53.base=/Users/yona/AndroidStudioProjects/f2019-hexanome-06/android_app/0426/Beta/android/build/intermediates/merged_assets/debug/out

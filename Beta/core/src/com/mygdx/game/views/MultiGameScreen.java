@@ -1070,14 +1070,16 @@ public class MultiGameScreen implements Screen {
         //here!!!!
         Iterator<Region> availableRegionsIter = availableRegions.iterator();
         Monster monsterAround = null;
-        while(EquipmentScreen.activateBow() &&availableRegionsIter.hasNext()){
-            Monster monster = availableRegionsIter.next().getMonster();
-            if(monster!=null){
-                monsterAround=monster;
-                break;
+        if(EquipmentScreen.activateBow()){
+            while(availableRegionsIter.hasNext()){
+                Monster monster = availableRegionsIter.next().getMonster();
+                if(monster!=null){
+                    monsterAround=monster;
+                    break;
+                }
             }
         }
-        if(gameBoard.getRegion(currentHero.getPosition()).getMonster() != null && canBattle) {
+        if (monsterAround!=null&&canBattle && gameBoard.getRegion(myHero.getPosition()).getHeroes() != null) {
             battleButton = new TextButton("Start Battle", parent.skin);
             // can attack the monster only if he is on the same space as the monster and at the beginning of a turn
             battleButton.setPosition(200, goldInformation.getHeight() + 15);
@@ -1101,6 +1103,7 @@ public class MultiGameScreen implements Screen {
                     EquipmentScreen.usedBow();
                     parent.addMonsterBattling(finalMonsterAround);
                     parent.addHeroBattling(myHero);
+
                     updateBattle();
                     parent.changeScreen(Andor.BATTLE);
 
@@ -1109,6 +1112,7 @@ public class MultiGameScreen implements Screen {
             });
             stage.addActor(battleButton);
         }
+        monsterAround=null;
 
 
 
@@ -1596,6 +1600,7 @@ public class MultiGameScreen implements Screen {
                 socket.emit("updateBattle", data);
             }catch(Exception e){
                 Gdx.app.log("SocketIO", "Error joining battle on game screen");
+
 
             }
 

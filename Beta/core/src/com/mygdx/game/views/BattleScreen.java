@@ -29,6 +29,7 @@ import com.mygdx.game.character.Wizard;
 import com.mygdx.game.monster.Gor;
 import com.mygdx.game.monster.Monster;
 import com.mygdx.game.monster.Skral;
+import com.mygdx.game.views.EquipmentScreen.EquipmentScreen;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,11 +78,8 @@ public class BattleScreen implements Screen {
     private int round =0;
     private boolean flip;
     private int lastRoll;
+    private boolean stopRoll;
     private int numberDiceUsed ;
-    private int resultRound;
-    private int monsterRound;
-
-    private int playerWhoPlayed = 0;
 
 
 
@@ -111,6 +109,7 @@ public class BattleScreen implements Screen {
         HeroBattling = parent.getHeroBattling();
         monsterBattling = parent.getMonsterBattling();
 
+        //updateBattle();
 
 
 
@@ -127,7 +126,6 @@ public class BattleScreen implements Screen {
                     areaInfo.appendText("Battle started.\n");
                     areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
                     startButton.remove();
-                    if(parent.decider==1)
                     rollButton.setDisabled(false);
                     round++;
                 } else {
@@ -136,20 +134,43 @@ public class BattleScreen implements Screen {
                     areaInfo.appendText("Battle vs. Monster / Round " + round + "\n");
 
                     // if player chooses to roll the dice
-                    final int heroBattleValue = player.rollDice() + player.getStrengthPoint();
-                    // if player chooses to roll gor's dice
-                    int gorBattleValue = 0;
-                    if(parent.decider ==1 ) {
-                        gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
-                     areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
+                    int rollDiceValue=0;
+                    if(EquipmentScreen.activateHelm()){
+                        areaInfo.appendText("Helm activated, dice value doubles");
+                        rollDiceValue=player.rollDice()*2;
+                        EquipmentScreen.usedHelm();
                     }
+                    else if(!EquipmentScreen.activateHelm()){
+                        rollDiceValue=player.rollDice();
+                    }
+                    final int heroBattleValue = rollDiceValue + player.getStrengthPoint();
+                    // if player chooses to roll gor's dice
+                    int monsterDice = monsterBattling.rollDice();
+                    int gorBattleValue = monsterBattling.getStrengthPoint() + monsterDice;
+
                     areaInfo.appendText("You just got a battle value of: " + heroBattleValue + "\n");
-
+                    areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
+                    int lastResult = player.battle(heroBattleValue, gorBattleValue, monsterBattling);
                     round++;
+                    if (lastResult > 0) {
+                        areaInfo.appendText("You have won the last round.\nMonster lost " + lastResult + " willpower.\nMonster's current attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
+                    } else if (lastResult < 0) {
+                        if(EquipmentScreen.activateShield()){
+                            areaInfo.appendText("You have lost the last round.\nHowever, you activated Shield and didn't lose any willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
+                            EquipmentScreen.usedShield();
+                        }
+                        else{
+                            areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + " / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
+                        }
 
-                    updateResult(heroBattleValue,gorBattleValue);
-
-
+                    } else {
+                        areaInfo.appendText("Last round ended in a Draw.\nMonster's current attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + player.getStrengthPoint() + "  / Willpower: " + player.getWillPower() + " / Hours used: " + player.getHours() + "\n");
+                    }
+                    if (player.getWillPower() == 0) {
+                        playerLose(player, monsterBattling);
+                    } else if (monsterBattling.getWillPower() == 0) {
+                        playerWin(monsterBattling);
+                    }
 
                 }
 
@@ -168,7 +189,7 @@ public class BattleScreen implements Screen {
     }
     public void archerBattleDialogue(Archer archer, int n) {
 
-        int numOfDiceLeft = n - numberDiceUsed;
+        final int numOfDiceLeft = n - numberDiceUsed;
 
         if (archer.getCanPlay() && archer.getWillPower() > 0 && numOfDiceLeft > 0) {
             // if the player can play on
@@ -179,28 +200,64 @@ public class BattleScreen implements Screen {
                 areaInfo.appendText("Battle started.\n");
                 areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
                 startButton.remove();
-                if(parent.decider==1)
                 rollButton.setDisabled(false);
                 round++;
             }else {
 
                 areaInfo.setText("");
                 areaInfo.appendText("Battle vs. Monster / Round " + round + "\n");
-                areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                Random rand = new Random();
+                int newRoll = rand.nextInt(6) + 1;
+                int last = this.lastRoll;
+                if (!stopRoll) {
+                    stopRolling.setDisabled(false);
+                    areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\nRemaining Dice: " + numOfDiceLeft + "\n");
+                    areaInfo.appendText("\n\nYou just got a dice value of: " + newRoll + "\n");
 
-                round = round + 1;
+                    this.lastRoll = newRoll;
+                    numberDiceUsed++;
+                }
+                else {
+                    round = round + 1;
                     areaInfo.setText("");
-                    final int heroBattleValue = this.lastRoll + archer.getStrengthPoint();
-                    int gorBattleValue = 0;
-                    if(parent.decider ==1 ) {
-                        gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
-                        areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
+                    // if player chooses to roll the dice
+                    if(EquipmentScreen.activateHelm()){
+                        areaInfo.appendText("Helm activated, your dice value gets doubled.\n");
+                        last = last*2;
                     }
+                    else if(!EquipmentScreen.activateHelm()){
+
+                    }
+                    final int heroBattleValue = last + archer.getStrengthPoint();
+                    // if player chooses to roll gor's dice
+                    int monsterDice = monsterBattling.rollDice();
+                    int gorBattleValue = monsterBattling.getStrengthPoint() + monsterDice;
 
                     areaInfo.appendText("\n\nYou just got a battle value of: " + heroBattleValue + "\n");
-                    gorBattleValue+=monsterRound;
-                    updateResult(heroBattleValue,gorBattleValue);
+                    areaInfo.appendText("The monster go a battle value of " + gorBattleValue + "\n");
+                    int lastResult = archer.battle(heroBattleValue, gorBattleValue, monsterBattling);
+                    if (lastResult > 0) {
+                        areaInfo.appendText("You have won the last round.\nMonster lost " + lastResult + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + "  / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                    } else if (lastResult < 0) {
+                        if(EquipmentScreen.activateShield()){
+                            areaInfo.appendText("You have lost the last round.\nHowever, you activated Shield and didn't lose any willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                            EquipmentScreen.usedShield();
+                        }
+                        else{
+                            areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                        }
 
+                    } else {
+                        areaInfo.appendText("Last round ended in a Draw.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + archer.getStrengthPoint() + " / Willpower: " + archer.getWillPower() + " / Hours used: " + archer.getHours() + "\n");
+                    }
+                    if (archer.getWillPower() == 0) {
+                        playerLose(archer, monsterBattling);
+                    } else if (monsterBattling.getWillPower() == 0) {
+                        playerWin(monsterBattling);
+                    }
+
+                    stopRoll = false;
+                }
             }
 
         } else {
@@ -216,18 +273,6 @@ public class BattleScreen implements Screen {
 
 
 
-    }
-
-    public void archerRollDice(int n ){
-        int numOfDiceLeft = n - numberDiceUsed;
-        Random rand = new Random();
-        int newRoll = rand.nextInt(6) + 1;
-        numberDiceUsed++;
-        numOfDiceLeft--;
-        stopRolling.setDisabled(false);
-        areaInfo.appendText("\nYou just got a dice value of: " + newRoll + ". And you have " + numOfDiceLeft+ " dice left\n");
-        this.lastRoll = newRoll;
-        numberDiceUsed++;
     }
 
     public void wizardBattleDialogue(Wizard wizard) {
@@ -239,35 +284,55 @@ public class BattleScreen implements Screen {
                 areaInfo.appendText("Battle started.\n");
                 areaInfo.appendText("Monster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
                 startButton.remove();
-                if(parent.decider==1)
-                rollButton.setDisabled(false);
+                flipButton.setDisabled(false);
                 round++;
             } else {
-                // Roll dice
 
+                // Roll dice
+                Random rand = new Random();
+                final int newRoll = rand.nextInt(6) + 1;
                 areaInfo.appendText("Battle vs. Monster / Round " + round +"\n");
-                areaInfo.appendText("Monster's current attributes:\nStrength: " + monsterBattling.getStrengthPoint() + "\nWillpower: " + monsterBattling.getWillPower() + "\n\n\nYour Strength: " + wizard.getStrengthPoint() + "\nWillpower: " + wizard.getWillPower() + "\nHours used: " + wizard.getHours() + "\n");
-                int bv;
+                areaInfo.appendText("Monster's current attributes:\nStrength: " + monsterBattling.getStrengthPoint() + "\nWillpower: " + monsterBattling.getWillPower() + "\n\n\nYour Strength: " + wizard.getStrengthPoint() + "\nWillpower: " + wizard.getWillPower() + "\nHours used: " + wizard.getHours() + "\nDice Rolled: " + newRoll + "\n");
+                int bv=0;
                 if (flip) {
-                    bv = (7 - this.lastRoll) + wizard.getStrengthPoint();
-                    areaInfo.appendText("You new dice roll is "+ bv);
+                    bv = (7 - newRoll) + wizard.getStrengthPoint();
                     flip = false;
                 } else {
-                    Random rand = new Random();
-                    final int newRoll = rand.nextInt(6) + 1;
-                    this.lastRoll = newRoll;
-                    bv =  + wizard.getStrengthPoint();
-                    areaInfo.appendText("You dice roll is "+ newRoll);
+                    if(EquipmentScreen.activateHelm()){
+                        areaInfo.appendText("Helm activated, double dice roll value.\n");
+                        bv = newRoll*2 + wizard.getStrengthPoint();
+                        EquipmentScreen.usedHelm();
+                    }
+                    else if(!EquipmentScreen.activateHelm()){
+                        bv = newRoll + wizard.getStrengthPoint();
+                    }
                 }
                 final int heroBattleValue = bv;
-                int gorBattleValue = 0;
-                if(parent.decider ==1 ) {
-                    gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
-                    areaInfo.appendText("The monster got a battle value of " + gorBattleValue + "\n");
+                int gorBattleValue = monsterBattling.getStrengthPoint() + monsterBattling.rollDice();
+
+                int lastResult = wizard.battle(heroBattleValue, gorBattleValue, monsterBattling);
+
+                if (lastResult > 0) {
+                    areaInfo.appendText("You have won the last round.\nMonster lost " + lastResult + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + "  / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
+                } else if (lastResult < 0) {
+                    if(EquipmentScreen.activateShield()){
+                        areaInfo.appendText("You have lost the last round.\nHowever, you activated Shield and didn't lose any willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
+                        EquipmentScreen.usedShield();
+                    }
+                    else{
+                        areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
+                    }
+
+                } else {
+                    areaInfo.appendText("Last round ended in a Draw.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + wizard.getStrengthPoint() + " / Willpower: " + wizard.getWillPower() + " / Hours used: " + wizard.getHours() + "\n");
                 }
-                areaInfo.appendText("\n\nYou just got a battle value of: " + heroBattleValue + "\n");
-                gorBattleValue+=monsterRound;
-                updateResult(heroBattleValue,gorBattleValue);
+
+                if (wizard.getWillPower() == 0) {
+                    playerLose(wizard, monsterBattling);
+                } else if (monsterBattling.getWillPower() == 0) {
+                    playerWin(monsterBattling);
+                }
+
 
 
 
@@ -284,29 +349,11 @@ public class BattleScreen implements Screen {
         }
 
 
-    }
-
-    public void getResultBattle(){
-        Hero myhero = parent.getMyHero();
-
-        int lastResult = myhero.battle(resultRound, monsterRound, monsterBattling);
-
-        if (lastResult > 0) {
-            areaInfo.appendText("You have won the last round.\nMonster lost " + lastResult + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + myhero.getStrengthPoint() + "  / Willpower: " + myhero.getWillPower() + " / Hours used: " + myhero.getHours() + "\n");
-        } else if (lastResult < 0) {
-            areaInfo.appendText("You have lost the last round.\nYou lost " + Math.abs(lastResult) + " willpower.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + myhero.getStrengthPoint() + " / Willpower: " + myhero.getWillPower() + " / Hours used: " + myhero.getHours() + "\n");
-        } else {
-            areaInfo.appendText("Last round ended in a Draw.\nMonster's attributes: Strength: " + monsterBattling.getStrengthPoint() + " / Willpower: " + monsterBattling.getWillPower() + "\nYour Strength: " + myhero.getStrengthPoint() + " / Willpower: " + myhero.getWillPower() + " / Hours used: " + myhero.getHours() + "\n");
-        }
-
-        if (myhero.getWillPower() == 0) {
-            playerLose(myhero, monsterBattling);
-        } else if (monsterBattling.getWillPower() == 0) {
-            playerWin(monsterBattling);
-        }
 
 
     }
+
+
 
     public void leaveBattle(Monster monster) {
         if (monster instanceof Gor) {
@@ -328,7 +375,6 @@ public class BattleScreen implements Screen {
 
             @Override
             protected void result(Object object) {
-                parent.wonLastBattle = true;
                 leaveBattle(monster);
                 parent.changeScreen(Andor.MULTIGAME);
 
@@ -348,7 +394,6 @@ public class BattleScreen implements Screen {
 
             @Override
             protected void result(Object object) {
-                parent.wonLastBattle= false;
                 leaveBattle(monster);
                 parent.changeScreen(Andor.MULTIGAME);
 
@@ -368,7 +413,7 @@ public class BattleScreen implements Screen {
         connectSocket();
         configSocketEvents();
 
-
+        updateBattle();
 
 
         Gdx.input.setInputProcessor(stage);
@@ -376,7 +421,6 @@ public class BattleScreen implements Screen {
         Table table = createTable();
 
         stage.addActor(table);
-        updateBattle();
 
 
 
@@ -422,8 +466,6 @@ public class BattleScreen implements Screen {
             }
         });
         table.row().pad(30, 0, 0, 0);
-        if(parent.decider!=1)
-            startButton.remove();
 
 
         final ArrayList<String> availableHeroes = new ArrayList<String>();
@@ -511,7 +553,10 @@ public class BattleScreen implements Screen {
         table.add(areaInfo).prefSize(500).colspan(8);
 
         areaInfo.appendText("Welcome to the battle screen. Start the battle.\n");
-
+        areaInfo.appendText("The current player battling are : \n");
+        for(Hero hero : parent.getHeroBattling()){
+            areaInfo.appendText(hero.getTypeOfHeroString() +"\n");
+        }
             table.row().pad(10, 0, 0, 0);
 
 
@@ -519,7 +564,7 @@ public class BattleScreen implements Screen {
         stopRolling.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
-                    archerBattleDialogue((Archer) myHero, ((Archer) myHero).getNumOfDice());
+                   stopRoll = true;
 
                 }
         });
@@ -529,7 +574,6 @@ public class BattleScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 flip=true;
-                wizardBattleDialogue((Wizard)myHero);
             }
         });
         stopRolling.setDisabled(true);
@@ -559,10 +603,9 @@ public class BattleScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 if (myHero instanceof Archer) {
-                    archerRollDice(((Archer) myHero).getNumOfDice());
+                    archerBattleDialogue((Archer) myHero, ((Archer) myHero).getNumOfDice());
                 } else if (myHero instanceof Wizard) {
                     wizardBattleDialogue((Wizard) myHero);
-                    round++;
                 } else {
                     battleDialog(myHero);
                 }
@@ -630,36 +673,12 @@ public class BattleScreen implements Screen {
 
         JSONObject data = new JSONObject();
         try{
-           // areaInfo.appendText("- "+myHero.getTypeOfHeroString());
+            areaInfo.appendText("- "+myHero.getTypeOfHeroString());
             String wantToJoin = myHero.getTypeOfHeroString();
             data.put("wantToJoin",wantToJoin);
             socket.emit("updateBattle", data);
         }catch(Exception e){
             Gdx.app.log("SocketIO", "Error joining battle");
-
-        }
-
-    }
-
-    public void updateResult(int heroBattleValue, int monsterHeroValue){
-
-
-        JSONObject data = new JSONObject();
-        try{
-            playerWhoPlayed++;
-            resultRound+=heroBattleValue;
-
-            if(playerWhoPlayed == parent.getHeroBattling().size()){
-                getResultBattle();
-            }
-            data.put("heroBattleValue",heroBattleValue);
-            data.put("monsterHeroValue",monsterHeroValue);
-
-            socket.emit("updateResult", data);
-
-            areaInfo.appendText("Waiting for other player roll\n");
-        }catch(Exception e){
-            Gdx.app.log("SocketIO", "Error sending the battle result");
 
         }
 
@@ -680,7 +699,29 @@ public class BattleScreen implements Screen {
             public void call(Object... args) {
                 Gdx.app.log("SocketIO", "Connected");
             }
+        }).on("newPlayer", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                final JSONArray objects = (JSONArray) args[0];
+                try {
 
+
+                } catch (Exception e) {
+                    Gdx.app.log("SocketIO", "Error getting the new player id");
+                }
+            }
+
+        }).on("playerChose", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                JSONArray objects = (JSONArray) args[0];
+                try {
+
+
+                } catch (Exception e) {
+                    Gdx.app.log("SocketIO", "Error handling the other player choosing");
+                }
+            }
         }).on("updateBattle", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
@@ -688,41 +729,7 @@ public class BattleScreen implements Screen {
 
                 try {
 
-                   // areaInfo.appendText("- " + data.getString("wantToJoin"));
-                    if(parent.decider!=1)
-                    startButton.remove();
-
-                } catch (Exception e) {
-                }
-            }
-
-        }).on("updateResult",  new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                final JSONObject data = (JSONObject) args[0];
-
-                try {
-
-                    int HeroBattleValue = data.getInt("HeroBattleValue");
-                    int monsterBattleValue = data.getInt("MonsterBattleValue");
-
-                    monsterRound = monsterBattleValue;
-                    resultRound = resultRound + HeroBattleValue;
-                    round++;
-
-                    areaInfo.appendText("Other players value : " + HeroBattleValue + "\n");
-
-
-                    areaInfo.appendText("Monster battle value : " +monsterBattleValue +"\n");
-                    playerWhoPlayed++;
-                    if(playerWhoPlayed == parent.getHeroBattling().size()){
-                        getResultBattle();
-                    }else {
-                        areaInfo.appendText("Your turn" + "\n");
-                        rollButton.setDisabled(false);
-                    }
-
-
+                    areaInfo.appendText("- " + data.getString("wantToJoin"));
 
                 } catch (Exception e) {
                 }
