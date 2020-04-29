@@ -420,9 +420,13 @@ public class Board {
 
     public boolean checkWin(){
         Region r=getRegion(19);
+        Region s=getRegion(80);
         //TODO ADD MEDICINE WIN CONDITION
-        if(r.getMonster()==null && castle.getShield()!=0){
-            return true;
+        if(!(r.getMonster() instanceof Skral)){
+            if(s.getMonster() instanceof Skral){
+                return true;
+            }
+
         }
         return false;
     }
