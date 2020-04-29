@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
@@ -682,6 +683,7 @@ public class MultiGameScreen implements Screen {
 
     @Override
     public void show() {
+        System.out.println("show() called for hero " + parent.getMyHero().getTypeOfHeroString());
         stage.clear();
         Gdx.input.setInputProcessor(stage);
         if(!parent.getMyHero().hasMoved() || parent.whoseTurn().getTypeOfHeroString().equals(parent.getMyHero().getTypeOfHeroString())) {
@@ -811,13 +813,13 @@ public class MultiGameScreen implements Screen {
         heroInformation.setTouchable(Touchable.disabled);
         heroInformation.getLabel().setFontScale(0.8f);
         heroInformation.setPosition(Gdx.graphics.getWidth() / 4 + Gdx.graphics.getWidth()*45/640, Gdx.graphics.getHeight() - Gdx.graphics.getHeight()*70/480 - 5);
-        stage.addActor(heroInformation);
+//        stage.addActor(heroInformation);
 
         // Displaying number of castle shields
         castleShields = new TextButton("Remaining Shields: " + gameBoard.getCastle().getShield(), parent.skin);
         castleShields.setTouchable(Touchable.disabled);
         castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
-        stage.addActor(castleShields);
+//        stage.addActor(castleShields);
 
         ///////////////////////////
         // Show button to display the available paths for current hero
@@ -918,7 +920,7 @@ public class MultiGameScreen implements Screen {
             }
         }
 
-        // Show where golds are dropped in the map
+//        // Show where golds are dropped in the map
         String displayGoldInfo = "Golds dropped: ";
         for (Region region : gameBoard.getGoldRegions()) {
             int golds = region.getGold();
@@ -928,7 +930,7 @@ public class MultiGameScreen implements Screen {
         goldInformation = new TextButton(displayGoldInfo, parent.skin);
         goldInformation.setTouchable(Touchable.disabled);
         goldInformation.setPosition(200, 10);
-        stage.addActor(goldInformation);
+//        stage.addActor(goldInformation);
 
 
 
@@ -1344,6 +1346,36 @@ public class MultiGameScreen implements Screen {
             }
         }
 
+        // Displaying Hero Information
+        heroInformation.addAction(Actions.removeActor());
+        heroInformation = new TextButton("GOLD: " + parent.getMyHero().getGold()
+                + "\nSTRENGTH: " + parent.getMyHero().getStrengthPoint()
+                + "\nWILLPOWER: " + parent.getMyHero().getWillPower()
+                + "\nUSED HOURS: " + parent.getMyHero().getHours(), parent.skin);
+        heroInformation.setTouchable(Touchable.disabled);
+        heroInformation.getLabel().setFontScale(0.8f);
+        heroInformation.setPosition(Gdx.graphics.getWidth() / 4 + Gdx.graphics.getWidth()*45/640, Gdx.graphics.getHeight() - Gdx.graphics.getHeight()*70/480 - 5);
+        stage.addActor(heroInformation);
+        // Displaying remaining shields
+        castleShields.addAction(Actions.removeActor());
+        castleShields = new TextButton("Remaining Shields: " + gameBoard.getCastle().getShield(), parent.skin);
+        castleShields.setTouchable(Touchable.disabled);
+        castleShields.setPosition(heroInformation.getX()+heroInformation.getWidth(), Gdx.graphics.getHeight()-castleShields.getHeight()-5);
+        stage.addActor(castleShields);
+
+        // Show where golds are dropped in the map
+        goldInformation.addAction(Actions.removeActor());
+        String displayGoldInfo = "Golds dropped: ";
+        for (Region region : gameBoard.getGoldRegions()) {
+            int golds = region.getGold();
+            int position = region.getPosition();
+            displayGoldInfo += golds + "G in " + position + ",";
+        }
+        goldInformation = new TextButton(displayGoldInfo, parent.skin);
+        goldInformation.setTouchable(Touchable.disabled);
+        goldInformation.setPosition(200, 10);
+        stage.addActor(goldInformation);
+
 
         stage.getBatch().end();
         stage.draw();
@@ -1564,6 +1596,7 @@ public class MultiGameScreen implements Screen {
             }
 
     }
+
     public void configSocketEvents(){
         socket.on("playerMoved", new Emitter.Listener() {
             @Override
@@ -1654,14 +1687,12 @@ public class MultiGameScreen implements Screen {
                             hasToStop = false;
                             canBattle = true;
                             parent.finishDay();
-//                            if (parent.getFinishedHeroes().size() == parent.getPlayerHeroes().size()) {
-//                                // all the players have finished the day, so execute endDay
-//                                parent.endDay();
-//                            }
-
-//                            for (Hero player : parent.getPlayerHeroes()) {
-//                                player.resetHours();
-//                            }
+                            if (parent.getFinishedHeroes().size() == parent.getPlayerHeroes().size()) {
+                                // all the players have finished the day, so execute endDay
+                                parent.endDay();
+                                updateMonsterPositions();
+                                return;
+                            }
                         }
                         System.out.println(myHero.getTypeOfHeroString() + " says it is the turn of :" + parent.whoseTurn().getTypeOfHeroString());
                         if (parent.whoseTurn().getTypeOfHeroString().equals(myHero.getTypeOfHeroString())) {
