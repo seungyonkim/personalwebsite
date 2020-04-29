@@ -305,13 +305,10 @@ public class Board {
 
     public int getWitchRegion(){
         for(Region region: this.regions){
-            if(region!=null){
-                if(region.getWitch() != null){
-                    return region.getWitch().getPosition();
-                }
+            if(region.getWitch() !=null){
+                return region.getWitch().getPosition();
             }
         }
-
         return 80;
     }
 

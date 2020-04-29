@@ -540,6 +540,7 @@ public class MultiPlayerSetupScreen implements Screen {
 
         try{
             socket =IO.socket(parent.SOCKETURL);
+
             //to make it work on the android emulator use http://10.0.2.2:8080
             socket.connect();
         }catch(Exception e){
